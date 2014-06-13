@@ -13,18 +13,18 @@
   13               	.global	main
   15               	main:
   16               	.LFB6:
-  17               		.file 1 "/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/system.c"
-   1:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/system.c **** #include "system/system.h"
-   2:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/system.c **** 
-   3:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/system.c **** int main(void)
-   4:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/system.c **** {
+  17               		.file 1 "/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/system.c"
+   1:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/system.c **** #include "system/system.h"
+   2:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/system.c **** 
+   3:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/system.c **** int main(void)
+   4:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/system.c **** {
   18               		.loc 1 4 0
   19               		.cfi_startproc
   20               	/* prologue: function */
   21               	/* frame size = 0 */
   22               	/* stack size = 0 */
   23               	.L__stack_usage = 0
-   5:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/system.c **** 		return blockProgram();
+   5:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/system.c **** 		return blockProgram();
   24               		.loc 1 5 0
   25 0000 0C94 0000 		jmp blockProgram
   26               	.LVL0:
@@ -32,17 +32,17 @@
   28               	.LFE6:
   30               		.text
   31               	.Letext0:
-  32               		.file 2 "/home/pthalamy/CMU/bench/benchmark/build/src-bobby/system/system.bbh"
+  32               		.file 2 "/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/system/system.bbh"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 system.c
-     /tmp/ccTLAWNQ.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccTLAWNQ.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccTLAWNQ.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccTLAWNQ.s:5      *ABS*:000000000000003b __RAMPZ__
-     /tmp/ccTLAWNQ.s:6      *ABS*:0000000000000034 __CCP__
-     /tmp/ccTLAWNQ.s:7      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccTLAWNQ.s:8      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccTLAWNQ.s:15     .text.startup:0000000000000000 main
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccKQ5b6l.s:2      *ABS*:000000000000003e __SP_H__
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccKQ5b6l.s:3      *ABS*:000000000000003d __SP_L__
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccKQ5b6l.s:4      *ABS*:000000000000003f __SREG__
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccKQ5b6l.s:5      *ABS*:000000000000003b __RAMPZ__
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccKQ5b6l.s:6      *ABS*:0000000000000034 __CCP__
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccKQ5b6l.s:7      *ABS*:0000000000000000 __tmp_reg__
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccKQ5b6l.s:8      *ABS*:0000000000000001 __zero_reg__
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccKQ5b6l.s:15     .text.startup:0000000000000000 main
 
 UNDEFINED SYMBOLS
 blockProgram

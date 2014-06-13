@@ -107,7 +107,6 @@ print C "#include \"$basemsgincludefile\"\n#include \"../sim/block.h\"\n\n";
 
 # first pass just finds threadvars & bbh file names
 $pass = 1;
-$verbose = 0;
 
 print STDERR "pass 1 ...\n";
 while ($#ARGV >= 0) {
@@ -502,8 +501,6 @@ sub procline {
 	}
 	
 	@tokens = split(/(\*\/|\/\/|\/\*|[][{}()@;]|[ \t]+|[=,\"\'.\+\-!*\/<>&^])/, $_);
-
-
 	while ((scalar @tokens)>0) {
 	    $t = shift @tokens;
 	    

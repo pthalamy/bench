@@ -12,80 +12,80 @@
   12               	.global	EEPROM_WriteByte
   14               	EEPROM_WriteByte:
   15               	.LFB7:
-  16               		.file 1 "/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c"
-   1:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** /* This file has been prepared for Doxygen automatic documentation generation.*/
-   2:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** /*! \file *********************************************************************
-   3:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
-   4:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * \brief  XMEGA EEPROM driver source file.
-   5:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
-   6:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *      This file contains the function implementations for the XMEGA EEPROM driver.
-   7:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
-   8:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *      The driver is not intended for size and/or speed critical code, since
-   9:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *      most functions are just a few lines of code, and the function call
-  10:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *      overhead would decrease code performance. The driver is intended for
-  11:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *      rapid prototyping and documentation purposes for getting started with
-  12:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *      the XMEGA EEPROM module.
-  13:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
-  14:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *      For size and/or speed critical code, it is recommended to copy the
-  15:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *      function contents directly into your application instead of making
-  16:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *      a function call.
-  17:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
-  18:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * \par Application note:
-  19:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *      AVR1315: Accessing the XMEGA EEPROM
-  20:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
-  21:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * \par Documentation
-  22:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *      For comprehensive code documentation, supported compilers, compiler
-  23:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *      settings and supported devices see readme.html
-  24:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
-  25:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * \author
-  26:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *      Atmel Corporation: http://www.atmel.com \n
-  27:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *      Support email: avr@atmel.com
-  28:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
-  29:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * $Revision: 1569 $
-  30:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * $Date: 2008-04-22 13:03:43 +0200 (ti, 22 apr 2008) $  \n
-  31:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
-  32:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * Copyright (c) 2008, Atmel Corporation All rights reserved.
-  33:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
-  34:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * Redistribution and use in source and binary forms, with or without
-  35:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * modification, are permitted provided that the following conditions are met:
-  36:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
-  37:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * 1. Redistributions of source code must retain the above copyright notice,
-  38:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * this list of conditions and the following disclaimer.
-  39:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
-  40:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice,
-  41:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * this list of conditions and the following disclaimer in the documentation
-  42:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * and/or other materials provided with the distribution.
-  43:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
-  44:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * 3. The name of ATMEL may not be used to endorse or promote products derived
-  45:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * from this software without specific prior written permission.
-  46:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
-  47:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * THIS SOFTWARE IS PROVIDED BY ATMEL "AS IS" AND ANY EXPRESS OR IMPLIED
-  48:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
-  49:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE EXPRESSLY AND
-  50:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * SPECIFICALLY DISCLAIMED. IN NO EVENT SHALL ATMEL BE LIABLE FOR ANY DIRECT,
-  51:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-  52:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-  53:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
-  54:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-  55:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
-  56:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-  57:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *****************************************************************************/
-  58:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
-  59:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** #include "eeprom_driver.h"
-  60:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
-  61:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** /*! \brief Write one byte to EEPROM using IO mapping.
-  62:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
-  63:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  This function writes one byte to EEPROM using IO-mapped access.
-  64:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  If memory mapped EEPROM is enabled, this function will not work.
-  65:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  This functiom will cancel all ongoing EEPROM page buffer loading
-  66:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  operations, if any.
-  67:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
-  68:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  \param  pageAddr  EEPROM Page address, between 0 and EEPROM_SIZE/EEPROM_PAGESIZE
-  69:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  \param  byteAddr  EEPROM Byte address, between 0 and EEPROM_PAGESIZE.
-  70:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  \param  value     Byte value to write to EEPROM.
-  71:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  */
-  72:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** void EEPROM_WriteByte( uint8_t pageAddr, uint8_t byteAddr, uint8_t value )
-  73:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** {
+  16               		.file 1 "/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c"
+   1:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** /* This file has been prepared for Doxygen automatic documentation generation.*/
+   2:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** /*! \file *********************************************************************
+   3:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
+   4:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * \brief  XMEGA EEPROM driver source file.
+   5:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
+   6:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *      This file contains the function implementations for the XMEGA EEPROM driver.
+   7:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
+   8:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *      The driver is not intended for size and/or speed critical code, since
+   9:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *      most functions are just a few lines of code, and the function call
+  10:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *      overhead would decrease code performance. The driver is intended for
+  11:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *      rapid prototyping and documentation purposes for getting started with
+  12:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *      the XMEGA EEPROM module.
+  13:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
+  14:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *      For size and/or speed critical code, it is recommended to copy the
+  15:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *      function contents directly into your application instead of making
+  16:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *      a function call.
+  17:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
+  18:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * \par Application note:
+  19:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *      AVR1315: Accessing the XMEGA EEPROM
+  20:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
+  21:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * \par Documentation
+  22:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *      For comprehensive code documentation, supported compilers, compiler
+  23:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *      settings and supported devices see readme.html
+  24:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
+  25:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * \author
+  26:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *      Atmel Corporation: http://www.atmel.com \n
+  27:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *      Support email: avr@atmel.com
+  28:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
+  29:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * $Revision: 1569 $
+  30:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * $Date: 2008-04-22 13:03:43 +0200 (ti, 22 apr 2008) $  \n
+  31:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
+  32:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * Copyright (c) 2008, Atmel Corporation All rights reserved.
+  33:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
+  34:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * Redistribution and use in source and binary forms, with or without
+  35:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * modification, are permitted provided that the following conditions are met:
+  36:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
+  37:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * 1. Redistributions of source code must retain the above copyright notice,
+  38:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * this list of conditions and the following disclaimer.
+  39:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
+  40:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice,
+  41:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * this list of conditions and the following disclaimer in the documentation
+  42:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * and/or other materials provided with the distribution.
+  43:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
+  44:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * 3. The name of ATMEL may not be used to endorse or promote products derived
+  45:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * from this software without specific prior written permission.
+  46:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
+  47:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * THIS SOFTWARE IS PROVIDED BY ATMEL "AS IS" AND ANY EXPRESS OR IMPLIED
+  48:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+  49:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE EXPRESSLY AND
+  50:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * SPECIFICALLY DISCLAIMED. IN NO EVENT SHALL ATMEL BE LIABLE FOR ANY DIRECT,
+  51:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+  52:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+  53:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+  54:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  55:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+  56:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  57:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *****************************************************************************/
+  58:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
+  59:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** #include "eeprom_driver.h"
+  60:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
+  61:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** /*! \brief Write one byte to EEPROM using IO mapping.
+  62:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
+  63:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  This function writes one byte to EEPROM using IO-mapped access.
+  64:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  If memory mapped EEPROM is enabled, this function will not work.
+  65:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  This functiom will cancel all ongoing EEPROM page buffer loading
+  66:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  operations, if any.
+  67:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
+  68:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  \param  pageAddr  EEPROM Page address, between 0 and EEPROM_SIZE/EEPROM_PAGESIZE
+  69:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  \param  byteAddr  EEPROM Byte address, between 0 and EEPROM_PAGESIZE.
+  70:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  \param  value     Byte value to write to EEPROM.
+  71:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  */
+  72:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** void EEPROM_WriteByte( uint8_t pageAddr, uint8_t byteAddr, uint8_t value )
+  73:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** {
   17               		.loc 1 73 0
   18               		.cfi_startproc
   19               	/* prologue: function */
@@ -93,117 +93,117 @@
   21               	/* stack size = 0 */
   22               	.L__stack_usage = 0
   23               	.LVL0:
-  24               	.L3:
+  24               	.L2:
   25               	.LBB26:
   26               	.LBB27:
   27               	.LBB28:
   28               	.LBB29:
-  74:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/*  Flush buffer to make sure no unintetional data is written and load
-  75:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	 *  the "Page Load" command into the command register.
-  76:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	 */
-  77:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	EEPROM_FlushBuffer();
-  78:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.CMD = NVM_CMD_LOAD_EEPROM_BUFFER_gc;
-  79:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
-  80:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Calculate address */
-  81:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	uint16_t address = (uint16_t)(pageAddr*EEPROM_PAGESIZE)
-  82:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	                            |(byteAddr & (EEPROM_PAGESIZE-1));
-  83:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
-  84:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Set address to write to. */
-  85:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR0 = address & 0xFF;
-  86:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR1 = (address >> 8) & 0x1F;
-  87:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR2 = 0x00;
-  88:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
-  89:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Load data to write, which triggers the loading of EEPROM page buffer. */
-  90:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.DATA0 = value;
-  91:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
-  92:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/*  Issue EEPROM Atomic Write (Erase&Write) command. Load command, write
-  93:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	 *  the protection signature and execute command.
-  94:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	 */
-  95:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.CMD = NVM_CMD_ERASE_WRITE_EEPROM_PAGE_gc;
-  96:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM_EXEC();
-  97:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** }
-  98:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
-  99:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
- 100:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** /*! \brief Read one byte from EEPROM using IO mapping.
- 101:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
- 102:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  This function reads one byte from EEPROM using IO-mapped access.
- 103:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  If memory mapped EEPROM is enabled, this function will not work.
- 104:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
- 105:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  \param  pageAddr  EEPROM Page address, between 0 and EEPROM_SIZE/EEPROM_PAGESIZE
- 106:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  \param  byteAddr  EEPROM Byte address, between 0 and EEPROM_PAGESIZE.
- 107:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
- 108:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  \return  Byte value read from EEPROM.
- 109:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  */
- 110:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** uint8_t EEPROM_ReadByte( uint8_t pageAddr, uint8_t byteAddr )
- 111:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** {
- 112:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Wait until NVM is not busy. */
- 113:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	EEPROM_WaitForNVM();
- 114:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
- 115:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Calculate address */
- 116:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	uint16_t address = (uint16_t)(pageAddr*EEPROM_PAGESIZE)
- 117:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	                            |(byteAddr & (EEPROM_PAGESIZE-1));
- 118:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
- 119:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Set address to read from. */
- 120:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR0 = address & 0xFF;
- 121:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR1 = (address >> 8) & 0x1F;
- 122:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR2 = 0x00;
- 123:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
- 124:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Issue EEPROM Read command. */
- 125:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.CMD = NVM_CMD_READ_EEPROM_gc;
- 126:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM_EXEC();
- 127:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
- 128:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	return NVM.DATA0;
- 129:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** }
- 130:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
- 131:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
- 132:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** /*! \brief Wait for any NVM access to finish, including EEPROM.
- 133:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
- 134:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  This function is blcoking and waits for any NVM access to finish,
- 135:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  including EEPROM. Use this function before any EEPROM accesses,
- 136:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  if you are not certain that any previous operations are finished yet,
- 137:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  like an EEPROM write.
- 138:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  */
- 139:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** void EEPROM_WaitForNVM( void )
- 140:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** {
- 141:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	do {
- 142:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 		/* Block execution while waiting for the NVM to be ready. */
- 143:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	} while ((NVM.STATUS & NVM_NVMBUSY_bm) == NVM_NVMBUSY_bm);
+  74:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/*  Flush buffer to make sure no unintetional data is written and load
+  75:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	 *  the "Page Load" command into the command register.
+  76:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	 */
+  77:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	EEPROM_FlushBuffer();
+  78:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.CMD = NVM_CMD_LOAD_EEPROM_BUFFER_gc;
+  79:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
+  80:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Calculate address */
+  81:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	uint16_t address = (uint16_t)(pageAddr*EEPROM_PAGESIZE)
+  82:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	                            |(byteAddr & (EEPROM_PAGESIZE-1));
+  83:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
+  84:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Set address to write to. */
+  85:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR0 = address & 0xFF;
+  86:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR1 = (address >> 8) & 0x1F;
+  87:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR2 = 0x00;
+  88:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
+  89:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Load data to write, which triggers the loading of EEPROM page buffer. */
+  90:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.DATA0 = value;
+  91:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
+  92:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/*  Issue EEPROM Atomic Write (Erase&Write) command. Load command, write
+  93:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	 *  the protection signature and execute command.
+  94:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	 */
+  95:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.CMD = NVM_CMD_ERASE_WRITE_EEPROM_PAGE_gc;
+  96:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM_EXEC();
+  97:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** }
+  98:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
+  99:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
+ 100:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** /*! \brief Read one byte from EEPROM using IO mapping.
+ 101:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
+ 102:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  This function reads one byte from EEPROM using IO-mapped access.
+ 103:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  If memory mapped EEPROM is enabled, this function will not work.
+ 104:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
+ 105:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  \param  pageAddr  EEPROM Page address, between 0 and EEPROM_SIZE/EEPROM_PAGESIZE
+ 106:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  \param  byteAddr  EEPROM Byte address, between 0 and EEPROM_PAGESIZE.
+ 107:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
+ 108:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  \return  Byte value read from EEPROM.
+ 109:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  */
+ 110:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** uint8_t EEPROM_ReadByte( uint8_t pageAddr, uint8_t byteAddr )
+ 111:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** {
+ 112:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Wait until NVM is not busy. */
+ 113:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	EEPROM_WaitForNVM();
+ 114:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
+ 115:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Calculate address */
+ 116:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	uint16_t address = (uint16_t)(pageAddr*EEPROM_PAGESIZE)
+ 117:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	                            |(byteAddr & (EEPROM_PAGESIZE-1));
+ 118:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
+ 119:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Set address to read from. */
+ 120:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR0 = address & 0xFF;
+ 121:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR1 = (address >> 8) & 0x1F;
+ 122:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR2 = 0x00;
+ 123:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
+ 124:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Issue EEPROM Read command. */
+ 125:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.CMD = NVM_CMD_READ_EEPROM_gc;
+ 126:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM_EXEC();
+ 127:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
+ 128:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	return NVM.DATA0;
+ 129:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** }
+ 130:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
+ 131:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
+ 132:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** /*! \brief Wait for any NVM access to finish, including EEPROM.
+ 133:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
+ 134:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  This function is blcoking and waits for any NVM access to finish,
+ 135:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  including EEPROM. Use this function before any EEPROM accesses,
+ 136:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  if you are not certain that any previous operations are finished yet,
+ 137:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  like an EEPROM write.
+ 138:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  */
+ 139:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** void EEPROM_WaitForNVM( void )
+ 140:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** {
+ 141:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	do {
+ 142:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 		/* Block execution while waiting for the NVM to be ready. */
+ 143:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	} while ((NVM.STATUS & NVM_NVMBUSY_bm) == NVM_NVMBUSY_bm);
   29               		.loc 1 143 0
   30 0000 9091 CF01 		lds r25,463
   31 0004 97FD      		sbrc r25,7
-  32 0006 00C0      		rjmp .L3
+  32 0006 00C0      		rjmp .L2
   33               	.LBE29:
   34               	.LBE28:
- 144:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** }
- 145:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
- 146:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
- 147:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** /*! \brief Flush temporary EEPROM page buffer.
- 148:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
- 149:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  This function flushes the EEPROM page buffers. This function will cancel
- 150:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  any ongoing EEPROM page buffer loading operations, if any.
- 151:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  This function also works for memory mapped EEPROM access.
- 152:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
- 153:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  \note The EEPROM write operations will automatically flush the buffer for you.
- 154:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  */
- 155:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** void EEPROM_FlushBuffer( void )
- 156:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** {
- 157:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Wait until NVM is not busy. */
- 158:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	EEPROM_WaitForNVM();
- 159:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
- 160:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Flush EEPROM page buffer if necessary. */
- 161:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	if ((NVM.STATUS & NVM_EELOAD_bm) != 0) {
+ 144:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** }
+ 145:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
+ 146:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
+ 147:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** /*! \brief Flush temporary EEPROM page buffer.
+ 148:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
+ 149:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  This function flushes the EEPROM page buffers. This function will cancel
+ 150:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  any ongoing EEPROM page buffer loading operations, if any.
+ 151:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  This function also works for memory mapped EEPROM access.
+ 152:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
+ 153:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  \note The EEPROM write operations will automatically flush the buffer for you.
+ 154:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  */
+ 155:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** void EEPROM_FlushBuffer( void )
+ 156:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** {
+ 157:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Wait until NVM is not busy. */
+ 158:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	EEPROM_WaitForNVM();
+ 159:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
+ 160:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Flush EEPROM page buffer if necessary. */
+ 161:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	if ((NVM.STATUS & NVM_EELOAD_bm) != 0) {
   35               		.loc 1 161 0
   36 0008 9091 CF01 		lds r25,463
   37 000c 91FF      		sbrs r25,1
-  38 000e 00C0      		rjmp .L4
- 162:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 		NVM.CMD = NVM_CMD_ERASE_EEPROM_BUFFER_gc;
+  38 000e 00C0      		rjmp .L3
+ 162:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 		NVM.CMD = NVM_CMD_ERASE_EEPROM_BUFFER_gc;
   39               		.loc 1 162 0
   40 0010 96E3      		ldi r25,lo8(54)
   41 0012 9093 CA01 		sts 458,r25
- 163:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 		NVM_EXEC();
+ 163:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 		NVM_EXEC();
   42               		.loc 1 163 0
   43               	/* #APP */
-  44               	 ;  163 "/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c" 1
+  44               	 ;  163 "/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c" 1
   45 0016 EF93      		push r30
   46 0018 FF93      		push r31
   47 001a 0F93      		push r16
@@ -221,818 +221,818 @@
   59               		
   60               	 ;  0 "" 2
   61               	/* #NOAPP */
-  62               	.L4:
+  62               	.L3:
   63               	.LBE27:
   64               	.LBE26:
-  78:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.CMD = NVM_CMD_LOAD_EEPROM_BUFFER_gc;
+  78:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.CMD = NVM_CMD_LOAD_EEPROM_BUFFER_gc;
   65               		.loc 1 78 0
   66 0032 93E3      		ldi r25,lo8(51)
   67 0034 9093 CA01 		sts 458,r25
-  81:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	uint16_t address = (uint16_t)(pageAddr*EEPROM_PAGESIZE)
-  68               		.loc 1 81 0
-  69 0038 20E2      		ldi r18,lo8(32)
-  70 003a 829F      		mul r24,r18
-  71 003c C001      		movw r24,r0
-  72 003e 1124      		clr __zero_reg__
-  73               	.LVL1:
-  82:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	                            |(byteAddr & (EEPROM_PAGESIZE-1));
-  74               		.loc 1 82 0
-  75 0040 6F71      		andi r22,lo8(31)
+  82:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	                            |(byteAddr & (EEPROM_PAGESIZE-1));
+  68               		.loc 1 82 0
+  69 0038 6F71      		andi r22,lo8(31)
+  70               	.LVL1:
+  81:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	uint16_t address = (uint16_t)(pageAddr*EEPROM_PAGESIZE)
+  71               		.loc 1 81 0
+  72 003a 20E2      		ldi r18,lo8(32)
+  73 003c 829F      		mul r24,r18
+  74 003e C001      		movw r24,r0
+  75 0040 1124      		clr __zero_reg__
   76               	.LVL2:
-  81:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	uint16_t address = (uint16_t)(pageAddr*EEPROM_PAGESIZE)
-  77               		.loc 1 81 0
-  78 0042 862B      		or r24,r22
-  79               	.LVL3:
-  85:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR0 = address & 0xFF;
-  80               		.loc 1 85 0
-  81 0044 8093 C001 		sts 448,r24
-  86:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR1 = (address >> 8) & 0x1F;
-  82               		.loc 1 86 0
-  83 0048 9093 C101 		sts 449,r25
-  87:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR2 = 0x00;
-  84               		.loc 1 87 0
-  85 004c 1092 C201 		sts 450,__zero_reg__
-  90:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.DATA0 = value;
-  86               		.loc 1 90 0
-  87 0050 4093 C401 		sts 452,r20
-  95:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.CMD = NVM_CMD_ERASE_WRITE_EEPROM_PAGE_gc;
-  88               		.loc 1 95 0
-  89 0054 85E3      		ldi r24,lo8(53)
-  90               	.LVL4:
-  91 0056 8093 CA01 		sts 458,r24
-  96:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM_EXEC();
-  92               		.loc 1 96 0
-  93               	/* #APP */
-  94               	 ;  96 "/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c" 1
-  95 005a EF93      		push r30
-  96 005c FF93      		push r31
-  97 005e 0F93      		push r16
-  98 0060 2F93      		push r18
-  99 0062 EBEC      		ldi r30, 0xCB
- 100 0064 F1E0      		ldi r31, 0x01
- 101 0066 08ED      		ldi r16, 0xD8
- 102 0068 21E0      		ldi r18, 0x01
- 103 006a 04BF      		out 0x34, r16
- 104 006c 2083      		st Z, r18
- 105 006e 2F91      		pop r18
- 106 0070 0F91      		pop r16
- 107 0072 FF91      		pop r31
- 108 0074 EF91      		pop r30
- 109               		
- 110               	 ;  0 "" 2
- 111               	/* #NOAPP */
- 112 0076 0895      		ret
- 113               		.cfi_endproc
- 114               	.LFE7:
- 116               	.global	EEPROM_ReadByte
- 118               	EEPROM_ReadByte:
- 119               	.LFB8:
- 111:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** {
- 120               		.loc 1 111 0
- 121               		.cfi_startproc
- 122               	/* prologue: function */
- 123               	/* frame size = 0 */
- 124               	/* stack size = 0 */
- 125               	.L__stack_usage = 0
- 126               	.LVL5:
- 127               	.L11:
- 128               	.LBB30:
- 129               	.LBB31:
- 143:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	} while ((NVM.STATUS & NVM_NVMBUSY_bm) == NVM_NVMBUSY_bm);
- 130               		.loc 1 143 0
- 131 0078 9091 CF01 		lds r25,463
- 132 007c 97FD      		sbrc r25,7
- 133 007e 00C0      		rjmp .L11
- 134               	.LBE31:
- 135               	.LBE30:
- 116:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	uint16_t address = (uint16_t)(pageAddr*EEPROM_PAGESIZE)
- 136               		.loc 1 116 0
- 137 0080 20E2      		ldi r18,lo8(32)
- 138 0082 829F      		mul r24,r18
- 139 0084 C001      		movw r24,r0
- 140 0086 1124      		clr __zero_reg__
- 141               	.LVL6:
- 117:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	                            |(byteAddr & (EEPROM_PAGESIZE-1));
- 142               		.loc 1 117 0
- 143 0088 6F71      		andi r22,lo8(31)
- 144               	.LVL7:
- 116:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	uint16_t address = (uint16_t)(pageAddr*EEPROM_PAGESIZE)
- 145               		.loc 1 116 0
- 146 008a 862B      		or r24,r22
- 147               	.LVL8:
- 120:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR0 = address & 0xFF;
- 148               		.loc 1 120 0
- 149 008c 8093 C001 		sts 448,r24
- 121:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR1 = (address >> 8) & 0x1F;
- 150               		.loc 1 121 0
- 151 0090 9093 C101 		sts 449,r25
- 122:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR2 = 0x00;
- 152               		.loc 1 122 0
- 153 0094 1092 C201 		sts 450,__zero_reg__
- 125:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.CMD = NVM_CMD_READ_EEPROM_gc;
- 154               		.loc 1 125 0
- 155 0098 86E0      		ldi r24,lo8(6)
- 156               	.LVL9:
- 157 009a 8093 CA01 		sts 458,r24
- 126:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM_EXEC();
- 158               		.loc 1 126 0
- 159               	/* #APP */
- 160               	 ;  126 "/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c" 1
- 161 009e EF93      		push r30
- 162 00a0 FF93      		push r31
- 163 00a2 0F93      		push r16
- 164 00a4 2F93      		push r18
- 165 00a6 EBEC      		ldi r30, 0xCB
- 166 00a8 F1E0      		ldi r31, 0x01
- 167 00aa 08ED      		ldi r16, 0xD8
- 168 00ac 21E0      		ldi r18, 0x01
- 169 00ae 04BF      		out 0x34, r16
- 170 00b0 2083      		st Z, r18
- 171 00b2 2F91      		pop r18
- 172 00b4 0F91      		pop r16
- 173 00b6 FF91      		pop r31
- 174 00b8 EF91      		pop r30
- 175               		
- 176               	 ;  0 "" 2
- 128:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	return NVM.DATA0;
- 177               		.loc 1 128 0
- 178               	/* #NOAPP */
- 179 00ba 8091 C401 		lds r24,452
- 129:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** }
- 180               		.loc 1 129 0
- 181 00be 0895      		ret
- 182               		.cfi_endproc
- 183               	.LFE8:
- 185               	.global	EEPROM_WaitForNVM
- 187               	EEPROM_WaitForNVM:
- 188               	.LFB9:
- 140:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** {
- 189               		.loc 1 140 0
- 190               		.cfi_startproc
- 191               	/* prologue: function */
- 192               	/* frame size = 0 */
- 193               	/* stack size = 0 */
- 194               	.L__stack_usage = 0
- 195               	.L14:
- 143:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	} while ((NVM.STATUS & NVM_NVMBUSY_bm) == NVM_NVMBUSY_bm);
- 196               		.loc 1 143 0 discriminator 1
- 197 00c0 8091 CF01 		lds r24,463
- 198 00c4 87FD      		sbrc r24,7
- 199 00c6 00C0      		rjmp .L14
- 200               	/* epilogue start */
- 144:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** }
- 201               		.loc 1 144 0
- 202 00c8 0895      		ret
- 203               		.cfi_endproc
- 204               	.LFE9:
- 206               	.global	EEPROM_FlushBuffer
- 208               	EEPROM_FlushBuffer:
- 209               	.LFB10:
- 156:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** {
- 210               		.loc 1 156 0
- 211               		.cfi_startproc
- 212               	/* prologue: function */
- 213               	/* frame size = 0 */
- 214               	/* stack size = 0 */
- 215               	.L__stack_usage = 0
- 216               	.L17:
- 217               	.LBB32:
- 218               	.LBB33:
- 143:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	} while ((NVM.STATUS & NVM_NVMBUSY_bm) == NVM_NVMBUSY_bm);
- 219               		.loc 1 143 0
- 220 00ca 8091 CF01 		lds r24,463
- 221 00ce 87FD      		sbrc r24,7
- 222 00d0 00C0      		rjmp .L17
- 223               	.LBE33:
- 224               	.LBE32:
- 161:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	if ((NVM.STATUS & NVM_EELOAD_bm) != 0) {
- 225               		.loc 1 161 0
- 226 00d2 8091 CF01 		lds r24,463
- 227 00d6 81FF      		sbrs r24,1
- 228 00d8 00C0      		rjmp .L15
- 162:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 		NVM.CMD = NVM_CMD_ERASE_EEPROM_BUFFER_gc;
- 229               		.loc 1 162 0
- 230 00da 86E3      		ldi r24,lo8(54)
- 231 00dc 8093 CA01 		sts 458,r24
- 232               		.loc 1 163 0
- 233               	/* #APP */
- 234               	 ;  163 "/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c" 1
- 235 00e0 EF93      		push r30
- 236 00e2 FF93      		push r31
- 237 00e4 0F93      		push r16
- 238 00e6 2F93      		push r18
- 239 00e8 EBEC      		ldi r30, 0xCB
- 240 00ea F1E0      		ldi r31, 0x01
- 241 00ec 08ED      		ldi r16, 0xD8
- 242 00ee 21E0      		ldi r18, 0x01
- 243 00f0 04BF      		out 0x34, r16
- 244 00f2 2083      		st Z, r18
- 245 00f4 2F91      		pop r18
- 246 00f6 0F91      		pop r16
- 247 00f8 FF91      		pop r31
- 248 00fa EF91      		pop r30
- 249               		
- 250               	 ;  0 "" 2
- 251               	/* #NOAPP */
- 252               	.L15:
- 253 00fc 0895      		ret
- 254               		.cfi_endproc
- 255               	.LFE10:
- 257               	.global	EEPROM_LoadByte
- 259               	EEPROM_LoadByte:
- 260               	.LFB11:
- 164:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	}
- 165:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** }
- 166:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
- 167:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
- 168:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** /*! \brief Load single byte into temporary page buffer.
- 169:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
- 170:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  This function loads one byte into the temporary EEPROM page buffers.
- 171:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  If memory mapped EEPROM is enabled, this function will not work.
- 172:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  Make sure that the buffer is flushed before starting to load bytes.
- 173:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  Also, if multiple bytes are loaded into the same location, they will
- 174:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  be ANDed together, thus 0x55 and 0xAA will result in 0x00 in the buffer.
- 175:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
- 176:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  \note Only one page buffer exist, thus only one page can be loaded with
- 177:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *        data and programmed into one page. If data needs to be written to
- 178:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *        different pages, the loading and writing needs to be repeated.
- 179:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
- 180:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  \param  byteAddr  EEPROM Byte address, between 0 and EEPROM_PAGESIZE.
- 181:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  \param  value     Byte value to write to buffer.
- 182:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  */
- 183:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** void EEPROM_LoadByte( uint8_t byteAddr, uint8_t value )
- 184:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** {
- 261               		.loc 1 184 0
- 262               		.cfi_startproc
- 263               	/* prologue: function */
- 264               	/* frame size = 0 */
- 265               	/* stack size = 0 */
- 266               	.L__stack_usage = 0
- 267               	.LVL10:
- 268               	.L24:
- 269               	.LBB34:
- 270               	.LBB35:
- 143:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	} while ((NVM.STATUS & NVM_NVMBUSY_bm) == NVM_NVMBUSY_bm);
- 271               		.loc 1 143 0
- 272 00fe 9091 CF01 		lds r25,463
- 273 0102 97FD      		sbrc r25,7
- 274 0104 00C0      		rjmp .L24
- 275               	.LBE35:
- 276               	.LBE34:
- 185:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Wait until NVM is not busy and prepare NVM command.*/
- 186:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	EEPROM_WaitForNVM();
- 187:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.CMD = NVM_CMD_LOAD_EEPROM_BUFFER_gc;
- 277               		.loc 1 187 0
- 278 0106 93E3      		ldi r25,lo8(51)
- 279 0108 9093 CA01 		sts 458,r25
- 188:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
- 189:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Set address. */
- 190:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR0 = byteAddr & 0xFF;
- 280               		.loc 1 190 0
- 281 010c 8093 C001 		sts 448,r24
- 191:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR1 = 0x00;
- 282               		.loc 1 191 0
- 283 0110 1092 C101 		sts 449,__zero_reg__
- 192:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR2 = 0x00;
- 284               		.loc 1 192 0
- 285 0114 1092 C201 		sts 450,__zero_reg__
- 193:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
- 194:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Set data, which triggers loading of EEPROM page buffer. */
- 195:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.DATA0 = value;
- 286               		.loc 1 195 0
- 287 0118 6093 C401 		sts 452,r22
- 288 011c 0895      		ret
- 289               		.cfi_endproc
- 290               	.LFE11:
- 292               	.global	EEPROM_LoadPage
- 294               	EEPROM_LoadPage:
- 295               	.LFB12:
- 196:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** }
- 197:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
- 198:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
- 199:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** /*! \brief Load entire page into temporary EEPROM page buffer.
- 200:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
- 201:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  This function loads an entire EEPROM page from an SRAM buffer to
- 202:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  the EEPROM page buffers. If memory mapped EEPROM is enabled, this
- 203:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  function will not work. Make sure that the buffer is flushed before
- 204:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  starting to load bytes.
- 205:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
- 206:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  \note Only the lower part of the address is used to address the buffer.
- 207:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *        Therefore, no address parameter is needed. In the end, the data
- 208:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *        is written to the EEPROM page given by the address parameter to the
- 209:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *        EEPROM write page operation.
- 210:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
- 211:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  \param  values   Pointer to SRAM buffer containing an entire page.
- 212:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  */
- 213:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** void EEPROM_LoadPage( const uint8_t * values )
- 214:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** {
- 296               		.loc 1 214 0
- 297               		.cfi_startproc
- 298               	/* prologue: function */
- 299               	/* frame size = 0 */
- 300               	/* stack size = 0 */
- 301               	.L__stack_usage = 0
- 302               	.LVL11:
- 303               	.L27:
- 304               	.LBB36:
- 305               	.LBB37:
- 143:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	} while ((NVM.STATUS & NVM_NVMBUSY_bm) == NVM_NVMBUSY_bm);
- 306               		.loc 1 143 0
- 307 011e 2091 CF01 		lds r18,463
- 308 0122 27FD      		sbrc r18,7
- 309 0124 00C0      		rjmp .L27
- 310               	.LBE37:
- 311               	.LBE36:
- 215:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Wait until NVM is not busy. */
- 216:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	EEPROM_WaitForNVM();
- 217:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.CMD = NVM_CMD_LOAD_EEPROM_BUFFER_gc;
- 312               		.loc 1 217 0
- 313 0126 23E3      		ldi r18,lo8(51)
- 314 0128 2093 CA01 		sts 458,r18
- 218:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
- 219:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/*  Set address to zero, as only the lower bits matters. ADDR0 is
- 220:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	 *  maintained inside the loop below.
- 221:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	 */
- 222:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR1 = 0x00;
- 315               		.loc 1 222 0
- 316 012c 1092 C101 		sts 449,__zero_reg__
- 223:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR2 = 0x00;
- 317               		.loc 1 223 0
- 318 0130 1092 C201 		sts 450,__zero_reg__
- 319               	.LVL12:
- 320 0134 9C01      		movw r18,r24
- 321 0136 205E      		subi r18,-32
- 322 0138 3F4F      		sbci r19,-1
- 323 013a FC01      		movw r30,r24
- 324               	.LVL13:
- 325               	.L29:
+  77 0042 862B      		or r24,r22
+  78               	.LVL3:
+  85:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR0 = address & 0xFF;
+  79               		.loc 1 85 0
+  80 0044 8093 C001 		sts 448,r24
+  86:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR1 = (address >> 8) & 0x1F;
+  81               		.loc 1 86 0
+  82 0048 9093 C101 		sts 449,r25
+  87:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR2 = 0x00;
+  83               		.loc 1 87 0
+  84 004c 1092 C201 		sts 450,__zero_reg__
+  90:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.DATA0 = value;
+  85               		.loc 1 90 0
+  86 0050 4093 C401 		sts 452,r20
+  95:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.CMD = NVM_CMD_ERASE_WRITE_EEPROM_PAGE_gc;
+  87               		.loc 1 95 0
+  88 0054 85E3      		ldi r24,lo8(53)
+  89               	.LVL4:
+  90 0056 8093 CA01 		sts 458,r24
+  96:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM_EXEC();
+  91               		.loc 1 96 0
+  92               	/* #APP */
+  93               	 ;  96 "/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c" 1
+  94 005a EF93      		push r30
+  95 005c FF93      		push r31
+  96 005e 0F93      		push r16
+  97 0060 2F93      		push r18
+  98 0062 EBEC      		ldi r30, 0xCB
+  99 0064 F1E0      		ldi r31, 0x01
+ 100 0066 08ED      		ldi r16, 0xD8
+ 101 0068 21E0      		ldi r18, 0x01
+ 102 006a 04BF      		out 0x34, r16
+ 103 006c 2083      		st Z, r18
+ 104 006e 2F91      		pop r18
+ 105 0070 0F91      		pop r16
+ 106 0072 FF91      		pop r31
+ 107 0074 EF91      		pop r30
+ 108               		
+ 109               	 ;  0 "" 2
+ 110               	/* #NOAPP */
+ 111 0076 0895      		ret
+ 112               		.cfi_endproc
+ 113               	.LFE7:
+ 115               	.global	EEPROM_ReadByte
+ 117               	EEPROM_ReadByte:
+ 118               	.LFB8:
+ 111:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** {
+ 119               		.loc 1 111 0
+ 120               		.cfi_startproc
+ 121               	/* prologue: function */
+ 122               	/* frame size = 0 */
+ 123               	/* stack size = 0 */
+ 124               	.L__stack_usage = 0
+ 125               	.LVL5:
+ 126               	.L10:
+ 127               	.LBB30:
+ 128               	.LBB31:
+ 143:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	} while ((NVM.STATUS & NVM_NVMBUSY_bm) == NVM_NVMBUSY_bm);
+ 129               		.loc 1 143 0
+ 130 0078 9091 CF01 		lds r25,463
+ 131 007c 97FD      		sbrc r25,7
+ 132 007e 00C0      		rjmp .L10
+ 133               	.LBE31:
+ 134               	.LBE30:
+ 117:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	                            |(byteAddr & (EEPROM_PAGESIZE-1));
+ 135               		.loc 1 117 0
+ 136 0080 6F71      		andi r22,lo8(31)
+ 137               	.LVL6:
+ 116:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	uint16_t address = (uint16_t)(pageAddr*EEPROM_PAGESIZE)
+ 138               		.loc 1 116 0
+ 139 0082 20E2      		ldi r18,lo8(32)
+ 140 0084 829F      		mul r24,r18
+ 141 0086 C001      		movw r24,r0
+ 142 0088 1124      		clr __zero_reg__
+ 143               	.LVL7:
+ 144 008a 862B      		or r24,r22
+ 145               	.LVL8:
+ 120:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR0 = address & 0xFF;
+ 146               		.loc 1 120 0
+ 147 008c 8093 C001 		sts 448,r24
+ 121:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR1 = (address >> 8) & 0x1F;
+ 148               		.loc 1 121 0
+ 149 0090 9093 C101 		sts 449,r25
+ 122:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR2 = 0x00;
+ 150               		.loc 1 122 0
+ 151 0094 1092 C201 		sts 450,__zero_reg__
+ 125:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.CMD = NVM_CMD_READ_EEPROM_gc;
+ 152               		.loc 1 125 0
+ 153 0098 86E0      		ldi r24,lo8(6)
+ 154               	.LVL9:
+ 155 009a 8093 CA01 		sts 458,r24
+ 126:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM_EXEC();
+ 156               		.loc 1 126 0
+ 157               	/* #APP */
+ 158               	 ;  126 "/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c" 1
+ 159 009e EF93      		push r30
+ 160 00a0 FF93      		push r31
+ 161 00a2 0F93      		push r16
+ 162 00a4 2F93      		push r18
+ 163 00a6 EBEC      		ldi r30, 0xCB
+ 164 00a8 F1E0      		ldi r31, 0x01
+ 165 00aa 08ED      		ldi r16, 0xD8
+ 166 00ac 21E0      		ldi r18, 0x01
+ 167 00ae 04BF      		out 0x34, r16
+ 168 00b0 2083      		st Z, r18
+ 169 00b2 2F91      		pop r18
+ 170 00b4 0F91      		pop r16
+ 171 00b6 FF91      		pop r31
+ 172 00b8 EF91      		pop r30
+ 173               		
+ 174               	 ;  0 "" 2
+ 128:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	return NVM.DATA0;
+ 175               		.loc 1 128 0
+ 176               	/* #NOAPP */
+ 177 00ba 8091 C401 		lds r24,452
+ 129:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** }
+ 178               		.loc 1 129 0
+ 179 00be 0895      		ret
+ 180               		.cfi_endproc
+ 181               	.LFE8:
+ 183               	.global	EEPROM_WaitForNVM
+ 185               	EEPROM_WaitForNVM:
+ 186               	.LFB9:
+ 140:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** {
+ 187               		.loc 1 140 0
+ 188               		.cfi_startproc
+ 189               	/* prologue: function */
+ 190               	/* frame size = 0 */
+ 191               	/* stack size = 0 */
+ 192               	.L__stack_usage = 0
+ 193               	.L13:
+ 143:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	} while ((NVM.STATUS & NVM_NVMBUSY_bm) == NVM_NVMBUSY_bm);
+ 194               		.loc 1 143 0 discriminator 1
+ 195 00c0 8091 CF01 		lds r24,463
+ 196 00c4 87FD      		sbrc r24,7
+ 197 00c6 00C0      		rjmp .L13
+ 198               	/* epilogue start */
+ 144:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** }
+ 199               		.loc 1 144 0
+ 200 00c8 0895      		ret
+ 201               		.cfi_endproc
+ 202               	.LFE9:
+ 204               	.global	EEPROM_FlushBuffer
+ 206               	EEPROM_FlushBuffer:
+ 207               	.LFB10:
+ 156:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** {
+ 208               		.loc 1 156 0
+ 209               		.cfi_startproc
+ 210               	/* prologue: function */
+ 211               	/* frame size = 0 */
+ 212               	/* stack size = 0 */
+ 213               	.L__stack_usage = 0
+ 214               	.L16:
+ 215               	.LBB32:
+ 216               	.LBB33:
+ 143:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	} while ((NVM.STATUS & NVM_NVMBUSY_bm) == NVM_NVMBUSY_bm);
+ 217               		.loc 1 143 0
+ 218 00ca 8091 CF01 		lds r24,463
+ 219 00ce 87FD      		sbrc r24,7
+ 220 00d0 00C0      		rjmp .L16
+ 221               	.LBE33:
+ 222               	.LBE32:
+ 161:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	if ((NVM.STATUS & NVM_EELOAD_bm) != 0) {
+ 223               		.loc 1 161 0
+ 224 00d2 8091 CF01 		lds r24,463
+ 225 00d6 81FF      		sbrs r24,1
+ 226 00d8 00C0      		rjmp .L15
+ 162:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 		NVM.CMD = NVM_CMD_ERASE_EEPROM_BUFFER_gc;
+ 227               		.loc 1 162 0
+ 228 00da 86E3      		ldi r24,lo8(54)
+ 229 00dc 8093 CA01 		sts 458,r24
+ 230               		.loc 1 163 0
+ 231               	/* #APP */
+ 232               	 ;  163 "/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c" 1
+ 233 00e0 EF93      		push r30
+ 234 00e2 FF93      		push r31
+ 235 00e4 0F93      		push r16
+ 236 00e6 2F93      		push r18
+ 237 00e8 EBEC      		ldi r30, 0xCB
+ 238 00ea F1E0      		ldi r31, 0x01
+ 239 00ec 08ED      		ldi r16, 0xD8
+ 240 00ee 21E0      		ldi r18, 0x01
+ 241 00f0 04BF      		out 0x34, r16
+ 242 00f2 2083      		st Z, r18
+ 243 00f4 2F91      		pop r18
+ 244 00f6 0F91      		pop r16
+ 245 00f8 FF91      		pop r31
+ 246 00fa EF91      		pop r30
+ 247               		
+ 248               	 ;  0 "" 2
+ 249               	/* #NOAPP */
+ 250               	.L15:
+ 251 00fc 0895      		ret
+ 252               		.cfi_endproc
+ 253               	.LFE10:
+ 255               	.global	EEPROM_LoadByte
+ 257               	EEPROM_LoadByte:
+ 258               	.LFB11:
+ 164:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	}
+ 165:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** }
+ 166:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
+ 167:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
+ 168:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** /*! \brief Load single byte into temporary page buffer.
+ 169:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
+ 170:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  This function loads one byte into the temporary EEPROM page buffers.
+ 171:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  If memory mapped EEPROM is enabled, this function will not work.
+ 172:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  Make sure that the buffer is flushed before starting to load bytes.
+ 173:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  Also, if multiple bytes are loaded into the same location, they will
+ 174:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  be ANDed together, thus 0x55 and 0xAA will result in 0x00 in the buffer.
+ 175:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
+ 176:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  \note Only one page buffer exist, thus only one page can be loaded with
+ 177:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *        data and programmed into one page. If data needs to be written to
+ 178:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *        different pages, the loading and writing needs to be repeated.
+ 179:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
+ 180:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  \param  byteAddr  EEPROM Byte address, between 0 and EEPROM_PAGESIZE.
+ 181:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  \param  value     Byte value to write to buffer.
+ 182:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  */
+ 183:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** void EEPROM_LoadByte( uint8_t byteAddr, uint8_t value )
+ 184:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** {
+ 259               		.loc 1 184 0
+ 260               		.cfi_startproc
+ 261               	/* prologue: function */
+ 262               	/* frame size = 0 */
+ 263               	/* stack size = 0 */
+ 264               	.L__stack_usage = 0
+ 265               	.LVL10:
+ 266               	.L23:
+ 267               	.LBB34:
+ 268               	.LBB35:
+ 143:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	} while ((NVM.STATUS & NVM_NVMBUSY_bm) == NVM_NVMBUSY_bm);
+ 269               		.loc 1 143 0
+ 270 00fe 9091 CF01 		lds r25,463
+ 271 0102 97FD      		sbrc r25,7
+ 272 0104 00C0      		rjmp .L23
+ 273               	.LBE35:
+ 274               	.LBE34:
+ 185:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Wait until NVM is not busy and prepare NVM command.*/
+ 186:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	EEPROM_WaitForNVM();
+ 187:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.CMD = NVM_CMD_LOAD_EEPROM_BUFFER_gc;
+ 275               		.loc 1 187 0
+ 276 0106 93E3      		ldi r25,lo8(51)
+ 277 0108 9093 CA01 		sts 458,r25
+ 188:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
+ 189:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Set address. */
+ 190:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR0 = byteAddr & 0xFF;
+ 278               		.loc 1 190 0
+ 279 010c 8093 C001 		sts 448,r24
+ 191:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR1 = 0x00;
+ 280               		.loc 1 191 0
+ 281 0110 1092 C101 		sts 449,__zero_reg__
+ 192:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR2 = 0x00;
+ 282               		.loc 1 192 0
+ 283 0114 1092 C201 		sts 450,__zero_reg__
+ 193:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
+ 194:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Set data, which triggers loading of EEPROM page buffer. */
+ 195:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.DATA0 = value;
+ 284               		.loc 1 195 0
+ 285 0118 6093 C401 		sts 452,r22
+ 286 011c 0895      		ret
+ 287               		.cfi_endproc
+ 288               	.LFE11:
+ 290               	.global	EEPROM_LoadPage
+ 292               	EEPROM_LoadPage:
+ 293               	.LFB12:
+ 196:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** }
+ 197:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
+ 198:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
+ 199:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** /*! \brief Load entire page into temporary EEPROM page buffer.
+ 200:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
+ 201:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  This function loads an entire EEPROM page from an SRAM buffer to
+ 202:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  the EEPROM page buffers. If memory mapped EEPROM is enabled, this
+ 203:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  function will not work. Make sure that the buffer is flushed before
+ 204:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  starting to load bytes.
+ 205:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
+ 206:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  \note Only the lower part of the address is used to address the buffer.
+ 207:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *        Therefore, no address parameter is needed. In the end, the data
+ 208:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *        is written to the EEPROM page given by the address parameter to the
+ 209:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *        EEPROM write page operation.
+ 210:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
+ 211:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  \param  values   Pointer to SRAM buffer containing an entire page.
+ 212:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  */
+ 213:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** void EEPROM_LoadPage( const uint8_t * values )
+ 214:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** {
+ 294               		.loc 1 214 0
+ 295               		.cfi_startproc
+ 296               	/* prologue: function */
+ 297               	/* frame size = 0 */
+ 298               	/* stack size = 0 */
+ 299               	.L__stack_usage = 0
+ 300               	.LVL11:
+ 301               	.L26:
+ 302               	.LBB36:
+ 303               	.LBB37:
+ 143:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	} while ((NVM.STATUS & NVM_NVMBUSY_bm) == NVM_NVMBUSY_bm);
+ 304               		.loc 1 143 0
+ 305 011e 2091 CF01 		lds r18,463
+ 306 0122 27FD      		sbrc r18,7
+ 307 0124 00C0      		rjmp .L26
+ 308               	.LBE37:
+ 309               	.LBE36:
+ 215:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Wait until NVM is not busy. */
+ 216:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	EEPROM_WaitForNVM();
+ 217:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.CMD = NVM_CMD_LOAD_EEPROM_BUFFER_gc;
+ 310               		.loc 1 217 0
+ 311 0126 23E3      		ldi r18,lo8(51)
+ 312 0128 2093 CA01 		sts 458,r18
+ 218:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
+ 219:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/*  Set address to zero, as only the lower bits matters. ADDR0 is
+ 220:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	 *  maintained inside the loop below.
+ 221:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	 */
+ 222:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR1 = 0x00;
+ 313               		.loc 1 222 0
+ 314 012c 1092 C101 		sts 449,__zero_reg__
+ 223:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR2 = 0x00;
+ 315               		.loc 1 223 0
+ 316 0130 1092 C201 		sts 450,__zero_reg__
+ 317               	.LVL12:
+ 213:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** void EEPROM_LoadPage( const uint8_t * values )
+ 318               		.loc 1 213 0
+ 319 0134 9C01      		movw r18,r24
+ 320 0136 205E      		subi r18,-32
+ 321 0138 3F4F      		sbci r19,-1
+ 322 013a FC01      		movw r30,r24
+ 323               	.LVL13:
+ 324               	.L27:
+ 213:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** void EEPROM_LoadPage( const uint8_t * values )
+ 325               		.loc 1 213 0 is_stmt 0 discriminator 2
  326 013c 4E2F      		mov r20,r30
  327 013e 481B      		sub r20,r24
- 328               	.LVL14:
- 329               	.LBB38:
- 224:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
- 225:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Load multible bytes into page buffer. */
- 226:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	for (uint8_t i = 0; i < EEPROM_PAGESIZE; ++i) {
- 227:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 		NVM.ADDR0 = i;
- 330               		.loc 1 227 0 discriminator 2
- 331 0140 4093 C001 		sts 448,r20
- 228:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 		NVM.DATA0 = *values;
- 332               		.loc 1 228 0 discriminator 2
- 333 0144 4191      		ld r20,Z+
- 334               	.LVL15:
- 335 0146 4093 C401 		sts 452,r20
- 336               	.LVL16:
- 226:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	for (uint8_t i = 0; i < EEPROM_PAGESIZE; ++i) {
- 337               		.loc 1 226 0 discriminator 2
- 338 014a E217      		cp r30,r18
- 339 014c F307      		cpc r31,r19
- 340 014e 01F4      		brne .L29
- 341               	/* epilogue start */
- 342               	.LBE38:
- 229:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 		++values;
- 230:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	}
- 231:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** }
- 343               		.loc 1 231 0
- 344 0150 0895      		ret
- 345               		.cfi_endproc
- 346               	.LFE12:
- 348               	.global	EEPROM_LoadPartialPage
- 350               	EEPROM_LoadPartialPage:
- 351               	.LFB13:
- 232:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
- 233:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** /*! \brief Load partial page into temporary EEPROM page buffer.
- 234:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *			In theory an atomic write with unmodified buffers won't blast those buffers.  We'll see.
- 235:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
- 236:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  \note Modified version of LoadPage
- 237:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
- 238:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  \param  values   Pointer to SRAM buffer containing an entire page.
- 239:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *			offset   Offset address to begin from (0-EEPROM_PAGESIZE)
- 240:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *			length	 Number of values to write into EEPROM
- 241:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  */
- 242:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** void EEPROM_LoadPartialPage(const uint8_t * values, uint8_t offset, uint8_t length)
- 243:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** {
- 352               		.loc 1 243 0
- 353               		.cfi_startproc
- 354               	.LVL17:
- 355               	/* prologue: function */
- 356               	/* frame size = 0 */
- 357               	/* stack size = 0 */
- 358               	.L__stack_usage = 0
- 359 0152 FC01      		movw r30,r24
- 360               	.LVL18:
- 361               	.L32:
- 362               	.LBB39:
- 363               	.LBB40:
- 143:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	} while ((NVM.STATUS & NVM_NVMBUSY_bm) == NVM_NVMBUSY_bm);
- 364               		.loc 1 143 0
- 365 0154 8091 CF01 		lds r24,463
- 366 0158 87FD      		sbrc r24,7
- 367 015a 00C0      		rjmp .L32
- 368               	.LBE40:
- 369               	.LBE39:
- 244:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Wait until NVM is not busy. */
- 245:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	EEPROM_WaitForNVM();
- 246:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.CMD = NVM_CMD_LOAD_EEPROM_BUFFER_gc;
- 370               		.loc 1 246 0
- 371 015c 83E3      		ldi r24,lo8(51)
- 372 015e 8093 CA01 		sts 458,r24
- 247:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
- 248:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/*  Set address to zero, as only the lower bits matters. ADDR0 is
- 249:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	 *  maintained inside the loop below.
- 250:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	 */
- 251:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR1 = 0x00;
- 373               		.loc 1 251 0
- 374 0162 1092 C101 		sts 449,__zero_reg__
- 252:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR2 = 0x00;
- 375               		.loc 1 252 0
- 376 0166 1092 C201 		sts 450,__zero_reg__
- 377               	.LVL19:
- 378               	.LBB41:
- 253:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
- 254:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Load multible bytes into page buffer. */
- 255:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	for (uint8_t i = offset; length != 0 && i < EEPROM_PAGESIZE; ++i,--length) {
- 379               		.loc 1 255 0
- 380 016a 4423      		tst r20
- 381 016c 01F0      		breq .L30
- 382 016e 6032      		cpi r22,lo8(32)
- 383 0170 00F4      		brsh .L30
- 384 0172 4150      		subi r20,lo8(-(-1))
- 385               	.LVL20:
- 386 0174 460F      		add r20,r22
- 387               	.LVL21:
- 388 0176 00C0      		rjmp .L35
- 389               	.LVL22:
- 390               	.L39:
- 391 0178 6F5F      		subi r22,lo8(-(1))
- 392               	.LVL23:
- 393               		.loc 1 255 0 is_stmt 0 discriminator 2
- 394 017a 6032      		cpi r22,lo8(32)
- 395 017c 01F0      		breq .L30
- 396               	.LVL24:
- 397               	.L35:
- 256:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 		NVM.ADDR0 = i;
- 398               		.loc 1 256 0 is_stmt 1 discriminator 1
- 399 017e 6093 C001 		sts 448,r22
- 257:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 		NVM.DATA0 = *values;
- 400               		.loc 1 257 0 discriminator 1
- 401 0182 8191      		ld r24,Z+
- 402               	.LVL25:
- 403 0184 8093 C401 		sts 452,r24
- 404               	.LVL26:
- 255:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	for (uint8_t i = offset; length != 0 && i < EEPROM_PAGESIZE; ++i,--length) {
- 405               		.loc 1 255 0 discriminator 1
- 406 0188 6413      		cpse r22,r20
- 407 018a 00C0      		rjmp .L39
- 408               	.LVL27:
- 409               	.L30:
- 410 018c 0895      		ret
- 411               	.LBE41:
- 412               		.cfi_endproc
- 413               	.LFE13:
- 415               	.global	EEPROM_AtomicWritePage
- 417               	EEPROM_AtomicWritePage:
- 418               	.LFB14:
- 258:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 		++values;
- 259:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	}
- 260:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** }
- 261:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
- 262:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** /*! \brief Write already loaded page into EEPROM.
- 263:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
- 264:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  This function writes the contents of an already loaded EEPROM page
- 265:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  buffer into EEPROM memory.
- 266:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
- 267:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  As this is an atomic write, the page in EEPROM will be erased
- 268:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  automatically before writing. Note that only the page buffer locations
- 269:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  that have been loaded will be used when writing to EEPROM. Page buffer
- 270:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  locations that have not been loaded will be left untouched in EEPROM.
- 271:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
- 272:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  \param  pageAddr  EEPROM Page address, between 0 and EEPROM_SIZE/EEPROM_PAGESIZE
- 273:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  */
- 274:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** void EEPROM_AtomicWritePage( uint8_t pageAddr )
- 275:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** {
- 419               		.loc 1 275 0
- 420               		.cfi_startproc
- 421               	/* prologue: function */
- 422               	/* frame size = 0 */
- 423               	/* stack size = 0 */
- 424               	.L__stack_usage = 0
- 425               	.LVL28:
- 426               	.L42:
- 427               	.LBB42:
- 428               	.LBB43:
- 143:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	} while ((NVM.STATUS & NVM_NVMBUSY_bm) == NVM_NVMBUSY_bm);
- 429               		.loc 1 143 0
- 430 018e 9091 CF01 		lds r25,463
- 431 0192 97FD      		sbrc r25,7
- 432 0194 00C0      		rjmp .L42
- 433               	.LBE43:
- 434               	.LBE42:
- 276:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Wait until NVM is not busy. */
- 277:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	EEPROM_WaitForNVM();
- 278:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
- 279:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Calculate page address */
- 280:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	uint16_t address = (uint16_t)(pageAddr*EEPROM_PAGESIZE);
- 435               		.loc 1 280 0
- 436 0196 20E2      		ldi r18,lo8(32)
- 437 0198 829F      		mul r24,r18
- 438 019a C001      		movw r24,r0
- 439 019c 1124      		clr __zero_reg__
- 440               	.LVL29:
- 281:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
- 282:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Set address. */
- 283:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR0 = address & 0xFF;
- 441               		.loc 1 283 0
- 442 019e 8093 C001 		sts 448,r24
- 284:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR1 = (address >> 8) & 0x1F;
- 443               		.loc 1 284 0
- 444 01a2 9093 C101 		sts 449,r25
- 285:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR2 = 0x00;
- 445               		.loc 1 285 0
- 446 01a6 1092 C201 		sts 450,__zero_reg__
- 286:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
- 287:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Issue EEPROM Atomic Write (Erase&Write) command. */
- 288:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.CMD = NVM_CMD_ERASE_WRITE_EEPROM_PAGE_gc;
- 447               		.loc 1 288 0
- 448 01aa 85E3      		ldi r24,lo8(53)
- 449               	.LVL30:
- 450 01ac 8093 CA01 		sts 458,r24
- 289:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM_EXEC();
- 451               		.loc 1 289 0
- 452               	/* #APP */
- 453               	 ;  289 "/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c" 1
- 454 01b0 EF93      		push r30
- 455 01b2 FF93      		push r31
- 456 01b4 0F93      		push r16
- 457 01b6 2F93      		push r18
- 458 01b8 EBEC      		ldi r30, 0xCB
- 459 01ba F1E0      		ldi r31, 0x01
- 460 01bc 08ED      		ldi r16, 0xD8
- 461 01be 21E0      		ldi r18, 0x01
- 462 01c0 04BF      		out 0x34, r16
- 463 01c2 2083      		st Z, r18
- 464 01c4 2F91      		pop r18
- 465 01c6 0F91      		pop r16
- 466 01c8 FF91      		pop r31
- 467 01ca EF91      		pop r30
- 468               		
- 469               	 ;  0 "" 2
- 470               	/* #NOAPP */
- 471 01cc 0895      		ret
- 472               		.cfi_endproc
- 473               	.LFE14:
- 475               	.global	EEPROM_ErasePage
- 477               	EEPROM_ErasePage:
- 478               	.LFB15:
- 290:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** }
- 291:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
- 292:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
- 293:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** /*! \brief Erase EEPROM page.
- 294:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
- 295:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  This function erases one EEPROM page, so that every location reads 0xFF.
- 296:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
- 297:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  \param  pageAddr  EEPROM Page address, between 0 and EEPROM_SIZE/EEPROM_PAGESIZE
- 298:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  */
- 299:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** void EEPROM_ErasePage( uint8_t pageAddr )
- 300:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** {
- 479               		.loc 1 300 0
- 480               		.cfi_startproc
- 481               	/* prologue: function */
- 482               	/* frame size = 0 */
- 483               	/* stack size = 0 */
- 484               	.L__stack_usage = 0
- 485               	.LVL31:
- 486               	.L45:
- 487               	.LBB44:
- 488               	.LBB45:
- 143:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	} while ((NVM.STATUS & NVM_NVMBUSY_bm) == NVM_NVMBUSY_bm);
- 489               		.loc 1 143 0
- 490 01ce 9091 CF01 		lds r25,463
- 491 01d2 97FD      		sbrc r25,7
- 492 01d4 00C0      		rjmp .L45
- 493               	.LBE45:
- 494               	.LBE44:
- 301:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Wait until NVM is not busy. */
- 302:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	EEPROM_WaitForNVM();
- 303:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
- 304:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Calculate page address */
- 305:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	uint16_t address = (uint16_t)(pageAddr*EEPROM_PAGESIZE);
- 495               		.loc 1 305 0
- 496 01d6 20E2      		ldi r18,lo8(32)
- 497 01d8 829F      		mul r24,r18
- 498 01da C001      		movw r24,r0
- 499 01dc 1124      		clr __zero_reg__
- 500               	.LVL32:
- 306:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
- 307:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Set address. */
- 308:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR0 = address & 0xFF;
- 501               		.loc 1 308 0
- 502 01de 8093 C001 		sts 448,r24
- 309:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR1 = (address >> 8) & 0x1F;
- 503               		.loc 1 309 0
- 504 01e2 9093 C101 		sts 449,r25
- 310:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR2 = 0x00;
- 505               		.loc 1 310 0
- 506 01e6 1092 C201 		sts 450,__zero_reg__
- 311:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
- 312:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Issue EEPROM Erase command. */
- 313:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.CMD = NVM_CMD_ERASE_EEPROM_PAGE_gc;
- 507               		.loc 1 313 0
- 508 01ea 82E3      		ldi r24,lo8(50)
- 509               	.LVL33:
- 510 01ec 8093 CA01 		sts 458,r24
- 314:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM_EXEC();
- 511               		.loc 1 314 0
- 512               	/* #APP */
- 513               	 ;  314 "/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c" 1
- 514 01f0 EF93      		push r30
- 515 01f2 FF93      		push r31
- 516 01f4 0F93      		push r16
- 517 01f6 2F93      		push r18
- 518 01f8 EBEC      		ldi r30, 0xCB
- 519 01fa F1E0      		ldi r31, 0x01
- 520 01fc 08ED      		ldi r16, 0xD8
- 521 01fe 21E0      		ldi r18, 0x01
- 522 0200 04BF      		out 0x34, r16
- 523 0202 2083      		st Z, r18
- 524 0204 2F91      		pop r18
- 525 0206 0F91      		pop r16
- 526 0208 FF91      		pop r31
- 527 020a EF91      		pop r30
- 528               		
- 529               	 ;  0 "" 2
- 530               	/* #NOAPP */
- 531 020c 0895      		ret
- 532               		.cfi_endproc
- 533               	.LFE15:
- 535               	.global	EEPROM_SplitWritePage
- 537               	EEPROM_SplitWritePage:
- 538               	.LFB16:
- 315:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** }
- 316:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
- 317:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
- 318:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** /*! \brief Write (without erasing) EEPROM page.
- 319:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
- 320:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  This function writes the contents of an already loaded EEPROM page
- 321:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  buffer into EEPROM memory.
- 322:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
- 323:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  As this is a split write, the page in EEPROM will _not_ be erased
- 324:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  before writing.
- 325:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
- 326:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  \param  pageAddr  EEPROM Page address, between 0 and EEPROM_SIZE/EEPROM_PAGESIZE
- 327:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  */
- 328:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** void EEPROM_SplitWritePage( uint8_t pageAddr )
- 329:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** {
- 539               		.loc 1 329 0
- 540               		.cfi_startproc
- 541               	/* prologue: function */
- 542               	/* frame size = 0 */
- 543               	/* stack size = 0 */
- 544               	.L__stack_usage = 0
- 545               	.LVL34:
- 546               	.L48:
- 547               	.LBB46:
- 548               	.LBB47:
- 143:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	} while ((NVM.STATUS & NVM_NVMBUSY_bm) == NVM_NVMBUSY_bm);
- 549               		.loc 1 143 0
- 550 020e 9091 CF01 		lds r25,463
- 551 0212 97FD      		sbrc r25,7
- 552 0214 00C0      		rjmp .L48
- 553               	.LBE47:
- 554               	.LBE46:
- 330:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Wait until NVM is not busy. */
- 331:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	EEPROM_WaitForNVM();
- 332:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
- 333:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Calculate page address */
- 334:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	uint16_t address = (uint16_t)(pageAddr*EEPROM_PAGESIZE);
- 555               		.loc 1 334 0
- 556 0216 20E2      		ldi r18,lo8(32)
- 557 0218 829F      		mul r24,r18
- 558 021a C001      		movw r24,r0
- 559 021c 1124      		clr __zero_reg__
- 560               	.LVL35:
- 335:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
- 336:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Set address. */
- 337:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR0 = address & 0xFF;
- 561               		.loc 1 337 0
- 562 021e 8093 C001 		sts 448,r24
- 338:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR1 = (address >> 8) & 0x1F;
- 563               		.loc 1 338 0
- 564 0222 9093 C101 		sts 449,r25
- 339:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR2 = 0x00;
- 565               		.loc 1 339 0
- 566 0226 1092 C201 		sts 450,__zero_reg__
- 340:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
- 341:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Issue EEPROM Split Write command. */
- 342:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.CMD = NVM_CMD_WRITE_EEPROM_PAGE_gc;
- 567               		.loc 1 342 0
- 568 022a 84E3      		ldi r24,lo8(52)
- 569               	.LVL36:
- 570 022c 8093 CA01 		sts 458,r24
- 343:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM_EXEC();
- 571               		.loc 1 343 0
- 572               	/* #APP */
- 573               	 ;  343 "/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c" 1
- 574 0230 EF93      		push r30
- 575 0232 FF93      		push r31
- 576 0234 0F93      		push r16
- 577 0236 2F93      		push r18
- 578 0238 EBEC      		ldi r30, 0xCB
- 579 023a F1E0      		ldi r31, 0x01
- 580 023c 08ED      		ldi r16, 0xD8
- 581 023e 21E0      		ldi r18, 0x01
- 582 0240 04BF      		out 0x34, r16
- 583 0242 2083      		st Z, r18
- 584 0244 2F91      		pop r18
- 585 0246 0F91      		pop r16
- 586 0248 FF91      		pop r31
- 587 024a EF91      		pop r30
- 588               		
- 589               	 ;  0 "" 2
- 590               	/* #NOAPP */
- 591 024c 0895      		ret
- 592               		.cfi_endproc
- 593               	.LFE16:
- 595               	.global	EEPROM_EraseAll
- 597               	EEPROM_EraseAll:
- 598               	.LFB17:
- 344:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** }
- 345:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
- 346:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** /*! \brief Erase entire EEPROM memory.
- 347:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
- 348:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  This function erases the entire EEPROM memory block to 0xFF.
- 349:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  */
- 350:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** void EEPROM_EraseAll( void )
- 351:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** {
- 599               		.loc 1 351 0
- 600               		.cfi_startproc
- 601               	/* prologue: function */
- 602               	/* frame size = 0 */
- 603               	/* stack size = 0 */
- 604               	.L__stack_usage = 0
- 605               	.L51:
- 606               	.LBB48:
- 607               	.LBB49:
- 143:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	} while ((NVM.STATUS & NVM_NVMBUSY_bm) == NVM_NVMBUSY_bm);
- 608               		.loc 1 143 0
- 609 024e 8091 CF01 		lds r24,463
- 610 0252 87FD      		sbrc r24,7
- 611 0254 00C0      		rjmp .L51
- 612               	.LBE49:
- 613               	.LBE48:
- 352:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Wait until NVM is not busy. */
- 353:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	EEPROM_WaitForNVM();
- 354:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
- 355:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Issue EEPROM Erase All command. */
- 356:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.CMD = NVM_CMD_ERASE_EEPROM_gc;
- 614               		.loc 1 356 0
- 615 0256 80E3      		ldi r24,lo8(48)
- 616 0258 8093 CA01 		sts 458,r24
- 357:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM_EXEC();
- 617               		.loc 1 357 0
- 618               	/* #APP */
- 619               	 ;  357 "/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.c" 1
- 620 025c EF93      		push r30
- 621 025e FF93      		push r31
- 622 0260 0F93      		push r16
- 623 0262 2F93      		push r18
- 624 0264 EBEC      		ldi r30, 0xCB
- 625 0266 F1E0      		ldi r31, 0x01
- 626 0268 08ED      		ldi r16, 0xD8
- 627 026a 21E0      		ldi r18, 0x01
- 628 026c 04BF      		out 0x34, r16
- 629 026e 2083      		st Z, r18
- 630 0270 2F91      		pop r18
- 631 0272 0F91      		pop r16
- 632 0274 FF91      		pop r31
- 633 0276 EF91      		pop r30
- 634               		
- 635               	 ;  0 "" 2
- 636               	/* #NOAPP */
- 637 0278 0895      		ret
- 638               		.cfi_endproc
- 639               	.LFE17:
- 641               	.Letext0:
- 642               		.file 2 "/usr/lib/avr/include/stdint.h"
- 643               		.file 3 "/usr/lib/avr/include/avr/iox256a3.h"
+ 328               	.LBB38:
+ 224:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
+ 225:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Load multible bytes into page buffer. */
+ 226:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	for (uint8_t i = 0; i < EEPROM_PAGESIZE; ++i) {
+ 227:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 		NVM.ADDR0 = i;
+ 329               		.loc 1 227 0 is_stmt 1 discriminator 2
+ 330 0140 4093 C001 		sts 448,r20
+ 228:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 		NVM.DATA0 = *values;
+ 331               		.loc 1 228 0 discriminator 2
+ 332 0144 4191      		ld r20,Z+
+ 333               	.LVL14:
+ 334 0146 4093 C401 		sts 452,r20
+ 335               	.LVL15:
+ 226:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	for (uint8_t i = 0; i < EEPROM_PAGESIZE; ++i) {
+ 336               		.loc 1 226 0 discriminator 2
+ 337 014a E217      		cp r30,r18
+ 338 014c F307      		cpc r31,r19
+ 339 014e 01F4      		brne .L27
+ 340               	/* epilogue start */
+ 341               	.LBE38:
+ 229:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 		++values;
+ 230:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	}
+ 231:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** }
+ 342               		.loc 1 231 0
+ 343 0150 0895      		ret
+ 344               		.cfi_endproc
+ 345               	.LFE12:
+ 347               	.global	EEPROM_LoadPartialPage
+ 349               	EEPROM_LoadPartialPage:
+ 350               	.LFB13:
+ 232:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
+ 233:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** /*! \brief Load partial page into temporary EEPROM page buffer.
+ 234:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *			In theory an atomic write with unmodified buffers won't blast those buffers.  We'll see.
+ 235:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
+ 236:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  \note Modified version of LoadPage
+ 237:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
+ 238:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  \param  values   Pointer to SRAM buffer containing an entire page.
+ 239:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *			offset   Offset address to begin from (0-EEPROM_PAGESIZE)
+ 240:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *			length	 Number of values to write into EEPROM
+ 241:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  */
+ 242:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** void EEPROM_LoadPartialPage(const uint8_t * values, uint8_t offset, uint8_t length)
+ 243:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** {
+ 351               		.loc 1 243 0
+ 352               		.cfi_startproc
+ 353               	.LVL16:
+ 354               	/* prologue: function */
+ 355               	/* frame size = 0 */
+ 356               	/* stack size = 0 */
+ 357               	.L__stack_usage = 0
+ 358 0152 FC01      		movw r30,r24
+ 359               	.LVL17:
+ 360               	.L31:
+ 361               	.LBB39:
+ 362               	.LBB40:
+ 143:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	} while ((NVM.STATUS & NVM_NVMBUSY_bm) == NVM_NVMBUSY_bm);
+ 363               		.loc 1 143 0
+ 364 0154 8091 CF01 		lds r24,463
+ 365 0158 87FD      		sbrc r24,7
+ 366 015a 00C0      		rjmp .L31
+ 367               	.LBE40:
+ 368               	.LBE39:
+ 244:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Wait until NVM is not busy. */
+ 245:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	EEPROM_WaitForNVM();
+ 246:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.CMD = NVM_CMD_LOAD_EEPROM_BUFFER_gc;
+ 369               		.loc 1 246 0
+ 370 015c 83E3      		ldi r24,lo8(51)
+ 371 015e 8093 CA01 		sts 458,r24
+ 247:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
+ 248:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/*  Set address to zero, as only the lower bits matters. ADDR0 is
+ 249:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	 *  maintained inside the loop below.
+ 250:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	 */
+ 251:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR1 = 0x00;
+ 372               		.loc 1 251 0
+ 373 0162 1092 C101 		sts 449,__zero_reg__
+ 252:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR2 = 0x00;
+ 374               		.loc 1 252 0
+ 375 0166 1092 C201 		sts 450,__zero_reg__
+ 376               	.LVL18:
+ 377               	.LBB41:
+ 253:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
+ 254:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Load multible bytes into page buffer. */
+ 255:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	for (uint8_t i = offset; length != 0 && i < EEPROM_PAGESIZE; ++i,--length) {
+ 378               		.loc 1 255 0
+ 379 016a 4423      		tst r20
+ 380 016c 01F0      		breq .L30
+ 381 016e 6032      		cpi r22,lo8(32)
+ 382 0170 00F4      		brsh .L30
+ 242:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** void EEPROM_LoadPartialPage(const uint8_t * values, uint8_t offset, uint8_t length)
+ 383               		.loc 1 242 0
+ 384 0172 962F      		mov r25,r22
+ 385 0174 9150      		subi r25,lo8(-(-1))
+ 386 0176 940F      		add r25,r20
+ 387 0178 00C0      		rjmp .L34
+ 388               	.LVL19:
+ 389               	.L37:
+ 390 017a 6F5F      		subi r22,lo8(-(1))
+ 391               	.LVL20:
+ 392               		.loc 1 255 0 discriminator 2
+ 393 017c 6032      		cpi r22,lo8(32)
+ 394 017e 01F0      		breq .L30
+ 395               	.LVL21:
+ 396               	.L34:
+ 256:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 		NVM.ADDR0 = i;
+ 397               		.loc 1 256 0 discriminator 1
+ 398 0180 6093 C001 		sts 448,r22
+ 257:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 		NVM.DATA0 = *values;
+ 399               		.loc 1 257 0 discriminator 1
+ 400 0184 8191      		ld r24,Z+
+ 401               	.LVL22:
+ 402 0186 8093 C401 		sts 452,r24
+ 403               	.LVL23:
+ 255:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	for (uint8_t i = offset; length != 0 && i < EEPROM_PAGESIZE; ++i,--length) {
+ 404               		.loc 1 255 0 discriminator 1
+ 405 018a 6913      		cpse r22,r25
+ 406 018c 00C0      		rjmp .L37
+ 407               	.LVL24:
+ 408               	.L30:
+ 409 018e 0895      		ret
+ 410               	.LBE41:
+ 411               		.cfi_endproc
+ 412               	.LFE13:
+ 414               	.global	EEPROM_AtomicWritePage
+ 416               	EEPROM_AtomicWritePage:
+ 417               	.LFB14:
+ 258:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 		++values;
+ 259:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	}
+ 260:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** }
+ 261:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
+ 262:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** /*! \brief Write already loaded page into EEPROM.
+ 263:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
+ 264:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  This function writes the contents of an already loaded EEPROM page
+ 265:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  buffer into EEPROM memory.
+ 266:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
+ 267:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  As this is an atomic write, the page in EEPROM will be erased
+ 268:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  automatically before writing. Note that only the page buffer locations
+ 269:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  that have been loaded will be used when writing to EEPROM. Page buffer
+ 270:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  locations that have not been loaded will be left untouched in EEPROM.
+ 271:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
+ 272:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  \param  pageAddr  EEPROM Page address, between 0 and EEPROM_SIZE/EEPROM_PAGESIZE
+ 273:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  */
+ 274:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** void EEPROM_AtomicWritePage( uint8_t pageAddr )
+ 275:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** {
+ 418               		.loc 1 275 0
+ 419               		.cfi_startproc
+ 420               	/* prologue: function */
+ 421               	/* frame size = 0 */
+ 422               	/* stack size = 0 */
+ 423               	.L__stack_usage = 0
+ 424               	.LVL25:
+ 425               	.L39:
+ 426               	.LBB42:
+ 427               	.LBB43:
+ 143:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	} while ((NVM.STATUS & NVM_NVMBUSY_bm) == NVM_NVMBUSY_bm);
+ 428               		.loc 1 143 0
+ 429 0190 9091 CF01 		lds r25,463
+ 430 0194 97FD      		sbrc r25,7
+ 431 0196 00C0      		rjmp .L39
+ 432               	.LBE43:
+ 433               	.LBE42:
+ 276:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Wait until NVM is not busy. */
+ 277:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	EEPROM_WaitForNVM();
+ 278:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
+ 279:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Calculate page address */
+ 280:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	uint16_t address = (uint16_t)(pageAddr*EEPROM_PAGESIZE);
+ 434               		.loc 1 280 0
+ 435 0198 20E2      		ldi r18,lo8(32)
+ 436 019a 829F      		mul r24,r18
+ 437 019c C001      		movw r24,r0
+ 438 019e 1124      		clr __zero_reg__
+ 439               	.LVL26:
+ 281:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
+ 282:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Set address. */
+ 283:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR0 = address & 0xFF;
+ 440               		.loc 1 283 0
+ 441 01a0 8093 C001 		sts 448,r24
+ 284:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR1 = (address >> 8) & 0x1F;
+ 442               		.loc 1 284 0
+ 443 01a4 9093 C101 		sts 449,r25
+ 285:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR2 = 0x00;
+ 444               		.loc 1 285 0
+ 445 01a8 1092 C201 		sts 450,__zero_reg__
+ 286:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
+ 287:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Issue EEPROM Atomic Write (Erase&Write) command. */
+ 288:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.CMD = NVM_CMD_ERASE_WRITE_EEPROM_PAGE_gc;
+ 446               		.loc 1 288 0
+ 447 01ac 85E3      		ldi r24,lo8(53)
+ 448               	.LVL27:
+ 449 01ae 8093 CA01 		sts 458,r24
+ 289:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM_EXEC();
+ 450               		.loc 1 289 0
+ 451               	/* #APP */
+ 452               	 ;  289 "/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c" 1
+ 453 01b2 EF93      		push r30
+ 454 01b4 FF93      		push r31
+ 455 01b6 0F93      		push r16
+ 456 01b8 2F93      		push r18
+ 457 01ba EBEC      		ldi r30, 0xCB
+ 458 01bc F1E0      		ldi r31, 0x01
+ 459 01be 08ED      		ldi r16, 0xD8
+ 460 01c0 21E0      		ldi r18, 0x01
+ 461 01c2 04BF      		out 0x34, r16
+ 462 01c4 2083      		st Z, r18
+ 463 01c6 2F91      		pop r18
+ 464 01c8 0F91      		pop r16
+ 465 01ca FF91      		pop r31
+ 466 01cc EF91      		pop r30
+ 467               		
+ 468               	 ;  0 "" 2
+ 469               	/* #NOAPP */
+ 470 01ce 0895      		ret
+ 471               		.cfi_endproc
+ 472               	.LFE14:
+ 474               	.global	EEPROM_ErasePage
+ 476               	EEPROM_ErasePage:
+ 477               	.LFB15:
+ 290:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** }
+ 291:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
+ 292:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
+ 293:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** /*! \brief Erase EEPROM page.
+ 294:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
+ 295:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  This function erases one EEPROM page, so that every location reads 0xFF.
+ 296:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
+ 297:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  \param  pageAddr  EEPROM Page address, between 0 and EEPROM_SIZE/EEPROM_PAGESIZE
+ 298:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  */
+ 299:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** void EEPROM_ErasePage( uint8_t pageAddr )
+ 300:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** {
+ 478               		.loc 1 300 0
+ 479               		.cfi_startproc
+ 480               	/* prologue: function */
+ 481               	/* frame size = 0 */
+ 482               	/* stack size = 0 */
+ 483               	.L__stack_usage = 0
+ 484               	.LVL28:
+ 485               	.L42:
+ 486               	.LBB44:
+ 487               	.LBB45:
+ 143:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	} while ((NVM.STATUS & NVM_NVMBUSY_bm) == NVM_NVMBUSY_bm);
+ 488               		.loc 1 143 0
+ 489 01d0 9091 CF01 		lds r25,463
+ 490 01d4 97FD      		sbrc r25,7
+ 491 01d6 00C0      		rjmp .L42
+ 492               	.LBE45:
+ 493               	.LBE44:
+ 301:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Wait until NVM is not busy. */
+ 302:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	EEPROM_WaitForNVM();
+ 303:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
+ 304:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Calculate page address */
+ 305:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	uint16_t address = (uint16_t)(pageAddr*EEPROM_PAGESIZE);
+ 494               		.loc 1 305 0
+ 495 01d8 20E2      		ldi r18,lo8(32)
+ 496 01da 829F      		mul r24,r18
+ 497 01dc C001      		movw r24,r0
+ 498 01de 1124      		clr __zero_reg__
+ 499               	.LVL29:
+ 306:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
+ 307:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Set address. */
+ 308:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR0 = address & 0xFF;
+ 500               		.loc 1 308 0
+ 501 01e0 8093 C001 		sts 448,r24
+ 309:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR1 = (address >> 8) & 0x1F;
+ 502               		.loc 1 309 0
+ 503 01e4 9093 C101 		sts 449,r25
+ 310:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR2 = 0x00;
+ 504               		.loc 1 310 0
+ 505 01e8 1092 C201 		sts 450,__zero_reg__
+ 311:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
+ 312:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Issue EEPROM Erase command. */
+ 313:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.CMD = NVM_CMD_ERASE_EEPROM_PAGE_gc;
+ 506               		.loc 1 313 0
+ 507 01ec 82E3      		ldi r24,lo8(50)
+ 508               	.LVL30:
+ 509 01ee 8093 CA01 		sts 458,r24
+ 314:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM_EXEC();
+ 510               		.loc 1 314 0
+ 511               	/* #APP */
+ 512               	 ;  314 "/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c" 1
+ 513 01f2 EF93      		push r30
+ 514 01f4 FF93      		push r31
+ 515 01f6 0F93      		push r16
+ 516 01f8 2F93      		push r18
+ 517 01fa EBEC      		ldi r30, 0xCB
+ 518 01fc F1E0      		ldi r31, 0x01
+ 519 01fe 08ED      		ldi r16, 0xD8
+ 520 0200 21E0      		ldi r18, 0x01
+ 521 0202 04BF      		out 0x34, r16
+ 522 0204 2083      		st Z, r18
+ 523 0206 2F91      		pop r18
+ 524 0208 0F91      		pop r16
+ 525 020a FF91      		pop r31
+ 526 020c EF91      		pop r30
+ 527               		
+ 528               	 ;  0 "" 2
+ 529               	/* #NOAPP */
+ 530 020e 0895      		ret
+ 531               		.cfi_endproc
+ 532               	.LFE15:
+ 534               	.global	EEPROM_SplitWritePage
+ 536               	EEPROM_SplitWritePage:
+ 537               	.LFB16:
+ 315:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** }
+ 316:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
+ 317:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
+ 318:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** /*! \brief Write (without erasing) EEPROM page.
+ 319:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
+ 320:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  This function writes the contents of an already loaded EEPROM page
+ 321:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  buffer into EEPROM memory.
+ 322:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
+ 323:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  As this is a split write, the page in EEPROM will _not_ be erased
+ 324:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  before writing.
+ 325:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
+ 326:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  \param  pageAddr  EEPROM Page address, between 0 and EEPROM_SIZE/EEPROM_PAGESIZE
+ 327:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  */
+ 328:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** void EEPROM_SplitWritePage( uint8_t pageAddr )
+ 329:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** {
+ 538               		.loc 1 329 0
+ 539               		.cfi_startproc
+ 540               	/* prologue: function */
+ 541               	/* frame size = 0 */
+ 542               	/* stack size = 0 */
+ 543               	.L__stack_usage = 0
+ 544               	.LVL31:
+ 545               	.L45:
+ 546               	.LBB46:
+ 547               	.LBB47:
+ 143:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	} while ((NVM.STATUS & NVM_NVMBUSY_bm) == NVM_NVMBUSY_bm);
+ 548               		.loc 1 143 0
+ 549 0210 9091 CF01 		lds r25,463
+ 550 0214 97FD      		sbrc r25,7
+ 551 0216 00C0      		rjmp .L45
+ 552               	.LBE47:
+ 553               	.LBE46:
+ 330:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Wait until NVM is not busy. */
+ 331:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	EEPROM_WaitForNVM();
+ 332:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
+ 333:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Calculate page address */
+ 334:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	uint16_t address = (uint16_t)(pageAddr*EEPROM_PAGESIZE);
+ 554               		.loc 1 334 0
+ 555 0218 20E2      		ldi r18,lo8(32)
+ 556 021a 829F      		mul r24,r18
+ 557 021c C001      		movw r24,r0
+ 558 021e 1124      		clr __zero_reg__
+ 559               	.LVL32:
+ 335:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
+ 336:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Set address. */
+ 337:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR0 = address & 0xFF;
+ 560               		.loc 1 337 0
+ 561 0220 8093 C001 		sts 448,r24
+ 338:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR1 = (address >> 8) & 0x1F;
+ 562               		.loc 1 338 0
+ 563 0224 9093 C101 		sts 449,r25
+ 339:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.ADDR2 = 0x00;
+ 564               		.loc 1 339 0
+ 565 0228 1092 C201 		sts 450,__zero_reg__
+ 340:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
+ 341:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Issue EEPROM Split Write command. */
+ 342:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.CMD = NVM_CMD_WRITE_EEPROM_PAGE_gc;
+ 566               		.loc 1 342 0
+ 567 022c 84E3      		ldi r24,lo8(52)
+ 568               	.LVL33:
+ 569 022e 8093 CA01 		sts 458,r24
+ 343:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM_EXEC();
+ 570               		.loc 1 343 0
+ 571               	/* #APP */
+ 572               	 ;  343 "/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c" 1
+ 573 0232 EF93      		push r30
+ 574 0234 FF93      		push r31
+ 575 0236 0F93      		push r16
+ 576 0238 2F93      		push r18
+ 577 023a EBEC      		ldi r30, 0xCB
+ 578 023c F1E0      		ldi r31, 0x01
+ 579 023e 08ED      		ldi r16, 0xD8
+ 580 0240 21E0      		ldi r18, 0x01
+ 581 0242 04BF      		out 0x34, r16
+ 582 0244 2083      		st Z, r18
+ 583 0246 2F91      		pop r18
+ 584 0248 0F91      		pop r16
+ 585 024a FF91      		pop r31
+ 586 024c EF91      		pop r30
+ 587               		
+ 588               	 ;  0 "" 2
+ 589               	/* #NOAPP */
+ 590 024e 0895      		ret
+ 591               		.cfi_endproc
+ 592               	.LFE16:
+ 594               	.global	EEPROM_EraseAll
+ 596               	EEPROM_EraseAll:
+ 597               	.LFB17:
+ 344:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** }
+ 345:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
+ 346:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** /*! \brief Erase entire EEPROM memory.
+ 347:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *
+ 348:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  *  This function erases the entire EEPROM memory block to 0xFF.
+ 349:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c ****  */
+ 350:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** void EEPROM_EraseAll( void )
+ 351:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** {
+ 598               		.loc 1 351 0
+ 599               		.cfi_startproc
+ 600               	/* prologue: function */
+ 601               	/* frame size = 0 */
+ 602               	/* stack size = 0 */
+ 603               	.L__stack_usage = 0
+ 604               	.L48:
+ 605               	.LBB48:
+ 606               	.LBB49:
+ 143:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	} while ((NVM.STATUS & NVM_NVMBUSY_bm) == NVM_NVMBUSY_bm);
+ 607               		.loc 1 143 0
+ 608 0250 8091 CF01 		lds r24,463
+ 609 0254 87FD      		sbrc r24,7
+ 610 0256 00C0      		rjmp .L48
+ 611               	.LBE49:
+ 612               	.LBE48:
+ 352:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Wait until NVM is not busy. */
+ 353:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	EEPROM_WaitForNVM();
+ 354:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 
+ 355:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	/* Issue EEPROM Erase All command. */
+ 356:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM.CMD = NVM_CMD_ERASE_EEPROM_gc;
+ 613               		.loc 1 356 0
+ 614 0258 80E3      		ldi r24,lo8(48)
+ 615 025a 8093 CA01 		sts 458,r24
+ 357:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c **** 	NVM_EXEC();
+ 616               		.loc 1 357 0
+ 617               	/* #APP */
+ 618               	 ;  357 "/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.c" 1
+ 619 025e EF93      		push r30
+ 620 0260 FF93      		push r31
+ 621 0262 0F93      		push r16
+ 622 0264 2F93      		push r18
+ 623 0266 EBEC      		ldi r30, 0xCB
+ 624 0268 F1E0      		ldi r31, 0x01
+ 625 026a 08ED      		ldi r16, 0xD8
+ 626 026c 21E0      		ldi r18, 0x01
+ 627 026e 04BF      		out 0x34, r16
+ 628 0270 2083      		st Z, r18
+ 629 0272 2F91      		pop r18
+ 630 0274 0F91      		pop r16
+ 631 0276 FF91      		pop r31
+ 632 0278 EF91      		pop r30
+ 633               		
+ 634               	 ;  0 "" 2
+ 635               	/* #NOAPP */
+ 636 027a 0895      		ret
+ 637               		.cfi_endproc
+ 638               	.LFE17:
+ 640               	.Letext0:
+ 641               		.file 2 "/usr/local/Cellar/avr-gcc/4.7.2/lib/gcc/avr/4.7.2/../../../../avr/include/stdint.h"
+ 642               		.file 3 "/usr/local/Cellar/avr-gcc/4.7.2/lib/gcc/avr/4.7.2/../../../../avr/include/avr/iox256a3.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 eeprom_driver.c
-     /tmp/ccYpIz46.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccYpIz46.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccYpIz46.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccYpIz46.s:5      *ABS*:000000000000003b __RAMPZ__
-     /tmp/ccYpIz46.s:6      *ABS*:0000000000000034 __CCP__
-     /tmp/ccYpIz46.s:7      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccYpIz46.s:8      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccYpIz46.s:14     .text:0000000000000000 EEPROM_WriteByte
-     /tmp/ccYpIz46.s:118    .text:0000000000000078 EEPROM_ReadByte
-     /tmp/ccYpIz46.s:187    .text:00000000000000c0 EEPROM_WaitForNVM
-     /tmp/ccYpIz46.s:208    .text:00000000000000ca EEPROM_FlushBuffer
-     /tmp/ccYpIz46.s:259    .text:00000000000000fe EEPROM_LoadByte
-     /tmp/ccYpIz46.s:294    .text:000000000000011e EEPROM_LoadPage
-     /tmp/ccYpIz46.s:350    .text:0000000000000152 EEPROM_LoadPartialPage
-     /tmp/ccYpIz46.s:417    .text:000000000000018e EEPROM_AtomicWritePage
-     /tmp/ccYpIz46.s:477    .text:00000000000001ce EEPROM_ErasePage
-     /tmp/ccYpIz46.s:537    .text:000000000000020e EEPROM_SplitWritePage
-     /tmp/ccYpIz46.s:597    .text:000000000000024e EEPROM_EraseAll
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccd8uUPg.s:2      *ABS*:000000000000003e __SP_H__
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccd8uUPg.s:3      *ABS*:000000000000003d __SP_L__
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccd8uUPg.s:4      *ABS*:000000000000003f __SREG__
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccd8uUPg.s:5      *ABS*:000000000000003b __RAMPZ__
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccd8uUPg.s:6      *ABS*:0000000000000034 __CCP__
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccd8uUPg.s:7      *ABS*:0000000000000000 __tmp_reg__
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccd8uUPg.s:8      *ABS*:0000000000000001 __zero_reg__
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccd8uUPg.s:14     .text:0000000000000000 EEPROM_WriteByte
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccd8uUPg.s:117    .text:0000000000000078 EEPROM_ReadByte
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccd8uUPg.s:185    .text:00000000000000c0 EEPROM_WaitForNVM
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccd8uUPg.s:206    .text:00000000000000ca EEPROM_FlushBuffer
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccd8uUPg.s:257    .text:00000000000000fe EEPROM_LoadByte
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccd8uUPg.s:292    .text:000000000000011e EEPROM_LoadPage
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccd8uUPg.s:349    .text:0000000000000152 EEPROM_LoadPartialPage
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccd8uUPg.s:416    .text:0000000000000190 EEPROM_AtomicWritePage
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccd8uUPg.s:476    .text:00000000000001d0 EEPROM_ErasePage
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccd8uUPg.s:536    .text:0000000000000210 EEPROM_SplitWritePage
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccd8uUPg.s:596    .text:0000000000000250 EEPROM_EraseAll
 
 NO UNDEFINED SYMBOLS

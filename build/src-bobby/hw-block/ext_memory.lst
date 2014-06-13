@@ -12,12 +12,12 @@
   12               	.global	spiTxRx
   14               	spiTxRx:
   15               	.LFB1:
-  16               		.file 1 "/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c"
-   1:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** #include "ext_memory.h"
-   2:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** #include <avr/io.h>
-   3:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 
-   4:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** uint8_t spiTxRx(uint8_t input)
-   5:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** {
+  16               		.file 1 "/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c"
+   1:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** #include "ext_memory.h"
+   2:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** #include <avr/io.h>
+   3:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 
+   4:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** uint8_t spiTxRx(uint8_t input)
+   5:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** {
   17               		.loc 1 5 0
   18               		.cfi_startproc
   19               	.LVL0:
@@ -25,23 +25,23 @@
   21               	/* frame size = 0 */
   22               	/* stack size = 0 */
   23               	.L__stack_usage = 0
-   6:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
+   6:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
   24               		.loc 1 6 0
   25 0000 8093 C30A 		sts 2755,r24
   26               	.LVL1:
-  27               	.L3:
-   7:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	
-   8:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
+  27               	.L2:
+   7:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	
+   8:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
   28               		.loc 1 8 0 discriminator 1
   29 0004 8091 C20A 		lds r24,2754
   30 0008 87FF      		sbrs r24,7
-  31 000a 00C0      		rjmp .L3
-   9:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	
-  10:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
+  31 000a 00C0      		rjmp .L2
+   9:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	
+  10:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
   32               		.loc 1 10 0
   33 000c 8091 C30A 		lds r24,2755
-  11:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	
-  12:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** }
+  11:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	
+  12:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** }
   34               		.loc 1 12 0
   35 0010 0895      		ret
   36               		.cfi_endproc
@@ -49,9 +49,9 @@
   39               	.global	setSS
   41               	setSS:
   42               	.LFB2:
-  13:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 
-  14:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** void setSS(int which, int level)
-  15:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** {
+  13:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 
+  14:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** void setSS(int which, int level)
+  15:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** {
   43               		.loc 1 15 0
   44               		.cfi_startproc
   45               	.LVL2:
@@ -59,79 +59,79 @@
   47               	/* frame size = 0 */
   48               	/* stack size = 0 */
   49               	.L__stack_usage = 0
-  16:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	if(which == SRAM)
+  16:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	if(which == SRAM)
   50               		.loc 1 16 0
   51 0012 0197      		sbiw r24,1
   52 0014 01F0      		breq .L10
-  17:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	{
-  18:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		if(level)
-  19:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		{
-  20:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			PORTF.OUTSET = PIN4_bm;
-  21:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		}
-  22:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		else
-  23:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		{
-  24:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			PORTF.OUTCLR = PIN4_bm;	
-  25:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		}
-  26:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	}
-  27:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	else
-  28:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	{
-  29:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		if(level)
-  30:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		{
-  31:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			PORTE.OUTSET = PIN4_bm;
+  17:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	{
+  18:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		if(level)
+  19:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		{
+  20:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			PORTF.OUTSET = PIN4_bm;
+  21:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		}
+  22:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		else
+  23:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		{
+  24:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			PORTF.OUTCLR = PIN4_bm;	
+  25:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		}
+  26:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	}
+  27:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	else
+  28:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	{
+  29:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		if(level)
+  30:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		{
+  31:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			PORTE.OUTSET = PIN4_bm;
   53               		.loc 1 31 0
   54 0016 80E1      		ldi r24,lo8(16)
   55               	.LVL3:
-  29:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		if(level)
+  29:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		if(level)
   56               		.loc 1 29 0
   57 0018 672B      		or r22,r23
   58 001a 01F4      		brne .L11
-  32:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		}
-  33:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		else
-  34:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		{
-  35:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			PORTE.OUTCLR = PIN4_bm;	
+  32:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		}
+  33:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		else
+  34:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		{
+  35:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			PORTE.OUTCLR = PIN4_bm;	
   59               		.loc 1 35 0
   60 001c 8093 8606 		sts 1670,r24
   61 0020 0895      		ret
   62               	.L11:
-  31:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			PORTE.OUTSET = PIN4_bm;
+  31:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			PORTE.OUTSET = PIN4_bm;
   63               		.loc 1 31 0
   64 0022 8093 8506 		sts 1669,r24
   65 0026 0895      		ret
   66               	.LVL4:
   67               	.L10:
-  68               	.LBB81:
-  69               	.LBB82:
-  20:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			PORTF.OUTSET = PIN4_bm;
+  68               	.LBB57:
+  69               	.LBB58:
+  20:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			PORTF.OUTSET = PIN4_bm;
   70               		.loc 1 20 0
   71 0028 80E1      		ldi r24,lo8(16)
   72               	.LVL5:
-  18:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		if(level)
+  18:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		if(level)
   73               		.loc 1 18 0
   74 002a 672B      		or r22,r23
   75 002c 01F0      		breq .L7
-  20:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			PORTF.OUTSET = PIN4_bm;
+  20:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			PORTF.OUTSET = PIN4_bm;
   76               		.loc 1 20 0
   77 002e 8093 A506 		sts 1701,r24
   78 0032 0895      		ret
   79               	.L7:
-  24:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			PORTF.OUTCLR = PIN4_bm;	
+  24:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			PORTF.OUTCLR = PIN4_bm;	
   80               		.loc 1 24 0
   81 0034 8093 A606 		sts 1702,r24
   82 0038 0895      		ret
-  83               	.LBE82:
-  84               	.LBE81:
+  83               	.LBE58:
+  84               	.LBE57:
   85               		.cfi_endproc
   86               	.LFE2:
   88               	.global	readExtMem
   90               	readExtMem:
   91               	.LFB3:
-  36:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		}	
-  37:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	
-  38:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	}
-  39:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** }
-  40:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 
-  41:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** int readExtMem(int which, int start, char * buf, int length)
-  42:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** {
+  36:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		}	
+  37:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	
+  38:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	}
+  39:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** }
+  40:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 
+  41:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** int readExtMem(int which, int start, char * buf, int length)
+  42:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** {
   92               		.loc 1 42 0
   93               		.cfi_startproc
   94               	.LVL6:
@@ -139,1045 +139,1093 @@
   96               	/* frame size = 0 */
   97               	/* stack size = 0 */
   98               	.L__stack_usage = 0
-  43:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	if(which == SRAM)
+  43:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	if(which == SRAM)
   99               		.loc 1 43 0
  100 003a 0197      		sbiw r24,1
  101 003c 01F4      		brne .+2
- 102 003e 00C0      		rjmp .L41
+ 102 003e 00C0      		rjmp .L43
  103               	.LVL7:
- 104               	.LBB117:
- 105               	.LBB118:
- 106               	.LBB119:
-  35:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			PORTE.OUTCLR = PIN4_bm;	
+ 104               	.LBB97:
+ 105               	.LBB98:
+ 106               	.LBB99:
+  35:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			PORTE.OUTCLR = PIN4_bm;	
  107               		.loc 1 35 0
  108 0040 80E1      		ldi r24,lo8(16)
  109               	.LVL8:
  110 0042 8093 8606 		sts 1670,r24
  111               	.LVL9:
- 112               	.LBE119:
- 113               	.LBE118:
- 114               	.LBB120:
- 115               	.LBB121:
-   6:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
+ 112               	.LBE99:
+ 113               	.LBE98:
+ 114               	.LBB100:
+ 115               	.LBB101:
+   6:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
  116               		.loc 1 6 0
  117 0046 84ED      		ldi r24,lo8(-44)
  118 0048 8093 C30A 		sts 2755,r24
- 119               	.L27:
-   8:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
+ 119               	.L22:
+   8:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
  120               		.loc 1 8 0
  121 004c 8091 C20A 		lds r24,2754
  122 0050 87FF      		sbrs r24,7
- 123 0052 00C0      		rjmp .L27
-  10:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
+ 123 0052 00C0      		rjmp .L22
+  10:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
  124               		.loc 1 10 0
  125 0054 8091 C30A 		lds r24,2755
  126               	.LVL10:
- 127               	.LBE121:
- 128               	.LBE120:
- 129               	.LBB122:
- 130               	.LBB123:
-   6:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
+ 127               	.LBE101:
+ 128               	.LBE100:
+ 129               	.LBB102:
+ 130               	.LBB103:
+   6:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
  131               		.loc 1 6 0
  132 0058 1092 C30A 		sts 2755,__zero_reg__
- 133               	.L29:
-   8:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
+ 133               	.L23:
+   8:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
  134               		.loc 1 8 0
  135 005c 8091 C20A 		lds r24,2754
  136 0060 87FF      		sbrs r24,7
- 137 0062 00C0      		rjmp .L29
-  10:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
+ 137 0062 00C0      		rjmp .L23
+  10:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
  138               		.loc 1 10 0
  139 0064 8091 C30A 		lds r24,2755
- 140               	.LBE123:
- 141               	.LBE122:
-  44:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	{
-  45:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		int i;
-  46:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		
-  47:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		setSS(SRAM, 0);
-  48:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		
-  49:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		spiTxRx(SRAM_READ);
-  50:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		spiTxRx((start >> 8) & 0x00FF);
-  51:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		spiTxRx(start & 0x00FF);
-  52:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		
-  53:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		for(i = 0; i < length; ++i)
-  54:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		{
-  55:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			buf[i] = spiTxRx(0);
-  56:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		}
-  57:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		
-  58:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		setSS(SRAM, 1);	
-  59:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		
-  60:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		return 1;
-  61:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	}
-  62:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	else
-  63:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	{
-  64:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		int i;
-  65:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		
-  66:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		setSS(FLASH, 0);
-  67:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		
-  68:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		spiTxRx(FLASH_BF1RD);
-  69:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		spiTxRx(0x00);
-  70:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		spiTxRx((start & 0x0300) >> 8);
+ 140               	.LBE103:
+ 141               	.LBE102:
+  44:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	{
+  45:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		int i;
+  46:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		
+  47:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		setSS(SRAM, 0);
+  48:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		
+  49:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		spiTxRx(SRAM_READ);
+  50:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		spiTxRx((start >> 8) & 0x00FF);
+  51:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		spiTxRx(start & 0x00FF);
+  52:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		
+  53:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		for(i = 0; i < length; ++i)
+  54:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		{
+  55:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			buf[i] = spiTxRx(0);
+  56:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		}
+  57:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		
+  58:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		setSS(SRAM, 1);	
+  59:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		
+  60:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		return 1;
+  61:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	}
+  62:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	else
+  63:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	{
+  64:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		int i;
+  65:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		
+  66:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		setSS(FLASH, 0);
+  67:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		
+  68:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		spiTxRx(FLASH_BF1RD);
+  69:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		spiTxRx(0x00);
+  70:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		spiTxRx((start & 0x0300) >> 8);
  142               		.loc 1 70 0
  143 0068 CB01      		movw r24,r22
  144 006a 8827      		clr r24
  145 006c 9370      		andi r25,3
- 146               	.LVL11:
- 147               	.LBB124:
- 148               	.LBB125:
-   6:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
- 149               		.loc 1 6 0
- 150 006e 9093 C30A 		sts 2755,r25
- 151               	.LVL12:
- 152               	.L31:
-   8:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
- 153               		.loc 1 8 0
- 154 0072 8091 C20A 		lds r24,2754
- 155 0076 87FF      		sbrs r24,7
- 156 0078 00C0      		rjmp .L31
-  10:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
- 157               		.loc 1 10 0
- 158 007a 8091 C30A 		lds r24,2755
- 159               	.LVL13:
- 160               	.LBE125:
- 161               	.LBE124:
- 162               	.LBB126:
- 163               	.LBB127:
-   6:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
+ 146 006e 892F      		mov r24,r25
+ 147 0070 990F      		lsl r25
+ 148 0072 990B      		sbc r25,r25
+ 149               	.LBB104:
+ 150               	.LBB105:
+   6:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
+ 151               		.loc 1 6 0
+ 152 0074 8093 C30A 		sts 2755,r24
+ 153               	.L24:
+   8:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
+ 154               		.loc 1 8 0
+ 155 0078 8091 C20A 		lds r24,2754
+ 156 007c 87FF      		sbrs r24,7
+ 157 007e 00C0      		rjmp .L24
+  10:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
+ 158               		.loc 1 10 0
+ 159 0080 8091 C30A 		lds r24,2755
+ 160               	.LBE105:
+ 161               	.LBE104:
+ 162               	.LBB106:
+ 163               	.LBB107:
+   6:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
  164               		.loc 1 6 0
- 165 007e 6093 C30A 		sts 2755,r22
- 166               	.L33:
-   8:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
+ 165 0084 6093 C30A 		sts 2755,r22
+ 166               	.L25:
+   8:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
  167               		.loc 1 8 0
- 168 0082 8091 C20A 		lds r24,2754
- 169 0086 87FF      		sbrs r24,7
- 170 0088 00C0      		rjmp .L33
-  10:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
+ 168 0088 8091 C20A 		lds r24,2754
+ 169 008c 87FF      		sbrs r24,7
+ 170 008e 00C0      		rjmp .L25
+  10:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
  171               		.loc 1 10 0
- 172 008a 8091 C30A 		lds r24,2755
- 173               	.LVL14:
- 174               	.LBE127:
- 175               	.LBE126:
- 176               	.LBB128:
- 177               	.LBB129:
-   6:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
+ 172 0090 8091 C30A 		lds r24,2755
+ 173               	.LVL11:
+ 174               	.LBE107:
+ 175               	.LBE106:
+ 176               	.LBB108:
+ 177               	.LBB109:
+   6:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
  178               		.loc 1 6 0
- 179 008e 1092 C30A 		sts 2755,__zero_reg__
- 180               	.L35:
-   8:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
+ 179 0094 1092 C30A 		sts 2755,__zero_reg__
+ 180               	.L26:
+   8:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
  181               		.loc 1 8 0
- 182 0092 8091 C20A 		lds r24,2754
- 183 0096 87FF      		sbrs r24,7
- 184 0098 00C0      		rjmp .L35
-  10:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
+ 182 0098 8091 C20A 		lds r24,2754
+ 183 009c 87FF      		sbrs r24,7
+ 184 009e 00C0      		rjmp .L26
+  10:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
  185               		.loc 1 10 0
- 186 009a 8091 C30A 		lds r24,2755
- 187               	.LVL15:
- 188               	.LBE129:
- 189               	.LBE128:
-  71:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		spiTxRx(start & 0x00FF);
-  72:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		spiTxRx(0x00);
-  73:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		
-  74:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		for(i = 0; i < length; ++i)
+ 186 00a0 8091 C30A 		lds r24,2755
+ 187               	.LVL12:
+ 188               	.LBE109:
+ 189               	.LBE108:
+  71:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		spiTxRx(start & 0x00FF);
+  72:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		spiTxRx(0x00);
+  73:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		
+  74:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		for(i = 0; i < length; ++i)
  190               		.loc 1 74 0
- 191 009e 1216      		cp __zero_reg__,r18
- 192 00a0 1306      		cpc __zero_reg__,r19
- 193 00a2 04F4      		brge .L39
- 194 00a4 FA01      		movw r30,r20
- 195 00a6 240F      		add r18,r20
- 196 00a8 351F      		adc r19,r21
- 197               	.LVL16:
- 198               	.L40:
- 199               	.LBB130:
- 200               	.LBB131:
-   6:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
- 201               		.loc 1 6 0 discriminator 2
- 202 00aa 1092 C30A 		sts 2755,__zero_reg__
- 203               	.L38:
-   8:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
- 204               		.loc 1 8 0
- 205 00ae 8091 C20A 		lds r24,2754
- 206 00b2 87FF      		sbrs r24,7
- 207 00b4 00C0      		rjmp .L38
-  10:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
- 208               		.loc 1 10 0
- 209 00b6 8091 C30A 		lds r24,2755
- 210               	.LBE131:
- 211               	.LBE130:
-  75:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		{
-  76:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			buf[i] = spiTxRx(0);
- 212               		.loc 1 76 0
- 213 00ba 8193      		st Z+,r24
- 214               	.LVL17:
-  74:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		for(i = 0; i < length; ++i)
- 215               		.loc 1 74 0
- 216 00bc E217      		cp r30,r18
- 217 00be F307      		cpc r31,r19
- 218 00c0 01F4      		brne .L40
- 219               	.LVL18:
- 220               	.L39:
- 221               	.LBB132:
- 222               	.LBB133:
-  31:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			PORTE.OUTSET = PIN4_bm;
- 223               		.loc 1 31 0
- 224 00c2 80E1      		ldi r24,lo8(16)
- 225 00c4 8093 8506 		sts 1669,r24
- 226               	.LBE133:
- 227               	.LBE132:
- 228               	.LBE117:
-  77:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		}
-  78:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		
-  79:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		setSS(FLASH, 1);	
-  80:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		
-  81:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		return 1;
-  82:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	}
-  83:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** }
- 229               		.loc 1 83 0
- 230 00c8 81E0      		ldi r24,lo8(1)
- 231 00ca 90E0      		ldi r25,0
- 232 00cc 0895      		ret
- 233               	.LVL19:
- 234               	.L41:
- 235               	.LBB134:
- 236               	.LBB135:
- 237               	.LBB136:
- 238               	.LBB137:
-  24:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			PORTF.OUTCLR = PIN4_bm;	
- 239               		.loc 1 24 0
- 240 00ce 80E1      		ldi r24,lo8(16)
- 241               	.LVL20:
- 242 00d0 8093 A606 		sts 1702,r24
- 243               	.LVL21:
- 244               	.LBE137:
- 245               	.LBE136:
- 246               	.LBE135:
- 247               	.LBB138:
- 248               	.LBB139:
-   6:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
- 249               		.loc 1 6 0
- 250 00d4 83E0      		ldi r24,lo8(3)
- 251 00d6 8093 C30A 		sts 2755,r24
- 252               	.L15:
-   8:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
- 253               		.loc 1 8 0
- 254 00da 8091 C20A 		lds r24,2754
- 255 00de 87FF      		sbrs r24,7
- 256 00e0 00C0      		rjmp .L15
-  10:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
- 257               		.loc 1 10 0
- 258 00e2 8091 C30A 		lds r24,2755
- 259               	.LVL22:
- 260               	.LBE139:
- 261               	.LBE138:
- 262               	.LBB140:
- 263               	.LBB141:
-   6:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
- 264               		.loc 1 6 0
- 265 00e6 7093 C30A 		sts 2755,r23
- 266               	.L17:
-   8:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
- 267               		.loc 1 8 0
- 268 00ea 8091 C20A 		lds r24,2754
- 269 00ee 87FF      		sbrs r24,7
- 270 00f0 00C0      		rjmp .L17
-  10:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
- 271               		.loc 1 10 0
- 272 00f2 8091 C30A 		lds r24,2755
- 273               	.LVL23:
- 274               	.LBE141:
- 275               	.LBE140:
- 276               	.LBB142:
- 277               	.LBB143:
-   6:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
- 278               		.loc 1 6 0
- 279 00f6 6093 C30A 		sts 2755,r22
- 280               	.L19:
-   8:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
- 281               		.loc 1 8 0
- 282 00fa 8091 C20A 		lds r24,2754
- 283 00fe 87FF      		sbrs r24,7
- 284 0100 00C0      		rjmp .L19
-  10:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
- 285               		.loc 1 10 0
- 286 0102 8091 C30A 		lds r24,2755
- 287               	.LVL24:
- 288               	.LBE143:
- 289               	.LBE142:
-  53:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		for(i = 0; i < length; ++i)
- 290               		.loc 1 53 0
- 291 0106 1216      		cp __zero_reg__,r18
- 292 0108 1306      		cpc __zero_reg__,r19
- 293 010a 04F4      		brge .L24
- 294 010c FA01      		movw r30,r20
- 295 010e 240F      		add r18,r20
- 296 0110 351F      		adc r19,r21
- 297               	.LVL25:
- 298               	.L25:
- 299               	.LBB144:
- 300               	.LBB145:
-   6:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
- 301               		.loc 1 6 0 discriminator 2
- 302 0112 1092 C30A 		sts 2755,__zero_reg__
- 303               	.L23:
-   8:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
- 304               		.loc 1 8 0
- 305 0116 8091 C20A 		lds r24,2754
- 306 011a 87FF      		sbrs r24,7
- 307 011c 00C0      		rjmp .L23
-  10:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
- 308               		.loc 1 10 0
- 309 011e 8091 C30A 		lds r24,2755
- 310               	.LBE145:
- 311               	.LBE144:
-  55:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			buf[i] = spiTxRx(0);
- 312               		.loc 1 55 0
- 313 0122 8193      		st Z+,r24
- 314               	.LVL26:
-  53:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		for(i = 0; i < length; ++i)
- 315               		.loc 1 53 0
- 316 0124 E217      		cp r30,r18
- 317 0126 F307      		cpc r31,r19
- 318 0128 01F4      		brne .L25
- 319               	.LVL27:
- 320               	.L24:
- 321               	.LBB146:
- 322               	.LBB147:
- 323               	.LBB148:
-  20:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			PORTF.OUTSET = PIN4_bm;
- 324               		.loc 1 20 0
- 325 012a 80E1      		ldi r24,lo8(16)
- 326 012c 8093 A506 		sts 1701,r24
- 327               	.LBE148:
- 328               	.LBE147:
- 329               	.LBE146:
- 330               	.LBE134:
- 331               		.loc 1 83 0
- 332 0130 81E0      		ldi r24,lo8(1)
- 333 0132 90E0      		ldi r25,0
- 334 0134 0895      		ret
- 335               		.cfi_endproc
- 336               	.LFE3:
- 338               	.global	writeExtMem
- 340               	writeExtMem:
- 341               	.LFB4:
-  84:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 
-  85:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** int writeExtMem(int which, int start, char * buf, int length)
-  86:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** {
- 342               		.loc 1 86 0
- 343               		.cfi_startproc
- 344               	.LVL28:
- 345               	/* prologue: function */
- 346               	/* frame size = 0 */
- 347               	/* stack size = 0 */
- 348               	.L__stack_usage = 0
-  87:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	if(which == SRAM)
- 349               		.loc 1 87 0
- 350 0136 0197      		sbiw r24,1
- 351 0138 01F4      		brne .+2
- 352 013a 00C0      		rjmp .L69
- 353               	.LVL29:
- 354               	.LBB181:
- 355               	.LBB182:
- 356               	.LBB183:
-  35:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			PORTE.OUTCLR = PIN4_bm;	
- 357               		.loc 1 35 0
- 358 013c 80E1      		ldi r24,lo8(16)
- 359               	.LVL30:
- 360 013e 8093 8606 		sts 1670,r24
- 361               	.LVL31:
- 362               	.LBE183:
- 363               	.LBE182:
- 364               	.LBB184:
- 365               	.LBB185:
-   6:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
- 366               		.loc 1 6 0
- 367 0142 84E8      		ldi r24,lo8(-124)
- 368 0144 8093 C30A 		sts 2755,r24
- 369               	.L57:
-   8:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
- 370               		.loc 1 8 0
- 371 0148 8091 C20A 		lds r24,2754
- 372 014c 87FF      		sbrs r24,7
- 373 014e 00C0      		rjmp .L57
-  10:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
- 374               		.loc 1 10 0
- 375 0150 8091 C30A 		lds r24,2755
- 376               	.LVL32:
- 377               	.LBE185:
- 378               	.LBE184:
- 379               	.LBB186:
- 380               	.LBB187:
-   6:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
- 381               		.loc 1 6 0
- 382 0154 1092 C30A 		sts 2755,__zero_reg__
- 383               	.L59:
-   8:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
+ 191 00a4 1216      		cp __zero_reg__,r18
+ 192 00a6 1306      		cpc __zero_reg__,r19
+ 193 00a8 04F4      		brge .L30
+ 194 00aa FA01      		movw r30,r20
+ 195               	.LBB110:
+ 196               	.LBB111:
+  41:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** int readExtMem(int which, int start, char * buf, int length)
+ 197               		.loc 1 41 0
+ 198 00ac 240F      		add r18,r20
+ 199 00ae 351F      		adc r19,r21
+ 200               	.LVL13:
+ 201               	.L29:
+ 202               	.LBE111:
+ 203               	.LBE110:
+ 204               	.LBB113:
+ 205               	.LBB114:
+   6:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
+ 206               		.loc 1 6 0 discriminator 2
+ 207 00b0 1092 C30A 		sts 2755,__zero_reg__
+ 208               	.L28:
+   8:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
+ 209               		.loc 1 8 0
+ 210 00b4 8091 C20A 		lds r24,2754
+ 211 00b8 87FF      		sbrs r24,7
+ 212 00ba 00C0      		rjmp .L28
+  10:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
+ 213               		.loc 1 10 0
+ 214 00bc 8091 C30A 		lds r24,2755
+ 215               	.LBE114:
+ 216               	.LBE113:
+  75:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		{
+  76:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			buf[i] = spiTxRx(0);
+ 217               		.loc 1 76 0
+ 218 00c0 8193      		st Z+,r24
+  74:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		for(i = 0; i < length; ++i)
+ 219               		.loc 1 74 0
+ 220 00c2 E217      		cp r30,r18
+ 221 00c4 F307      		cpc r31,r19
+ 222 00c6 01F4      		brne .L29
+ 223               	.LVL14:
+ 224               	.L30:
+ 225               	.LBB115:
+ 226               	.LBB112:
+  31:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			PORTE.OUTSET = PIN4_bm;
+ 227               		.loc 1 31 0
+ 228 00c8 80E1      		ldi r24,lo8(16)
+ 229 00ca 8093 8506 		sts 1669,r24
+ 230               	.LBE112:
+ 231               	.LBE115:
+ 232               	.LBE97:
+  77:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		}
+  78:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		
+  79:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		setSS(FLASH, 1);	
+  80:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		
+  81:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		return 1;
+  82:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	}
+  83:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** }
+ 233               		.loc 1 83 0
+ 234 00ce 81E0      		ldi r24,lo8(1)
+ 235 00d0 90E0      		ldi r25,0
+ 236 00d2 0895      		ret
+ 237               	.LVL15:
+ 238               	.L43:
+ 239               	.LBB116:
+ 240               	.LBB117:
+ 241               	.LBB118:
+ 242               	.LBB119:
+ 243               	.LBB120:
+  24:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			PORTF.OUTCLR = PIN4_bm;	
+ 244               		.loc 1 24 0
+ 245 00d4 80E1      		ldi r24,lo8(16)
+ 246               	.LVL16:
+ 247 00d6 8093 A606 		sts 1702,r24
+ 248               	.LVL17:
+ 249               	.LBE120:
+ 250               	.LBE119:
+ 251               	.LBE118:
+ 252               	.LBE117:
+ 253               	.LBB121:
+ 254               	.LBB122:
+   6:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
+ 255               		.loc 1 6 0
+ 256 00da 83E0      		ldi r24,lo8(3)
+ 257 00dc 8093 C30A 		sts 2755,r24
+ 258               	.L14:
+   8:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
+ 259               		.loc 1 8 0
+ 260 00e0 8091 C20A 		lds r24,2754
+ 261 00e4 87FF      		sbrs r24,7
+ 262 00e6 00C0      		rjmp .L14
+  10:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
+ 263               		.loc 1 10 0
+ 264 00e8 8091 C30A 		lds r24,2755
+ 265               	.LBE122:
+ 266               	.LBE121:
+ 267               	.LBB123:
+ 268               	.LBB124:
+   6:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
+ 269               		.loc 1 6 0
+ 270 00ec 7093 C30A 		sts 2755,r23
+ 271               	.L15:
+   8:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
+ 272               		.loc 1 8 0
+ 273 00f0 8091 C20A 		lds r24,2754
+ 274 00f4 87FF      		sbrs r24,7
+ 275 00f6 00C0      		rjmp .L15
+  10:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
+ 276               		.loc 1 10 0
+ 277 00f8 8091 C30A 		lds r24,2755
+ 278               	.LBE124:
+ 279               	.LBE123:
+ 280               	.LBB125:
+ 281               	.LBB126:
+   6:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
+ 282               		.loc 1 6 0
+ 283 00fc 6093 C30A 		sts 2755,r22
+ 284               	.L16:
+   8:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
+ 285               		.loc 1 8 0
+ 286 0100 8091 C20A 		lds r24,2754
+ 287 0104 87FF      		sbrs r24,7
+ 288 0106 00C0      		rjmp .L16
+  10:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
+ 289               		.loc 1 10 0
+ 290 0108 8091 C30A 		lds r24,2755
+ 291               	.LVL18:
+ 292               	.LBE126:
+ 293               	.LBE125:
+  53:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		for(i = 0; i < length; ++i)
+ 294               		.loc 1 53 0
+ 295 010c 1216      		cp __zero_reg__,r18
+ 296 010e 1306      		cpc __zero_reg__,r19
+ 297 0110 04F4      		brge .L21
+ 298 0112 FA01      		movw r30,r20
+ 299               	.LBB127:
+ 300               	.LBB128:
+ 301               	.LBB129:
+ 302               	.LBB130:
+  41:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** int readExtMem(int which, int start, char * buf, int length)
+ 303               		.loc 1 41 0
+ 304 0114 240F      		add r18,r20
+ 305 0116 351F      		adc r19,r21
+ 306               	.LVL19:
+ 307               	.L20:
+ 308               	.LBE130:
+ 309               	.LBE129:
+ 310               	.LBE128:
+ 311               	.LBE127:
+ 312               	.LBB134:
+ 313               	.LBB135:
+   6:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
+ 314               		.loc 1 6 0 discriminator 2
+ 315 0118 1092 C30A 		sts 2755,__zero_reg__
+ 316               	.L19:
+   8:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
+ 317               		.loc 1 8 0
+ 318 011c 8091 C20A 		lds r24,2754
+ 319 0120 87FF      		sbrs r24,7
+ 320 0122 00C0      		rjmp .L19
+  10:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
+ 321               		.loc 1 10 0
+ 322 0124 8091 C30A 		lds r24,2755
+ 323               	.LBE135:
+ 324               	.LBE134:
+  55:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			buf[i] = spiTxRx(0);
+ 325               		.loc 1 55 0
+ 326 0128 8193      		st Z+,r24
+  53:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		for(i = 0; i < length; ++i)
+ 327               		.loc 1 53 0
+ 328 012a E217      		cp r30,r18
+ 329 012c F307      		cpc r31,r19
+ 330 012e 01F4      		brne .L20
+ 331               	.LVL20:
+ 332               	.L21:
+ 333               	.LBB136:
+ 334               	.LBB133:
+ 335               	.LBB132:
+ 336               	.LBB131:
+  20:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			PORTF.OUTSET = PIN4_bm;
+ 337               		.loc 1 20 0
+ 338 0130 80E1      		ldi r24,lo8(16)
+ 339 0132 8093 A506 		sts 1701,r24
+ 340               	.LBE131:
+ 341               	.LBE132:
+ 342               	.LBE133:
+ 343               	.LBE136:
+ 344               	.LBE116:
+ 345               		.loc 1 83 0
+ 346 0136 81E0      		ldi r24,lo8(1)
+ 347 0138 90E0      		ldi r25,0
+ 348 013a 0895      		ret
+ 349               		.cfi_endproc
+ 350               	.LFE3:
+ 352               	.global	writeExtMem
+ 354               	writeExtMem:
+ 355               	.LFB4:
+  84:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 
+  85:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** int writeExtMem(int which, int start, char * buf, int length)
+  86:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** {
+ 356               		.loc 1 86 0
+ 357               		.cfi_startproc
+ 358               	.LVL21:
+ 359               	/* prologue: function */
+ 360               	/* frame size = 0 */
+ 361               	/* stack size = 0 */
+ 362               	.L__stack_usage = 0
+  87:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	if(which == SRAM)
+ 363               		.loc 1 87 0
+ 364 013c 0197      		sbiw r24,1
+ 365 013e 01F4      		brne .+2
+ 366 0140 00C0      		rjmp .L73
+ 367               	.LVL22:
+ 368               	.LBB173:
+ 369               	.LBB174:
+ 370               	.LBB175:
+  35:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			PORTE.OUTCLR = PIN4_bm;	
+ 371               		.loc 1 35 0
+ 372 0142 80E1      		ldi r24,lo8(16)
+ 373               	.LVL23:
+ 374 0144 8093 8606 		sts 1670,r24
+ 375               	.LVL24:
+ 376               	.LBE175:
+ 377               	.LBE174:
+ 378               	.LBB176:
+ 379               	.LBB177:
+   6:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
+ 380               		.loc 1 6 0
+ 381 0148 84E8      		ldi r24,lo8(-124)
+ 382 014a 8093 C30A 		sts 2755,r24
+ 383               	.L54:
+   8:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
  384               		.loc 1 8 0
- 385 0158 8091 C20A 		lds r24,2754
- 386 015c 87FF      		sbrs r24,7
- 387 015e 00C0      		rjmp .L59
-  10:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
+ 385 014e 8091 C20A 		lds r24,2754
+ 386 0152 87FF      		sbrs r24,7
+ 387 0154 00C0      		rjmp .L54
+  10:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
  388               		.loc 1 10 0
- 389 0160 8091 C30A 		lds r24,2755
- 390               	.LBE187:
- 391               	.LBE186:
-  88:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	{
-  89:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		int i;
-  90:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		
-  91:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		setSS(SRAM, 0);
-  92:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		
-  93:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		spiTxRx(SRAM_WRITE);
-  94:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		spiTxRx((start >> 8) & 0x00FF);
-  95:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		spiTxRx(start & 0x00FF);
-  96:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		
-  97:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		for(i = 0; i < length; ++i)
-  98:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		{
-  99:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			spiTxRx(buf[i]);
- 100:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		}
- 101:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		
- 102:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		setSS(SRAM, 1);	
- 103:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		
- 104:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		return 1;
- 105:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	}
- 106:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	else
- 107:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	{
- 108:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		int i;
- 109:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		
- 110:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		setSS(FLASH, 0);
- 111:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		
- 112:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		spiTxRx(FLASH_BF1WR);
- 113:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		spiTxRx(0x00);
- 114:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		spiTxRx((start & 0x0300) >> 8);
- 392               		.loc 1 114 0
- 393 0164 CB01      		movw r24,r22
- 394 0166 8827      		clr r24
- 395 0168 9370      		andi r25,3
- 396               	.LVL33:
- 397               	.LBB188:
- 398               	.LBB189:
-   6:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
- 399               		.loc 1 6 0
- 400 016a 9093 C30A 		sts 2755,r25
- 401               	.LVL34:
- 402               	.L61:
-   8:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
- 403               		.loc 1 8 0
- 404 016e 8091 C20A 		lds r24,2754
- 405 0172 87FF      		sbrs r24,7
- 406 0174 00C0      		rjmp .L61
-  10:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
- 407               		.loc 1 10 0
- 408 0176 8091 C30A 		lds r24,2755
- 409               	.LVL35:
- 410               	.LBE189:
- 411               	.LBE188:
- 412               	.LBB190:
- 413               	.LBB191:
-   6:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
- 414               		.loc 1 6 0
- 415 017a 6093 C30A 		sts 2755,r22
- 416               	.L63:
-   8:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
- 417               		.loc 1 8 0
- 418 017e 8091 C20A 		lds r24,2754
- 419 0182 87FF      		sbrs r24,7
- 420 0184 00C0      		rjmp .L63
-  10:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
- 421               		.loc 1 10 0
- 422 0186 8091 C30A 		lds r24,2755
- 423               	.LVL36:
- 424               	.LBE191:
- 425               	.LBE190:
- 115:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		spiTxRx(start & 0x00FF);
- 116:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		
- 117:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		for(i = 0; i < length; ++i)
- 426               		.loc 1 117 0
- 427 018a 1216      		cp __zero_reg__,r18
- 428 018c 1306      		cpc __zero_reg__,r19
- 429 018e 04F4      		brge .L67
- 430 0190 FA01      		movw r30,r20
- 431 0192 240F      		add r18,r20
- 432 0194 351F      		adc r19,r21
- 433               	.LVL37:
- 434               	.L68:
- 118:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		{
- 119:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			spiTxRx(buf[i]);
- 435               		.loc 1 119 0 discriminator 2
- 436 0196 8191      		ld r24,Z+
- 437               	.LVL38:
- 438               	.LBB192:
- 439               	.LBB193:
-   6:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
- 440               		.loc 1 6 0 discriminator 2
- 441 0198 8093 C30A 		sts 2755,r24
- 442               	.LVL39:
- 443               	.L66:
-   8:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
- 444               		.loc 1 8 0
- 445 019c 8091 C20A 		lds r24,2754
- 446 01a0 87FF      		sbrs r24,7
- 447 01a2 00C0      		rjmp .L66
-  10:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
- 448               		.loc 1 10 0
- 449 01a4 8091 C30A 		lds r24,2755
- 450               	.LVL40:
- 451               	.LBE193:
- 452               	.LBE192:
- 117:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		for(i = 0; i < length; ++i)
- 453               		.loc 1 117 0
- 454 01a8 E217      		cp r30,r18
- 455 01aa F307      		cpc r31,r19
- 456 01ac 01F4      		brne .L68
- 457               	.LVL41:
- 458               	.L67:
- 459               	.LBB194:
- 460               	.LBB195:
-  31:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			PORTE.OUTSET = PIN4_bm;
- 461               		.loc 1 31 0
- 462 01ae 80E1      		ldi r24,lo8(16)
- 463 01b0 8093 8506 		sts 1669,r24
- 464               	.LBE195:
- 465               	.LBE194:
- 466               	.LBE181:
- 120:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		}
- 121:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		
- 122:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		setSS(FLASH, 1);	
- 123:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		
- 124:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		return 1;
- 125:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	}
- 126:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 
- 127:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 
- 128:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** }
- 467               		.loc 1 128 0
- 468 01b4 81E0      		ldi r24,lo8(1)
- 469 01b6 90E0      		ldi r25,0
- 470 01b8 0895      		ret
- 471               	.LVL42:
- 472               	.L69:
- 473               	.LBB196:
- 474               	.LBB197:
- 475               	.LBB198:
- 476               	.LBB199:
-  24:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			PORTF.OUTCLR = PIN4_bm;	
- 477               		.loc 1 24 0
- 478 01ba 80E1      		ldi r24,lo8(16)
- 479               	.LVL43:
- 480 01bc 8093 A606 		sts 1702,r24
- 481               	.LVL44:
- 482               	.LBE199:
- 483               	.LBE198:
- 484               	.LBE197:
- 485               	.LBB200:
- 486               	.LBB201:
-   6:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
- 487               		.loc 1 6 0
- 488 01c0 82E0      		ldi r24,lo8(2)
- 489 01c2 8093 C30A 		sts 2755,r24
- 490               	.L45:
-   8:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
- 491               		.loc 1 8 0
- 492 01c6 8091 C20A 		lds r24,2754
- 493 01ca 87FF      		sbrs r24,7
- 494 01cc 00C0      		rjmp .L45
-  10:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
- 495               		.loc 1 10 0
- 496 01ce 8091 C30A 		lds r24,2755
- 497               	.LVL45:
- 498               	.LBE201:
- 499               	.LBE200:
- 500               	.LBB202:
- 501               	.LBB203:
-   6:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
- 502               		.loc 1 6 0
- 503 01d2 7093 C30A 		sts 2755,r23
- 504               	.L47:
-   8:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
- 505               		.loc 1 8 0
- 506 01d6 8091 C20A 		lds r24,2754
- 507 01da 87FF      		sbrs r24,7
- 508 01dc 00C0      		rjmp .L47
-  10:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
- 509               		.loc 1 10 0
- 510 01de 8091 C30A 		lds r24,2755
- 511               	.LVL46:
- 512               	.LBE203:
- 513               	.LBE202:
- 514               	.LBB204:
- 515               	.LBB205:
-   6:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
- 516               		.loc 1 6 0
- 517 01e2 6093 C30A 		sts 2755,r22
- 518               	.L49:
-   8:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
- 519               		.loc 1 8 0
- 520 01e6 8091 C20A 		lds r24,2754
- 521 01ea 87FF      		sbrs r24,7
- 522 01ec 00C0      		rjmp .L49
-  10:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
- 523               		.loc 1 10 0
- 524 01ee 8091 C30A 		lds r24,2755
- 525               	.LVL47:
- 526               	.LBE205:
- 527               	.LBE204:
-  97:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		for(i = 0; i < length; ++i)
- 528               		.loc 1 97 0
- 529 01f2 1216      		cp __zero_reg__,r18
- 530 01f4 1306      		cpc __zero_reg__,r19
- 531 01f6 04F4      		brge .L54
- 532 01f8 FA01      		movw r30,r20
- 533 01fa 240F      		add r18,r20
- 534 01fc 351F      		adc r19,r21
- 535               	.LVL48:
- 536               	.L55:
-  99:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			spiTxRx(buf[i]);
- 537               		.loc 1 99 0 discriminator 2
- 538 01fe 8191      		ld r24,Z+
- 539               	.LVL49:
- 540               	.LBB206:
- 541               	.LBB207:
-   6:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
- 542               		.loc 1 6 0 discriminator 2
- 543 0200 8093 C30A 		sts 2755,r24
- 544               	.LVL50:
- 545               	.L53:
-   8:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
- 546               		.loc 1 8 0
- 547 0204 8091 C20A 		lds r24,2754
- 548 0208 87FF      		sbrs r24,7
- 549 020a 00C0      		rjmp .L53
-  10:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
- 550               		.loc 1 10 0
- 551 020c 8091 C30A 		lds r24,2755
- 552               	.LVL51:
- 553               	.LBE207:
- 554               	.LBE206:
-  97:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		for(i = 0; i < length; ++i)
- 555               		.loc 1 97 0
- 556 0210 E217      		cp r30,r18
- 557 0212 F307      		cpc r31,r19
- 558 0214 01F4      		brne .L55
- 559               	.LVL52:
- 560               	.L54:
- 561               	.LBB208:
- 562               	.LBB209:
- 563               	.LBB210:
-  20:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			PORTF.OUTSET = PIN4_bm;
- 564               		.loc 1 20 0
- 565 0216 80E1      		ldi r24,lo8(16)
- 566 0218 8093 A506 		sts 1701,r24
- 567               	.LBE210:
- 568               	.LBE209:
- 569               	.LBE208:
- 570               	.LBE196:
- 571               		.loc 1 128 0
- 572 021c 81E0      		ldi r24,lo8(1)
- 573 021e 90E0      		ldi r25,0
- 574 0220 0895      		ret
- 575               		.cfi_endproc
- 576               	.LFE4:
- 578               	.global	initFlash
- 580               	initFlash:
- 581               	.LFB5:
- 129:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 
- 130:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 
- 131:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 
- 132:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** void initFlash()
- 133:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** {
- 582               		.loc 1 133 0
- 583               		.cfi_startproc
- 584               	/* prologue: function */
- 585               	/* frame size = 0 */
- 586               	/* stack size = 0 */
- 587               	.L__stack_usage = 0
- 588 0222 0895      		ret
- 589               		.cfi_endproc
- 590               	.LFE5:
- 592               		.section	.rodata.str1.1,"aMS",@progbits,1
- 593               	.LC0:
- 594 0000 5352 2069 		.string	"SR is: %x\r\n"
- 594      733A 2025 
- 594      780D 0A00 
- 595               		.text
- 596               	.global	initSRAM
- 598               	initSRAM:
- 599               	.LFB6:
- 134:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 
- 135:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** }
- 136:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 
- 137:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** void initSRAM()
- 138:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** {
- 600               		.loc 1 138 0
- 601               		.cfi_startproc
- 602               	/* prologue: function */
- 603               	/* frame size = 0 */
- 604               	/* stack size = 0 */
- 605               	.L__stack_usage = 0
- 606               	.LVL53:
- 607               	.LBB253:
- 608               	.LBB254:
- 609               	.LBB255:
-  24:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			PORTF.OUTCLR = PIN4_bm;	
- 610               		.loc 1 24 0
- 611 0224 80E1      		ldi r24,lo8(16)
- 612 0226 8093 A606 		sts 1702,r24
- 613               	.LVL54:
- 614               	.LBE255:
- 615               	.LBE254:
- 616               	.LBE253:
- 617               	.LBB256:
- 618               	.LBB257:
-   6:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
- 619               		.loc 1 6 0
- 620 022a 81E0      		ldi r24,lo8(1)
- 621 022c 8093 C30A 		sts 2755,r24
- 622               	.L73:
-   8:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
- 623               		.loc 1 8 0
- 624 0230 8091 C20A 		lds r24,2754
- 625 0234 87FF      		sbrs r24,7
- 626 0236 00C0      		rjmp .L73
-  10:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
- 627               		.loc 1 10 0
- 628 0238 8091 C30A 		lds r24,2755
- 629               	.LVL55:
- 630               	.LBE257:
- 631               	.LBE256:
- 632               	.LBB258:
- 633               	.LBB259:
-   6:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
- 634               		.loc 1 6 0
- 635 023c 81E4      		ldi r24,lo8(65)
- 636 023e 8093 C30A 		sts 2755,r24
- 637               	.L75:
-   8:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
- 638               		.loc 1 8 0
- 639 0242 8091 C20A 		lds r24,2754
- 640 0246 87FF      		sbrs r24,7
- 641 0248 00C0      		rjmp .L75
-  10:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
- 642               		.loc 1 10 0
- 643 024a 8091 C30A 		lds r24,2755
- 644               	.LVL56:
- 645               	.LBE259:
- 646               	.LBE258:
- 647               	.LBB260:
- 648               	.LBB261:
- 649               	.LBB262:
-  20:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			PORTF.OUTSET = PIN4_bm;
- 650               		.loc 1 20 0
- 651 024e 80E1      		ldi r24,lo8(16)
- 652 0250 8093 A506 		sts 1701,r24
- 653               	.LVL57:
- 654               	.LBE262:
- 655               	.LBE261:
- 656               	.LBE260:
- 657               	.LBB263:
- 658               	.LBB264:
- 659               	.LBB265:
- 660               	.LBB266:
-  24:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			PORTF.OUTCLR = PIN4_bm;	
- 661               		.loc 1 24 0
- 662 0254 8093 A606 		sts 1702,r24
- 663               	.LVL58:
- 664               	.LBE266:
- 665               	.LBE265:
- 666               	.LBE264:
- 667               	.LBB267:
- 668               	.LBB268:
-   6:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
- 669               		.loc 1 6 0
- 670 0258 85E0      		ldi r24,lo8(5)
- 671 025a 8093 C30A 		sts 2755,r24
- 672               	.L77:
-   8:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
- 673               		.loc 1 8 0
- 674 025e 8091 C20A 		lds r24,2754
- 675 0262 87FF      		sbrs r24,7
- 676 0264 00C0      		rjmp .L77
-  10:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
- 677               		.loc 1 10 0
- 678 0266 8091 C30A 		lds r24,2755
- 679               	.LVL59:
- 680               	.LBE268:
- 681               	.LBE267:
- 682               	.LBB269:
- 683               	.LBB270:
-   6:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
- 684               		.loc 1 6 0
- 685 026a 1092 C30A 		sts 2755,__zero_reg__
- 686               	.L79:
-   8:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
- 687               		.loc 1 8 0
- 688 026e 8091 C20A 		lds r24,2754
- 689 0272 87FF      		sbrs r24,7
- 690 0274 00C0      		rjmp .L79
-  10:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
- 691               		.loc 1 10 0
- 692 0276 8091 C30A 		lds r24,2755
- 693               	.LVL60:
- 694               	.LBE270:
- 695               	.LBE269:
- 696               	.LBB271:
- 697               	.LBB272:
- 698               	.LBB273:
-  20:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			PORTF.OUTSET = PIN4_bm;
- 699               		.loc 1 20 0
- 700 027a 90E1      		ldi r25,lo8(16)
- 701 027c 9093 A506 		sts 1701,r25
- 702               	.LBE273:
- 703               	.LBE272:
- 704               	.LBE271:
- 139:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		setSS(SRAM, 0);
- 140:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		
- 141:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		spiTxRx(SRAM_WRSR);
- 142:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		spiTxRx(0x41);	// set mode to sequential, disable HOLD feature
- 143:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		
- 144:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		setSS(SRAM, 1);	
- 145:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	
- 146:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	{
- 147:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		uint8_t val;
- 148:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		setSS(SRAM, 0);
- 149:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		
- 150:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		spiTxRx(SRAM_RDSR);
- 151:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		val = spiTxRx(0x0);	// set mode to sequential, disable HOLD feature
- 152:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		
- 153:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		setSS(SRAM, 1);			
- 154:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		
- 155:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		printf("SR is: %x\r\n",val);
- 705               		.loc 1 155 0
- 706 0280 1F92      		push __zero_reg__
- 707               	.LCFI0:
- 708               		.cfi_def_cfa_offset 4
- 709 0282 8F93      		push r24
- 710               	.LCFI1:
- 711               		.cfi_def_cfa_offset 5
- 712 0284 80E0      		ldi r24,lo8(.LC0)
- 713 0286 90E0      		ldi r25,hi8(.LC0)
- 714 0288 9F93      		push r25
- 715               	.LCFI2:
- 716               		.cfi_def_cfa_offset 6
- 717 028a 8F93      		push r24
- 718               	.LCFI3:
- 719               		.cfi_def_cfa_offset 7
- 720 028c 0E94 0000 		call printf
- 721               	.LVL61:
- 722 0290 0F90      		pop __tmp_reg__
- 723 0292 0F90      		pop __tmp_reg__
- 724 0294 0F90      		pop __tmp_reg__
- 725 0296 0F90      		pop __tmp_reg__
- 726               	.LCFI4:
- 727               		.cfi_def_cfa_offset 3
- 728 0298 0895      		ret
- 729               	.LBE263:
- 730               		.cfi_endproc
- 731               	.LFE6:
- 733               	.global	initExtMem
- 735               	initExtMem:
- 736               	.LFB7:
- 156:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	}
- 157:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** }
- 158:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 
- 159:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** void initExtMem()
- 160:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** {
- 737               		.loc 1 160 0
- 738               		.cfi_startproc
- 739               	/* prologue: function */
- 740               	/* frame size = 0 */
- 741               	/* stack size = 0 */
- 742               	.L__stack_usage = 0
- 161:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	PORTE.OUTSET = PIN4_bm;
- 743               		.loc 1 161 0
- 744 029a 80E1      		ldi r24,lo8(16)
- 745 029c 8093 8506 		sts 1669,r24
- 162:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	PORTE.DIRSET = PIN4_bm;
- 746               		.loc 1 162 0
- 747 02a0 8093 8106 		sts 1665,r24
- 163:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 
- 164:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	// set !SS1 lhigh
- 165:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	PORTF.OUTSET = PIN4_bm;
- 748               		.loc 1 165 0
- 749 02a4 8093 A506 		sts 1701,r24
- 166:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	PORTF.DIRSET = PIN4_bm;
- 750               		.loc 1 166 0
- 751 02a8 8093 A106 		sts 1697,r24
- 167:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 
- 168:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 
- 169:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	PORTE.DIRSET = PIN5_bm | PIN7_bm;	// !ss/mosi/sck as output
- 752               		.loc 1 169 0
- 753 02ac 90EA      		ldi r25,lo8(-96)
- 754 02ae 9093 8106 		sts 1665,r25
- 170:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	PORTE.DIRCLR = PIN6_bm;				// miso as input
- 755               		.loc 1 170 0
- 756 02b2 90E4      		ldi r25,lo8(64)
- 757 02b4 9093 8206 		sts 1666,r25
- 171:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 
- 172:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.CTRL = SPI_ENABLE_bm | SPI_MASTER_bm;	//mode 0, clock/4
- 758               		.loc 1 172 0
- 759 02b8 90E5      		ldi r25,lo8(80)
- 760 02ba 9093 C00A 		sts 2752,r25
- 761               	.LVL62:
- 762               	.LBB301:
- 763               	.LBB302:
- 764               	.LBB303:
- 765               	.LBB304:
-  24:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			PORTF.OUTCLR = PIN4_bm;	
- 766               		.loc 1 24 0
- 767 02be 8093 A606 		sts 1702,r24
- 768               	.LVL63:
- 769               	.LBE304:
- 770               	.LBE303:
- 771               	.LBE302:
- 772               	.LBB305:
- 773               	.LBB306:
-   6:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
- 774               		.loc 1 6 0
- 775 02c2 81E0      		ldi r24,lo8(1)
- 776 02c4 8093 C30A 		sts 2755,r24
- 777               	.L82:
-   8:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
- 778               		.loc 1 8 0
- 779 02c8 8091 C20A 		lds r24,2754
- 780 02cc 87FF      		sbrs r24,7
- 781 02ce 00C0      		rjmp .L82
-  10:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
- 782               		.loc 1 10 0
- 783 02d0 8091 C30A 		lds r24,2755
- 784               	.LVL64:
- 785               	.LBE306:
- 786               	.LBE305:
- 787               	.LBB307:
- 788               	.LBB308:
-   6:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
- 789               		.loc 1 6 0
- 790 02d4 81E4      		ldi r24,lo8(65)
- 791 02d6 8093 C30A 		sts 2755,r24
- 792               	.L84:
-   8:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
- 793               		.loc 1 8 0
- 794 02da 8091 C20A 		lds r24,2754
- 795 02de 87FF      		sbrs r24,7
- 796 02e0 00C0      		rjmp .L84
-  10:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
- 797               		.loc 1 10 0
- 798 02e2 8091 C30A 		lds r24,2755
- 799               	.LVL65:
- 800               	.LBE308:
- 801               	.LBE307:
- 802               	.LBB309:
- 803               	.LBB310:
- 804               	.LBB311:
-  20:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			PORTF.OUTSET = PIN4_bm;
- 805               		.loc 1 20 0
- 806 02e6 80E1      		ldi r24,lo8(16)
- 807 02e8 8093 A506 		sts 1701,r24
- 808               	.LVL66:
- 809               	.LBE311:
- 810               	.LBE310:
- 811               	.LBE309:
- 812               	.LBB312:
- 813               	.LBB313:
- 814               	.LBB314:
- 815               	.LBB315:
-  24:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			PORTF.OUTCLR = PIN4_bm;	
- 816               		.loc 1 24 0
- 817 02ec 8093 A606 		sts 1702,r24
- 818               	.LVL67:
- 819               	.LBE315:
- 820               	.LBE314:
- 821               	.LBE313:
- 822               	.LBB316:
- 823               	.LBB317:
-   6:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
- 824               		.loc 1 6 0
- 825 02f0 85E0      		ldi r24,lo8(5)
- 826 02f2 8093 C30A 		sts 2755,r24
- 827               	.L86:
-   8:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
- 828               		.loc 1 8 0
- 829 02f6 8091 C20A 		lds r24,2754
- 830 02fa 87FF      		sbrs r24,7
- 831 02fc 00C0      		rjmp .L86
-  10:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
- 832               		.loc 1 10 0
- 833 02fe 8091 C30A 		lds r24,2755
- 834               	.LVL68:
- 835               	.LBE317:
- 836               	.LBE316:
- 837               	.LBB318:
- 838               	.LBB319:
-   6:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
- 839               		.loc 1 6 0
- 840 0302 1092 C30A 		sts 2755,__zero_reg__
- 841               	.L88:
-   8:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
- 842               		.loc 1 8 0
- 843 0306 8091 C20A 		lds r24,2754
- 844 030a 87FF      		sbrs r24,7
- 845 030c 00C0      		rjmp .L88
-  10:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
- 846               		.loc 1 10 0
- 847 030e 8091 C30A 		lds r24,2755
- 848               	.LVL69:
- 849               	.LBE319:
- 850               	.LBE318:
- 851               	.LBB320:
- 852               	.LBB321:
- 853               	.LBB322:
-  20:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			PORTF.OUTSET = PIN4_bm;
- 854               		.loc 1 20 0
- 855 0312 90E1      		ldi r25,lo8(16)
- 856 0314 9093 A506 		sts 1701,r25
- 857               	.LBE322:
- 858               	.LBE321:
- 859               	.LBE320:
- 155:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		printf("SR is: %x\r\n",val);
- 860               		.loc 1 155 0
- 861 0318 1F92      		push __zero_reg__
- 862               	.LCFI5:
- 863               		.cfi_def_cfa_offset 4
- 864 031a 8F93      		push r24
- 865               	.LCFI6:
- 866               		.cfi_def_cfa_offset 5
- 867 031c 80E0      		ldi r24,lo8(.LC0)
- 868 031e 90E0      		ldi r25,hi8(.LC0)
- 869 0320 9F93      		push r25
- 870               	.LCFI7:
- 871               		.cfi_def_cfa_offset 6
- 872 0322 8F93      		push r24
- 873               	.LCFI8:
- 874               		.cfi_def_cfa_offset 7
- 875 0324 0E94 0000 		call printf
- 876               	.LVL70:
- 877 0328 0F90      		pop __tmp_reg__
- 878 032a 0F90      		pop __tmp_reg__
- 879 032c 0F90      		pop __tmp_reg__
- 880 032e 0F90      		pop __tmp_reg__
- 881               	.LCFI9:
- 882               		.cfi_def_cfa_offset 3
- 883 0330 0895      		ret
- 884               	.LBE312:
- 885               	.LBE301:
- 886               		.cfi_endproc
- 887               	.LFE7:
- 889               	.Letext0:
- 890               		.file 2 "/usr/lib/avr/include/stdint.h"
- 891               		.file 3 "/usr/lib/avr/include/avr/iox256a3.h"
- 892               		.file 4 "/usr/lib/avr/include/stdio.h"
+ 389 0156 8091 C30A 		lds r24,2755
+ 390               	.LVL25:
+ 391               	.LBE177:
+ 392               	.LBE176:
+ 393               	.LBB178:
+ 394               	.LBB179:
+   6:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
+ 395               		.loc 1 6 0
+ 396 015a 1092 C30A 		sts 2755,__zero_reg__
+ 397               	.L55:
+   8:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
+ 398               		.loc 1 8 0
+ 399 015e 8091 C20A 		lds r24,2754
+ 400 0162 87FF      		sbrs r24,7
+ 401 0164 00C0      		rjmp .L55
+  10:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
+ 402               		.loc 1 10 0
+ 403 0166 8091 C30A 		lds r24,2755
+ 404               	.LBE179:
+ 405               	.LBE178:
+  88:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	{
+  89:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		int i;
+  90:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		
+  91:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		setSS(SRAM, 0);
+  92:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		
+  93:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		spiTxRx(SRAM_WRITE);
+  94:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		spiTxRx((start >> 8) & 0x00FF);
+  95:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		spiTxRx(start & 0x00FF);
+  96:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		
+  97:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		for(i = 0; i < length; ++i)
+  98:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		{
+  99:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			spiTxRx(buf[i]);
+ 100:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		}
+ 101:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		
+ 102:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		setSS(SRAM, 1);	
+ 103:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		
+ 104:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		return 1;
+ 105:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	}
+ 106:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	else
+ 107:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	{
+ 108:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		int i;
+ 109:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		
+ 110:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		setSS(FLASH, 0);
+ 111:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		
+ 112:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		spiTxRx(FLASH_BF1WR);
+ 113:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		spiTxRx(0x00);
+ 114:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		spiTxRx((start & 0x0300) >> 8);
+ 406               		.loc 1 114 0
+ 407 016a CB01      		movw r24,r22
+ 408 016c 8827      		clr r24
+ 409 016e 9370      		andi r25,3
+ 410 0170 892F      		mov r24,r25
+ 411 0172 990F      		lsl r25
+ 412 0174 990B      		sbc r25,r25
+ 413               	.LBB180:
+ 414               	.LBB181:
+   6:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
+ 415               		.loc 1 6 0
+ 416 0176 8093 C30A 		sts 2755,r24
+ 417               	.L56:
+   8:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
+ 418               		.loc 1 8 0
+ 419 017a 8091 C20A 		lds r24,2754
+ 420 017e 87FF      		sbrs r24,7
+ 421 0180 00C0      		rjmp .L56
+  10:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
+ 422               		.loc 1 10 0
+ 423 0182 8091 C30A 		lds r24,2755
+ 424               	.LBE181:
+ 425               	.LBE180:
+ 426               	.LBB182:
+ 427               	.LBB183:
+   6:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
+ 428               		.loc 1 6 0
+ 429 0186 6093 C30A 		sts 2755,r22
+ 430               	.L57:
+   8:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
+ 431               		.loc 1 8 0
+ 432 018a 8091 C20A 		lds r24,2754
+ 433 018e 87FF      		sbrs r24,7
+ 434 0190 00C0      		rjmp .L57
+  10:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
+ 435               		.loc 1 10 0
+ 436 0192 8091 C30A 		lds r24,2755
+ 437               	.LVL26:
+ 438               	.LBE183:
+ 439               	.LBE182:
+ 115:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		spiTxRx(start & 0x00FF);
+ 116:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		
+ 117:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		for(i = 0; i < length; ++i)
+ 440               		.loc 1 117 0
+ 441 0196 1216      		cp __zero_reg__,r18
+ 442 0198 1306      		cpc __zero_reg__,r19
+ 443 019a 04F4      		brge .L61
+ 444 019c FA01      		movw r30,r20
+ 445               	.LBB184:
+ 446               	.LBB185:
+  85:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** int writeExtMem(int which, int start, char * buf, int length)
+ 447               		.loc 1 85 0
+ 448 019e 240F      		add r18,r20
+ 449 01a0 351F      		adc r19,r21
+ 450               	.LVL27:
+ 451               	.L60:
+ 452               	.LBE185:
+ 453               	.LBE184:
+ 118:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		{
+ 119:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			spiTxRx(buf[i]);
+ 454               		.loc 1 119 0 discriminator 2
+ 455 01a2 8191      		ld r24,Z+
+ 456               	.LVL28:
+ 457               	.LBB187:
+ 458               	.LBB188:
+   6:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
+ 459               		.loc 1 6 0 discriminator 2
+ 460 01a4 8093 C30A 		sts 2755,r24
+ 461               	.LVL29:
+ 462               	.L59:
+   8:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
+ 463               		.loc 1 8 0
+ 464 01a8 8091 C20A 		lds r24,2754
+ 465 01ac 87FF      		sbrs r24,7
+ 466 01ae 00C0      		rjmp .L59
+  10:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
+ 467               		.loc 1 10 0
+ 468 01b0 8091 C30A 		lds r24,2755
+ 469               	.LBE188:
+ 470               	.LBE187:
+ 117:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		for(i = 0; i < length; ++i)
+ 471               		.loc 1 117 0
+ 472 01b4 E217      		cp r30,r18
+ 473 01b6 F307      		cpc r31,r19
+ 474 01b8 01F4      		brne .L60
+ 475               	.LVL30:
+ 476               	.L61:
+ 477               	.LBB189:
+ 478               	.LBB186:
+  31:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			PORTE.OUTSET = PIN4_bm;
+ 479               		.loc 1 31 0
+ 480 01ba 80E1      		ldi r24,lo8(16)
+ 481 01bc 8093 8506 		sts 1669,r24
+ 482               	.LBE186:
+ 483               	.LBE189:
+ 484               	.LBE173:
+ 120:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		}
+ 121:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		
+ 122:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		setSS(FLASH, 1);	
+ 123:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		
+ 124:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		return 1;
+ 125:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	}
+ 126:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 
+ 127:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 
+ 128:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** }
+ 485               		.loc 1 128 0
+ 486 01c0 81E0      		ldi r24,lo8(1)
+ 487 01c2 90E0      		ldi r25,0
+ 488 01c4 0895      		ret
+ 489               	.LVL31:
+ 490               	.L73:
+ 491               	.LBB190:
+ 492               	.LBB191:
+ 493               	.LBB192:
+ 494               	.LBB193:
+ 495               	.LBB194:
+  24:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			PORTF.OUTCLR = PIN4_bm;	
+ 496               		.loc 1 24 0
+ 497 01c6 80E1      		ldi r24,lo8(16)
+ 498               	.LVL32:
+ 499 01c8 8093 A606 		sts 1702,r24
+ 500               	.LVL33:
+ 501               	.LBE194:
+ 502               	.LBE193:
+ 503               	.LBE192:
+ 504               	.LBE191:
+ 505               	.LBB195:
+ 506               	.LBB196:
+   6:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
+ 507               		.loc 1 6 0
+ 508 01cc 82E0      		ldi r24,lo8(2)
+ 509 01ce 8093 C30A 		sts 2755,r24
+ 510               	.L46:
+   8:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
+ 511               		.loc 1 8 0
+ 512 01d2 8091 C20A 		lds r24,2754
+ 513 01d6 87FF      		sbrs r24,7
+ 514 01d8 00C0      		rjmp .L46
+  10:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
+ 515               		.loc 1 10 0
+ 516 01da 8091 C30A 		lds r24,2755
+ 517               	.LBE196:
+ 518               	.LBE195:
+ 519               	.LBB197:
+ 520               	.LBB198:
+   6:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
+ 521               		.loc 1 6 0
+ 522 01de 7093 C30A 		sts 2755,r23
+ 523               	.L47:
+   8:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
+ 524               		.loc 1 8 0
+ 525 01e2 8091 C20A 		lds r24,2754
+ 526 01e6 87FF      		sbrs r24,7
+ 527 01e8 00C0      		rjmp .L47
+  10:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
+ 528               		.loc 1 10 0
+ 529 01ea 8091 C30A 		lds r24,2755
+ 530               	.LBE198:
+ 531               	.LBE197:
+ 532               	.LBB199:
+ 533               	.LBB200:
+   6:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
+ 534               		.loc 1 6 0
+ 535 01ee 6093 C30A 		sts 2755,r22
+ 536               	.L48:
+   8:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
+ 537               		.loc 1 8 0
+ 538 01f2 8091 C20A 		lds r24,2754
+ 539 01f6 87FF      		sbrs r24,7
+ 540 01f8 00C0      		rjmp .L48
+  10:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
+ 541               		.loc 1 10 0
+ 542 01fa 8091 C30A 		lds r24,2755
+ 543               	.LVL34:
+ 544               	.LBE200:
+ 545               	.LBE199:
+  97:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		for(i = 0; i < length; ++i)
+ 546               		.loc 1 97 0
+ 547 01fe 1216      		cp __zero_reg__,r18
+ 548 0200 1306      		cpc __zero_reg__,r19
+ 549 0202 04F4      		brge .L53
+ 550 0204 FA01      		movw r30,r20
+ 551               	.LBB201:
+ 552               	.LBB202:
+ 553               	.LBB203:
+ 554               	.LBB204:
+  85:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** int writeExtMem(int which, int start, char * buf, int length)
+ 555               		.loc 1 85 0
+ 556 0206 240F      		add r18,r20
+ 557 0208 351F      		adc r19,r21
+ 558               	.LVL35:
+ 559               	.L52:
+ 560               	.LBE204:
+ 561               	.LBE203:
+ 562               	.LBE202:
+ 563               	.LBE201:
+  99:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			spiTxRx(buf[i]);
+ 564               		.loc 1 99 0 discriminator 2
+ 565 020a 8191      		ld r24,Z+
+ 566               	.LVL36:
+ 567               	.LBB208:
+ 568               	.LBB209:
+   6:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
+ 569               		.loc 1 6 0 discriminator 2
+ 570 020c 8093 C30A 		sts 2755,r24
+ 571               	.LVL37:
+ 572               	.L51:
+   8:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
+ 573               		.loc 1 8 0
+ 574 0210 8091 C20A 		lds r24,2754
+ 575 0214 87FF      		sbrs r24,7
+ 576 0216 00C0      		rjmp .L51
+  10:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
+ 577               		.loc 1 10 0
+ 578 0218 8091 C30A 		lds r24,2755
+ 579               	.LBE209:
+ 580               	.LBE208:
+  97:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		for(i = 0; i < length; ++i)
+ 581               		.loc 1 97 0
+ 582 021c E217      		cp r30,r18
+ 583 021e F307      		cpc r31,r19
+ 584 0220 01F4      		brne .L52
+ 585               	.LVL38:
+ 586               	.L53:
+ 587               	.LBB210:
+ 588               	.LBB207:
+ 589               	.LBB206:
+ 590               	.LBB205:
+  20:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			PORTF.OUTSET = PIN4_bm;
+ 591               		.loc 1 20 0
+ 592 0222 80E1      		ldi r24,lo8(16)
+ 593 0224 8093 A506 		sts 1701,r24
+ 594               	.LBE205:
+ 595               	.LBE206:
+ 596               	.LBE207:
+ 597               	.LBE210:
+ 598               	.LBE190:
+ 599               		.loc 1 128 0
+ 600 0228 81E0      		ldi r24,lo8(1)
+ 601 022a 90E0      		ldi r25,0
+ 602 022c 0895      		ret
+ 603               		.cfi_endproc
+ 604               	.LFE4:
+ 606               	.global	initFlash
+ 608               	initFlash:
+ 609               	.LFB5:
+ 129:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 
+ 130:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 
+ 131:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 
+ 132:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** void initFlash()
+ 133:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** {
+ 610               		.loc 1 133 0
+ 611               		.cfi_startproc
+ 612               	/* prologue: function */
+ 613               	/* frame size = 0 */
+ 614               	/* stack size = 0 */
+ 615               	.L__stack_usage = 0
+ 616 022e 0895      		ret
+ 617               		.cfi_endproc
+ 618               	.LFE5:
+ 620               		.section	.rodata.str1.1,"aMS",@progbits,1
+ 621               	.LC0:
+ 622 0000 5352 2069 		.string	"SR is: %x\r\n"
+ 622      733A 2025 
+ 622      780D 0A00 
+ 623               		.text
+ 624               	.global	initSRAM
+ 626               	initSRAM:
+ 627               	.LFB6:
+ 134:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 
+ 135:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** }
+ 136:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 
+ 137:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** void initSRAM()
+ 138:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** {
+ 628               		.loc 1 138 0
+ 629               		.cfi_startproc
+ 630               	/* prologue: function */
+ 631               	/* frame size = 0 */
+ 632               	/* stack size = 0 */
+ 633               	.L__stack_usage = 0
+ 634               	.LVL39:
+ 635               	.LBB245:
+ 636               	.LBB246:
+ 637               	.LBB247:
+ 638               	.LBB248:
+  24:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			PORTF.OUTCLR = PIN4_bm;	
+ 639               		.loc 1 24 0
+ 640 0230 80E1      		ldi r24,lo8(16)
+ 641 0232 8093 A606 		sts 1702,r24
+ 642               	.LVL40:
+ 643               	.LBE248:
+ 644               	.LBE247:
+ 645               	.LBE246:
+ 646               	.LBE245:
+ 647               	.LBB249:
+ 648               	.LBB250:
+   6:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
+ 649               		.loc 1 6 0
+ 650 0236 81E0      		ldi r24,lo8(1)
+ 651 0238 8093 C30A 		sts 2755,r24
+ 652               	.L76:
+   8:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
+ 653               		.loc 1 8 0
+ 654 023c 8091 C20A 		lds r24,2754
+ 655 0240 87FF      		sbrs r24,7
+ 656 0242 00C0      		rjmp .L76
+  10:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
+ 657               		.loc 1 10 0
+ 658 0244 8091 C30A 		lds r24,2755
+ 659               	.LVL41:
+ 660               	.LBE250:
+ 661               	.LBE249:
+ 662               	.LBB251:
+ 663               	.LBB252:
+   6:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
+ 664               		.loc 1 6 0
+ 665 0248 81E4      		ldi r24,lo8(65)
+ 666 024a 8093 C30A 		sts 2755,r24
+ 667               	.L77:
+   8:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
+ 668               		.loc 1 8 0
+ 669 024e 8091 C20A 		lds r24,2754
+ 670 0252 87FF      		sbrs r24,7
+ 671 0254 00C0      		rjmp .L77
+  10:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
+ 672               		.loc 1 10 0
+ 673 0256 8091 C30A 		lds r24,2755
+ 674               	.LVL42:
+ 675               	.LBE252:
+ 676               	.LBE251:
+ 677               	.LBB253:
+ 678               	.LBB254:
+ 679               	.LBB255:
+ 680               	.LBB256:
+  20:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			PORTF.OUTSET = PIN4_bm;
+ 681               		.loc 1 20 0
+ 682 025a 80E1      		ldi r24,lo8(16)
+ 683 025c 8093 A506 		sts 1701,r24
+ 684               	.LVL43:
+ 685               	.LBE256:
+ 686               	.LBE255:
+ 687               	.LBE254:
+ 688               	.LBE253:
+ 689               	.LBB257:
+ 690               	.LBB258:
+ 691               	.LBB259:
+ 692               	.LBB260:
+ 693               	.LBB261:
+  24:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			PORTF.OUTCLR = PIN4_bm;	
+ 694               		.loc 1 24 0
+ 695 0260 8093 A606 		sts 1702,r24
+ 696               	.LVL44:
+ 697               	.LBE261:
+ 698               	.LBE260:
+ 699               	.LBE259:
+ 700               	.LBE258:
+ 701               	.LBB262:
+ 702               	.LBB263:
+   6:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
+ 703               		.loc 1 6 0
+ 704 0264 85E0      		ldi r24,lo8(5)
+ 705 0266 8093 C30A 		sts 2755,r24
+ 706               	.L78:
+   8:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
+ 707               		.loc 1 8 0
+ 708 026a 8091 C20A 		lds r24,2754
+ 709 026e 87FF      		sbrs r24,7
+ 710 0270 00C0      		rjmp .L78
+  10:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
+ 711               		.loc 1 10 0
+ 712 0272 8091 C30A 		lds r24,2755
+ 713               	.LVL45:
+ 714               	.LBE263:
+ 715               	.LBE262:
+ 716               	.LBB264:
+ 717               	.LBB265:
+   6:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
+ 718               		.loc 1 6 0
+ 719 0276 1092 C30A 		sts 2755,__zero_reg__
+ 720               	.L79:
+   8:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
+ 721               		.loc 1 8 0
+ 722 027a 8091 C20A 		lds r24,2754
+ 723 027e 87FF      		sbrs r24,7
+ 724 0280 00C0      		rjmp .L79
+  10:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
+ 725               		.loc 1 10 0
+ 726 0282 8091 C30A 		lds r24,2755
+ 727               	.LVL46:
+ 728               	.LBE265:
+ 729               	.LBE264:
+ 730               	.LBB266:
+ 731               	.LBB267:
+ 732               	.LBB268:
+ 733               	.LBB269:
+  20:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			PORTF.OUTSET = PIN4_bm;
+ 734               		.loc 1 20 0
+ 735 0286 90E1      		ldi r25,lo8(16)
+ 736 0288 9093 A506 		sts 1701,r25
+ 737               	.LBE269:
+ 738               	.LBE268:
+ 739               	.LBE267:
+ 740               	.LBE266:
+ 139:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		setSS(SRAM, 0);
+ 140:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		
+ 141:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		spiTxRx(SRAM_WRSR);
+ 142:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		spiTxRx(0x41);	// set mode to sequential, disable HOLD feature
+ 143:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		
+ 144:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		setSS(SRAM, 1);	
+ 145:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	
+ 146:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	{
+ 147:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		uint8_t val;
+ 148:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		setSS(SRAM, 0);
+ 149:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		
+ 150:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		spiTxRx(SRAM_RDSR);
+ 151:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		val = spiTxRx(0x0);	// set mode to sequential, disable HOLD feature
+ 152:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		
+ 153:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		setSS(SRAM, 1);			
+ 154:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		
+ 155:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		printf("SR is: %x\r\n",val);
+ 741               		.loc 1 155 0
+ 742 028c 1F92      		push __zero_reg__
+ 743               	.LCFI0:
+ 744               		.cfi_def_cfa_offset 4
+ 745 028e 8F93      		push r24
+ 746               	.LCFI1:
+ 747               		.cfi_def_cfa_offset 5
+ 748 0290 80E0      		ldi r24,lo8(.LC0)
+ 749 0292 90E0      		ldi r25,hi8(.LC0)
+ 750 0294 9F93      		push r25
+ 751               	.LCFI2:
+ 752               		.cfi_def_cfa_offset 6
+ 753 0296 8F93      		push r24
+ 754               	.LCFI3:
+ 755               		.cfi_def_cfa_offset 7
+ 756 0298 0E94 0000 		call printf
+ 757               	.LVL47:
+ 758 029c 0F90      		pop __tmp_reg__
+ 759 029e 0F90      		pop __tmp_reg__
+ 760 02a0 0F90      		pop __tmp_reg__
+ 761 02a2 0F90      		pop __tmp_reg__
+ 762               	.LCFI4:
+ 763               		.cfi_def_cfa_offset 3
+ 764 02a4 0895      		ret
+ 765               	.LBE257:
+ 766               		.cfi_endproc
+ 767               	.LFE6:
+ 769               	.global	initExtMem
+ 771               	initExtMem:
+ 772               	.LFB7:
+ 156:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	}
+ 157:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** }
+ 158:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 
+ 159:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** void initExtMem()
+ 160:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** {
+ 773               		.loc 1 160 0
+ 774               		.cfi_startproc
+ 775               	/* prologue: function */
+ 776               	/* frame size = 0 */
+ 777               	/* stack size = 0 */
+ 778               	.L__stack_usage = 0
+ 161:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	PORTE.OUTSET = PIN4_bm;
+ 779               		.loc 1 161 0
+ 780 02a6 80E1      		ldi r24,lo8(16)
+ 781 02a8 8093 8506 		sts 1669,r24
+ 162:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	PORTE.DIRSET = PIN4_bm;
+ 782               		.loc 1 162 0
+ 783 02ac 8093 8106 		sts 1665,r24
+ 163:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 
+ 164:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	// set !SS1 lhigh
+ 165:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	PORTF.OUTSET = PIN4_bm;
+ 784               		.loc 1 165 0
+ 785 02b0 8093 A506 		sts 1701,r24
+ 166:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	PORTF.DIRSET = PIN4_bm;
+ 786               		.loc 1 166 0
+ 787 02b4 8093 A106 		sts 1697,r24
+ 167:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 
+ 168:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 
+ 169:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	PORTE.DIRSET = PIN5_bm | PIN7_bm;	// !ss/mosi/sck as output
+ 788               		.loc 1 169 0
+ 789 02b8 90EA      		ldi r25,lo8(-96)
+ 790 02ba 9093 8106 		sts 1665,r25
+ 170:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	PORTE.DIRCLR = PIN6_bm;				// miso as input
+ 791               		.loc 1 170 0
+ 792 02be 90E4      		ldi r25,lo8(64)
+ 793 02c0 9093 8206 		sts 1666,r25
+ 171:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 
+ 172:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.CTRL = SPI_ENABLE_bm | SPI_MASTER_bm;	//mode 0, clock/4
+ 794               		.loc 1 172 0
+ 795 02c4 90E5      		ldi r25,lo8(80)
+ 796 02c6 9093 C00A 		sts 2752,r25
+ 797               	.LVL48:
+ 798               	.LBB297:
+ 799               	.LBB298:
+ 800               	.LBB299:
+ 801               	.LBB300:
+ 802               	.LBB301:
+  24:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			PORTF.OUTCLR = PIN4_bm;	
+ 803               		.loc 1 24 0
+ 804 02ca 8093 A606 		sts 1702,r24
+ 805               	.LVL49:
+ 806               	.LBE301:
+ 807               	.LBE300:
+ 808               	.LBE299:
+ 809               	.LBE298:
+ 810               	.LBB302:
+ 811               	.LBB303:
+   6:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
+ 812               		.loc 1 6 0
+ 813 02ce 81E0      		ldi r24,lo8(1)
+ 814 02d0 8093 C30A 		sts 2755,r24
+ 815               	.L85:
+   8:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
+ 816               		.loc 1 8 0
+ 817 02d4 8091 C20A 		lds r24,2754
+ 818 02d8 87FF      		sbrs r24,7
+ 819 02da 00C0      		rjmp .L85
+  10:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
+ 820               		.loc 1 10 0
+ 821 02dc 8091 C30A 		lds r24,2755
+ 822               	.LVL50:
+ 823               	.LBE303:
+ 824               	.LBE302:
+ 825               	.LBB304:
+ 826               	.LBB305:
+   6:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
+ 827               		.loc 1 6 0
+ 828 02e0 81E4      		ldi r24,lo8(65)
+ 829 02e2 8093 C30A 		sts 2755,r24
+ 830               	.L86:
+   8:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
+ 831               		.loc 1 8 0
+ 832 02e6 8091 C20A 		lds r24,2754
+ 833 02ea 87FF      		sbrs r24,7
+ 834 02ec 00C0      		rjmp .L86
+  10:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
+ 835               		.loc 1 10 0
+ 836 02ee 8091 C30A 		lds r24,2755
+ 837               	.LVL51:
+ 838               	.LBE305:
+ 839               	.LBE304:
+ 840               	.LBB306:
+ 841               	.LBB307:
+ 842               	.LBB308:
+ 843               	.LBB309:
+  20:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			PORTF.OUTSET = PIN4_bm;
+ 844               		.loc 1 20 0
+ 845 02f2 80E1      		ldi r24,lo8(16)
+ 846 02f4 8093 A506 		sts 1701,r24
+ 847               	.LVL52:
+ 848               	.LBE309:
+ 849               	.LBE308:
+ 850               	.LBE307:
+ 851               	.LBE306:
+ 852               	.LBB310:
+ 853               	.LBB311:
+ 854               	.LBB312:
+ 855               	.LBB313:
+ 856               	.LBB314:
+  24:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			PORTF.OUTCLR = PIN4_bm;	
+ 857               		.loc 1 24 0
+ 858 02f8 8093 A606 		sts 1702,r24
+ 859               	.LVL53:
+ 860               	.LBE314:
+ 861               	.LBE313:
+ 862               	.LBE312:
+ 863               	.LBE311:
+ 864               	.LBB315:
+ 865               	.LBB316:
+   6:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
+ 866               		.loc 1 6 0
+ 867 02fc 85E0      		ldi r24,lo8(5)
+ 868 02fe 8093 C30A 		sts 2755,r24
+ 869               	.L87:
+   8:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
+ 870               		.loc 1 8 0
+ 871 0302 8091 C20A 		lds r24,2754
+ 872 0306 87FF      		sbrs r24,7
+ 873 0308 00C0      		rjmp .L87
+  10:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
+ 874               		.loc 1 10 0
+ 875 030a 8091 C30A 		lds r24,2755
+ 876               	.LVL54:
+ 877               	.LBE316:
+ 878               	.LBE315:
+ 879               	.LBB317:
+ 880               	.LBB318:
+   6:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	SPIE.DATA = input;
+ 881               		.loc 1 6 0
+ 882 030e 1092 C30A 		sts 2755,__zero_reg__
+ 883               	.L88:
+   8:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	while(!(SPIE.STATUS & SPI_IF_bm));
+ 884               		.loc 1 8 0
+ 885 0312 8091 C20A 		lds r24,2754
+ 886 0316 87FF      		sbrs r24,7
+ 887 0318 00C0      		rjmp .L88
+  10:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 	return SPIE.DATA;
+ 888               		.loc 1 10 0
+ 889 031a 8091 C30A 		lds r24,2755
+ 890               	.LVL55:
+ 891               	.LBE318:
+ 892               	.LBE317:
+ 893               	.LBB319:
+ 894               	.LBB320:
+ 895               	.LBB321:
+ 896               	.LBB322:
+  20:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 			PORTF.OUTSET = PIN4_bm;
+ 897               		.loc 1 20 0
+ 898 031e 90E1      		ldi r25,lo8(16)
+ 899 0320 9093 A506 		sts 1701,r25
+ 900               	.LBE322:
+ 901               	.LBE321:
+ 902               	.LBE320:
+ 903               	.LBE319:
+ 155:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/ext_memory.c **** 		printf("SR is: %x\r\n",val);
+ 904               		.loc 1 155 0
+ 905 0324 1F92      		push __zero_reg__
+ 906               	.LCFI5:
+ 907               		.cfi_def_cfa_offset 4
+ 908 0326 8F93      		push r24
+ 909               	.LCFI6:
+ 910               		.cfi_def_cfa_offset 5
+ 911 0328 80E0      		ldi r24,lo8(.LC0)
+ 912 032a 90E0      		ldi r25,hi8(.LC0)
+ 913 032c 9F93      		push r25
+ 914               	.LCFI7:
+ 915               		.cfi_def_cfa_offset 6
+ 916 032e 8F93      		push r24
+ 917               	.LCFI8:
+ 918               		.cfi_def_cfa_offset 7
+ 919 0330 0E94 0000 		call printf
+ 920               	.LVL56:
+ 921 0334 0F90      		pop __tmp_reg__
+ 922 0336 0F90      		pop __tmp_reg__
+ 923 0338 0F90      		pop __tmp_reg__
+ 924 033a 0F90      		pop __tmp_reg__
+ 925               	.LCFI9:
+ 926               		.cfi_def_cfa_offset 3
+ 927 033c 0895      		ret
+ 928               	.LBE310:
+ 929               	.LBE297:
+ 930               		.cfi_endproc
+ 931               	.LFE7:
+ 933               	.Letext0:
+ 934               		.file 2 "/usr/local/Cellar/avr-gcc/4.7.2/lib/gcc/avr/4.7.2/../../../../avr/include/stdint.h"
+ 935               		.file 3 "/usr/local/Cellar/avr-gcc/4.7.2/lib/gcc/avr/4.7.2/../../../../avr/include/avr/iox256a3.h"
+ 936               		.file 4 "/usr/local/Cellar/avr-gcc/4.7.2/lib/gcc/avr/4.7.2/../../../../avr/include/stdio.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 ext_memory.c
-     /tmp/ccw8Dxsb.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccw8Dxsb.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccw8Dxsb.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccw8Dxsb.s:5      *ABS*:000000000000003b __RAMPZ__
-     /tmp/ccw8Dxsb.s:6      *ABS*:0000000000000034 __CCP__
-     /tmp/ccw8Dxsb.s:7      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccw8Dxsb.s:8      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccw8Dxsb.s:14     .text:0000000000000000 spiTxRx
-     /tmp/ccw8Dxsb.s:41     .text:0000000000000012 setSS
-     /tmp/ccw8Dxsb.s:90     .text:000000000000003a readExtMem
-     /tmp/ccw8Dxsb.s:340    .text:0000000000000136 writeExtMem
-     /tmp/ccw8Dxsb.s:580    .text:0000000000000222 initFlash
-     /tmp/ccw8Dxsb.s:598    .text:0000000000000224 initSRAM
-     /tmp/ccw8Dxsb.s:735    .text:000000000000029a initExtMem
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccICGKgo.s:2      *ABS*:000000000000003e __SP_H__
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccICGKgo.s:3      *ABS*:000000000000003d __SP_L__
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccICGKgo.s:4      *ABS*:000000000000003f __SREG__
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccICGKgo.s:5      *ABS*:000000000000003b __RAMPZ__
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccICGKgo.s:6      *ABS*:0000000000000034 __CCP__
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccICGKgo.s:7      *ABS*:0000000000000000 __tmp_reg__
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccICGKgo.s:8      *ABS*:0000000000000001 __zero_reg__
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccICGKgo.s:14     .text:0000000000000000 spiTxRx
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccICGKgo.s:41     .text:0000000000000012 setSS
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccICGKgo.s:90     .text:000000000000003a readExtMem
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccICGKgo.s:354    .text:000000000000013c writeExtMem
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccICGKgo.s:608    .text:000000000000022e initFlash
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccICGKgo.s:626    .text:0000000000000230 initSRAM
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccICGKgo.s:771    .text:00000000000002a6 initExtMem
 
 UNDEFINED SYMBOLS
 printf

@@ -12,23 +12,23 @@
   12               	.global	store
   14               	store:
   15               	.LFB13:
-  16               		.file 1 "/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c"
-   1:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c **** #include <stdio.h>
-   2:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c **** #include "../system/handler.h"
-   3:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c **** #include "../hw-api/hwMemory.h"
-   4:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c **** 
-   5:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c **** // HARDWARE INCLUDE
-   6:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c **** #ifndef HOST
-   7:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c **** #include "eeprom_driver.h"
-   8:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c **** #endif
-   9:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c **** 
-  10:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c **** // Stores a data structure in EEPROM.  Writes it in pages to take a reasonable length of time.
-  11:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c **** //
-  12:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c **** //  nv_addr points to the desired EEMEM structure address (if you declared it using 'type EEMEM myd
-  13:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c **** //  data points to the desired SRAM structure address
-  14:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c **** //  len    is sizeof(type)
-  15:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c **** void store(void * nv_addr, void * data, int len)
-  16:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c **** {
+  16               		.file 1 "/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c"
+   1:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c **** #include <stdio.h>
+   2:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c **** #include "../system/handler.h"
+   3:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c **** #include "../hw-api/hwMemory.h"
+   4:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c **** 
+   5:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c **** // HARDWARE INCLUDE
+   6:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c **** #ifndef HOST
+   7:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c **** #include "eeprom_driver.h"
+   8:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c **** #endif
+   9:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c **** 
+  10:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c **** // Stores a data structure in EEPROM.  Writes it in pages to take a reasonable length of time.
+  11:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c **** //
+  12:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c **** //  nv_addr points to the desired EEMEM structure address (if you declared it using 'type EEMEM myd
+  13:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c **** //  data points to the desired SRAM structure address
+  14:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c **** //  len    is sizeof(type)
+  15:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c **** void store(void * nv_addr, void * data, int len)
+  16:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c **** {
   17               		.loc 1 16 0
   18               		.cfi_startproc
   19               	.LVL0:
@@ -83,24 +83,24 @@
   68 0016 7C01      		movw r14,r24
   69 0018 6B01      		movw r12,r22
   70 001a 8A01      		movw r16,r20
-  17:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c ****     uint8_t partial_offset, partial_length;
-  18:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c **** 
-  19:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c ****     while(len != 0)
+  17:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c ****     uint8_t partial_offset, partial_length;
+  18:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c **** 
+  19:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c ****     while(len != 0)
   71               		.loc 1 19 0
   72 001c 4115      		cp r20,__zero_reg__
   73 001e 5105      		cpc r21,__zero_reg__
   74 0020 01F0      		breq .L1
-  20:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c ****     {
-  21:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c ****         // grab the page offset address from the current
-  22:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c ****         partial_offset = (uint16_t)nv_addr & (EEPROM_PAGESIZE - 1);
-  23:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c ****     
-  24:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c ****         partial_length = EEPROM_PAGESIZE - partial_offset;
+  20:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c ****     {
+  21:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c ****         // grab the page offset address from the current
+  22:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c ****         partial_offset = (uint16_t)nv_addr & (EEPROM_PAGESIZE - 1);
+  23:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c ****     
+  24:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c ****         partial_length = EEPROM_PAGESIZE - partial_offset;
   75               		.loc 1 24 0
   76 0022 30E2      		ldi r19,lo8(32)
   77 0024 932E      		mov r9,r19
   78               	.LVL1:
-  79               	.L9:
-  22:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c ****         partial_offset = (uint16_t)nv_addr & (EEPROM_PAGESIZE - 1);
+  79               	.L6:
+  22:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c ****         partial_offset = (uint16_t)nv_addr & (EEPROM_PAGESIZE - 1);
   80               		.loc 1 22 0
   81 0026 6E2D      		mov r22,r14
   82 0028 6F71      		andi r22,lo8(31)
@@ -109,8 +109,8 @@
   85 002a 492D      		mov r20,r9
   86 002c 461B      		sub r20,r22
   87               	.LVL3:
-  25:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c ****         
-  26:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c ****         if(partial_length > len)
+  25:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c ****         
+  26:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c ****         if(partial_length > len)
   88               		.loc 1 26 0
   89 002e C42F      		mov r28,r20
   90 0030 D0E0      		ldi r29,0
@@ -118,8 +118,8 @@
   92 0034 0C17      		cp r16,r28
   93 0036 1D07      		cpc r17,r29
   94 0038 04F4      		brge .L3
-  27:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c ****         {
-  28:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c ****             partial_length = len;
+  27:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c ****         {
+  28:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c ****             partial_length = len;
   95               		.loc 1 28 0
   96 003a 402F      		mov r20,r16
   97               	.LVL4:
@@ -129,14 +129,14 @@
  101 0042 D0E0      		ldi r29,0
  102               	.LVL5:
  103               	.L3:
-  29:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c ****         }
-  30:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c **** 
-  31:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c ****         EEPROM_LoadPartialPage(data, partial_offset, partial_length);
+  29:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c ****         }
+  30:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c **** 
+  31:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c ****         EEPROM_LoadPartialPage(data, partial_offset, partial_length);
  104               		.loc 1 31 0
  105 0044 C601      		movw r24,r12
  106 0046 0E94 0000 		call EEPROM_LoadPartialPage
  107               	.LVL6:
-  32:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c ****         EEPROM_AtomicWritePage((uint16_t)nv_addr / (EEPROM_PAGESIZE));
+  32:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c ****         EEPROM_AtomicWritePage((uint16_t)nv_addr / (EEPROM_PAGESIZE));
  108               		.loc 1 32 0
  109 004a C701      		movw r24,r14
  110 004c 9695      		lsr r25
@@ -149,221 +149,216 @@
  117 005a 8927      		eor r24,r25
  118 005c 0E94 0000 		call EEPROM_AtomicWritePage
  119               	.LVL7:
-  33:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c **** 
-  34:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c ****         len -= partial_length;
+  33:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c **** 
+  34:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c ****         len -= partial_length;
  120               		.loc 1 34 0
  121 0060 0A19      		sub r16,r10
  122 0062 1B09      		sbc r17,r11
  123               	.LVL8:
-  35:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c ****         nv_addr += partial_length;
+  35:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c ****         nv_addr += partial_length;
  124               		.loc 1 35 0
  125 0064 EC0E      		add r14,r28
  126 0066 FD1E      		adc r15,r29
  127               	.LVL9:
-  36:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c ****         data += partial_length;
+  36:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c ****         data += partial_length;
  128               		.loc 1 36 0
  129 0068 CC0E      		add r12,r28
  130 006a DD1E      		adc r13,r29
  131               	.LVL10:
-  19:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c ****     while(len != 0)
+  19:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c ****     while(len != 0)
  132               		.loc 1 19 0
  133 006c 0115      		cp r16,__zero_reg__
  134 006e 1105      		cpc r17,__zero_reg__
- 135 0070 01F4      		brne .L9
- 136               	.L1:
- 137               	/* epilogue start */
-  37:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c ****     }
-  38:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c ****     
-  39:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c **** }
- 138               		.loc 1 39 0
- 139 0072 DF91      		pop r29
- 140 0074 CF91      		pop r28
- 141 0076 1F91      		pop r17
- 142 0078 0F91      		pop r16
- 143               	.LVL11:
- 144 007a FF90      		pop r15
- 145 007c EF90      		pop r14
- 146               	.LVL12:
- 147 007e DF90      		pop r13
- 148 0080 CF90      		pop r12
- 149               	.LVL13:
- 150 0082 BF90      		pop r11
- 151 0084 AF90      		pop r10
- 152 0086 9F90      		pop r9
- 153 0088 0895      		ret
- 154               		.cfi_endproc
- 155               	.LFE13:
- 157               	.global	restore
- 159               	restore:
- 160               	.LFB14:
-  40:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c **** 
-  41:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c **** // this could be done in pages but reads are pretty quick so it shouldn't matter
-  42:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c **** void restore(void * vaddr, void * vnv_addr, int len)
-  43:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c **** {    
- 161               		.loc 1 43 0
- 162               		.cfi_startproc
- 163               	.LVL14:
- 164 008a EF92      		push r14
- 165               	.LCFI11:
- 166               		.cfi_def_cfa_offset 4
- 167               		.cfi_offset 14, -3
- 168 008c FF92      		push r15
- 169               	.LCFI12:
- 170               		.cfi_def_cfa_offset 5
- 171               		.cfi_offset 15, -4
- 172 008e 0F93      		push r16
- 173               	.LCFI13:
- 174               		.cfi_def_cfa_offset 6
- 175               		.cfi_offset 16, -5
- 176 0090 1F93      		push r17
- 177               	.LCFI14:
- 178               		.cfi_def_cfa_offset 7
- 179               		.cfi_offset 17, -6
- 180 0092 CF93      		push r28
- 181               	.LCFI15:
- 182               		.cfi_def_cfa_offset 8
- 183               		.cfi_offset 28, -7
- 184 0094 DF93      		push r29
- 185               	.LCFI16:
- 186               		.cfi_def_cfa_offset 9
- 187               		.cfi_offset 29, -8
- 188               	/* prologue: function */
- 189               	/* frame size = 0 */
- 190               	/* stack size = 6 */
- 191               	.L__stack_usage = 6
- 192 0096 7C01      		movw r14,r24
- 193 0098 EB01      		movw r28,r22
- 194 009a 8A01      		movw r16,r20
- 195               	.LVL15:
-  44:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c **** 	byte *addr=(byte *)vaddr;
-  45:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c **** 	byte *nv_addr=(byte *) vnv_addr;
-  46:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c ****     while(len != 0)
- 196               		.loc 1 46 0
- 197 009c 4115      		cp r20,__zero_reg__
- 198 009e 5105      		cpc r21,__zero_reg__
- 199 00a0 01F0      		breq .L11
- 200               	.LVL16:
- 201               	.L17:
-  47:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c ****     {
-  48:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c ****         *addr = EEPROM_ReadByte(((uint16_t)(nv_addr) / (EEPROM_PAGESIZE)), (uint16_t)(nv_addr) & (E
- 202               		.loc 1 48 0
- 203 00a2 6C2F      		mov r22,r28
- 204 00a4 6F71      		andi r22,lo8(31)
- 205 00a6 CE01      		movw r24,r28
- 206 00a8 9695      		lsr r25
- 207 00aa 8795      		ror r24
- 208 00ac 9295      		swap r25
- 209 00ae 8295      		swap r24
- 210 00b0 8F70      		andi r24,0x0f
- 211 00b2 8927      		eor r24,r25
- 212 00b4 9F70      		andi r25,0x0f
- 213 00b6 8927      		eor r24,r25
- 214 00b8 0E94 0000 		call EEPROM_ReadByte
- 215               	.LVL17:
- 216 00bc F701      		movw r30,r14
- 217 00be 8193      		st Z+,r24
- 218 00c0 7F01      		movw r14,r30
- 219               	.LVL18:
-  49:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c ****         nv_addr++;
- 220               		.loc 1 49 0
- 221 00c2 2196      		adiw r28,1
- 222               	.LVL19:
-  50:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c ****         addr++;
-  51:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c ****         len--;
- 223               		.loc 1 51 0
- 224 00c4 0150      		subi r16,1
- 225 00c6 1109      		sbc r17,__zero_reg__
- 226               	.LVL20:
-  46:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c ****     while(len != 0)
- 227               		.loc 1 46 0
- 228 00c8 0115      		cp r16,__zero_reg__
- 229 00ca 1105      		cpc r17,__zero_reg__
- 230 00cc 01F4      		brne .L17
- 231               	.L11:
+ 135 0070 01F4      		brne .L6
+ 136               	.LVL11:
+ 137               	.L1:
+ 138               	/* epilogue start */
+  37:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c ****     }
+  38:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c ****     
+  39:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c **** }
+ 139               		.loc 1 39 0
+ 140 0072 DF91      		pop r29
+ 141 0074 CF91      		pop r28
+ 142 0076 1F91      		pop r17
+ 143 0078 0F91      		pop r16
+ 144               	.LVL12:
+ 145 007a FF90      		pop r15
+ 146 007c EF90      		pop r14
+ 147               	.LVL13:
+ 148 007e DF90      		pop r13
+ 149 0080 CF90      		pop r12
+ 150               	.LVL14:
+ 151 0082 BF90      		pop r11
+ 152 0084 AF90      		pop r10
+ 153 0086 9F90      		pop r9
+ 154 0088 0895      		ret
+ 155               		.cfi_endproc
+ 156               	.LFE13:
+ 158               	.global	restore
+ 160               	restore:
+ 161               	.LFB14:
+  40:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c **** 
+  41:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c **** // this could be done in pages but reads are pretty quick so it shouldn't matter
+  42:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c **** void restore(void * vaddr, void * vnv_addr, int len)
+  43:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c **** {    
+ 162               		.loc 1 43 0
+ 163               		.cfi_startproc
+ 164               	.LVL15:
+ 165 008a EF92      		push r14
+ 166               	.LCFI11:
+ 167               		.cfi_def_cfa_offset 4
+ 168               		.cfi_offset 14, -3
+ 169 008c FF92      		push r15
+ 170               	.LCFI12:
+ 171               		.cfi_def_cfa_offset 5
+ 172               		.cfi_offset 15, -4
+ 173 008e 0F93      		push r16
+ 174               	.LCFI13:
+ 175               		.cfi_def_cfa_offset 6
+ 176               		.cfi_offset 16, -5
+ 177 0090 1F93      		push r17
+ 178               	.LCFI14:
+ 179               		.cfi_def_cfa_offset 7
+ 180               		.cfi_offset 17, -6
+ 181 0092 CF93      		push r28
+ 182               	.LCFI15:
+ 183               		.cfi_def_cfa_offset 8
+ 184               		.cfi_offset 28, -7
+ 185 0094 DF93      		push r29
+ 186               	.LCFI16:
+ 187               		.cfi_def_cfa_offset 9
+ 188               		.cfi_offset 29, -8
+ 189               	/* prologue: function */
+ 190               	/* frame size = 0 */
+ 191               	/* stack size = 6 */
+ 192               	.L__stack_usage = 6
+ 193 0096 8A01      		movw r16,r20
+ 194               	.LVL16:
+  44:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c **** 	byte *addr=(byte *)vaddr;
+  45:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c **** 	byte *nv_addr=(byte *) vnv_addr;
+  46:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c ****     while(len != 0)
+ 195               		.loc 1 46 0
+ 196 0098 4115      		cp r20,__zero_reg__
+ 197 009a 5105      		cpc r21,__zero_reg__
+ 198 009c 01F0      		breq .L9
+ 199 009e EB01      		movw r28,r22
+ 200 00a0 7C01      		movw r14,r24
+ 201               	.LVL17:
+ 202               	.L11:
+  47:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c ****     {
+  48:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c ****         *addr = EEPROM_ReadByte(((uint16_t)(nv_addr) / (EEPROM_PAGESIZE)), (uint16_t)(nv_addr) & (E
+ 203               		.loc 1 48 0
+ 204 00a2 BE01      		movw r22,r28
+ 205 00a4 6F71      		andi r22,31
+ 206 00a6 7727      		clr r23
+ 207 00a8 CE01      		movw r24,r28
+ 208 00aa 9695      		lsr r25
+ 209 00ac 8795      		ror r24
+ 210 00ae 9295      		swap r25
+ 211 00b0 8295      		swap r24
+ 212 00b2 8F70      		andi r24,0x0f
+ 213 00b4 8927      		eor r24,r25
+ 214 00b6 9F70      		andi r25,0x0f
+ 215 00b8 8927      		eor r24,r25
+ 216 00ba 0E94 0000 		call EEPROM_ReadByte
+ 217               	.LVL18:
+ 218 00be F701      		movw r30,r14
+ 219 00c0 8193      		st Z+,r24
+ 220 00c2 7F01      		movw r14,r30
+  49:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c ****         nv_addr++;
+ 221               		.loc 1 49 0
+ 222 00c4 2196      		adiw r28,1
+ 223               	.LVL19:
+  50:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c ****         addr++;
+  51:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c ****         len--;
+ 224               		.loc 1 51 0
+ 225 00c6 0150      		subi r16,1
+ 226 00c8 1109      		sbc r17,__zero_reg__
+ 227               	.LVL20:
+  46:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c ****     while(len != 0)
+ 228               		.loc 1 46 0
+ 229 00ca 01F4      		brne .L11
+ 230               	.LVL21:
+ 231               	.L9:
  232               	/* epilogue start */
-  52:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c ****     }
-  53:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c **** }
+  52:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c ****     }
+  53:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c **** }
  233               		.loc 1 53 0
- 234 00ce DF91      		pop r29
- 235 00d0 CF91      		pop r28
- 236               	.LVL21:
- 237 00d2 1F91      		pop r17
- 238 00d4 0F91      		pop r16
- 239               	.LVL22:
- 240 00d6 FF90      		pop r15
- 241 00d8 EF90      		pop r14
- 242               	.LVL23:
- 243 00da 0895      		ret
- 244               		.cfi_endproc
- 245               	.LFE14:
- 247               	.global	getGUID
- 249               	getGUID:
- 250               	.LFB15:
-  54:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c **** 
-  55:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c **** #define ID_PAGE_ADDR 0x00
-  56:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c **** #define ID_BYTE_ADDR 0x00
-  57:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c **** 
-  58:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c **** 
-  59:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c **** /* TODO: This is WRONG. It should be Uid, but the build system is being stupid and now is not a goo
-  60:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c **** //reads GUID from eeprom
-  61:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c **** uint16_t getGUID(){
- 251               		.loc 1 61 0
- 252               		.cfi_startproc
- 253 00dc CF93      		push r28
- 254               	.LCFI17:
- 255               		.cfi_def_cfa_offset 4
- 256               		.cfi_offset 28, -3
- 257               	/* prologue: function */
- 258               	/* frame size = 0 */
- 259               	/* stack size = 1 */
- 260               	.L__stack_usage = 1
-  62:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c ****   //return 255;
-  63:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c **** 	//TODO: read from eeprom
-  64:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c ****   return (((uint16_t)EEPROM_ReadByte(ID_PAGE_ADDR, ID_BYTE_ADDR))<<8) |
- 261               		.loc 1 64 0
- 262 00de 60E0      		ldi r22,0
- 263 00e0 80E0      		ldi r24,0
- 264 00e2 0E94 0000 		call EEPROM_ReadByte
- 265               	.LVL24:
- 266 00e6 C82F      		mov r28,r24
-  65:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c **** 	  ((uint16_t)EEPROM_ReadByte(ID_PAGE_ADDR, ID_BYTE_ADDR+1));
- 267               		.loc 1 65 0
- 268 00e8 61E0      		ldi r22,lo8(1)
- 269 00ea 80E0      		ldi r24,0
- 270 00ec 0E94 0000 		call EEPROM_ReadByte
- 271               	.LVL25:
-  64:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c ****   return (((uint16_t)EEPROM_ReadByte(ID_PAGE_ADDR, ID_BYTE_ADDR))<<8) |
- 272               		.loc 1 64 0
- 273 00f0 2C2F      		mov r18,r28
- 274 00f2 30E0      		ldi r19,0
- 275 00f4 322F      		mov r19,r18
- 276 00f6 2227      		clr r18
-  66:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMemory.c **** }
- 277               		.loc 1 66 0
- 278 00f8 A901      		movw r20,r18
- 279 00fa 482B      		or r20,r24
- 280 00fc CA01      		movw r24,r20
- 281               	/* epilogue start */
- 282 00fe CF91      		pop r28
- 283 0100 0895      		ret
- 284               		.cfi_endproc
- 285               	.LFE15:
- 287               	.Letext0:
- 288               		.file 2 "/usr/lib/avr/include/stdint.h"
- 289               		.file 3 "/home/pthalamy/CMU/bench/benchmark/build/src-bobby/system/defs.bbh"
- 290               		.file 4 "/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/eeprom_driver.h"
+ 234 00cc DF91      		pop r29
+ 235 00ce CF91      		pop r28
+ 236 00d0 1F91      		pop r17
+ 237 00d2 0F91      		pop r16
+ 238               	.LVL22:
+ 239 00d4 FF90      		pop r15
+ 240 00d6 EF90      		pop r14
+ 241 00d8 0895      		ret
+ 242               		.cfi_endproc
+ 243               	.LFE14:
+ 245               	.global	getGUID
+ 247               	getGUID:
+ 248               	.LFB15:
+  54:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c **** 
+  55:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c **** #define ID_PAGE_ADDR 0x00
+  56:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c **** #define ID_BYTE_ADDR 0x00
+  57:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c **** 
+  58:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c **** 
+  59:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c **** /* TODO: This is WRONG. It should be Uid, but the build system is being stupid and now is not a goo
+  60:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c **** //reads GUID from eeprom
+  61:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c **** uint16_t getGUID(){
+ 249               		.loc 1 61 0
+ 250               		.cfi_startproc
+ 251 00da CF93      		push r28
+ 252               	.LCFI17:
+ 253               		.cfi_def_cfa_offset 4
+ 254               		.cfi_offset 28, -3
+ 255               	/* prologue: function */
+ 256               	/* frame size = 0 */
+ 257               	/* stack size = 1 */
+ 258               	.L__stack_usage = 1
+  62:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c ****   //return 255;
+  63:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c **** 	//TODO: read from eeprom
+  64:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c ****   return (((uint16_t)EEPROM_ReadByte(ID_PAGE_ADDR, ID_BYTE_ADDR))<<8) |
+ 259               		.loc 1 64 0
+ 260 00dc 60E0      		ldi r22,0
+ 261 00de 80E0      		ldi r24,0
+ 262 00e0 0E94 0000 		call EEPROM_ReadByte
+ 263               	.LVL23:
+ 264 00e4 C82F      		mov r28,r24
+  65:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c **** 	  ((uint16_t)EEPROM_ReadByte(ID_PAGE_ADDR, ID_BYTE_ADDR+1));
+ 265               		.loc 1 65 0
+ 266 00e6 61E0      		ldi r22,lo8(1)
+ 267 00e8 80E0      		ldi r24,0
+ 268 00ea 0E94 0000 		call EEPROM_ReadByte
+ 269               	.LVL24:
+  64:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c ****   return (((uint16_t)EEPROM_ReadByte(ID_PAGE_ADDR, ID_BYTE_ADDR))<<8) |
+ 270               		.loc 1 64 0
+ 271 00ee 3C2F      		mov r19,r28
+ 272 00f0 20E0      		ldi r18,0
+ 273 00f2 282B      		or r18,r24
+  66:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwMemory.c **** }
+ 274               		.loc 1 66 0
+ 275 00f4 C901      		movw r24,r18
+ 276               	/* epilogue start */
+ 277 00f6 CF91      		pop r28
+ 278 00f8 0895      		ret
+ 279               		.cfi_endproc
+ 280               	.LFE15:
+ 282               	.Letext0:
+ 283               		.file 2 "/usr/local/Cellar/avr-gcc/4.7.2/lib/gcc/avr/4.7.2/../../../../avr/include/stdint.h"
+ 284               		.file 3 "/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/system/defs.bbh"
+ 285               		.file 4 "/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/eeprom_driver.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 hwMemory.c
-     /tmp/cc1NHgFx.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/cc1NHgFx.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/cc1NHgFx.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/cc1NHgFx.s:5      *ABS*:000000000000003b __RAMPZ__
-     /tmp/cc1NHgFx.s:6      *ABS*:0000000000000034 __CCP__
-     /tmp/cc1NHgFx.s:7      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/cc1NHgFx.s:8      *ABS*:0000000000000001 __zero_reg__
-     /tmp/cc1NHgFx.s:14     .text:0000000000000000 store
-     /tmp/cc1NHgFx.s:159    .text:000000000000008a restore
-     /tmp/cc1NHgFx.s:249    .text:00000000000000dc getGUID
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccqcjp9l.s:2      *ABS*:000000000000003e __SP_H__
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccqcjp9l.s:3      *ABS*:000000000000003d __SP_L__
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccqcjp9l.s:4      *ABS*:000000000000003f __SREG__
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccqcjp9l.s:5      *ABS*:000000000000003b __RAMPZ__
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccqcjp9l.s:6      *ABS*:0000000000000034 __CCP__
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccqcjp9l.s:7      *ABS*:0000000000000000 __tmp_reg__
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccqcjp9l.s:8      *ABS*:0000000000000001 __zero_reg__
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccqcjp9l.s:14     .text:0000000000000000 store
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccqcjp9l.s:160    .text:000000000000008a restore
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccqcjp9l.s:247    .text:00000000000000da getGUID
 
 UNDEFINED SYMBOLS
 EEPROM_LoadPartialPage

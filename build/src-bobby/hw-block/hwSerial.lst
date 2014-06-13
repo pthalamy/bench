@@ -12,38 +12,38 @@
   12               	.global	u_putchar
   14               	u_putchar:
   15               	.LFB6:
-  16               		.file 1 "/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c"
-   1:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** #include <avr/io.h>
-   2:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** #include <avr/interrupt.h>
-   3:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** #include "../system/circ_buffer.h"
-   4:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** #include "../hw-api/hwSerial.h"
-   5:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** #include "../system/serial.h"
-   6:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
-   7:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** //#include "soft_uart2.h"
-   8:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
-   9:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** #define HARDWARE_UART 0
-  10:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** #define SOFTWARE_UART 1
-  11:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
-  12:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** typedef union
-  13:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** {
-  14:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	USART_t* huart;
-  15:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	//soft_uart_t* suart;
-  16:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** } Uart;
-  17:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
-  18:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** typedef struct _uart
-  19:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** {
-  20:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	Uart uart;
-  21:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	byte ptype;
-  22:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** } HWPort;
-  23:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
-  24:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** HWPort hwPort[NUM_PORTS];
-  25:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** extern Port port[NUM_PORTS];
-  26:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
-  27:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** void initHWUart(USART_t * uart);
-  28:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
-  29:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
-  30:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** void u_putchar(char c, USART_t * uart)
-  31:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** {
+  16               		.file 1 "/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c"
+   1:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** #include <avr/io.h>
+   2:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** #include <avr/interrupt.h>
+   3:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** #include "../system/circ_buffer.h"
+   4:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** #include "../hw-api/hwSerial.h"
+   5:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** #include "../system/serial.h"
+   6:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
+   7:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** //#include "soft_uart2.h"
+   8:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
+   9:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** #define HARDWARE_UART 0
+  10:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** #define SOFTWARE_UART 1
+  11:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
+  12:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** typedef union
+  13:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** {
+  14:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	USART_t* huart;
+  15:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	//soft_uart_t* suart;
+  16:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** } Uart;
+  17:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
+  18:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** typedef struct _uart
+  19:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** {
+  20:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	Uart uart;
+  21:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	byte ptype;
+  22:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** } HWPort;
+  23:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
+  24:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** HWPort hwPort[NUM_PORTS];
+  25:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** extern Port port[NUM_PORTS];
+  26:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
+  27:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** void initHWUart(USART_t * uart);
+  28:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
+  29:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
+  30:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** void u_putchar(char c, USART_t * uart)
+  31:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** {
   17               		.loc 1 31 0
   18               		.cfi_startproc
   19               	.LVL0:
@@ -52,15 +52,15 @@
   22               	/* stack size = 0 */
   23               	.L__stack_usage = 0
   24 0000 FB01      		movw r30,r22
-  25               	.L3:
-  32:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	while(!(uart->STATUS & USART_DREIF_bm));
+  25               	.L2:
+  32:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	while(!(uart->STATUS & USART_DREIF_bm));
   26               		.loc 1 32 0 discriminator 1
   27 0002 9181      		ldd r25,Z+1
   28 0004 95FF      		sbrs r25,5
-  29 0006 00C0      		rjmp .L3
-  33:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c ****     //loop_until_bit_is_set(UCSR0A, UDRE0);
-  34:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	// Load buffer with your character
-  35:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c ****     uart->DATA = c;
+  29 0006 00C0      		rjmp .L2
+  33:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c ****     //loop_until_bit_is_set(UCSR0A, UDRE0);
+  34:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	// Load buffer with your character
+  35:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c ****     uart->DATA = c;
   30               		.loc 1 35 0
   31 0008 8083      		st Z,r24
   32 000a 0895      		ret
@@ -69,10 +69,10 @@
   36               	.global	u_getchar
   38               	u_getchar:
   39               	.LFB7:
-  36:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** }
-  37:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
-  38:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** int	u_getchar(USART_t * uart)
-  39:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** {
+  36:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** }
+  37:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
+  38:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** int	u_getchar(USART_t * uart)
+  39:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** {
   40               		.loc 1 39 0
   41               		.cfi_startproc
   42               	.LVL1:
@@ -80,1981 +80,1988 @@
   44               	/* frame size = 0 */
   45               	/* stack size = 0 */
   46               	.L__stack_usage = 0
-  40:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	//char c;
-  41:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	// Wait for the receive buffer to be filled
-  42:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c ****     //loop_until_bit_is_set(UCSR0A, RXC0);
-  43:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	if((uart->STATUS & USART_RXCIF_bm))
+  40:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	//char c;
+  41:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	// Wait for the receive buffer to be filled
+  42:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c ****     //loop_until_bit_is_set(UCSR0A, RXC0);
+  43:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	if((uart->STATUS & USART_RXCIF_bm))
   47               		.loc 1 43 0
   48 000c FC01      		movw r30,r24
   49 000e 2181      		ldd r18,Z+1
   50 0010 27FF      		sbrs r18,7
-  51 0012 00C0      		rjmp .L7
-  44:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	{
-  45:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		// Read the receive buffer
-  46:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		//c = uart->DATA;
-  47:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		return uart->DATA;
+  51 0012 00C0      		rjmp .L10
+  44:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	{
+  45:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		// Read the receive buffer
+  46:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		//c = uart->DATA;
+  47:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		return uart->DATA;
   52               		.loc 1 47 0
-  53 0014 8081      		ld r24,Z
-  54               	.LVL2:
-  55 0016 90E0      		ldi r25,0
-  56 0018 0895      		ret
-  57               	.LVL3:
-  58               	.L7:
-  48:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	}
-  49:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	else
-  50:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	{
-  51:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		return -1;
-  59               		.loc 1 51 0
-  60 001a 8FEF      		ldi r24,lo8(-1)
-  61 001c 9FEF      		ldi r25,lo8(-1)
-  62               	.LVL4:
-  52:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	}
-  53:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** }
-  63               		.loc 1 53 0
-  64 001e 0895      		ret
-  65               		.cfi_endproc
-  66               	.LFE7:
-  68               	.global	pPutChar
-  70               	pPutChar:
-  71               	.LFB8:
-  54:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
-  55:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** void pPutChar(char c, PRef p)
-  56:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** {
-  72               		.loc 1 56 0
-  73               		.cfi_startproc
-  74               	.LVL5:
-  75               	/* prologue: function */
-  76               	/* frame size = 0 */
-  77               	/* stack size = 0 */
-  78               	.L__stack_usage = 0
-  57:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	if(p >= 0 && p < NUM_PORTS)
-  79               		.loc 1 57 0
-  80 0020 6630      		cpi r22,lo8(6)
-  81 0022 00F4      		brsh .L8
-  58:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	{
-  59:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		if(hwPort[p].ptype == HARDWARE_UART)
-  82               		.loc 1 59 0
-  83 0024 70E0      		ldi r23,0
-  84 0026 FB01      		movw r30,r22
-  85 0028 EE0F      		lsl r30
-  86 002a FF1F      		rol r31
-  87 002c E60F      		add r30,r22
-  88 002e F71F      		adc r31,r23
-  89 0030 E050      		subi r30,lo8(-(hwPort))
-  90 0032 F040      		sbci r31,hi8(-(hwPort))
-  91 0034 9281      		ldd r25,Z+2
-  92 0036 9111      		cpse r25,__zero_reg__
-  93 0038 00C0      		rjmp .L8
-  60:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		{
-  61:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 			u_putchar(c, hwPort[p].uart.huart);
-  94               		.loc 1 61 0
-  95 003a 0190      		ld __tmp_reg__,Z+
-  96 003c F081      		ld r31,Z
-  97 003e E02D      		mov r30,__tmp_reg__
-  98               	.LVL6:
-  99               	.L11:
- 100               	.LBB32:
- 101               	.LBB33:
-  32:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	while(!(uart->STATUS & USART_DREIF_bm));
- 102               		.loc 1 32 0
- 103 0040 9181      		ldd r25,Z+1
- 104 0042 95FF      		sbrs r25,5
- 105 0044 00C0      		rjmp .L11
-  35:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c ****     uart->DATA = c;
- 106               		.loc 1 35 0
- 107 0046 8083      		st Z,r24
- 108               	.LVL7:
- 109               	.L8:
- 110 0048 0895      		ret
- 111               	.LBE33:
- 112               	.LBE32:
- 113               		.cfi_endproc
- 114               	.LFE8:
- 116               	.global	pGetChar
- 118               	pGetChar:
- 119               	.LFB9:
-  62:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		}
-  63:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		else
-  64:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		{
-  65:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 			//su_putchar(c, hwPort[p].uart.suart);
-  66:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		}
-  67:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	}
-  68:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** }
-  69:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
-  70:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** int pGetChar(PRef p)
-  71:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** {
- 120               		.loc 1 71 0
- 121               		.cfi_startproc
- 122               	.LVL8:
- 123               	/* prologue: function */
- 124               	/* frame size = 0 */
- 125               	/* stack size = 0 */
- 126               	.L__stack_usage = 0
-  72:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	if(p >= 0 && p < NUM_PORTS)
- 127               		.loc 1 72 0
- 128 004a 8630      		cpi r24,lo8(6)
- 129 004c 00F4      		brsh .L16
-  73:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	{
-  74:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		if(hwPort[p].ptype == HARDWARE_UART)
- 130               		.loc 1 74 0
- 131 004e 90E0      		ldi r25,0
- 132 0050 FC01      		movw r30,r24
- 133 0052 EE0F      		lsl r30
- 134 0054 FF1F      		rol r31
- 135 0056 E80F      		add r30,r24
- 136 0058 F91F      		adc r31,r25
- 137 005a E050      		subi r30,lo8(-(hwPort))
- 138 005c F040      		sbci r31,hi8(-(hwPort))
- 139 005e 8281      		ldd r24,Z+2
- 140               	.LVL9:
- 141 0060 8111      		cpse r24,__zero_reg__
- 142 0062 00C0      		rjmp .L16
-  75:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		{
-  76:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 			return u_getchar(hwPort[p].uart.huart);
- 143               		.loc 1 76 0
- 144 0064 0190      		ld __tmp_reg__,Z+
- 145 0066 F081      		ld r31,Z
- 146 0068 E02D      		mov r30,__tmp_reg__
- 147               	.LVL10:
- 148               	.LBB34:
- 149               	.LBB35:
-  43:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	if((uart->STATUS & USART_RXCIF_bm))
- 150               		.loc 1 43 0
- 151 006a 8181      		ldd r24,Z+1
- 152 006c 87FD      		sbrc r24,7
- 153 006e 00C0      		rjmp .L17
- 154               	.LVL11:
- 155               	.L16:
- 156               	.LBE35:
- 157               	.LBE34:
-  77:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		}
-  78:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		else
-  79:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		{
-  80:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 			//return su_getchar(hwPort[p].uart.suart);
-  81:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		}
-  82:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	}
-  83:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
-  84:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	return -1;
- 158               		.loc 1 84 0
- 159 0070 8FEF      		ldi r24,lo8(-1)
- 160 0072 9FEF      		ldi r25,lo8(-1)
-  85:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** }
- 161               		.loc 1 85 0
- 162 0074 0895      		ret
- 163               	.LVL12:
- 164               	.L17:
- 165               	.LBB37:
- 166               	.LBB36:
-  47:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		return uart->DATA;
- 167               		.loc 1 47 0
- 168 0076 8081      		ld r24,Z
- 169 0078 90E0      		ldi r25,0
- 170 007a 0895      		ret
- 171               	.LBE36:
- 172               	.LBE37:
- 173               		.cfi_endproc
- 174               	.LFE9:
- 176               	.global	initializeHWPort
- 178               	initializeHWPort:
- 179               	.LFB10:
-  86:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
-  87:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** void initializeHWPort(HWPort *p, USART_t *huart)
-  88:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** {
- 180               		.loc 1 88 0
- 181               		.cfi_startproc
- 182               	.LVL13:
- 183               	/* prologue: function */
- 184               	/* frame size = 0 */
- 185               	/* stack size = 0 */
- 186               	.L__stack_usage = 0
- 187 007c FB01      		movw r30,r22
-  89:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	if(huart != NULL)
- 188               		.loc 1 89 0
- 189 007e 3097      		sbiw r30,0
- 190 0080 01F0      		breq .L18
-  90:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	{
-  91:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		(p->uart).huart = huart;
- 191               		.loc 1 91 0
- 192 0082 DC01      		movw r26,r24
- 193 0084 6D93      		st X+,r22
- 194 0086 7C93      		st X,r23
- 195 0088 1197      		sbiw r26,1
-  92:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		p->ptype = HARDWARE_UART;
- 196               		.loc 1 92 0
- 197 008a 1296      		adiw r26,2
- 198 008c 1C92      		st X,__zero_reg__
- 199               	.LVL14:
- 200               	.LBB38:
- 201               	.LBB39:
-  93:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
-  94:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		initHWUart(huart);
-  95:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	}
-  96:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** }
-  97:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
-  98:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** void initHWPorts()
-  99:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** {
- 100:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	// male headers
- 101:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	PORTD.DIRSET = PIN7_bm;
- 102:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	initializeHWPort(&(hwPort[UP]), &USARTD1);
- 103:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
- 104:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	// near the double TVS diodes
- 105:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	PORTC.DIRSET = PIN7_bm;
- 106:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	initializeHWPort(&(hwPort[NORTH]), &USARTC1);
- 107:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	
- 108:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	// closest to audio amp
- 109:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	PORTE.DIRSET = PIN3_bm;
- 110:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	initializeHWPort(&(hwPort[SOUTH]), &USARTE0);
- 111:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	
- 112:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	// closest to LEDs
- 113:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	PORTF.DIRSET = PIN3_bm;	
- 114:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	initializeHWPort(&(hwPort[EAST]), &USARTF0);
- 115:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	
- 116:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	// closest to analog input dividers
- 117:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	PORTC.DIRSET = PIN3_bm;	
- 118:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	initializeHWPort(&(hwPort[WEST]), &USARTC0);
- 119:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	
- 120:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	PORTD.DIRSET = PIN3_bm;	
- 121:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	initializeHWPort(&(hwPort[DOWN]), &USARTD0);
- 122:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** }
- 123:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
- 124:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** void initHWUart(USART_t * huart)
- 125:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** {
- 126:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->CTRLB = USART_RXEN_bm | USART_TXEN_bm;		// turn on RX/TX, somewhat helpful!
- 202               		.loc 1 126 0
- 203 008e 88E1      		ldi r24,lo8(24)
- 204               	.LVL15:
- 205 0090 8483      		std Z+4,r24
- 127:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->CTRLC = USART_CHSIZE_8BIT_gc;				// use 8-bit data
- 206               		.loc 1 127 0
- 207 0092 83E0      		ldi r24,lo8(3)
- 208 0094 8583      		std Z+5,r24
- 128:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
- 129:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->CTRLA = USART_RXCINTLVL_HI_gc | USART_TXCINTLVL_HI_gc;	// enable RX/TX interrupt support
- 209               		.loc 1 129 0
- 210 0096 8CE3      		ldi r24,lo8(60)
- 211 0098 8383      		std Z+3,r24
- 130:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->BAUDCTRLA = 51;  // 38400 		// 57600   			//103;	//19200 	16; // 115200
- 212               		.loc 1 130 0
- 213 009a 83E3      		ldi r24,lo8(51)
- 214 009c 8683      		std Z+6,r24
- 131:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->BAUDCTRLB = 0;				//0xB4;  // 57600, set to 0 for others
- 215               		.loc 1 131 0
- 216 009e 1782      		std Z+7,__zero_reg__
- 217               	.LVL16:
- 218               	.L18:
- 219 00a0 0895      		ret
- 220               	.LBE39:
- 221               	.LBE38:
- 222               		.cfi_endproc
- 223               	.LFE10:
- 225               	.global	initHWPorts
- 227               	initHWPorts:
- 228               	.LFB11:
-  99:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** {
- 229               		.loc 1 99 0
- 230               		.cfi_startproc
- 231 00a2 CF93      		push r28
- 232               	.LCFI0:
- 233               		.cfi_def_cfa_offset 4
- 234               		.cfi_offset 28, -3
- 235 00a4 DF93      		push r29
- 236               	.LCFI1:
- 237               		.cfi_def_cfa_offset 5
- 238               		.cfi_offset 29, -4
- 239               	/* prologue: function */
- 240               	/* frame size = 0 */
- 241               	/* stack size = 2 */
- 242               	.L__stack_usage = 2
- 101:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	PORTD.DIRSET = PIN7_bm;
- 243               		.loc 1 101 0
- 244 00a6 A0E6      		ldi r26,lo8(96)
- 245 00a8 B6E0      		ldi r27,lo8(6)
- 246 00aa 40E8      		ldi r20,lo8(-128)
- 247 00ac 1196      		adiw r26,1
- 248 00ae 4C93      		st X,r20
- 249 00b0 1197      		sbiw r26,1
- 250               	.LVL17:
- 251               	.LBB40:
- 252               	.LBB41:
-  91:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		(p->uart).huart = huart;
- 253               		.loc 1 91 0
- 254 00b2 E0EB      		ldi r30,lo8(-80)
- 255 00b4 F9E0      		ldi r31,lo8(9)
- 256 00b6 E093 0000 		sts hwPort+15,r30
- 257 00ba F093 0000 		sts hwPort+15+1,r31
-  92:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		p->ptype = HARDWARE_UART;
- 258               		.loc 1 92 0
- 259 00be 1092 0000 		sts hwPort+17,__zero_reg__
- 260               	.LVL18:
- 261               	.LBB42:
- 262               	.LBB43:
- 126:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->CTRLB = USART_RXEN_bm | USART_TXEN_bm;		// turn on RX/TX, somewhat helpful!
- 263               		.loc 1 126 0
- 264 00c2 38E1      		ldi r19,lo8(24)
- 265 00c4 3483      		std Z+4,r19
- 127:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->CTRLC = USART_CHSIZE_8BIT_gc;				// use 8-bit data
- 266               		.loc 1 127 0
- 267 00c6 23E0      		ldi r18,lo8(3)
- 268 00c8 2583      		std Z+5,r18
- 129:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->CTRLA = USART_RXCINTLVL_HI_gc | USART_TXCINTLVL_HI_gc;	// enable RX/TX interrupt support
- 269               		.loc 1 129 0
- 270 00ca 9CE3      		ldi r25,lo8(60)
- 271 00cc 9383      		std Z+3,r25
- 130:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->BAUDCTRLA = 51;  // 38400 		// 57600   			//103;	//19200 	16; // 115200
- 272               		.loc 1 130 0
- 273 00ce 83E3      		ldi r24,lo8(51)
- 274 00d0 8683      		std Z+6,r24
- 275               		.loc 1 131 0
- 276 00d2 1782      		std Z+7,__zero_reg__
- 277               	.LBE43:
- 278               	.LBE42:
- 279               	.LBE41:
- 280               	.LBE40:
- 105:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	PORTC.DIRSET = PIN7_bm;
- 281               		.loc 1 105 0
- 282 00d4 C0E4      		ldi r28,lo8(64)
- 283 00d6 D6E0      		ldi r29,lo8(6)
- 284 00d8 4983      		std Y+1,r20
- 285               	.LVL19:
- 286               	.LBB44:
- 287               	.LBB45:
-  91:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		(p->uart).huart = huart;
- 288               		.loc 1 91 0
- 289 00da E0EB      		ldi r30,lo8(-80)
- 290 00dc F8E0      		ldi r31,lo8(8)
- 291 00de E093 0000 		sts hwPort+3,r30
- 292 00e2 F093 0000 		sts hwPort+3+1,r31
-  92:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		p->ptype = HARDWARE_UART;
- 293               		.loc 1 92 0
- 294 00e6 1092 0000 		sts hwPort+5,__zero_reg__
- 295               	.LVL20:
- 296               	.LBB46:
- 297               	.LBB47:
- 126:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->CTRLB = USART_RXEN_bm | USART_TXEN_bm;		// turn on RX/TX, somewhat helpful!
- 298               		.loc 1 126 0
- 299 00ea 3483      		std Z+4,r19
- 127:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->CTRLC = USART_CHSIZE_8BIT_gc;				// use 8-bit data
- 300               		.loc 1 127 0
- 301 00ec 2583      		std Z+5,r18
- 129:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->CTRLA = USART_RXCINTLVL_HI_gc | USART_TXCINTLVL_HI_gc;	// enable RX/TX interrupt support
- 302               		.loc 1 129 0
- 303 00ee 9383      		std Z+3,r25
- 130:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->BAUDCTRLA = 51;  // 38400 		// 57600   			//103;	//19200 	16; // 115200
- 304               		.loc 1 130 0
- 305 00f0 8683      		std Z+6,r24
- 306               		.loc 1 131 0
- 307 00f2 1782      		std Z+7,__zero_reg__
- 308               	.LBE47:
- 309               	.LBE46:
- 310               	.LBE45:
- 311               	.LBE44:
- 109:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	PORTE.DIRSET = PIN3_bm;
- 312               		.loc 1 109 0
- 313 00f4 48E0      		ldi r20,lo8(8)
- 314 00f6 E0E8      		ldi r30,lo8(-128)
- 315 00f8 F6E0      		ldi r31,lo8(6)
- 316 00fa 4183      		std Z+1,r20
- 317               	.LVL21:
- 318               	.LBB48:
- 319               	.LBB49:
-  91:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		(p->uart).huart = huart;
- 320               		.loc 1 91 0
- 321 00fc E0EA      		ldi r30,lo8(-96)
- 322 00fe FAE0      		ldi r31,lo8(10)
- 323 0100 E093 0000 		sts hwPort+12,r30
- 324 0104 F093 0000 		sts hwPort+12+1,r31
-  92:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		p->ptype = HARDWARE_UART;
- 325               		.loc 1 92 0
- 326 0108 1092 0000 		sts hwPort+14,__zero_reg__
- 327               	.LVL22:
- 328               	.LBB50:
- 329               	.LBB51:
- 126:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->CTRLB = USART_RXEN_bm | USART_TXEN_bm;		// turn on RX/TX, somewhat helpful!
- 330               		.loc 1 126 0
- 331 010c 3483      		std Z+4,r19
- 127:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->CTRLC = USART_CHSIZE_8BIT_gc;				// use 8-bit data
- 332               		.loc 1 127 0
- 333 010e 2583      		std Z+5,r18
- 129:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->CTRLA = USART_RXCINTLVL_HI_gc | USART_TXCINTLVL_HI_gc;	// enable RX/TX interrupt support
- 334               		.loc 1 129 0
- 335 0110 9383      		std Z+3,r25
- 130:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->BAUDCTRLA = 51;  // 38400 		// 57600   			//103;	//19200 	16; // 115200
- 336               		.loc 1 130 0
- 337 0112 8683      		std Z+6,r24
- 338               		.loc 1 131 0
- 339 0114 1782      		std Z+7,__zero_reg__
- 340               	.LBE51:
- 341               	.LBE50:
- 342               	.LBE49:
- 343               	.LBE48:
- 113:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	PORTF.DIRSET = PIN3_bm;	
- 344               		.loc 1 113 0
- 345 0116 E0EA      		ldi r30,lo8(-96)
- 346 0118 F6E0      		ldi r31,lo8(6)
- 347 011a 4183      		std Z+1,r20
- 348               	.LVL23:
- 349               	.LBB52:
- 350               	.LBB53:
-  91:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		(p->uart).huart = huart;
- 351               		.loc 1 91 0
- 352 011c E0EA      		ldi r30,lo8(-96)
- 353 011e FBE0      		ldi r31,lo8(11)
- 354 0120 E093 0000 		sts hwPort+6,r30
- 355 0124 F093 0000 		sts hwPort+6+1,r31
-  92:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		p->ptype = HARDWARE_UART;
- 356               		.loc 1 92 0
- 357 0128 1092 0000 		sts hwPort+8,__zero_reg__
- 358               	.LVL24:
- 359               	.LBB54:
- 360               	.LBB55:
- 126:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->CTRLB = USART_RXEN_bm | USART_TXEN_bm;		// turn on RX/TX, somewhat helpful!
- 361               		.loc 1 126 0
- 362 012c 3483      		std Z+4,r19
- 127:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->CTRLC = USART_CHSIZE_8BIT_gc;				// use 8-bit data
- 363               		.loc 1 127 0
- 364 012e 2583      		std Z+5,r18
- 129:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->CTRLA = USART_RXCINTLVL_HI_gc | USART_TXCINTLVL_HI_gc;	// enable RX/TX interrupt support
- 365               		.loc 1 129 0
- 366 0130 9383      		std Z+3,r25
- 130:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->BAUDCTRLA = 51;  // 38400 		// 57600   			//103;	//19200 	16; // 115200
- 367               		.loc 1 130 0
- 368 0132 8683      		std Z+6,r24
- 369               		.loc 1 131 0
- 370 0134 1782      		std Z+7,__zero_reg__
- 371               	.LBE55:
- 372               	.LBE54:
- 373               	.LBE53:
- 374               	.LBE52:
- 117:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	PORTC.DIRSET = PIN3_bm;	
- 375               		.loc 1 117 0
- 376 0136 4983      		std Y+1,r20
- 377               	.LVL25:
- 378               	.LBB56:
- 379               	.LBB57:
-  91:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		(p->uart).huart = huart;
- 380               		.loc 1 91 0
- 381 0138 E0EA      		ldi r30,lo8(-96)
- 382 013a F8E0      		ldi r31,lo8(8)
- 383 013c E093 0000 		sts hwPort+9,r30
- 384 0140 F093 0000 		sts hwPort+9+1,r31
-  92:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		p->ptype = HARDWARE_UART;
- 385               		.loc 1 92 0
- 386 0144 1092 0000 		sts hwPort+11,__zero_reg__
- 387               	.LVL26:
- 388               	.LBB58:
- 389               	.LBB59:
- 126:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->CTRLB = USART_RXEN_bm | USART_TXEN_bm;		// turn on RX/TX, somewhat helpful!
- 390               		.loc 1 126 0
- 391 0148 3483      		std Z+4,r19
- 127:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->CTRLC = USART_CHSIZE_8BIT_gc;				// use 8-bit data
- 392               		.loc 1 127 0
- 393 014a 2583      		std Z+5,r18
- 129:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->CTRLA = USART_RXCINTLVL_HI_gc | USART_TXCINTLVL_HI_gc;	// enable RX/TX interrupt support
- 394               		.loc 1 129 0
- 395 014c 9383      		std Z+3,r25
- 130:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->BAUDCTRLA = 51;  // 38400 		// 57600   			//103;	//19200 	16; // 115200
- 396               		.loc 1 130 0
- 397 014e 8683      		std Z+6,r24
- 398               		.loc 1 131 0
- 399 0150 1782      		std Z+7,__zero_reg__
- 400               	.LBE59:
- 401               	.LBE58:
- 402               	.LBE57:
- 403               	.LBE56:
- 120:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	PORTD.DIRSET = PIN3_bm;	
- 404               		.loc 1 120 0
- 405 0152 1196      		adiw r26,1
- 406 0154 4C93      		st X,r20
- 407               	.LVL27:
- 408               	.LBB60:
- 409               	.LBB61:
-  91:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		(p->uart).huart = huart;
- 410               		.loc 1 91 0
- 411 0156 E0EA      		ldi r30,lo8(-96)
- 412 0158 F9E0      		ldi r31,lo8(9)
- 413 015a E093 0000 		sts hwPort,r30
- 414 015e F093 0000 		sts hwPort+1,r31
-  92:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		p->ptype = HARDWARE_UART;
- 415               		.loc 1 92 0
- 416 0162 1092 0000 		sts hwPort+2,__zero_reg__
- 417               	.LVL28:
- 418               	.LBB62:
- 419               	.LBB63:
- 126:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->CTRLB = USART_RXEN_bm | USART_TXEN_bm;		// turn on RX/TX, somewhat helpful!
- 420               		.loc 1 126 0
- 421 0166 3483      		std Z+4,r19
- 127:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->CTRLC = USART_CHSIZE_8BIT_gc;				// use 8-bit data
- 422               		.loc 1 127 0
- 423 0168 2583      		std Z+5,r18
- 129:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->CTRLA = USART_RXCINTLVL_HI_gc | USART_TXCINTLVL_HI_gc;	// enable RX/TX interrupt support
- 424               		.loc 1 129 0
- 425 016a 9383      		std Z+3,r25
- 130:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->BAUDCTRLA = 51;  // 38400 		// 57600   			//103;	//19200 	16; // 115200
- 426               		.loc 1 130 0
- 427 016c 8683      		std Z+6,r24
- 428               		.loc 1 131 0
- 429 016e 1782      		std Z+7,__zero_reg__
- 430               	/* epilogue start */
- 431               	.LBE63:
- 432               	.LBE62:
- 433               	.LBE61:
- 434               	.LBE60:
- 122:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** }
- 435               		.loc 1 122 0
- 436 0170 DF91      		pop r29
- 437 0172 CF91      		pop r28
- 438 0174 0895      		ret
- 439               		.cfi_endproc
- 440               	.LFE11:
- 442               	.global	initHWUart
- 444               	initHWUart:
- 445               	.LFB12:
- 125:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** {
- 446               		.loc 1 125 0
- 447               		.cfi_startproc
- 448               	.LVL29:
- 449               	/* prologue: function */
- 450               	/* frame size = 0 */
- 451               	/* stack size = 0 */
- 452               	.L__stack_usage = 0
- 453 0176 FC01      		movw r30,r24
- 126:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->CTRLB = USART_RXEN_bm | USART_TXEN_bm;		// turn on RX/TX, somewhat helpful!
- 454               		.loc 1 126 0
- 455 0178 88E1      		ldi r24,lo8(24)
- 456               	.LVL30:
- 457 017a 8483      		std Z+4,r24
- 127:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->CTRLC = USART_CHSIZE_8BIT_gc;				// use 8-bit data
- 458               		.loc 1 127 0
- 459 017c 83E0      		ldi r24,lo8(3)
- 460 017e 8583      		std Z+5,r24
- 129:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->CTRLA = USART_RXCINTLVL_HI_gc | USART_TXCINTLVL_HI_gc;	// enable RX/TX interrupt support
- 461               		.loc 1 129 0
- 462 0180 8CE3      		ldi r24,lo8(60)
- 463 0182 8383      		std Z+3,r24
- 130:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->BAUDCTRLA = 51;  // 38400 		// 57600   			//103;	//19200 	16; // 115200
- 464               		.loc 1 130 0
- 465 0184 83E3      		ldi r24,lo8(51)
- 466 0186 8683      		std Z+6,r24
- 467               		.loc 1 131 0
- 468 0188 1782      		std Z+7,__zero_reg__
- 469 018a 0895      		ret
- 470               		.cfi_endproc
- 471               	.LFE12:
- 473               	.global	__vector_91
- 475               	__vector_91:
- 476               	.LFB13:
- 132:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** }
- 133:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
- 134:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
- 135:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** ISR(USARTD1_RXC_vect)
- 136:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** {
- 477               		.loc 1 136 0
- 478               		.cfi_startproc
- 479 018c 1F92      		push r1
- 480               	.LCFI2:
- 481               		.cfi_def_cfa_offset 4
- 482               		.cfi_offset 1, -3
- 483 018e 0F92      		push r0
- 484               	.LCFI3:
- 485               		.cfi_def_cfa_offset 5
- 486               		.cfi_offset 0, -4
- 487 0190 0FB6      		in r0,__SREG__
- 488 0192 0F92      		push r0
- 489 0194 1124      		clr __zero_reg__
- 490 0196 0BB6      		in r0,__RAMPZ__
- 491 0198 0F92      		push r0
- 492 019a 2F93      		push r18
- 493               	.LCFI4:
- 494               		.cfi_def_cfa_offset 6
- 495               		.cfi_offset 18, -5
- 496 019c 3F93      		push r19
- 497               	.LCFI5:
- 498               		.cfi_def_cfa_offset 7
- 499               		.cfi_offset 19, -6
- 500 019e 4F93      		push r20
- 501               	.LCFI6:
- 502               		.cfi_def_cfa_offset 8
- 503               		.cfi_offset 20, -7
- 504 01a0 5F93      		push r21
- 505               	.LCFI7:
- 506               		.cfi_def_cfa_offset 9
- 507               		.cfi_offset 21, -8
- 508 01a2 6F93      		push r22
- 509               	.LCFI8:
- 510               		.cfi_def_cfa_offset 10
- 511               		.cfi_offset 22, -9
- 512 01a4 7F93      		push r23
- 513               	.LCFI9:
- 514               		.cfi_def_cfa_offset 11
- 515               		.cfi_offset 23, -10
- 516 01a6 8F93      		push r24
- 517               	.LCFI10:
- 518               		.cfi_def_cfa_offset 12
- 519               		.cfi_offset 24, -11
- 520 01a8 9F93      		push r25
- 521               	.LCFI11:
- 522               		.cfi_def_cfa_offset 13
- 523               		.cfi_offset 25, -12
- 524 01aa AF93      		push r26
- 525               	.LCFI12:
- 526               		.cfi_def_cfa_offset 14
- 527               		.cfi_offset 26, -13
- 528 01ac BF93      		push r27
- 529               	.LCFI13:
- 530               		.cfi_def_cfa_offset 15
- 531               		.cfi_offset 27, -14
- 532 01ae EF93      		push r30
- 533               	.LCFI14:
- 534               		.cfi_def_cfa_offset 16
- 535               		.cfi_offset 30, -15
- 536 01b0 FF93      		push r31
- 537               	.LCFI15:
- 538               		.cfi_def_cfa_offset 17
- 539               		.cfi_offset 31, -16
- 540               	/* prologue: Signal */
- 541               	/* frame size = 0 */
- 542               	/* stack size = 16 */
- 543               	.L__stack_usage = 16
- 137:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	uint8_t c;
- 138:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	
- 139:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	c = USARTD1.DATA;
- 544               		.loc 1 139 0
- 545 01b2 8091 B009 		lds r24,2480
- 546               	.LVL31:
- 140:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	//printf("R:%x",c);	
- 141:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	push(c, &(port[UP].rx));
- 547               		.loc 1 141 0
- 548 01b6 60E0      		ldi r22,lo8(port+464)
- 549 01b8 70E0      		ldi r23,hi8(port+464)
- 550 01ba 0E94 0000 		call push
- 551               	.LVL32:
- 552               	/* epilogue start */
- 142:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** }
- 553               		.loc 1 142 0
- 554 01be FF91      		pop r31
- 555 01c0 EF91      		pop r30
- 556 01c2 BF91      		pop r27
- 557 01c4 AF91      		pop r26
- 558 01c6 9F91      		pop r25
- 559 01c8 8F91      		pop r24
- 560 01ca 7F91      		pop r23
- 561 01cc 6F91      		pop r22
- 562 01ce 5F91      		pop r21
- 563 01d0 4F91      		pop r20
- 564 01d2 3F91      		pop r19
- 565 01d4 2F91      		pop r18
- 566 01d6 0F90      		pop r0
- 567 01d8 0BBE      		out __RAMPZ__,r0
- 568 01da 0F90      		pop r0
- 569 01dc 0FBE      		out __SREG__,r0
- 570 01de 0F90      		pop r0
- 571 01e0 1F90      		pop r1
- 572 01e2 1895      		reti
- 573               		.cfi_endproc
- 574               	.LFE13:
- 576               	.global	__vector_93
- 578               	__vector_93:
- 579               	.LFB14:
- 143:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
- 144:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** ISR(USARTD1_TXC_vect)
- 145:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** {
- 580               		.loc 1 145 0
- 581               		.cfi_startproc
- 582 01e4 1F92      		push r1
- 583               	.LCFI16:
- 584               		.cfi_def_cfa_offset 4
- 585               		.cfi_offset 1, -3
- 586 01e6 0F92      		push r0
- 587               	.LCFI17:
- 588               		.cfi_def_cfa_offset 5
- 589               		.cfi_offset 0, -4
- 590 01e8 0FB6      		in r0,__SREG__
- 591 01ea 0F92      		push r0
- 592 01ec 1124      		clr __zero_reg__
- 593 01ee 0BB6      		in r0,__RAMPZ__
- 594 01f0 0F92      		push r0
- 595 01f2 2F93      		push r18
- 596               	.LCFI18:
- 597               		.cfi_def_cfa_offset 6
- 598               		.cfi_offset 18, -5
- 599 01f4 3F93      		push r19
- 600               	.LCFI19:
- 601               		.cfi_def_cfa_offset 7
- 602               		.cfi_offset 19, -6
- 603 01f6 4F93      		push r20
- 604               	.LCFI20:
- 605               		.cfi_def_cfa_offset 8
- 606               		.cfi_offset 20, -7
- 607 01f8 5F93      		push r21
- 608               	.LCFI21:
- 609               		.cfi_def_cfa_offset 9
- 610               		.cfi_offset 21, -8
- 611 01fa 6F93      		push r22
- 612               	.LCFI22:
- 613               		.cfi_def_cfa_offset 10
- 614               		.cfi_offset 22, -9
- 615 01fc 7F93      		push r23
- 616               	.LCFI23:
- 617               		.cfi_def_cfa_offset 11
- 618               		.cfi_offset 23, -10
- 619 01fe 8F93      		push r24
- 620               	.LCFI24:
- 621               		.cfi_def_cfa_offset 12
- 622               		.cfi_offset 24, -11
- 623 0200 9F93      		push r25
- 624               	.LCFI25:
- 625               		.cfi_def_cfa_offset 13
- 626               		.cfi_offset 25, -12
- 627 0202 AF93      		push r26
- 628               	.LCFI26:
- 629               		.cfi_def_cfa_offset 14
- 630               		.cfi_offset 26, -13
- 631 0204 BF93      		push r27
- 632               	.LCFI27:
- 633               		.cfi_def_cfa_offset 15
- 634               		.cfi_offset 27, -14
- 635 0206 EF93      		push r30
- 636               	.LCFI28:
- 637               		.cfi_def_cfa_offset 16
- 638               		.cfi_offset 30, -15
- 639 0208 FF93      		push r31
- 640               	.LCFI29:
- 641               		.cfi_def_cfa_offset 17
- 642               		.cfi_offset 31, -16
- 643               	/* prologue: Signal */
- 644               	/* frame size = 0 */
- 645               	/* stack size = 16 */
- 646               	.L__stack_usage = 16
- 146:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	int16_t c;
- 147:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	
- 148:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	c  = pop(&(port[UP].tx));
- 647               		.loc 1 148 0
- 648 020a 80E0      		ldi r24,lo8(port+496)
- 649 020c 90E0      		ldi r25,hi8(port+496)
- 650 020e 0E94 0000 		call pop
- 651               	.LVL33:
- 149:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	
- 150:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	if(c != -1)
- 652               		.loc 1 150 0
- 653 0212 8F3F      		cpi r24,-1
- 654 0214 2FEF      		ldi r18,-1
- 655 0216 9207      		cpc r25,r18
- 656 0218 01F0      		breq .L26
- 151:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	{
- 152:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		USARTD1.DATA = c;
- 657               		.loc 1 152 0
- 658 021a 8093 B009 		sts 2480,r24
- 659               	.L26:
- 660               	/* epilogue start */
- 153:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	}
- 154:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	else
- 155:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	{
- 156:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		// should flag that we're waiting for an ACK now
- 157:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	}
- 158:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** }
- 661               		.loc 1 158 0
- 662 021e FF91      		pop r31
- 663 0220 EF91      		pop r30
- 664 0222 BF91      		pop r27
- 665 0224 AF91      		pop r26
- 666 0226 9F91      		pop r25
- 667 0228 8F91      		pop r24
- 668               	.LVL34:
- 669 022a 7F91      		pop r23
- 670 022c 6F91      		pop r22
- 671 022e 5F91      		pop r21
- 672 0230 4F91      		pop r20
- 673 0232 3F91      		pop r19
- 674 0234 2F91      		pop r18
- 675 0236 0F90      		pop r0
- 676 0238 0BBE      		out __RAMPZ__,r0
- 677 023a 0F90      		pop r0
- 678 023c 0FBE      		out __SREG__,r0
- 679 023e 0F90      		pop r0
- 680 0240 1F90      		pop r1
- 681 0242 1895      		reti
- 682               		.cfi_endproc
- 683               	.LFE14:
- 685               	.global	__vector_28
- 687               	__vector_28:
- 688               	.LFB15:
- 159:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
- 160:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** ISR(USARTC1_RXC_vect)
- 161:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** {
- 689               		.loc 1 161 0
- 690               		.cfi_startproc
- 691 0244 1F92      		push r1
- 692               	.LCFI30:
- 693               		.cfi_def_cfa_offset 4
- 694               		.cfi_offset 1, -3
- 695 0246 0F92      		push r0
- 696               	.LCFI31:
- 697               		.cfi_def_cfa_offset 5
- 698               		.cfi_offset 0, -4
- 699 0248 0FB6      		in r0,__SREG__
- 700 024a 0F92      		push r0
- 701 024c 1124      		clr __zero_reg__
- 702 024e 0BB6      		in r0,__RAMPZ__
- 703 0250 0F92      		push r0
- 704 0252 2F93      		push r18
- 705               	.LCFI32:
- 706               		.cfi_def_cfa_offset 6
- 707               		.cfi_offset 18, -5
- 708 0254 3F93      		push r19
- 709               	.LCFI33:
- 710               		.cfi_def_cfa_offset 7
- 711               		.cfi_offset 19, -6
- 712 0256 4F93      		push r20
- 713               	.LCFI34:
- 714               		.cfi_def_cfa_offset 8
- 715               		.cfi_offset 20, -7
- 716 0258 5F93      		push r21
- 717               	.LCFI35:
- 718               		.cfi_def_cfa_offset 9
- 719               		.cfi_offset 21, -8
- 720 025a 6F93      		push r22
- 721               	.LCFI36:
- 722               		.cfi_def_cfa_offset 10
- 723               		.cfi_offset 22, -9
- 724 025c 7F93      		push r23
- 725               	.LCFI37:
- 726               		.cfi_def_cfa_offset 11
- 727               		.cfi_offset 23, -10
- 728 025e 8F93      		push r24
- 729               	.LCFI38:
- 730               		.cfi_def_cfa_offset 12
- 731               		.cfi_offset 24, -11
- 732 0260 9F93      		push r25
- 733               	.LCFI39:
- 734               		.cfi_def_cfa_offset 13
- 735               		.cfi_offset 25, -12
- 736 0262 AF93      		push r26
- 737               	.LCFI40:
- 738               		.cfi_def_cfa_offset 14
- 739               		.cfi_offset 26, -13
- 740 0264 BF93      		push r27
- 741               	.LCFI41:
- 742               		.cfi_def_cfa_offset 15
- 743               		.cfi_offset 27, -14
- 744 0266 EF93      		push r30
- 745               	.LCFI42:
- 746               		.cfi_def_cfa_offset 16
- 747               		.cfi_offset 30, -15
- 748 0268 FF93      		push r31
- 749               	.LCFI43:
- 750               		.cfi_def_cfa_offset 17
- 751               		.cfi_offset 31, -16
- 752               	/* prologue: Signal */
- 753               	/* frame size = 0 */
- 754               	/* stack size = 16 */
- 755               	.L__stack_usage = 16
- 162:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	uint8_t c;
- 163:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	
- 164:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	c = USARTC1.DATA;
- 756               		.loc 1 164 0
- 757 026a 8091 B008 		lds r24,2224
- 758               	.LVL35:
- 165:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	//printf("R:%x",c);	
- 166:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	push(c, &(port[NORTH].rx));
- 759               		.loc 1 166 0
- 760 026e 60E0      		ldi r22,lo8(port+112)
- 761 0270 70E0      		ldi r23,hi8(port+112)
- 762 0272 0E94 0000 		call push
- 763               	.LVL36:
- 764               	/* epilogue start */
- 167:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** }
- 765               		.loc 1 167 0
- 766 0276 FF91      		pop r31
- 767 0278 EF91      		pop r30
- 768 027a BF91      		pop r27
- 769 027c AF91      		pop r26
- 770 027e 9F91      		pop r25
- 771 0280 8F91      		pop r24
- 772 0282 7F91      		pop r23
- 773 0284 6F91      		pop r22
- 774 0286 5F91      		pop r21
- 775 0288 4F91      		pop r20
- 776 028a 3F91      		pop r19
- 777 028c 2F91      		pop r18
- 778 028e 0F90      		pop r0
- 779 0290 0BBE      		out __RAMPZ__,r0
- 780 0292 0F90      		pop r0
- 781 0294 0FBE      		out __SREG__,r0
- 782 0296 0F90      		pop r0
- 783 0298 1F90      		pop r1
- 784 029a 1895      		reti
- 785               		.cfi_endproc
- 786               	.LFE15:
- 788               	.global	__vector_30
- 790               	__vector_30:
- 791               	.LFB16:
- 168:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** ISR(USARTC1_TXC_vect)
- 169:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** {
- 792               		.loc 1 169 0
- 793               		.cfi_startproc
- 794 029c 1F92      		push r1
- 795               	.LCFI44:
- 796               		.cfi_def_cfa_offset 4
- 797               		.cfi_offset 1, -3
- 798 029e 0F92      		push r0
- 799               	.LCFI45:
- 800               		.cfi_def_cfa_offset 5
- 801               		.cfi_offset 0, -4
- 802 02a0 0FB6      		in r0,__SREG__
- 803 02a2 0F92      		push r0
- 804 02a4 1124      		clr __zero_reg__
- 805 02a6 0BB6      		in r0,__RAMPZ__
- 806 02a8 0F92      		push r0
- 807 02aa 2F93      		push r18
- 808               	.LCFI46:
- 809               		.cfi_def_cfa_offset 6
- 810               		.cfi_offset 18, -5
- 811 02ac 3F93      		push r19
- 812               	.LCFI47:
- 813               		.cfi_def_cfa_offset 7
- 814               		.cfi_offset 19, -6
- 815 02ae 4F93      		push r20
- 816               	.LCFI48:
- 817               		.cfi_def_cfa_offset 8
- 818               		.cfi_offset 20, -7
- 819 02b0 5F93      		push r21
- 820               	.LCFI49:
- 821               		.cfi_def_cfa_offset 9
- 822               		.cfi_offset 21, -8
- 823 02b2 6F93      		push r22
- 824               	.LCFI50:
- 825               		.cfi_def_cfa_offset 10
- 826               		.cfi_offset 22, -9
- 827 02b4 7F93      		push r23
- 828               	.LCFI51:
- 829               		.cfi_def_cfa_offset 11
- 830               		.cfi_offset 23, -10
- 831 02b6 8F93      		push r24
- 832               	.LCFI52:
- 833               		.cfi_def_cfa_offset 12
- 834               		.cfi_offset 24, -11
- 835 02b8 9F93      		push r25
- 836               	.LCFI53:
- 837               		.cfi_def_cfa_offset 13
- 838               		.cfi_offset 25, -12
- 839 02ba AF93      		push r26
- 840               	.LCFI54:
- 841               		.cfi_def_cfa_offset 14
- 842               		.cfi_offset 26, -13
- 843 02bc BF93      		push r27
- 844               	.LCFI55:
- 845               		.cfi_def_cfa_offset 15
- 846               		.cfi_offset 27, -14
- 847 02be EF93      		push r30
- 848               	.LCFI56:
- 849               		.cfi_def_cfa_offset 16
- 850               		.cfi_offset 30, -15
- 851 02c0 FF93      		push r31
- 852               	.LCFI57:
- 853               		.cfi_def_cfa_offset 17
- 854               		.cfi_offset 31, -16
- 855               	/* prologue: Signal */
- 856               	/* frame size = 0 */
- 857               	/* stack size = 16 */
- 858               	.L__stack_usage = 16
- 170:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	int16_t c;
- 171:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	
- 172:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	c  = pop(&(port[NORTH].tx));
- 859               		.loc 1 172 0
- 860 02c2 80E0      		ldi r24,lo8(port+144)
- 861 02c4 90E0      		ldi r25,hi8(port+144)
- 862 02c6 0E94 0000 		call pop
- 863               	.LVL37:
- 173:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	
- 174:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	if(c != -1)
- 864               		.loc 1 174 0
- 865 02ca 8F3F      		cpi r24,-1
- 866 02cc 2FEF      		ldi r18,-1
- 867 02ce 9207      		cpc r25,r18
- 868 02d0 01F0      		breq .L32
- 175:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	{
- 176:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		USARTC1.DATA = c;
- 869               		.loc 1 176 0
- 870 02d2 8093 B008 		sts 2224,r24
- 871               	.L32:
- 872               	/* epilogue start */
- 177:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	}
- 178:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** }
- 873               		.loc 1 178 0
- 874 02d6 FF91      		pop r31
- 875 02d8 EF91      		pop r30
- 876 02da BF91      		pop r27
- 877 02dc AF91      		pop r26
- 878 02de 9F91      		pop r25
- 879 02e0 8F91      		pop r24
- 880               	.LVL38:
- 881 02e2 7F91      		pop r23
- 882 02e4 6F91      		pop r22
- 883 02e6 5F91      		pop r21
- 884 02e8 4F91      		pop r20
- 885 02ea 3F91      		pop r19
- 886 02ec 2F91      		pop r18
- 887 02ee 0F90      		pop r0
- 888 02f0 0BBE      		out __RAMPZ__,r0
- 889 02f2 0F90      		pop r0
- 890 02f4 0FBE      		out __SREG__,r0
- 891 02f6 0F90      		pop r0
- 892 02f8 1F90      		pop r1
- 893 02fa 1895      		reti
- 894               		.cfi_endproc
- 895               	.LFE16:
- 897               	.global	__vector_119
- 899               	__vector_119:
- 900               	.LFB17:
- 179:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
- 180:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** ISR(USARTF0_RXC_vect)
- 181:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** {
- 901               		.loc 1 181 0
- 902               		.cfi_startproc
- 903 02fc 1F92      		push r1
- 904               	.LCFI58:
- 905               		.cfi_def_cfa_offset 4
- 906               		.cfi_offset 1, -3
- 907 02fe 0F92      		push r0
- 908               	.LCFI59:
- 909               		.cfi_def_cfa_offset 5
- 910               		.cfi_offset 0, -4
- 911 0300 0FB6      		in r0,__SREG__
- 912 0302 0F92      		push r0
- 913 0304 1124      		clr __zero_reg__
- 914 0306 0BB6      		in r0,__RAMPZ__
- 915 0308 0F92      		push r0
- 916 030a 2F93      		push r18
- 917               	.LCFI60:
- 918               		.cfi_def_cfa_offset 6
- 919               		.cfi_offset 18, -5
- 920 030c 3F93      		push r19
- 921               	.LCFI61:
- 922               		.cfi_def_cfa_offset 7
- 923               		.cfi_offset 19, -6
- 924 030e 4F93      		push r20
- 925               	.LCFI62:
- 926               		.cfi_def_cfa_offset 8
- 927               		.cfi_offset 20, -7
- 928 0310 5F93      		push r21
- 929               	.LCFI63:
- 930               		.cfi_def_cfa_offset 9
- 931               		.cfi_offset 21, -8
- 932 0312 6F93      		push r22
- 933               	.LCFI64:
- 934               		.cfi_def_cfa_offset 10
- 935               		.cfi_offset 22, -9
- 936 0314 7F93      		push r23
- 937               	.LCFI65:
- 938               		.cfi_def_cfa_offset 11
- 939               		.cfi_offset 23, -10
- 940 0316 8F93      		push r24
- 941               	.LCFI66:
- 942               		.cfi_def_cfa_offset 12
- 943               		.cfi_offset 24, -11
- 944 0318 9F93      		push r25
- 945               	.LCFI67:
- 946               		.cfi_def_cfa_offset 13
- 947               		.cfi_offset 25, -12
- 948 031a AF93      		push r26
- 949               	.LCFI68:
- 950               		.cfi_def_cfa_offset 14
- 951               		.cfi_offset 26, -13
- 952 031c BF93      		push r27
- 953               	.LCFI69:
- 954               		.cfi_def_cfa_offset 15
- 955               		.cfi_offset 27, -14
- 956 031e EF93      		push r30
- 957               	.LCFI70:
- 958               		.cfi_def_cfa_offset 16
- 959               		.cfi_offset 30, -15
- 960 0320 FF93      		push r31
- 961               	.LCFI71:
- 962               		.cfi_def_cfa_offset 17
- 963               		.cfi_offset 31, -16
- 964               	/* prologue: Signal */
- 965               	/* frame size = 0 */
- 966               	/* stack size = 16 */
- 967               	.L__stack_usage = 16
- 182:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	uint8_t c;
- 183:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	
- 184:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	c = USARTF0.DATA;
- 968               		.loc 1 184 0
- 969 0322 8091 A00B 		lds r24,2976
- 970               	.LVL39:
- 185:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	//printf("R:%x",c);	
- 186:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	push(c, &(port[EAST].rx));
- 971               		.loc 1 186 0
- 972 0326 60E0      		ldi r22,lo8(port+200)
- 973 0328 70E0      		ldi r23,hi8(port+200)
- 974 032a 0E94 0000 		call push
- 975               	.LVL40:
- 976               	/* epilogue start */
- 187:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** }
- 977               		.loc 1 187 0
- 978 032e FF91      		pop r31
- 979 0330 EF91      		pop r30
- 980 0332 BF91      		pop r27
- 981 0334 AF91      		pop r26
- 982 0336 9F91      		pop r25
- 983 0338 8F91      		pop r24
- 984 033a 7F91      		pop r23
- 985 033c 6F91      		pop r22
- 986 033e 5F91      		pop r21
- 987 0340 4F91      		pop r20
- 988 0342 3F91      		pop r19
- 989 0344 2F91      		pop r18
- 990 0346 0F90      		pop r0
- 991 0348 0BBE      		out __RAMPZ__,r0
- 992 034a 0F90      		pop r0
- 993 034c 0FBE      		out __SREG__,r0
- 994 034e 0F90      		pop r0
- 995 0350 1F90      		pop r1
- 996 0352 1895      		reti
- 997               		.cfi_endproc
- 998               	.LFE17:
- 1000               	.global	__vector_121
- 1002               	__vector_121:
- 1003               	.LFB18:
- 188:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** ISR(USARTF0_TXC_vect)
- 189:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** {
- 1004               		.loc 1 189 0
- 1005               		.cfi_startproc
- 1006 0354 1F92      		push r1
- 1007               	.LCFI72:
- 1008               		.cfi_def_cfa_offset 4
- 1009               		.cfi_offset 1, -3
- 1010 0356 0F92      		push r0
- 1011               	.LCFI73:
- 1012               		.cfi_def_cfa_offset 5
- 1013               		.cfi_offset 0, -4
- 1014 0358 0FB6      		in r0,__SREG__
- 1015 035a 0F92      		push r0
- 1016 035c 1124      		clr __zero_reg__
- 1017 035e 0BB6      		in r0,__RAMPZ__
- 1018 0360 0F92      		push r0
- 1019 0362 2F93      		push r18
- 1020               	.LCFI74:
- 1021               		.cfi_def_cfa_offset 6
- 1022               		.cfi_offset 18, -5
- 1023 0364 3F93      		push r19
- 1024               	.LCFI75:
- 1025               		.cfi_def_cfa_offset 7
- 1026               		.cfi_offset 19, -6
- 1027 0366 4F93      		push r20
- 1028               	.LCFI76:
- 1029               		.cfi_def_cfa_offset 8
- 1030               		.cfi_offset 20, -7
- 1031 0368 5F93      		push r21
- 1032               	.LCFI77:
- 1033               		.cfi_def_cfa_offset 9
- 1034               		.cfi_offset 21, -8
- 1035 036a 6F93      		push r22
- 1036               	.LCFI78:
- 1037               		.cfi_def_cfa_offset 10
- 1038               		.cfi_offset 22, -9
- 1039 036c 7F93      		push r23
- 1040               	.LCFI79:
- 1041               		.cfi_def_cfa_offset 11
- 1042               		.cfi_offset 23, -10
- 1043 036e 8F93      		push r24
- 1044               	.LCFI80:
- 1045               		.cfi_def_cfa_offset 12
- 1046               		.cfi_offset 24, -11
- 1047 0370 9F93      		push r25
- 1048               	.LCFI81:
- 1049               		.cfi_def_cfa_offset 13
- 1050               		.cfi_offset 25, -12
- 1051 0372 AF93      		push r26
- 1052               	.LCFI82:
- 1053               		.cfi_def_cfa_offset 14
- 1054               		.cfi_offset 26, -13
- 1055 0374 BF93      		push r27
- 1056               	.LCFI83:
- 1057               		.cfi_def_cfa_offset 15
- 1058               		.cfi_offset 27, -14
- 1059 0376 EF93      		push r30
- 1060               	.LCFI84:
- 1061               		.cfi_def_cfa_offset 16
- 1062               		.cfi_offset 30, -15
- 1063 0378 FF93      		push r31
- 1064               	.LCFI85:
- 1065               		.cfi_def_cfa_offset 17
- 1066               		.cfi_offset 31, -16
- 1067               	/* prologue: Signal */
- 1068               	/* frame size = 0 */
- 1069               	/* stack size = 16 */
- 1070               	.L__stack_usage = 16
- 190:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	int16_t c;
- 191:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	
- 192:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	c  = pop(&(port[EAST].tx));
- 1071               		.loc 1 192 0
- 1072 037a 80E0      		ldi r24,lo8(port+232)
- 1073 037c 90E0      		ldi r25,hi8(port+232)
- 1074 037e 0E94 0000 		call pop
- 1075               	.LVL41:
- 193:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	
- 194:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	if(c != -1)
- 1076               		.loc 1 194 0
- 1077 0382 8F3F      		cpi r24,-1
- 1078 0384 2FEF      		ldi r18,-1
- 1079 0386 9207      		cpc r25,r18
- 1080 0388 01F0      		breq .L38
- 195:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	{
- 196:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		USARTF0.DATA = c;
- 1081               		.loc 1 196 0
- 1082 038a 8093 A00B 		sts 2976,r24
- 1083               	.L38:
- 1084               	/* epilogue start */
- 197:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	}
- 198:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** }
- 1085               		.loc 1 198 0
- 1086 038e FF91      		pop r31
- 1087 0390 EF91      		pop r30
- 1088 0392 BF91      		pop r27
- 1089 0394 AF91      		pop r26
- 1090 0396 9F91      		pop r25
- 1091 0398 8F91      		pop r24
- 1092               	.LVL42:
- 1093 039a 7F91      		pop r23
- 1094 039c 6F91      		pop r22
- 1095 039e 5F91      		pop r21
- 1096 03a0 4F91      		pop r20
- 1097 03a2 3F91      		pop r19
- 1098 03a4 2F91      		pop r18
- 1099 03a6 0F90      		pop r0
- 1100 03a8 0BBE      		out __RAMPZ__,r0
- 1101 03aa 0F90      		pop r0
- 1102 03ac 0FBE      		out __SREG__,r0
- 1103 03ae 0F90      		pop r0
- 1104 03b0 1F90      		pop r1
- 1105 03b2 1895      		reti
- 1106               		.cfi_endproc
- 1107               	.LFE18:
- 1109               	.global	__vector_58
- 1111               	__vector_58:
- 1112               	.LFB19:
- 199:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
- 200:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** ISR(USARTE0_RXC_vect)
- 201:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** {
- 1113               		.loc 1 201 0
- 1114               		.cfi_startproc
- 1115 03b4 1F92      		push r1
- 1116               	.LCFI86:
- 1117               		.cfi_def_cfa_offset 4
- 1118               		.cfi_offset 1, -3
- 1119 03b6 0F92      		push r0
- 1120               	.LCFI87:
- 1121               		.cfi_def_cfa_offset 5
- 1122               		.cfi_offset 0, -4
- 1123 03b8 0FB6      		in r0,__SREG__
- 1124 03ba 0F92      		push r0
- 1125 03bc 1124      		clr __zero_reg__
- 1126 03be 0BB6      		in r0,__RAMPZ__
- 1127 03c0 0F92      		push r0
- 1128 03c2 2F93      		push r18
- 1129               	.LCFI88:
- 1130               		.cfi_def_cfa_offset 6
- 1131               		.cfi_offset 18, -5
- 1132 03c4 3F93      		push r19
- 1133               	.LCFI89:
- 1134               		.cfi_def_cfa_offset 7
- 1135               		.cfi_offset 19, -6
- 1136 03c6 4F93      		push r20
- 1137               	.LCFI90:
- 1138               		.cfi_def_cfa_offset 8
- 1139               		.cfi_offset 20, -7
- 1140 03c8 5F93      		push r21
- 1141               	.LCFI91:
- 1142               		.cfi_def_cfa_offset 9
- 1143               		.cfi_offset 21, -8
- 1144 03ca 6F93      		push r22
- 1145               	.LCFI92:
- 1146               		.cfi_def_cfa_offset 10
- 1147               		.cfi_offset 22, -9
- 1148 03cc 7F93      		push r23
- 1149               	.LCFI93:
- 1150               		.cfi_def_cfa_offset 11
- 1151               		.cfi_offset 23, -10
- 1152 03ce 8F93      		push r24
- 1153               	.LCFI94:
- 1154               		.cfi_def_cfa_offset 12
- 1155               		.cfi_offset 24, -11
- 1156 03d0 9F93      		push r25
- 1157               	.LCFI95:
- 1158               		.cfi_def_cfa_offset 13
- 1159               		.cfi_offset 25, -12
- 1160 03d2 AF93      		push r26
- 1161               	.LCFI96:
- 1162               		.cfi_def_cfa_offset 14
- 1163               		.cfi_offset 26, -13
- 1164 03d4 BF93      		push r27
- 1165               	.LCFI97:
- 1166               		.cfi_def_cfa_offset 15
- 1167               		.cfi_offset 27, -14
- 1168 03d6 EF93      		push r30
- 1169               	.LCFI98:
- 1170               		.cfi_def_cfa_offset 16
- 1171               		.cfi_offset 30, -15
- 1172 03d8 FF93      		push r31
- 1173               	.LCFI99:
- 1174               		.cfi_def_cfa_offset 17
- 1175               		.cfi_offset 31, -16
- 1176               	/* prologue: Signal */
- 1177               	/* frame size = 0 */
- 1178               	/* stack size = 16 */
- 1179               	.L__stack_usage = 16
- 202:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	uint8_t c;
- 203:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	
- 204:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	c = USARTE0.DATA;
- 1180               		.loc 1 204 0
- 1181 03da 8091 A00A 		lds r24,2720
- 1182               	.LVL43:
- 205:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	//printf("R:%x",c);	
- 206:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	push(c, &(port[SOUTH].rx));
- 1183               		.loc 1 206 0
- 1184 03de 60E0      		ldi r22,lo8(port+376)
- 1185 03e0 70E0      		ldi r23,hi8(port+376)
- 1186 03e2 0E94 0000 		call push
- 1187               	.LVL44:
- 1188               	/* epilogue start */
- 207:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** }
- 1189               		.loc 1 207 0
- 1190 03e6 FF91      		pop r31
- 1191 03e8 EF91      		pop r30
- 1192 03ea BF91      		pop r27
- 1193 03ec AF91      		pop r26
- 1194 03ee 9F91      		pop r25
- 1195 03f0 8F91      		pop r24
- 1196 03f2 7F91      		pop r23
- 1197 03f4 6F91      		pop r22
- 1198 03f6 5F91      		pop r21
- 1199 03f8 4F91      		pop r20
- 1200 03fa 3F91      		pop r19
- 1201 03fc 2F91      		pop r18
- 1202 03fe 0F90      		pop r0
- 1203 0400 0BBE      		out __RAMPZ__,r0
- 1204 0402 0F90      		pop r0
- 1205 0404 0FBE      		out __SREG__,r0
- 1206 0406 0F90      		pop r0
- 1207 0408 1F90      		pop r1
- 1208 040a 1895      		reti
- 1209               		.cfi_endproc
- 1210               	.LFE19:
- 1212               	.global	__vector_60
- 1214               	__vector_60:
- 1215               	.LFB20:
- 208:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** ISR(USARTE0_TXC_vect)
- 209:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** {
- 1216               		.loc 1 209 0
- 1217               		.cfi_startproc
- 1218 040c 1F92      		push r1
- 1219               	.LCFI100:
- 1220               		.cfi_def_cfa_offset 4
- 1221               		.cfi_offset 1, -3
- 1222 040e 0F92      		push r0
- 1223               	.LCFI101:
- 1224               		.cfi_def_cfa_offset 5
- 1225               		.cfi_offset 0, -4
- 1226 0410 0FB6      		in r0,__SREG__
- 1227 0412 0F92      		push r0
- 1228 0414 1124      		clr __zero_reg__
- 1229 0416 0BB6      		in r0,__RAMPZ__
- 1230 0418 0F92      		push r0
- 1231 041a 2F93      		push r18
- 1232               	.LCFI102:
- 1233               		.cfi_def_cfa_offset 6
- 1234               		.cfi_offset 18, -5
- 1235 041c 3F93      		push r19
- 1236               	.LCFI103:
- 1237               		.cfi_def_cfa_offset 7
- 1238               		.cfi_offset 19, -6
- 1239 041e 4F93      		push r20
- 1240               	.LCFI104:
- 1241               		.cfi_def_cfa_offset 8
- 1242               		.cfi_offset 20, -7
- 1243 0420 5F93      		push r21
- 1244               	.LCFI105:
- 1245               		.cfi_def_cfa_offset 9
- 1246               		.cfi_offset 21, -8
- 1247 0422 6F93      		push r22
- 1248               	.LCFI106:
- 1249               		.cfi_def_cfa_offset 10
- 1250               		.cfi_offset 22, -9
- 1251 0424 7F93      		push r23
- 1252               	.LCFI107:
- 1253               		.cfi_def_cfa_offset 11
- 1254               		.cfi_offset 23, -10
- 1255 0426 8F93      		push r24
- 1256               	.LCFI108:
- 1257               		.cfi_def_cfa_offset 12
- 1258               		.cfi_offset 24, -11
- 1259 0428 9F93      		push r25
- 1260               	.LCFI109:
- 1261               		.cfi_def_cfa_offset 13
- 1262               		.cfi_offset 25, -12
- 1263 042a AF93      		push r26
- 1264               	.LCFI110:
- 1265               		.cfi_def_cfa_offset 14
- 1266               		.cfi_offset 26, -13
- 1267 042c BF93      		push r27
- 1268               	.LCFI111:
- 1269               		.cfi_def_cfa_offset 15
- 1270               		.cfi_offset 27, -14
- 1271 042e EF93      		push r30
- 1272               	.LCFI112:
- 1273               		.cfi_def_cfa_offset 16
- 1274               		.cfi_offset 30, -15
- 1275 0430 FF93      		push r31
- 1276               	.LCFI113:
- 1277               		.cfi_def_cfa_offset 17
- 1278               		.cfi_offset 31, -16
- 1279               	/* prologue: Signal */
- 1280               	/* frame size = 0 */
- 1281               	/* stack size = 16 */
- 1282               	.L__stack_usage = 16
- 210:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	int16_t c;
- 211:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	
- 212:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	c  = pop(&(port[SOUTH].tx));
- 1283               		.loc 1 212 0
- 1284 0432 80E0      		ldi r24,lo8(port+408)
- 1285 0434 90E0      		ldi r25,hi8(port+408)
- 1286 0436 0E94 0000 		call pop
- 1287               	.LVL45:
- 213:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	
- 214:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	if(c != -1)
- 1288               		.loc 1 214 0
- 1289 043a 8F3F      		cpi r24,-1
- 1290 043c 2FEF      		ldi r18,-1
- 1291 043e 9207      		cpc r25,r18
- 1292 0440 01F0      		breq .L44
- 215:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	{
- 216:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		USARTE0.DATA = c;
- 1293               		.loc 1 216 0
- 1294 0442 8093 A00A 		sts 2720,r24
- 1295               	.L44:
- 1296               	/* epilogue start */
- 217:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	}
- 218:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** }
- 1297               		.loc 1 218 0
- 1298 0446 FF91      		pop r31
- 1299 0448 EF91      		pop r30
- 1300 044a BF91      		pop r27
- 1301 044c AF91      		pop r26
- 1302 044e 9F91      		pop r25
- 1303 0450 8F91      		pop r24
- 1304               	.LVL46:
- 1305 0452 7F91      		pop r23
- 1306 0454 6F91      		pop r22
- 1307 0456 5F91      		pop r21
- 1308 0458 4F91      		pop r20
- 1309 045a 3F91      		pop r19
- 1310 045c 2F91      		pop r18
- 1311 045e 0F90      		pop r0
- 1312 0460 0BBE      		out __RAMPZ__,r0
- 1313 0462 0F90      		pop r0
- 1314 0464 0FBE      		out __SREG__,r0
- 1315 0466 0F90      		pop r0
- 1316 0468 1F90      		pop r1
- 1317 046a 1895      		reti
- 1318               		.cfi_endproc
- 1319               	.LFE20:
- 1321               	.global	__vector_25
- 1323               	__vector_25:
- 1324               	.LFB21:
- 219:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
- 220:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** ISR(USARTC0_RXC_vect)
- 221:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** {
- 1325               		.loc 1 221 0
- 1326               		.cfi_startproc
- 1327 046c 1F92      		push r1
- 1328               	.LCFI114:
- 1329               		.cfi_def_cfa_offset 4
- 1330               		.cfi_offset 1, -3
- 1331 046e 0F92      		push r0
- 1332               	.LCFI115:
- 1333               		.cfi_def_cfa_offset 5
- 1334               		.cfi_offset 0, -4
- 1335 0470 0FB6      		in r0,__SREG__
- 1336 0472 0F92      		push r0
- 1337 0474 1124      		clr __zero_reg__
- 1338 0476 0BB6      		in r0,__RAMPZ__
- 1339 0478 0F92      		push r0
- 1340 047a 2F93      		push r18
- 1341               	.LCFI116:
- 1342               		.cfi_def_cfa_offset 6
- 1343               		.cfi_offset 18, -5
- 1344 047c 3F93      		push r19
- 1345               	.LCFI117:
- 1346               		.cfi_def_cfa_offset 7
- 1347               		.cfi_offset 19, -6
- 1348 047e 4F93      		push r20
- 1349               	.LCFI118:
- 1350               		.cfi_def_cfa_offset 8
- 1351               		.cfi_offset 20, -7
- 1352 0480 5F93      		push r21
- 1353               	.LCFI119:
- 1354               		.cfi_def_cfa_offset 9
- 1355               		.cfi_offset 21, -8
- 1356 0482 6F93      		push r22
- 1357               	.LCFI120:
- 1358               		.cfi_def_cfa_offset 10
- 1359               		.cfi_offset 22, -9
- 1360 0484 7F93      		push r23
- 1361               	.LCFI121:
- 1362               		.cfi_def_cfa_offset 11
- 1363               		.cfi_offset 23, -10
- 1364 0486 8F93      		push r24
- 1365               	.LCFI122:
- 1366               		.cfi_def_cfa_offset 12
- 1367               		.cfi_offset 24, -11
- 1368 0488 9F93      		push r25
- 1369               	.LCFI123:
- 1370               		.cfi_def_cfa_offset 13
- 1371               		.cfi_offset 25, -12
- 1372 048a AF93      		push r26
- 1373               	.LCFI124:
- 1374               		.cfi_def_cfa_offset 14
- 1375               		.cfi_offset 26, -13
- 1376 048c BF93      		push r27
- 1377               	.LCFI125:
- 1378               		.cfi_def_cfa_offset 15
- 1379               		.cfi_offset 27, -14
- 1380 048e EF93      		push r30
- 1381               	.LCFI126:
- 1382               		.cfi_def_cfa_offset 16
- 1383               		.cfi_offset 30, -15
- 1384 0490 FF93      		push r31
- 1385               	.LCFI127:
- 1386               		.cfi_def_cfa_offset 17
- 1387               		.cfi_offset 31, -16
- 1388               	/* prologue: Signal */
- 1389               	/* frame size = 0 */
- 1390               	/* stack size = 16 */
- 1391               	.L__stack_usage = 16
- 222:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	uint8_t c;
- 223:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	
- 224:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	c = USARTC0.DATA;
- 1392               		.loc 1 224 0
- 1393 0492 8091 A008 		lds r24,2208
- 1394               	.LVL47:
- 225:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	//printf("R:%x",c);	
- 226:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	push(c, &(port[WEST].rx));
- 1395               		.loc 1 226 0
- 1396 0496 60E0      		ldi r22,lo8(port+288)
- 1397 0498 70E0      		ldi r23,hi8(port+288)
- 1398 049a 0E94 0000 		call push
- 1399               	.LVL48:
- 1400               	/* epilogue start */
- 227:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** }
- 1401               		.loc 1 227 0
- 1402 049e FF91      		pop r31
- 1403 04a0 EF91      		pop r30
- 1404 04a2 BF91      		pop r27
- 1405 04a4 AF91      		pop r26
- 1406 04a6 9F91      		pop r25
- 1407 04a8 8F91      		pop r24
- 1408 04aa 7F91      		pop r23
- 1409 04ac 6F91      		pop r22
- 1410 04ae 5F91      		pop r21
- 1411 04b0 4F91      		pop r20
- 1412 04b2 3F91      		pop r19
- 1413 04b4 2F91      		pop r18
- 1414 04b6 0F90      		pop r0
- 1415 04b8 0BBE      		out __RAMPZ__,r0
- 1416 04ba 0F90      		pop r0
- 1417 04bc 0FBE      		out __SREG__,r0
- 1418 04be 0F90      		pop r0
- 1419 04c0 1F90      		pop r1
- 1420 04c2 1895      		reti
- 1421               		.cfi_endproc
- 1422               	.LFE21:
- 1424               	.global	__vector_27
- 1426               	__vector_27:
- 1427               	.LFB22:
- 228:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** ISR(USARTC0_TXC_vect)
- 229:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** {
- 1428               		.loc 1 229 0
- 1429               		.cfi_startproc
- 1430 04c4 1F92      		push r1
- 1431               	.LCFI128:
- 1432               		.cfi_def_cfa_offset 4
- 1433               		.cfi_offset 1, -3
- 1434 04c6 0F92      		push r0
- 1435               	.LCFI129:
- 1436               		.cfi_def_cfa_offset 5
- 1437               		.cfi_offset 0, -4
- 1438 04c8 0FB6      		in r0,__SREG__
- 1439 04ca 0F92      		push r0
- 1440 04cc 1124      		clr __zero_reg__
- 1441 04ce 0BB6      		in r0,__RAMPZ__
- 1442 04d0 0F92      		push r0
- 1443 04d2 2F93      		push r18
- 1444               	.LCFI130:
- 1445               		.cfi_def_cfa_offset 6
- 1446               		.cfi_offset 18, -5
- 1447 04d4 3F93      		push r19
- 1448               	.LCFI131:
- 1449               		.cfi_def_cfa_offset 7
- 1450               		.cfi_offset 19, -6
- 1451 04d6 4F93      		push r20
- 1452               	.LCFI132:
- 1453               		.cfi_def_cfa_offset 8
- 1454               		.cfi_offset 20, -7
- 1455 04d8 5F93      		push r21
- 1456               	.LCFI133:
- 1457               		.cfi_def_cfa_offset 9
- 1458               		.cfi_offset 21, -8
- 1459 04da 6F93      		push r22
- 1460               	.LCFI134:
- 1461               		.cfi_def_cfa_offset 10
- 1462               		.cfi_offset 22, -9
- 1463 04dc 7F93      		push r23
- 1464               	.LCFI135:
- 1465               		.cfi_def_cfa_offset 11
- 1466               		.cfi_offset 23, -10
- 1467 04de 8F93      		push r24
- 1468               	.LCFI136:
- 1469               		.cfi_def_cfa_offset 12
- 1470               		.cfi_offset 24, -11
- 1471 04e0 9F93      		push r25
- 1472               	.LCFI137:
- 1473               		.cfi_def_cfa_offset 13
- 1474               		.cfi_offset 25, -12
- 1475 04e2 AF93      		push r26
- 1476               	.LCFI138:
- 1477               		.cfi_def_cfa_offset 14
- 1478               		.cfi_offset 26, -13
- 1479 04e4 BF93      		push r27
- 1480               	.LCFI139:
- 1481               		.cfi_def_cfa_offset 15
- 1482               		.cfi_offset 27, -14
- 1483 04e6 EF93      		push r30
- 1484               	.LCFI140:
- 1485               		.cfi_def_cfa_offset 16
- 1486               		.cfi_offset 30, -15
- 1487 04e8 FF93      		push r31
- 1488               	.LCFI141:
- 1489               		.cfi_def_cfa_offset 17
- 1490               		.cfi_offset 31, -16
- 1491               	/* prologue: Signal */
- 1492               	/* frame size = 0 */
- 1493               	/* stack size = 16 */
- 1494               	.L__stack_usage = 16
- 230:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	int16_t c;
- 231:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	
- 232:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	c  = pop(&(port[WEST].tx));
- 1495               		.loc 1 232 0
- 1496 04ea 80E0      		ldi r24,lo8(port+320)
- 1497 04ec 90E0      		ldi r25,hi8(port+320)
- 1498 04ee 0E94 0000 		call pop
- 1499               	.LVL49:
- 233:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	
- 234:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	if(c != -1)
- 1500               		.loc 1 234 0
- 1501 04f2 8F3F      		cpi r24,-1
- 1502 04f4 2FEF      		ldi r18,-1
- 1503 04f6 9207      		cpc r25,r18
- 1504 04f8 01F0      		breq .L50
- 235:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	{
- 236:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		USARTC0.DATA = c;
- 1505               		.loc 1 236 0
- 1506 04fa 8093 A008 		sts 2208,r24
- 1507               	.L50:
- 1508               	/* epilogue start */
- 237:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	}
- 238:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** }
- 1509               		.loc 1 238 0
- 1510 04fe FF91      		pop r31
- 1511 0500 EF91      		pop r30
- 1512 0502 BF91      		pop r27
- 1513 0504 AF91      		pop r26
- 1514 0506 9F91      		pop r25
- 1515 0508 8F91      		pop r24
- 1516               	.LVL50:
- 1517 050a 7F91      		pop r23
- 1518 050c 6F91      		pop r22
- 1519 050e 5F91      		pop r21
- 1520 0510 4F91      		pop r20
- 1521 0512 3F91      		pop r19
- 1522 0514 2F91      		pop r18
- 1523 0516 0F90      		pop r0
- 1524 0518 0BBE      		out __RAMPZ__,r0
- 1525 051a 0F90      		pop r0
- 1526 051c 0FBE      		out __SREG__,r0
- 1527 051e 0F90      		pop r0
- 1528 0520 1F90      		pop r1
- 1529 0522 1895      		reti
- 1530               		.cfi_endproc
- 1531               	.LFE22:
- 1533               	.global	__vector_88
- 1535               	__vector_88:
- 1536               	.LFB23:
- 239:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
- 240:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** ISR(USARTD0_RXC_vect)
- 241:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** {
- 1537               		.loc 1 241 0
- 1538               		.cfi_startproc
- 1539 0524 1F92      		push r1
- 1540               	.LCFI142:
- 1541               		.cfi_def_cfa_offset 4
- 1542               		.cfi_offset 1, -3
- 1543 0526 0F92      		push r0
- 1544               	.LCFI143:
- 1545               		.cfi_def_cfa_offset 5
- 1546               		.cfi_offset 0, -4
- 1547 0528 0FB6      		in r0,__SREG__
- 1548 052a 0F92      		push r0
- 1549 052c 1124      		clr __zero_reg__
- 1550 052e 0BB6      		in r0,__RAMPZ__
- 1551 0530 0F92      		push r0
- 1552 0532 2F93      		push r18
- 1553               	.LCFI144:
- 1554               		.cfi_def_cfa_offset 6
- 1555               		.cfi_offset 18, -5
- 1556 0534 3F93      		push r19
- 1557               	.LCFI145:
- 1558               		.cfi_def_cfa_offset 7
- 1559               		.cfi_offset 19, -6
- 1560 0536 4F93      		push r20
- 1561               	.LCFI146:
- 1562               		.cfi_def_cfa_offset 8
- 1563               		.cfi_offset 20, -7
- 1564 0538 5F93      		push r21
- 1565               	.LCFI147:
- 1566               		.cfi_def_cfa_offset 9
- 1567               		.cfi_offset 21, -8
- 1568 053a 6F93      		push r22
- 1569               	.LCFI148:
- 1570               		.cfi_def_cfa_offset 10
- 1571               		.cfi_offset 22, -9
- 1572 053c 7F93      		push r23
- 1573               	.LCFI149:
- 1574               		.cfi_def_cfa_offset 11
- 1575               		.cfi_offset 23, -10
- 1576 053e 8F93      		push r24
- 1577               	.LCFI150:
- 1578               		.cfi_def_cfa_offset 12
- 1579               		.cfi_offset 24, -11
- 1580 0540 9F93      		push r25
- 1581               	.LCFI151:
- 1582               		.cfi_def_cfa_offset 13
- 1583               		.cfi_offset 25, -12
- 1584 0542 AF93      		push r26
- 1585               	.LCFI152:
- 1586               		.cfi_def_cfa_offset 14
- 1587               		.cfi_offset 26, -13
- 1588 0544 BF93      		push r27
- 1589               	.LCFI153:
- 1590               		.cfi_def_cfa_offset 15
- 1591               		.cfi_offset 27, -14
- 1592 0546 EF93      		push r30
- 1593               	.LCFI154:
- 1594               		.cfi_def_cfa_offset 16
- 1595               		.cfi_offset 30, -15
- 1596 0548 FF93      		push r31
- 1597               	.LCFI155:
- 1598               		.cfi_def_cfa_offset 17
- 1599               		.cfi_offset 31, -16
- 1600               	/* prologue: Signal */
- 1601               	/* frame size = 0 */
- 1602               	/* stack size = 16 */
- 1603               	.L__stack_usage = 16
- 242:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	uint8_t c;
- 243:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	
- 244:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	c = USARTD0.DATA;
- 1604               		.loc 1 244 0
- 1605 054a 8091 A009 		lds r24,2464
- 1606               	.LVL51:
- 245:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	//printf("R:%x",c);
- 246:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	push(c, &(port[DOWN].rx));
- 1607               		.loc 1 246 0
- 1608 054e 60E0      		ldi r22,lo8(port+24)
- 1609 0550 70E0      		ldi r23,hi8(port+24)
- 1610 0552 0E94 0000 		call push
- 1611               	.LVL52:
- 1612               	/* epilogue start */
- 247:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** }
- 1613               		.loc 1 247 0
- 1614 0556 FF91      		pop r31
- 1615 0558 EF91      		pop r30
- 1616 055a BF91      		pop r27
- 1617 055c AF91      		pop r26
- 1618 055e 9F91      		pop r25
- 1619 0560 8F91      		pop r24
- 1620 0562 7F91      		pop r23
- 1621 0564 6F91      		pop r22
- 1622 0566 5F91      		pop r21
- 1623 0568 4F91      		pop r20
- 1624 056a 3F91      		pop r19
- 1625 056c 2F91      		pop r18
- 1626 056e 0F90      		pop r0
- 1627 0570 0BBE      		out __RAMPZ__,r0
- 1628 0572 0F90      		pop r0
- 1629 0574 0FBE      		out __SREG__,r0
- 1630 0576 0F90      		pop r0
- 1631 0578 1F90      		pop r1
- 1632 057a 1895      		reti
- 1633               		.cfi_endproc
- 1634               	.LFE23:
- 1636               	.global	__vector_90
- 1638               	__vector_90:
- 1639               	.LFB24:
- 248:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** ISR(USARTD0_TXC_vect)
- 249:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** {
- 1640               		.loc 1 249 0
- 1641               		.cfi_startproc
- 1642 057c 1F92      		push r1
- 1643               	.LCFI156:
- 1644               		.cfi_def_cfa_offset 4
- 1645               		.cfi_offset 1, -3
- 1646 057e 0F92      		push r0
- 1647               	.LCFI157:
- 1648               		.cfi_def_cfa_offset 5
- 1649               		.cfi_offset 0, -4
- 1650 0580 0FB6      		in r0,__SREG__
- 1651 0582 0F92      		push r0
- 1652 0584 1124      		clr __zero_reg__
- 1653 0586 0BB6      		in r0,__RAMPZ__
- 1654 0588 0F92      		push r0
- 1655 058a 2F93      		push r18
- 1656               	.LCFI158:
- 1657               		.cfi_def_cfa_offset 6
- 1658               		.cfi_offset 18, -5
- 1659 058c 3F93      		push r19
- 1660               	.LCFI159:
- 1661               		.cfi_def_cfa_offset 7
- 1662               		.cfi_offset 19, -6
- 1663 058e 4F93      		push r20
- 1664               	.LCFI160:
- 1665               		.cfi_def_cfa_offset 8
- 1666               		.cfi_offset 20, -7
- 1667 0590 5F93      		push r21
- 1668               	.LCFI161:
- 1669               		.cfi_def_cfa_offset 9
- 1670               		.cfi_offset 21, -8
- 1671 0592 6F93      		push r22
- 1672               	.LCFI162:
- 1673               		.cfi_def_cfa_offset 10
- 1674               		.cfi_offset 22, -9
- 1675 0594 7F93      		push r23
- 1676               	.LCFI163:
- 1677               		.cfi_def_cfa_offset 11
- 1678               		.cfi_offset 23, -10
- 1679 0596 8F93      		push r24
- 1680               	.LCFI164:
- 1681               		.cfi_def_cfa_offset 12
- 1682               		.cfi_offset 24, -11
- 1683 0598 9F93      		push r25
- 1684               	.LCFI165:
- 1685               		.cfi_def_cfa_offset 13
- 1686               		.cfi_offset 25, -12
- 1687 059a AF93      		push r26
- 1688               	.LCFI166:
- 1689               		.cfi_def_cfa_offset 14
- 1690               		.cfi_offset 26, -13
- 1691 059c BF93      		push r27
- 1692               	.LCFI167:
- 1693               		.cfi_def_cfa_offset 15
- 1694               		.cfi_offset 27, -14
- 1695 059e EF93      		push r30
- 1696               	.LCFI168:
- 1697               		.cfi_def_cfa_offset 16
- 1698               		.cfi_offset 30, -15
- 1699 05a0 FF93      		push r31
- 1700               	.LCFI169:
- 1701               		.cfi_def_cfa_offset 17
- 1702               		.cfi_offset 31, -16
- 1703               	/* prologue: Signal */
- 1704               	/* frame size = 0 */
- 1705               	/* stack size = 16 */
- 1706               	.L__stack_usage = 16
- 250:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	int16_t c;
- 251:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	
- 252:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	c  = pop(&(port[DOWN].tx));
- 1707               		.loc 1 252 0
- 1708 05a2 80E0      		ldi r24,lo8(port+56)
- 1709 05a4 90E0      		ldi r25,hi8(port+56)
- 1710 05a6 0E94 0000 		call pop
- 1711               	.LVL53:
- 253:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	
- 254:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	if(c != -1)
- 1712               		.loc 1 254 0
- 1713 05aa 8F3F      		cpi r24,-1
- 1714 05ac 2FEF      		ldi r18,-1
- 1715 05ae 9207      		cpc r25,r18
- 1716 05b0 01F0      		breq .L56
- 255:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	{
- 256:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		USARTD0.DATA = c;
- 1717               		.loc 1 256 0
- 1718 05b2 8093 A009 		sts 2464,r24
- 1719               	.L56:
- 1720               	/* epilogue start */
- 257:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	}
- 258:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwSerial.c **** }
- 1721               		.loc 1 258 0
- 1722 05b6 FF91      		pop r31
- 1723 05b8 EF91      		pop r30
- 1724 05ba BF91      		pop r27
- 1725 05bc AF91      		pop r26
- 1726 05be 9F91      		pop r25
- 1727 05c0 8F91      		pop r24
- 1728               	.LVL54:
- 1729 05c2 7F91      		pop r23
- 1730 05c4 6F91      		pop r22
- 1731 05c6 5F91      		pop r21
- 1732 05c8 4F91      		pop r20
- 1733 05ca 3F91      		pop r19
- 1734 05cc 2F91      		pop r18
- 1735 05ce 0F90      		pop r0
- 1736 05d0 0BBE      		out __RAMPZ__,r0
- 1737 05d2 0F90      		pop r0
- 1738 05d4 0FBE      		out __SREG__,r0
- 1739 05d6 0F90      		pop r0
- 1740 05d8 1F90      		pop r1
- 1741 05da 1895      		reti
- 1742               		.cfi_endproc
- 1743               	.LFE24:
- 1745               		.comm	hwPort,18,1
- 1746               	.Letext0:
- 1747               		.file 2 "/usr/lib/avr/include/stdint.h"
- 1748               		.file 3 "/usr/lib/avr/include/avr/iox256a3.h"
- 1749               		.file 4 "/home/pthalamy/CMU/bench/benchmark/build/src-bobby/system/defs.bbh"
- 1750               		.file 5 "/home/pthalamy/CMU/bench/benchmark/build/src-bobby/system/circ_buffer.bbh"
- 1751               		.file 6 "/home/pthalamy/CMU/bench/benchmark/build/src-bobby/system/handler.bbh"
- 1752               		.file 7 "/home/pthalamy/CMU/bench/benchmark/build/src-bobby/system/memory.bbh"
- 1753               		.file 8 "/home/pthalamy/CMU/bench/benchmark/build/src-bobby/system/hardwaretime.bbh"
- 1754               		.file 9 "/home/pthalamy/CMU/bench/benchmark/build/src-bobby/system/queues.bbh"
- 1755               		.file 10 "/home/pthalamy/CMU/bench/benchmark/build/src-bobby/system/serial.bbh"
+  53 0014 2081      		ld r18,Z
+  54 0016 30E0      		ldi r19,0
+  48:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	}
+  49:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	else
+  50:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	{
+  51:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		return -1;
+  52:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	}
+  53:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** }
+  55               		.loc 1 53 0
+  56 0018 C901      		movw r24,r18
+  57               	.LVL2:
+  58 001a 0895      		ret
+  59               	.LVL3:
+  60               	.L10:
+  51:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		return -1;
+  61               		.loc 1 51 0
+  62 001c 2FEF      		ldi r18,lo8(-1)
+  63 001e 3FEF      		ldi r19,lo8(-1)
+  64               		.loc 1 53 0
+  65 0020 C901      		movw r24,r18
+  66               	.LVL4:
+  67 0022 0895      		ret
+  68               		.cfi_endproc
+  69               	.LFE7:
+  71               	.global	pPutChar
+  73               	pPutChar:
+  74               	.LFB8:
+  54:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
+  55:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** void pPutChar(char c, PRef p)
+  56:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** {
+  75               		.loc 1 56 0
+  76               		.cfi_startproc
+  77               	.LVL5:
+  78               	/* prologue: function */
+  79               	/* frame size = 0 */
+  80               	/* stack size = 0 */
+  81               	.L__stack_usage = 0
+  57:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	if(p >= 0 && p < NUM_PORTS)
+  82               		.loc 1 57 0
+  83 0024 6630      		cpi r22,lo8(6)
+  84 0026 00F4      		brsh .L11
+  58:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	{
+  59:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		if(hwPort[p].ptype == HARDWARE_UART)
+  85               		.loc 1 59 0
+  86 0028 70E0      		ldi r23,0
+  87 002a FB01      		movw r30,r22
+  88 002c EE0F      		lsl r30
+  89 002e FF1F      		rol r31
+  90 0030 E60F      		add r30,r22
+  91 0032 F71F      		adc r31,r23
+  92 0034 E050      		subi r30,lo8(-(hwPort))
+  93 0036 F040      		sbci r31,hi8(-(hwPort))
+  94 0038 9281      		ldd r25,Z+2
+  95 003a 9111      		cpse r25,__zero_reg__
+  96 003c 00C0      		rjmp .L11
+  60:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		{
+  61:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 			u_putchar(c, hwPort[p].uart.huart);
+  97               		.loc 1 61 0
+  98 003e 0190      		ld __tmp_reg__,Z+
+  99 0040 F081      		ld r31,Z
+ 100 0042 E02D      		mov r30,__tmp_reg__
+ 101               	.LVL6:
+ 102               	.L13:
+ 103               	.LBB32:
+ 104               	.LBB33:
+  32:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	while(!(uart->STATUS & USART_DREIF_bm));
+ 105               		.loc 1 32 0
+ 106 0044 9181      		ldd r25,Z+1
+ 107 0046 95FF      		sbrs r25,5
+ 108 0048 00C0      		rjmp .L13
+  35:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c ****     uart->DATA = c;
+ 109               		.loc 1 35 0
+ 110 004a 8083      		st Z,r24
+ 111               	.LVL7:
+ 112               	.L11:
+ 113 004c 0895      		ret
+ 114               	.LBE33:
+ 115               	.LBE32:
+ 116               		.cfi_endproc
+ 117               	.LFE8:
+ 119               	.global	pGetChar
+ 121               	pGetChar:
+ 122               	.LFB9:
+  62:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		}
+  63:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		else
+  64:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		{
+  65:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 			//su_putchar(c, hwPort[p].uart.suart);
+  66:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		}
+  67:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	}
+  68:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** }
+  69:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
+  70:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** int pGetChar(PRef p)
+  71:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** {
+ 123               		.loc 1 71 0
+ 124               		.cfi_startproc
+ 125               	.LVL8:
+ 126               	/* prologue: function */
+ 127               	/* frame size = 0 */
+ 128               	/* stack size = 0 */
+ 129               	.L__stack_usage = 0
+  72:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	if(p >= 0 && p < NUM_PORTS)
+ 130               		.loc 1 72 0
+ 131 004e 8630      		cpi r24,lo8(6)
+ 132 0050 00F4      		brsh .L22
+  73:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	{
+  74:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		if(hwPort[p].ptype == HARDWARE_UART)
+ 133               		.loc 1 74 0
+ 134 0052 90E0      		ldi r25,0
+ 135 0054 FC01      		movw r30,r24
+ 136 0056 EE0F      		lsl r30
+ 137 0058 FF1F      		rol r31
+ 138 005a E80F      		add r30,r24
+ 139 005c F91F      		adc r31,r25
+ 140 005e E050      		subi r30,lo8(-(hwPort))
+ 141 0060 F040      		sbci r31,hi8(-(hwPort))
+ 142 0062 8281      		ldd r24,Z+2
+ 143               	.LVL9:
+ 144 0064 8111      		cpse r24,__zero_reg__
+ 145 0066 00C0      		rjmp .L22
+  75:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		{
+  76:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 			return u_getchar(hwPort[p].uart.huart);
+ 146               		.loc 1 76 0
+ 147 0068 0190      		ld __tmp_reg__,Z+
+ 148 006a F081      		ld r31,Z
+ 149 006c E02D      		mov r30,__tmp_reg__
+ 150               	.LVL10:
+ 151               	.LBB34:
+ 152               	.LBB35:
+  43:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	if((uart->STATUS & USART_RXCIF_bm))
+ 153               		.loc 1 43 0
+ 154 006e 8181      		ldd r24,Z+1
+ 155 0070 87FD      		sbrc r24,7
+ 156 0072 00C0      		rjmp .L23
+ 157               	.LVL11:
+ 158               	.L22:
+  77:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		}
+  78:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		else
+  79:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		{
+  80:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 			//return su_getchar(hwPort[p].uart.suart);
+  81:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		}
+  82:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	}
+  83:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
+  84:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	return -1;
+ 159               		.loc 1 84 0
+ 160 0074 2FEF      		ldi r18,lo8(-1)
+ 161 0076 3FEF      		ldi r19,lo8(-1)
+ 162               	.LBE35:
+ 163               	.LBE34:
+  85:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** }
+ 164               		.loc 1 85 0
+ 165 0078 C901      		movw r24,r18
+ 166 007a 0895      		ret
+ 167               	.LVL12:
+ 168               	.L23:
+ 169               	.LBB37:
+ 170               	.LBB36:
+  47:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		return uart->DATA;
+ 171               		.loc 1 47 0
+ 172 007c 2081      		ld r18,Z
+ 173 007e 30E0      		ldi r19,0
+ 174               	.LBE36:
+ 175               	.LBE37:
+ 176               		.loc 1 85 0
+ 177 0080 C901      		movw r24,r18
+ 178 0082 0895      		ret
+ 179               		.cfi_endproc
+ 180               	.LFE9:
+ 182               	.global	initializeHWPort
+ 184               	initializeHWPort:
+ 185               	.LFB10:
+  86:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
+  87:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** void initializeHWPort(HWPort *p, USART_t *huart)
+  88:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** {
+ 186               		.loc 1 88 0
+ 187               		.cfi_startproc
+ 188               	.LVL13:
+ 189               	/* prologue: function */
+ 190               	/* frame size = 0 */
+ 191               	/* stack size = 0 */
+ 192               	.L__stack_usage = 0
+ 193 0084 FB01      		movw r30,r22
+  89:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	if(huart != NULL)
+ 194               		.loc 1 89 0
+ 195 0086 3097      		sbiw r30,0
+ 196 0088 01F0      		breq .L24
+  90:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	{
+  91:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		(p->uart).huart = huart;
+ 197               		.loc 1 91 0
+ 198 008a DC01      		movw r26,r24
+ 199 008c 6D93      		st X+,r22
+ 200 008e 7C93      		st X,r23
+ 201 0090 1197      		sbiw r26,1
+  92:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		p->ptype = HARDWARE_UART;
+ 202               		.loc 1 92 0
+ 203 0092 1296      		adiw r26,2
+ 204 0094 1C92      		st X,__zero_reg__
+ 205               	.LVL14:
+ 206               	.LBB38:
+ 207               	.LBB39:
+  93:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
+  94:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		initHWUart(huart);
+  95:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	}
+  96:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** }
+  97:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
+  98:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** void initHWPorts()
+  99:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** {
+ 100:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	// male headers
+ 101:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	PORTD.DIRSET = PIN7_bm;
+ 102:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	initializeHWPort(&(hwPort[UP]), &USARTD1);
+ 103:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
+ 104:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	// near the double TVS diodes
+ 105:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	PORTC.DIRSET = PIN7_bm;
+ 106:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	initializeHWPort(&(hwPort[NORTH]), &USARTC1);
+ 107:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	
+ 108:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	// closest to audio amp
+ 109:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	PORTE.DIRSET = PIN3_bm;
+ 110:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	initializeHWPort(&(hwPort[SOUTH]), &USARTE0);
+ 111:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	
+ 112:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	// closest to LEDs
+ 113:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	PORTF.DIRSET = PIN3_bm;	
+ 114:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	initializeHWPort(&(hwPort[EAST]), &USARTF0);
+ 115:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	
+ 116:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	// closest to analog input dividers
+ 117:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	PORTC.DIRSET = PIN3_bm;	
+ 118:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	initializeHWPort(&(hwPort[WEST]), &USARTC0);
+ 119:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	
+ 120:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	PORTD.DIRSET = PIN3_bm;	
+ 121:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	initializeHWPort(&(hwPort[DOWN]), &USARTD0);
+ 122:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** }
+ 123:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
+ 124:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** void initHWUart(USART_t * huart)
+ 125:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** {
+ 126:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->CTRLB = USART_RXEN_bm | USART_TXEN_bm;		// turn on RX/TX, somewhat helpful!
+ 208               		.loc 1 126 0
+ 209 0096 88E1      		ldi r24,lo8(24)
+ 210               	.LVL15:
+ 211 0098 8483      		std Z+4,r24
+ 127:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->CTRLC = USART_CHSIZE_8BIT_gc;				// use 8-bit data
+ 212               		.loc 1 127 0
+ 213 009a 83E0      		ldi r24,lo8(3)
+ 214 009c 8583      		std Z+5,r24
+ 128:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
+ 129:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->CTRLA = USART_RXCINTLVL_HI_gc | USART_TXCINTLVL_HI_gc;	// enable RX/TX interrupt support
+ 215               		.loc 1 129 0
+ 216 009e 8CE3      		ldi r24,lo8(60)
+ 217 00a0 8383      		std Z+3,r24
+ 130:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->BAUDCTRLA = 51;  // 38400 		// 57600   			//103;	//19200 	16; // 115200
+ 218               		.loc 1 130 0
+ 219 00a2 83E3      		ldi r24,lo8(51)
+ 220 00a4 8683      		std Z+6,r24
+ 131:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->BAUDCTRLB = 0;				//0xB4;  // 57600, set to 0 for others
+ 221               		.loc 1 131 0
+ 222 00a6 1782      		std Z+7,__zero_reg__
+ 223               	.LVL16:
+ 224               	.L24:
+ 225 00a8 0895      		ret
+ 226               	.LBE39:
+ 227               	.LBE38:
+ 228               		.cfi_endproc
+ 229               	.LFE10:
+ 231               	.global	initHWPorts
+ 233               	initHWPorts:
+ 234               	.LFB11:
+  99:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** {
+ 235               		.loc 1 99 0
+ 236               		.cfi_startproc
+ 237 00aa CF93      		push r28
+ 238               	.LCFI0:
+ 239               		.cfi_def_cfa_offset 4
+ 240               		.cfi_offset 28, -3
+ 241 00ac DF93      		push r29
+ 242               	.LCFI1:
+ 243               		.cfi_def_cfa_offset 5
+ 244               		.cfi_offset 29, -4
+ 245               	/* prologue: function */
+ 246               	/* frame size = 0 */
+ 247               	/* stack size = 2 */
+ 248               	.L__stack_usage = 2
+ 101:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	PORTD.DIRSET = PIN7_bm;
+ 249               		.loc 1 101 0
+ 250 00ae A0E6      		ldi r26,lo8(96)
+ 251 00b0 B6E0      		ldi r27,lo8(6)
+ 252 00b2 40E8      		ldi r20,lo8(-128)
+ 253 00b4 1196      		adiw r26,1
+ 254 00b6 4C93      		st X,r20
+ 255 00b8 1197      		sbiw r26,1
+ 256               	.LVL17:
+ 257               	.LBB40:
+ 258               	.LBB41:
+  91:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		(p->uart).huart = huart;
+ 259               		.loc 1 91 0
+ 260 00ba E0EB      		ldi r30,lo8(-80)
+ 261 00bc F9E0      		ldi r31,lo8(9)
+ 262 00be E093 0000 		sts hwPort+15,r30
+ 263 00c2 F093 0000 		sts hwPort+15+1,r31
+  92:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		p->ptype = HARDWARE_UART;
+ 264               		.loc 1 92 0
+ 265 00c6 1092 0000 		sts hwPort+17,__zero_reg__
+ 266               	.LVL18:
+ 267               	.LBB42:
+ 268               	.LBB43:
+ 126:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->CTRLB = USART_RXEN_bm | USART_TXEN_bm;		// turn on RX/TX, somewhat helpful!
+ 269               		.loc 1 126 0
+ 270 00ca 38E1      		ldi r19,lo8(24)
+ 271 00cc 3483      		std Z+4,r19
+ 127:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->CTRLC = USART_CHSIZE_8BIT_gc;				// use 8-bit data
+ 272               		.loc 1 127 0
+ 273 00ce 23E0      		ldi r18,lo8(3)
+ 274 00d0 2583      		std Z+5,r18
+ 129:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->CTRLA = USART_RXCINTLVL_HI_gc | USART_TXCINTLVL_HI_gc;	// enable RX/TX interrupt support
+ 275               		.loc 1 129 0
+ 276 00d2 9CE3      		ldi r25,lo8(60)
+ 277 00d4 9383      		std Z+3,r25
+ 130:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->BAUDCTRLA = 51;  // 38400 		// 57600   			//103;	//19200 	16; // 115200
+ 278               		.loc 1 130 0
+ 279 00d6 83E3      		ldi r24,lo8(51)
+ 280 00d8 8683      		std Z+6,r24
+ 281               		.loc 1 131 0
+ 282 00da 1782      		std Z+7,__zero_reg__
+ 283               	.LBE43:
+ 284               	.LBE42:
+ 285               	.LBE41:
+ 286               	.LBE40:
+ 105:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	PORTC.DIRSET = PIN7_bm;
+ 287               		.loc 1 105 0
+ 288 00dc C0E4      		ldi r28,lo8(64)
+ 289 00de D6E0      		ldi r29,lo8(6)
+ 290 00e0 4983      		std Y+1,r20
+ 291               	.LVL19:
+ 292               	.LBB44:
+ 293               	.LBB45:
+  91:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		(p->uart).huart = huart;
+ 294               		.loc 1 91 0
+ 295 00e2 E0EB      		ldi r30,lo8(-80)
+ 296 00e4 F8E0      		ldi r31,lo8(8)
+ 297 00e6 E093 0000 		sts hwPort+3,r30
+ 298 00ea F093 0000 		sts hwPort+3+1,r31
+  92:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		p->ptype = HARDWARE_UART;
+ 299               		.loc 1 92 0
+ 300 00ee 1092 0000 		sts hwPort+5,__zero_reg__
+ 301               	.LVL20:
+ 302               	.LBB46:
+ 303               	.LBB47:
+ 126:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->CTRLB = USART_RXEN_bm | USART_TXEN_bm;		// turn on RX/TX, somewhat helpful!
+ 304               		.loc 1 126 0
+ 305 00f2 3483      		std Z+4,r19
+ 127:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->CTRLC = USART_CHSIZE_8BIT_gc;				// use 8-bit data
+ 306               		.loc 1 127 0
+ 307 00f4 2583      		std Z+5,r18
+ 129:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->CTRLA = USART_RXCINTLVL_HI_gc | USART_TXCINTLVL_HI_gc;	// enable RX/TX interrupt support
+ 308               		.loc 1 129 0
+ 309 00f6 9383      		std Z+3,r25
+ 130:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->BAUDCTRLA = 51;  // 38400 		// 57600   			//103;	//19200 	16; // 115200
+ 310               		.loc 1 130 0
+ 311 00f8 8683      		std Z+6,r24
+ 312               		.loc 1 131 0
+ 313 00fa 1782      		std Z+7,__zero_reg__
+ 314               	.LBE47:
+ 315               	.LBE46:
+ 316               	.LBE45:
+ 317               	.LBE44:
+ 109:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	PORTE.DIRSET = PIN3_bm;
+ 318               		.loc 1 109 0
+ 319 00fc 48E0      		ldi r20,lo8(8)
+ 320 00fe E0E8      		ldi r30,lo8(-128)
+ 321 0100 F6E0      		ldi r31,lo8(6)
+ 322 0102 4183      		std Z+1,r20
+ 323               	.LVL21:
+ 324               	.LBB48:
+ 325               	.LBB49:
+  91:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		(p->uart).huart = huart;
+ 326               		.loc 1 91 0
+ 327 0104 E0EA      		ldi r30,lo8(-96)
+ 328 0106 FAE0      		ldi r31,lo8(10)
+ 329 0108 E093 0000 		sts hwPort+12,r30
+ 330 010c F093 0000 		sts hwPort+12+1,r31
+  92:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		p->ptype = HARDWARE_UART;
+ 331               		.loc 1 92 0
+ 332 0110 1092 0000 		sts hwPort+14,__zero_reg__
+ 333               	.LVL22:
+ 334               	.LBB50:
+ 335               	.LBB51:
+ 126:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->CTRLB = USART_RXEN_bm | USART_TXEN_bm;		// turn on RX/TX, somewhat helpful!
+ 336               		.loc 1 126 0
+ 337 0114 3483      		std Z+4,r19
+ 127:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->CTRLC = USART_CHSIZE_8BIT_gc;				// use 8-bit data
+ 338               		.loc 1 127 0
+ 339 0116 2583      		std Z+5,r18
+ 129:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->CTRLA = USART_RXCINTLVL_HI_gc | USART_TXCINTLVL_HI_gc;	// enable RX/TX interrupt support
+ 340               		.loc 1 129 0
+ 341 0118 9383      		std Z+3,r25
+ 130:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->BAUDCTRLA = 51;  // 38400 		// 57600   			//103;	//19200 	16; // 115200
+ 342               		.loc 1 130 0
+ 343 011a 8683      		std Z+6,r24
+ 344               		.loc 1 131 0
+ 345 011c 1782      		std Z+7,__zero_reg__
+ 346               	.LBE51:
+ 347               	.LBE50:
+ 348               	.LBE49:
+ 349               	.LBE48:
+ 113:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	PORTF.DIRSET = PIN3_bm;	
+ 350               		.loc 1 113 0
+ 351 011e E0EA      		ldi r30,lo8(-96)
+ 352 0120 F6E0      		ldi r31,lo8(6)
+ 353 0122 4183      		std Z+1,r20
+ 354               	.LVL23:
+ 355               	.LBB52:
+ 356               	.LBB53:
+  91:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		(p->uart).huart = huart;
+ 357               		.loc 1 91 0
+ 358 0124 E0EA      		ldi r30,lo8(-96)
+ 359 0126 FBE0      		ldi r31,lo8(11)
+ 360 0128 E093 0000 		sts hwPort+6,r30
+ 361 012c F093 0000 		sts hwPort+6+1,r31
+  92:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		p->ptype = HARDWARE_UART;
+ 362               		.loc 1 92 0
+ 363 0130 1092 0000 		sts hwPort+8,__zero_reg__
+ 364               	.LVL24:
+ 365               	.LBB54:
+ 366               	.LBB55:
+ 126:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->CTRLB = USART_RXEN_bm | USART_TXEN_bm;		// turn on RX/TX, somewhat helpful!
+ 367               		.loc 1 126 0
+ 368 0134 3483      		std Z+4,r19
+ 127:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->CTRLC = USART_CHSIZE_8BIT_gc;				// use 8-bit data
+ 369               		.loc 1 127 0
+ 370 0136 2583      		std Z+5,r18
+ 129:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->CTRLA = USART_RXCINTLVL_HI_gc | USART_TXCINTLVL_HI_gc;	// enable RX/TX interrupt support
+ 371               		.loc 1 129 0
+ 372 0138 9383      		std Z+3,r25
+ 130:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->BAUDCTRLA = 51;  // 38400 		// 57600   			//103;	//19200 	16; // 115200
+ 373               		.loc 1 130 0
+ 374 013a 8683      		std Z+6,r24
+ 375               		.loc 1 131 0
+ 376 013c 1782      		std Z+7,__zero_reg__
+ 377               	.LBE55:
+ 378               	.LBE54:
+ 379               	.LBE53:
+ 380               	.LBE52:
+ 117:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	PORTC.DIRSET = PIN3_bm;	
+ 381               		.loc 1 117 0
+ 382 013e 4983      		std Y+1,r20
+ 383               	.LVL25:
+ 384               	.LBB56:
+ 385               	.LBB57:
+  91:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		(p->uart).huart = huart;
+ 386               		.loc 1 91 0
+ 387 0140 E0EA      		ldi r30,lo8(-96)
+ 388 0142 F8E0      		ldi r31,lo8(8)
+ 389 0144 E093 0000 		sts hwPort+9,r30
+ 390 0148 F093 0000 		sts hwPort+9+1,r31
+  92:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		p->ptype = HARDWARE_UART;
+ 391               		.loc 1 92 0
+ 392 014c 1092 0000 		sts hwPort+11,__zero_reg__
+ 393               	.LVL26:
+ 394               	.LBB58:
+ 395               	.LBB59:
+ 126:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->CTRLB = USART_RXEN_bm | USART_TXEN_bm;		// turn on RX/TX, somewhat helpful!
+ 396               		.loc 1 126 0
+ 397 0150 3483      		std Z+4,r19
+ 127:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->CTRLC = USART_CHSIZE_8BIT_gc;				// use 8-bit data
+ 398               		.loc 1 127 0
+ 399 0152 2583      		std Z+5,r18
+ 129:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->CTRLA = USART_RXCINTLVL_HI_gc | USART_TXCINTLVL_HI_gc;	// enable RX/TX interrupt support
+ 400               		.loc 1 129 0
+ 401 0154 9383      		std Z+3,r25
+ 130:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->BAUDCTRLA = 51;  // 38400 		// 57600   			//103;	//19200 	16; // 115200
+ 402               		.loc 1 130 0
+ 403 0156 8683      		std Z+6,r24
+ 404               		.loc 1 131 0
+ 405 0158 1782      		std Z+7,__zero_reg__
+ 406               	.LBE59:
+ 407               	.LBE58:
+ 408               	.LBE57:
+ 409               	.LBE56:
+ 120:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	PORTD.DIRSET = PIN3_bm;	
+ 410               		.loc 1 120 0
+ 411 015a 1196      		adiw r26,1
+ 412 015c 4C93      		st X,r20
+ 413               	.LVL27:
+ 414               	.LBB60:
+ 415               	.LBB61:
+  91:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		(p->uart).huart = huart;
+ 416               		.loc 1 91 0
+ 417 015e E0EA      		ldi r30,lo8(-96)
+ 418 0160 F9E0      		ldi r31,lo8(9)
+ 419 0162 E093 0000 		sts hwPort,r30
+ 420 0166 F093 0000 		sts hwPort+1,r31
+  92:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		p->ptype = HARDWARE_UART;
+ 421               		.loc 1 92 0
+ 422 016a 1092 0000 		sts hwPort+2,__zero_reg__
+ 423               	.LVL28:
+ 424               	.LBB62:
+ 425               	.LBB63:
+ 126:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->CTRLB = USART_RXEN_bm | USART_TXEN_bm;		// turn on RX/TX, somewhat helpful!
+ 426               		.loc 1 126 0
+ 427 016e 3483      		std Z+4,r19
+ 127:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->CTRLC = USART_CHSIZE_8BIT_gc;				// use 8-bit data
+ 428               		.loc 1 127 0
+ 429 0170 2583      		std Z+5,r18
+ 129:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->CTRLA = USART_RXCINTLVL_HI_gc | USART_TXCINTLVL_HI_gc;	// enable RX/TX interrupt support
+ 430               		.loc 1 129 0
+ 431 0172 9383      		std Z+3,r25
+ 130:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->BAUDCTRLA = 51;  // 38400 		// 57600   			//103;	//19200 	16; // 115200
+ 432               		.loc 1 130 0
+ 433 0174 8683      		std Z+6,r24
+ 434               		.loc 1 131 0
+ 435 0176 1782      		std Z+7,__zero_reg__
+ 436               	/* epilogue start */
+ 437               	.LBE63:
+ 438               	.LBE62:
+ 439               	.LBE61:
+ 440               	.LBE60:
+ 122:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** }
+ 441               		.loc 1 122 0
+ 442 0178 DF91      		pop r29
+ 443 017a CF91      		pop r28
+ 444 017c 0895      		ret
+ 445               		.cfi_endproc
+ 446               	.LFE11:
+ 448               	.global	initHWUart
+ 450               	initHWUart:
+ 451               	.LFB12:
+ 125:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** {
+ 452               		.loc 1 125 0
+ 453               		.cfi_startproc
+ 454               	.LVL29:
+ 455               	/* prologue: function */
+ 456               	/* frame size = 0 */
+ 457               	/* stack size = 0 */
+ 458               	.L__stack_usage = 0
+ 459 017e FC01      		movw r30,r24
+ 126:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->CTRLB = USART_RXEN_bm | USART_TXEN_bm;		// turn on RX/TX, somewhat helpful!
+ 460               		.loc 1 126 0
+ 461 0180 88E1      		ldi r24,lo8(24)
+ 462               	.LVL30:
+ 463 0182 8483      		std Z+4,r24
+ 127:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->CTRLC = USART_CHSIZE_8BIT_gc;				// use 8-bit data
+ 464               		.loc 1 127 0
+ 465 0184 83E0      		ldi r24,lo8(3)
+ 466 0186 8583      		std Z+5,r24
+ 129:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->CTRLA = USART_RXCINTLVL_HI_gc | USART_TXCINTLVL_HI_gc;	// enable RX/TX interrupt support
+ 467               		.loc 1 129 0
+ 468 0188 8CE3      		ldi r24,lo8(60)
+ 469 018a 8383      		std Z+3,r24
+ 130:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	huart->BAUDCTRLA = 51;  // 38400 		// 57600   			//103;	//19200 	16; // 115200
+ 470               		.loc 1 130 0
+ 471 018c 83E3      		ldi r24,lo8(51)
+ 472 018e 8683      		std Z+6,r24
+ 473               		.loc 1 131 0
+ 474 0190 1782      		std Z+7,__zero_reg__
+ 475 0192 0895      		ret
+ 476               		.cfi_endproc
+ 477               	.LFE12:
+ 479               	.global	__vector_91
+ 481               	__vector_91:
+ 482               	.LFB13:
+ 132:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** }
+ 133:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
+ 134:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
+ 135:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** ISR(USARTD1_RXC_vect)
+ 136:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** {
+ 483               		.loc 1 136 0
+ 484               		.cfi_startproc
+ 485 0194 1F92      		push r1
+ 486               	.LCFI2:
+ 487               		.cfi_def_cfa_offset 4
+ 488               		.cfi_offset 1, -3
+ 489 0196 0F92      		push r0
+ 490               	.LCFI3:
+ 491               		.cfi_def_cfa_offset 5
+ 492               		.cfi_offset 0, -4
+ 493 0198 0FB6      		in r0,__SREG__
+ 494 019a 0F92      		push r0
+ 495 019c 1124      		clr __zero_reg__
+ 496 019e 0BB6      		in r0,__RAMPZ__
+ 497 01a0 0F92      		push r0
+ 498 01a2 2F93      		push r18
+ 499               	.LCFI4:
+ 500               		.cfi_def_cfa_offset 6
+ 501               		.cfi_offset 18, -5
+ 502 01a4 3F93      		push r19
+ 503               	.LCFI5:
+ 504               		.cfi_def_cfa_offset 7
+ 505               		.cfi_offset 19, -6
+ 506 01a6 4F93      		push r20
+ 507               	.LCFI6:
+ 508               		.cfi_def_cfa_offset 8
+ 509               		.cfi_offset 20, -7
+ 510 01a8 5F93      		push r21
+ 511               	.LCFI7:
+ 512               		.cfi_def_cfa_offset 9
+ 513               		.cfi_offset 21, -8
+ 514 01aa 6F93      		push r22
+ 515               	.LCFI8:
+ 516               		.cfi_def_cfa_offset 10
+ 517               		.cfi_offset 22, -9
+ 518 01ac 7F93      		push r23
+ 519               	.LCFI9:
+ 520               		.cfi_def_cfa_offset 11
+ 521               		.cfi_offset 23, -10
+ 522 01ae 8F93      		push r24
+ 523               	.LCFI10:
+ 524               		.cfi_def_cfa_offset 12
+ 525               		.cfi_offset 24, -11
+ 526 01b0 9F93      		push r25
+ 527               	.LCFI11:
+ 528               		.cfi_def_cfa_offset 13
+ 529               		.cfi_offset 25, -12
+ 530 01b2 AF93      		push r26
+ 531               	.LCFI12:
+ 532               		.cfi_def_cfa_offset 14
+ 533               		.cfi_offset 26, -13
+ 534 01b4 BF93      		push r27
+ 535               	.LCFI13:
+ 536               		.cfi_def_cfa_offset 15
+ 537               		.cfi_offset 27, -14
+ 538 01b6 EF93      		push r30
+ 539               	.LCFI14:
+ 540               		.cfi_def_cfa_offset 16
+ 541               		.cfi_offset 30, -15
+ 542 01b8 FF93      		push r31
+ 543               	.LCFI15:
+ 544               		.cfi_def_cfa_offset 17
+ 545               		.cfi_offset 31, -16
+ 546               	/* prologue: Signal */
+ 547               	/* frame size = 0 */
+ 548               	/* stack size = 16 */
+ 549               	.L__stack_usage = 16
+ 137:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	uint8_t c;
+ 138:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	
+ 139:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	c = USARTD1.DATA;
+ 550               		.loc 1 139 0
+ 551 01ba 8091 B009 		lds r24,2480
+ 552               	.LVL31:
+ 140:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	//printf("R:%x",c);	
+ 141:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	push(c, &(port[UP].rx));
+ 553               		.loc 1 141 0
+ 554 01be 60E0      		ldi r22,lo8(port+464)
+ 555 01c0 70E0      		ldi r23,hi8(port+464)
+ 556 01c2 0E94 0000 		call push
+ 557               	.LVL32:
+ 558               	/* epilogue start */
+ 142:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** }
+ 559               		.loc 1 142 0
+ 560 01c6 FF91      		pop r31
+ 561 01c8 EF91      		pop r30
+ 562 01ca BF91      		pop r27
+ 563 01cc AF91      		pop r26
+ 564 01ce 9F91      		pop r25
+ 565 01d0 8F91      		pop r24
+ 566 01d2 7F91      		pop r23
+ 567 01d4 6F91      		pop r22
+ 568 01d6 5F91      		pop r21
+ 569 01d8 4F91      		pop r20
+ 570 01da 3F91      		pop r19
+ 571 01dc 2F91      		pop r18
+ 572 01de 0F90      		pop r0
+ 573 01e0 0BBE      		out __RAMPZ__,r0
+ 574 01e2 0F90      		pop r0
+ 575 01e4 0FBE      		out __SREG__,r0
+ 576 01e6 0F90      		pop r0
+ 577 01e8 1F90      		pop r1
+ 578 01ea 1895      		reti
+ 579               		.cfi_endproc
+ 580               	.LFE13:
+ 582               	.global	__vector_93
+ 584               	__vector_93:
+ 585               	.LFB14:
+ 143:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
+ 144:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** ISR(USARTD1_TXC_vect)
+ 145:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** {
+ 586               		.loc 1 145 0
+ 587               		.cfi_startproc
+ 588 01ec 1F92      		push r1
+ 589               	.LCFI16:
+ 590               		.cfi_def_cfa_offset 4
+ 591               		.cfi_offset 1, -3
+ 592 01ee 0F92      		push r0
+ 593               	.LCFI17:
+ 594               		.cfi_def_cfa_offset 5
+ 595               		.cfi_offset 0, -4
+ 596 01f0 0FB6      		in r0,__SREG__
+ 597 01f2 0F92      		push r0
+ 598 01f4 1124      		clr __zero_reg__
+ 599 01f6 0BB6      		in r0,__RAMPZ__
+ 600 01f8 0F92      		push r0
+ 601 01fa 2F93      		push r18
+ 602               	.LCFI18:
+ 603               		.cfi_def_cfa_offset 6
+ 604               		.cfi_offset 18, -5
+ 605 01fc 3F93      		push r19
+ 606               	.LCFI19:
+ 607               		.cfi_def_cfa_offset 7
+ 608               		.cfi_offset 19, -6
+ 609 01fe 4F93      		push r20
+ 610               	.LCFI20:
+ 611               		.cfi_def_cfa_offset 8
+ 612               		.cfi_offset 20, -7
+ 613 0200 5F93      		push r21
+ 614               	.LCFI21:
+ 615               		.cfi_def_cfa_offset 9
+ 616               		.cfi_offset 21, -8
+ 617 0202 6F93      		push r22
+ 618               	.LCFI22:
+ 619               		.cfi_def_cfa_offset 10
+ 620               		.cfi_offset 22, -9
+ 621 0204 7F93      		push r23
+ 622               	.LCFI23:
+ 623               		.cfi_def_cfa_offset 11
+ 624               		.cfi_offset 23, -10
+ 625 0206 8F93      		push r24
+ 626               	.LCFI24:
+ 627               		.cfi_def_cfa_offset 12
+ 628               		.cfi_offset 24, -11
+ 629 0208 9F93      		push r25
+ 630               	.LCFI25:
+ 631               		.cfi_def_cfa_offset 13
+ 632               		.cfi_offset 25, -12
+ 633 020a AF93      		push r26
+ 634               	.LCFI26:
+ 635               		.cfi_def_cfa_offset 14
+ 636               		.cfi_offset 26, -13
+ 637 020c BF93      		push r27
+ 638               	.LCFI27:
+ 639               		.cfi_def_cfa_offset 15
+ 640               		.cfi_offset 27, -14
+ 641 020e EF93      		push r30
+ 642               	.LCFI28:
+ 643               		.cfi_def_cfa_offset 16
+ 644               		.cfi_offset 30, -15
+ 645 0210 FF93      		push r31
+ 646               	.LCFI29:
+ 647               		.cfi_def_cfa_offset 17
+ 648               		.cfi_offset 31, -16
+ 649               	/* prologue: Signal */
+ 650               	/* frame size = 0 */
+ 651               	/* stack size = 16 */
+ 652               	.L__stack_usage = 16
+ 146:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	int16_t c;
+ 147:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	
+ 148:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	c  = pop(&(port[UP].tx));
+ 653               		.loc 1 148 0
+ 654 0212 80E0      		ldi r24,lo8(port+496)
+ 655 0214 90E0      		ldi r25,hi8(port+496)
+ 656 0216 0E94 0000 		call pop
+ 657               	.LVL33:
+ 149:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	
+ 150:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	if(c != -1)
+ 658               		.loc 1 150 0
+ 659 021a 8F3F      		cpi r24,-1
+ 660 021c 2FEF      		ldi r18,-1
+ 661 021e 9207      		cpc r25,r18
+ 662 0220 01F0      		breq .L32
+ 151:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	{
+ 152:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		USARTD1.DATA = c;
+ 663               		.loc 1 152 0
+ 664 0222 8093 B009 		sts 2480,r24
+ 665               	.L32:
+ 666               	/* epilogue start */
+ 153:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	}
+ 154:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	else
+ 155:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	{
+ 156:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		// should flag that we're waiting for an ACK now
+ 157:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	}
+ 158:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** }
+ 667               		.loc 1 158 0
+ 668 0226 FF91      		pop r31
+ 669 0228 EF91      		pop r30
+ 670 022a BF91      		pop r27
+ 671 022c AF91      		pop r26
+ 672 022e 9F91      		pop r25
+ 673 0230 8F91      		pop r24
+ 674               	.LVL34:
+ 675 0232 7F91      		pop r23
+ 676 0234 6F91      		pop r22
+ 677 0236 5F91      		pop r21
+ 678 0238 4F91      		pop r20
+ 679 023a 3F91      		pop r19
+ 680 023c 2F91      		pop r18
+ 681 023e 0F90      		pop r0
+ 682 0240 0BBE      		out __RAMPZ__,r0
+ 683 0242 0F90      		pop r0
+ 684 0244 0FBE      		out __SREG__,r0
+ 685 0246 0F90      		pop r0
+ 686 0248 1F90      		pop r1
+ 687 024a 1895      		reti
+ 688               		.cfi_endproc
+ 689               	.LFE14:
+ 691               	.global	__vector_28
+ 693               	__vector_28:
+ 694               	.LFB15:
+ 159:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
+ 160:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** ISR(USARTC1_RXC_vect)
+ 161:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** {
+ 695               		.loc 1 161 0
+ 696               		.cfi_startproc
+ 697 024c 1F92      		push r1
+ 698               	.LCFI30:
+ 699               		.cfi_def_cfa_offset 4
+ 700               		.cfi_offset 1, -3
+ 701 024e 0F92      		push r0
+ 702               	.LCFI31:
+ 703               		.cfi_def_cfa_offset 5
+ 704               		.cfi_offset 0, -4
+ 705 0250 0FB6      		in r0,__SREG__
+ 706 0252 0F92      		push r0
+ 707 0254 1124      		clr __zero_reg__
+ 708 0256 0BB6      		in r0,__RAMPZ__
+ 709 0258 0F92      		push r0
+ 710 025a 2F93      		push r18
+ 711               	.LCFI32:
+ 712               		.cfi_def_cfa_offset 6
+ 713               		.cfi_offset 18, -5
+ 714 025c 3F93      		push r19
+ 715               	.LCFI33:
+ 716               		.cfi_def_cfa_offset 7
+ 717               		.cfi_offset 19, -6
+ 718 025e 4F93      		push r20
+ 719               	.LCFI34:
+ 720               		.cfi_def_cfa_offset 8
+ 721               		.cfi_offset 20, -7
+ 722 0260 5F93      		push r21
+ 723               	.LCFI35:
+ 724               		.cfi_def_cfa_offset 9
+ 725               		.cfi_offset 21, -8
+ 726 0262 6F93      		push r22
+ 727               	.LCFI36:
+ 728               		.cfi_def_cfa_offset 10
+ 729               		.cfi_offset 22, -9
+ 730 0264 7F93      		push r23
+ 731               	.LCFI37:
+ 732               		.cfi_def_cfa_offset 11
+ 733               		.cfi_offset 23, -10
+ 734 0266 8F93      		push r24
+ 735               	.LCFI38:
+ 736               		.cfi_def_cfa_offset 12
+ 737               		.cfi_offset 24, -11
+ 738 0268 9F93      		push r25
+ 739               	.LCFI39:
+ 740               		.cfi_def_cfa_offset 13
+ 741               		.cfi_offset 25, -12
+ 742 026a AF93      		push r26
+ 743               	.LCFI40:
+ 744               		.cfi_def_cfa_offset 14
+ 745               		.cfi_offset 26, -13
+ 746 026c BF93      		push r27
+ 747               	.LCFI41:
+ 748               		.cfi_def_cfa_offset 15
+ 749               		.cfi_offset 27, -14
+ 750 026e EF93      		push r30
+ 751               	.LCFI42:
+ 752               		.cfi_def_cfa_offset 16
+ 753               		.cfi_offset 30, -15
+ 754 0270 FF93      		push r31
+ 755               	.LCFI43:
+ 756               		.cfi_def_cfa_offset 17
+ 757               		.cfi_offset 31, -16
+ 758               	/* prologue: Signal */
+ 759               	/* frame size = 0 */
+ 760               	/* stack size = 16 */
+ 761               	.L__stack_usage = 16
+ 162:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	uint8_t c;
+ 163:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	
+ 164:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	c = USARTC1.DATA;
+ 762               		.loc 1 164 0
+ 763 0272 8091 B008 		lds r24,2224
+ 764               	.LVL35:
+ 165:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	//printf("R:%x",c);	
+ 166:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	push(c, &(port[NORTH].rx));
+ 765               		.loc 1 166 0
+ 766 0276 60E0      		ldi r22,lo8(port+112)
+ 767 0278 70E0      		ldi r23,hi8(port+112)
+ 768 027a 0E94 0000 		call push
+ 769               	.LVL36:
+ 770               	/* epilogue start */
+ 167:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** }
+ 771               		.loc 1 167 0
+ 772 027e FF91      		pop r31
+ 773 0280 EF91      		pop r30
+ 774 0282 BF91      		pop r27
+ 775 0284 AF91      		pop r26
+ 776 0286 9F91      		pop r25
+ 777 0288 8F91      		pop r24
+ 778 028a 7F91      		pop r23
+ 779 028c 6F91      		pop r22
+ 780 028e 5F91      		pop r21
+ 781 0290 4F91      		pop r20
+ 782 0292 3F91      		pop r19
+ 783 0294 2F91      		pop r18
+ 784 0296 0F90      		pop r0
+ 785 0298 0BBE      		out __RAMPZ__,r0
+ 786 029a 0F90      		pop r0
+ 787 029c 0FBE      		out __SREG__,r0
+ 788 029e 0F90      		pop r0
+ 789 02a0 1F90      		pop r1
+ 790 02a2 1895      		reti
+ 791               		.cfi_endproc
+ 792               	.LFE15:
+ 794               	.global	__vector_30
+ 796               	__vector_30:
+ 797               	.LFB16:
+ 168:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** ISR(USARTC1_TXC_vect)
+ 169:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** {
+ 798               		.loc 1 169 0
+ 799               		.cfi_startproc
+ 800 02a4 1F92      		push r1
+ 801               	.LCFI44:
+ 802               		.cfi_def_cfa_offset 4
+ 803               		.cfi_offset 1, -3
+ 804 02a6 0F92      		push r0
+ 805               	.LCFI45:
+ 806               		.cfi_def_cfa_offset 5
+ 807               		.cfi_offset 0, -4
+ 808 02a8 0FB6      		in r0,__SREG__
+ 809 02aa 0F92      		push r0
+ 810 02ac 1124      		clr __zero_reg__
+ 811 02ae 0BB6      		in r0,__RAMPZ__
+ 812 02b0 0F92      		push r0
+ 813 02b2 2F93      		push r18
+ 814               	.LCFI46:
+ 815               		.cfi_def_cfa_offset 6
+ 816               		.cfi_offset 18, -5
+ 817 02b4 3F93      		push r19
+ 818               	.LCFI47:
+ 819               		.cfi_def_cfa_offset 7
+ 820               		.cfi_offset 19, -6
+ 821 02b6 4F93      		push r20
+ 822               	.LCFI48:
+ 823               		.cfi_def_cfa_offset 8
+ 824               		.cfi_offset 20, -7
+ 825 02b8 5F93      		push r21
+ 826               	.LCFI49:
+ 827               		.cfi_def_cfa_offset 9
+ 828               		.cfi_offset 21, -8
+ 829 02ba 6F93      		push r22
+ 830               	.LCFI50:
+ 831               		.cfi_def_cfa_offset 10
+ 832               		.cfi_offset 22, -9
+ 833 02bc 7F93      		push r23
+ 834               	.LCFI51:
+ 835               		.cfi_def_cfa_offset 11
+ 836               		.cfi_offset 23, -10
+ 837 02be 8F93      		push r24
+ 838               	.LCFI52:
+ 839               		.cfi_def_cfa_offset 12
+ 840               		.cfi_offset 24, -11
+ 841 02c0 9F93      		push r25
+ 842               	.LCFI53:
+ 843               		.cfi_def_cfa_offset 13
+ 844               		.cfi_offset 25, -12
+ 845 02c2 AF93      		push r26
+ 846               	.LCFI54:
+ 847               		.cfi_def_cfa_offset 14
+ 848               		.cfi_offset 26, -13
+ 849 02c4 BF93      		push r27
+ 850               	.LCFI55:
+ 851               		.cfi_def_cfa_offset 15
+ 852               		.cfi_offset 27, -14
+ 853 02c6 EF93      		push r30
+ 854               	.LCFI56:
+ 855               		.cfi_def_cfa_offset 16
+ 856               		.cfi_offset 30, -15
+ 857 02c8 FF93      		push r31
+ 858               	.LCFI57:
+ 859               		.cfi_def_cfa_offset 17
+ 860               		.cfi_offset 31, -16
+ 861               	/* prologue: Signal */
+ 862               	/* frame size = 0 */
+ 863               	/* stack size = 16 */
+ 864               	.L__stack_usage = 16
+ 170:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	int16_t c;
+ 171:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	
+ 172:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	c  = pop(&(port[NORTH].tx));
+ 865               		.loc 1 172 0
+ 866 02ca 80E0      		ldi r24,lo8(port+144)
+ 867 02cc 90E0      		ldi r25,hi8(port+144)
+ 868 02ce 0E94 0000 		call pop
+ 869               	.LVL37:
+ 173:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	
+ 174:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	if(c != -1)
+ 870               		.loc 1 174 0
+ 871 02d2 8F3F      		cpi r24,-1
+ 872 02d4 2FEF      		ldi r18,-1
+ 873 02d6 9207      		cpc r25,r18
+ 874 02d8 01F0      		breq .L38
+ 175:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	{
+ 176:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		USARTC1.DATA = c;
+ 875               		.loc 1 176 0
+ 876 02da 8093 B008 		sts 2224,r24
+ 877               	.L38:
+ 878               	/* epilogue start */
+ 177:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	}
+ 178:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** }
+ 879               		.loc 1 178 0
+ 880 02de FF91      		pop r31
+ 881 02e0 EF91      		pop r30
+ 882 02e2 BF91      		pop r27
+ 883 02e4 AF91      		pop r26
+ 884 02e6 9F91      		pop r25
+ 885 02e8 8F91      		pop r24
+ 886               	.LVL38:
+ 887 02ea 7F91      		pop r23
+ 888 02ec 6F91      		pop r22
+ 889 02ee 5F91      		pop r21
+ 890 02f0 4F91      		pop r20
+ 891 02f2 3F91      		pop r19
+ 892 02f4 2F91      		pop r18
+ 893 02f6 0F90      		pop r0
+ 894 02f8 0BBE      		out __RAMPZ__,r0
+ 895 02fa 0F90      		pop r0
+ 896 02fc 0FBE      		out __SREG__,r0
+ 897 02fe 0F90      		pop r0
+ 898 0300 1F90      		pop r1
+ 899 0302 1895      		reti
+ 900               		.cfi_endproc
+ 901               	.LFE16:
+ 903               	.global	__vector_119
+ 905               	__vector_119:
+ 906               	.LFB17:
+ 179:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
+ 180:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** ISR(USARTF0_RXC_vect)
+ 181:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** {
+ 907               		.loc 1 181 0
+ 908               		.cfi_startproc
+ 909 0304 1F92      		push r1
+ 910               	.LCFI58:
+ 911               		.cfi_def_cfa_offset 4
+ 912               		.cfi_offset 1, -3
+ 913 0306 0F92      		push r0
+ 914               	.LCFI59:
+ 915               		.cfi_def_cfa_offset 5
+ 916               		.cfi_offset 0, -4
+ 917 0308 0FB6      		in r0,__SREG__
+ 918 030a 0F92      		push r0
+ 919 030c 1124      		clr __zero_reg__
+ 920 030e 0BB6      		in r0,__RAMPZ__
+ 921 0310 0F92      		push r0
+ 922 0312 2F93      		push r18
+ 923               	.LCFI60:
+ 924               		.cfi_def_cfa_offset 6
+ 925               		.cfi_offset 18, -5
+ 926 0314 3F93      		push r19
+ 927               	.LCFI61:
+ 928               		.cfi_def_cfa_offset 7
+ 929               		.cfi_offset 19, -6
+ 930 0316 4F93      		push r20
+ 931               	.LCFI62:
+ 932               		.cfi_def_cfa_offset 8
+ 933               		.cfi_offset 20, -7
+ 934 0318 5F93      		push r21
+ 935               	.LCFI63:
+ 936               		.cfi_def_cfa_offset 9
+ 937               		.cfi_offset 21, -8
+ 938 031a 6F93      		push r22
+ 939               	.LCFI64:
+ 940               		.cfi_def_cfa_offset 10
+ 941               		.cfi_offset 22, -9
+ 942 031c 7F93      		push r23
+ 943               	.LCFI65:
+ 944               		.cfi_def_cfa_offset 11
+ 945               		.cfi_offset 23, -10
+ 946 031e 8F93      		push r24
+ 947               	.LCFI66:
+ 948               		.cfi_def_cfa_offset 12
+ 949               		.cfi_offset 24, -11
+ 950 0320 9F93      		push r25
+ 951               	.LCFI67:
+ 952               		.cfi_def_cfa_offset 13
+ 953               		.cfi_offset 25, -12
+ 954 0322 AF93      		push r26
+ 955               	.LCFI68:
+ 956               		.cfi_def_cfa_offset 14
+ 957               		.cfi_offset 26, -13
+ 958 0324 BF93      		push r27
+ 959               	.LCFI69:
+ 960               		.cfi_def_cfa_offset 15
+ 961               		.cfi_offset 27, -14
+ 962 0326 EF93      		push r30
+ 963               	.LCFI70:
+ 964               		.cfi_def_cfa_offset 16
+ 965               		.cfi_offset 30, -15
+ 966 0328 FF93      		push r31
+ 967               	.LCFI71:
+ 968               		.cfi_def_cfa_offset 17
+ 969               		.cfi_offset 31, -16
+ 970               	/* prologue: Signal */
+ 971               	/* frame size = 0 */
+ 972               	/* stack size = 16 */
+ 973               	.L__stack_usage = 16
+ 182:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	uint8_t c;
+ 183:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	
+ 184:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	c = USARTF0.DATA;
+ 974               		.loc 1 184 0
+ 975 032a 8091 A00B 		lds r24,2976
+ 976               	.LVL39:
+ 185:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	//printf("R:%x",c);	
+ 186:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	push(c, &(port[EAST].rx));
+ 977               		.loc 1 186 0
+ 978 032e 60E0      		ldi r22,lo8(port+200)
+ 979 0330 70E0      		ldi r23,hi8(port+200)
+ 980 0332 0E94 0000 		call push
+ 981               	.LVL40:
+ 982               	/* epilogue start */
+ 187:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** }
+ 983               		.loc 1 187 0
+ 984 0336 FF91      		pop r31
+ 985 0338 EF91      		pop r30
+ 986 033a BF91      		pop r27
+ 987 033c AF91      		pop r26
+ 988 033e 9F91      		pop r25
+ 989 0340 8F91      		pop r24
+ 990 0342 7F91      		pop r23
+ 991 0344 6F91      		pop r22
+ 992 0346 5F91      		pop r21
+ 993 0348 4F91      		pop r20
+ 994 034a 3F91      		pop r19
+ 995 034c 2F91      		pop r18
+ 996 034e 0F90      		pop r0
+ 997 0350 0BBE      		out __RAMPZ__,r0
+ 998 0352 0F90      		pop r0
+ 999 0354 0FBE      		out __SREG__,r0
+ 1000 0356 0F90      		pop r0
+ 1001 0358 1F90      		pop r1
+ 1002 035a 1895      		reti
+ 1003               		.cfi_endproc
+ 1004               	.LFE17:
+ 1006               	.global	__vector_121
+ 1008               	__vector_121:
+ 1009               	.LFB18:
+ 188:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** ISR(USARTF0_TXC_vect)
+ 189:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** {
+ 1010               		.loc 1 189 0
+ 1011               		.cfi_startproc
+ 1012 035c 1F92      		push r1
+ 1013               	.LCFI72:
+ 1014               		.cfi_def_cfa_offset 4
+ 1015               		.cfi_offset 1, -3
+ 1016 035e 0F92      		push r0
+ 1017               	.LCFI73:
+ 1018               		.cfi_def_cfa_offset 5
+ 1019               		.cfi_offset 0, -4
+ 1020 0360 0FB6      		in r0,__SREG__
+ 1021 0362 0F92      		push r0
+ 1022 0364 1124      		clr __zero_reg__
+ 1023 0366 0BB6      		in r0,__RAMPZ__
+ 1024 0368 0F92      		push r0
+ 1025 036a 2F93      		push r18
+ 1026               	.LCFI74:
+ 1027               		.cfi_def_cfa_offset 6
+ 1028               		.cfi_offset 18, -5
+ 1029 036c 3F93      		push r19
+ 1030               	.LCFI75:
+ 1031               		.cfi_def_cfa_offset 7
+ 1032               		.cfi_offset 19, -6
+ 1033 036e 4F93      		push r20
+ 1034               	.LCFI76:
+ 1035               		.cfi_def_cfa_offset 8
+ 1036               		.cfi_offset 20, -7
+ 1037 0370 5F93      		push r21
+ 1038               	.LCFI77:
+ 1039               		.cfi_def_cfa_offset 9
+ 1040               		.cfi_offset 21, -8
+ 1041 0372 6F93      		push r22
+ 1042               	.LCFI78:
+ 1043               		.cfi_def_cfa_offset 10
+ 1044               		.cfi_offset 22, -9
+ 1045 0374 7F93      		push r23
+ 1046               	.LCFI79:
+ 1047               		.cfi_def_cfa_offset 11
+ 1048               		.cfi_offset 23, -10
+ 1049 0376 8F93      		push r24
+ 1050               	.LCFI80:
+ 1051               		.cfi_def_cfa_offset 12
+ 1052               		.cfi_offset 24, -11
+ 1053 0378 9F93      		push r25
+ 1054               	.LCFI81:
+ 1055               		.cfi_def_cfa_offset 13
+ 1056               		.cfi_offset 25, -12
+ 1057 037a AF93      		push r26
+ 1058               	.LCFI82:
+ 1059               		.cfi_def_cfa_offset 14
+ 1060               		.cfi_offset 26, -13
+ 1061 037c BF93      		push r27
+ 1062               	.LCFI83:
+ 1063               		.cfi_def_cfa_offset 15
+ 1064               		.cfi_offset 27, -14
+ 1065 037e EF93      		push r30
+ 1066               	.LCFI84:
+ 1067               		.cfi_def_cfa_offset 16
+ 1068               		.cfi_offset 30, -15
+ 1069 0380 FF93      		push r31
+ 1070               	.LCFI85:
+ 1071               		.cfi_def_cfa_offset 17
+ 1072               		.cfi_offset 31, -16
+ 1073               	/* prologue: Signal */
+ 1074               	/* frame size = 0 */
+ 1075               	/* stack size = 16 */
+ 1076               	.L__stack_usage = 16
+ 190:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	int16_t c;
+ 191:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	
+ 192:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	c  = pop(&(port[EAST].tx));
+ 1077               		.loc 1 192 0
+ 1078 0382 80E0      		ldi r24,lo8(port+232)
+ 1079 0384 90E0      		ldi r25,hi8(port+232)
+ 1080 0386 0E94 0000 		call pop
+ 1081               	.LVL41:
+ 193:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	
+ 194:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	if(c != -1)
+ 1082               		.loc 1 194 0
+ 1083 038a 8F3F      		cpi r24,-1
+ 1084 038c 2FEF      		ldi r18,-1
+ 1085 038e 9207      		cpc r25,r18
+ 1086 0390 01F0      		breq .L44
+ 195:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	{
+ 196:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		USARTF0.DATA = c;
+ 1087               		.loc 1 196 0
+ 1088 0392 8093 A00B 		sts 2976,r24
+ 1089               	.L44:
+ 1090               	/* epilogue start */
+ 197:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	}
+ 198:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** }
+ 1091               		.loc 1 198 0
+ 1092 0396 FF91      		pop r31
+ 1093 0398 EF91      		pop r30
+ 1094 039a BF91      		pop r27
+ 1095 039c AF91      		pop r26
+ 1096 039e 9F91      		pop r25
+ 1097 03a0 8F91      		pop r24
+ 1098               	.LVL42:
+ 1099 03a2 7F91      		pop r23
+ 1100 03a4 6F91      		pop r22
+ 1101 03a6 5F91      		pop r21
+ 1102 03a8 4F91      		pop r20
+ 1103 03aa 3F91      		pop r19
+ 1104 03ac 2F91      		pop r18
+ 1105 03ae 0F90      		pop r0
+ 1106 03b0 0BBE      		out __RAMPZ__,r0
+ 1107 03b2 0F90      		pop r0
+ 1108 03b4 0FBE      		out __SREG__,r0
+ 1109 03b6 0F90      		pop r0
+ 1110 03b8 1F90      		pop r1
+ 1111 03ba 1895      		reti
+ 1112               		.cfi_endproc
+ 1113               	.LFE18:
+ 1115               	.global	__vector_58
+ 1117               	__vector_58:
+ 1118               	.LFB19:
+ 199:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
+ 200:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** ISR(USARTE0_RXC_vect)
+ 201:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** {
+ 1119               		.loc 1 201 0
+ 1120               		.cfi_startproc
+ 1121 03bc 1F92      		push r1
+ 1122               	.LCFI86:
+ 1123               		.cfi_def_cfa_offset 4
+ 1124               		.cfi_offset 1, -3
+ 1125 03be 0F92      		push r0
+ 1126               	.LCFI87:
+ 1127               		.cfi_def_cfa_offset 5
+ 1128               		.cfi_offset 0, -4
+ 1129 03c0 0FB6      		in r0,__SREG__
+ 1130 03c2 0F92      		push r0
+ 1131 03c4 1124      		clr __zero_reg__
+ 1132 03c6 0BB6      		in r0,__RAMPZ__
+ 1133 03c8 0F92      		push r0
+ 1134 03ca 2F93      		push r18
+ 1135               	.LCFI88:
+ 1136               		.cfi_def_cfa_offset 6
+ 1137               		.cfi_offset 18, -5
+ 1138 03cc 3F93      		push r19
+ 1139               	.LCFI89:
+ 1140               		.cfi_def_cfa_offset 7
+ 1141               		.cfi_offset 19, -6
+ 1142 03ce 4F93      		push r20
+ 1143               	.LCFI90:
+ 1144               		.cfi_def_cfa_offset 8
+ 1145               		.cfi_offset 20, -7
+ 1146 03d0 5F93      		push r21
+ 1147               	.LCFI91:
+ 1148               		.cfi_def_cfa_offset 9
+ 1149               		.cfi_offset 21, -8
+ 1150 03d2 6F93      		push r22
+ 1151               	.LCFI92:
+ 1152               		.cfi_def_cfa_offset 10
+ 1153               		.cfi_offset 22, -9
+ 1154 03d4 7F93      		push r23
+ 1155               	.LCFI93:
+ 1156               		.cfi_def_cfa_offset 11
+ 1157               		.cfi_offset 23, -10
+ 1158 03d6 8F93      		push r24
+ 1159               	.LCFI94:
+ 1160               		.cfi_def_cfa_offset 12
+ 1161               		.cfi_offset 24, -11
+ 1162 03d8 9F93      		push r25
+ 1163               	.LCFI95:
+ 1164               		.cfi_def_cfa_offset 13
+ 1165               		.cfi_offset 25, -12
+ 1166 03da AF93      		push r26
+ 1167               	.LCFI96:
+ 1168               		.cfi_def_cfa_offset 14
+ 1169               		.cfi_offset 26, -13
+ 1170 03dc BF93      		push r27
+ 1171               	.LCFI97:
+ 1172               		.cfi_def_cfa_offset 15
+ 1173               		.cfi_offset 27, -14
+ 1174 03de EF93      		push r30
+ 1175               	.LCFI98:
+ 1176               		.cfi_def_cfa_offset 16
+ 1177               		.cfi_offset 30, -15
+ 1178 03e0 FF93      		push r31
+ 1179               	.LCFI99:
+ 1180               		.cfi_def_cfa_offset 17
+ 1181               		.cfi_offset 31, -16
+ 1182               	/* prologue: Signal */
+ 1183               	/* frame size = 0 */
+ 1184               	/* stack size = 16 */
+ 1185               	.L__stack_usage = 16
+ 202:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	uint8_t c;
+ 203:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	
+ 204:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	c = USARTE0.DATA;
+ 1186               		.loc 1 204 0
+ 1187 03e2 8091 A00A 		lds r24,2720
+ 1188               	.LVL43:
+ 205:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	//printf("R:%x",c);	
+ 206:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	push(c, &(port[SOUTH].rx));
+ 1189               		.loc 1 206 0
+ 1190 03e6 60E0      		ldi r22,lo8(port+376)
+ 1191 03e8 70E0      		ldi r23,hi8(port+376)
+ 1192 03ea 0E94 0000 		call push
+ 1193               	.LVL44:
+ 1194               	/* epilogue start */
+ 207:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** }
+ 1195               		.loc 1 207 0
+ 1196 03ee FF91      		pop r31
+ 1197 03f0 EF91      		pop r30
+ 1198 03f2 BF91      		pop r27
+ 1199 03f4 AF91      		pop r26
+ 1200 03f6 9F91      		pop r25
+ 1201 03f8 8F91      		pop r24
+ 1202 03fa 7F91      		pop r23
+ 1203 03fc 6F91      		pop r22
+ 1204 03fe 5F91      		pop r21
+ 1205 0400 4F91      		pop r20
+ 1206 0402 3F91      		pop r19
+ 1207 0404 2F91      		pop r18
+ 1208 0406 0F90      		pop r0
+ 1209 0408 0BBE      		out __RAMPZ__,r0
+ 1210 040a 0F90      		pop r0
+ 1211 040c 0FBE      		out __SREG__,r0
+ 1212 040e 0F90      		pop r0
+ 1213 0410 1F90      		pop r1
+ 1214 0412 1895      		reti
+ 1215               		.cfi_endproc
+ 1216               	.LFE19:
+ 1218               	.global	__vector_60
+ 1220               	__vector_60:
+ 1221               	.LFB20:
+ 208:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** ISR(USARTE0_TXC_vect)
+ 209:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** {
+ 1222               		.loc 1 209 0
+ 1223               		.cfi_startproc
+ 1224 0414 1F92      		push r1
+ 1225               	.LCFI100:
+ 1226               		.cfi_def_cfa_offset 4
+ 1227               		.cfi_offset 1, -3
+ 1228 0416 0F92      		push r0
+ 1229               	.LCFI101:
+ 1230               		.cfi_def_cfa_offset 5
+ 1231               		.cfi_offset 0, -4
+ 1232 0418 0FB6      		in r0,__SREG__
+ 1233 041a 0F92      		push r0
+ 1234 041c 1124      		clr __zero_reg__
+ 1235 041e 0BB6      		in r0,__RAMPZ__
+ 1236 0420 0F92      		push r0
+ 1237 0422 2F93      		push r18
+ 1238               	.LCFI102:
+ 1239               		.cfi_def_cfa_offset 6
+ 1240               		.cfi_offset 18, -5
+ 1241 0424 3F93      		push r19
+ 1242               	.LCFI103:
+ 1243               		.cfi_def_cfa_offset 7
+ 1244               		.cfi_offset 19, -6
+ 1245 0426 4F93      		push r20
+ 1246               	.LCFI104:
+ 1247               		.cfi_def_cfa_offset 8
+ 1248               		.cfi_offset 20, -7
+ 1249 0428 5F93      		push r21
+ 1250               	.LCFI105:
+ 1251               		.cfi_def_cfa_offset 9
+ 1252               		.cfi_offset 21, -8
+ 1253 042a 6F93      		push r22
+ 1254               	.LCFI106:
+ 1255               		.cfi_def_cfa_offset 10
+ 1256               		.cfi_offset 22, -9
+ 1257 042c 7F93      		push r23
+ 1258               	.LCFI107:
+ 1259               		.cfi_def_cfa_offset 11
+ 1260               		.cfi_offset 23, -10
+ 1261 042e 8F93      		push r24
+ 1262               	.LCFI108:
+ 1263               		.cfi_def_cfa_offset 12
+ 1264               		.cfi_offset 24, -11
+ 1265 0430 9F93      		push r25
+ 1266               	.LCFI109:
+ 1267               		.cfi_def_cfa_offset 13
+ 1268               		.cfi_offset 25, -12
+ 1269 0432 AF93      		push r26
+ 1270               	.LCFI110:
+ 1271               		.cfi_def_cfa_offset 14
+ 1272               		.cfi_offset 26, -13
+ 1273 0434 BF93      		push r27
+ 1274               	.LCFI111:
+ 1275               		.cfi_def_cfa_offset 15
+ 1276               		.cfi_offset 27, -14
+ 1277 0436 EF93      		push r30
+ 1278               	.LCFI112:
+ 1279               		.cfi_def_cfa_offset 16
+ 1280               		.cfi_offset 30, -15
+ 1281 0438 FF93      		push r31
+ 1282               	.LCFI113:
+ 1283               		.cfi_def_cfa_offset 17
+ 1284               		.cfi_offset 31, -16
+ 1285               	/* prologue: Signal */
+ 1286               	/* frame size = 0 */
+ 1287               	/* stack size = 16 */
+ 1288               	.L__stack_usage = 16
+ 210:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	int16_t c;
+ 211:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	
+ 212:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	c  = pop(&(port[SOUTH].tx));
+ 1289               		.loc 1 212 0
+ 1290 043a 80E0      		ldi r24,lo8(port+408)
+ 1291 043c 90E0      		ldi r25,hi8(port+408)
+ 1292 043e 0E94 0000 		call pop
+ 1293               	.LVL45:
+ 213:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	
+ 214:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	if(c != -1)
+ 1294               		.loc 1 214 0
+ 1295 0442 8F3F      		cpi r24,-1
+ 1296 0444 2FEF      		ldi r18,-1
+ 1297 0446 9207      		cpc r25,r18
+ 1298 0448 01F0      		breq .L50
+ 215:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	{
+ 216:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		USARTE0.DATA = c;
+ 1299               		.loc 1 216 0
+ 1300 044a 8093 A00A 		sts 2720,r24
+ 1301               	.L50:
+ 1302               	/* epilogue start */
+ 217:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	}
+ 218:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** }
+ 1303               		.loc 1 218 0
+ 1304 044e FF91      		pop r31
+ 1305 0450 EF91      		pop r30
+ 1306 0452 BF91      		pop r27
+ 1307 0454 AF91      		pop r26
+ 1308 0456 9F91      		pop r25
+ 1309 0458 8F91      		pop r24
+ 1310               	.LVL46:
+ 1311 045a 7F91      		pop r23
+ 1312 045c 6F91      		pop r22
+ 1313 045e 5F91      		pop r21
+ 1314 0460 4F91      		pop r20
+ 1315 0462 3F91      		pop r19
+ 1316 0464 2F91      		pop r18
+ 1317 0466 0F90      		pop r0
+ 1318 0468 0BBE      		out __RAMPZ__,r0
+ 1319 046a 0F90      		pop r0
+ 1320 046c 0FBE      		out __SREG__,r0
+ 1321 046e 0F90      		pop r0
+ 1322 0470 1F90      		pop r1
+ 1323 0472 1895      		reti
+ 1324               		.cfi_endproc
+ 1325               	.LFE20:
+ 1327               	.global	__vector_25
+ 1329               	__vector_25:
+ 1330               	.LFB21:
+ 219:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
+ 220:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** ISR(USARTC0_RXC_vect)
+ 221:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** {
+ 1331               		.loc 1 221 0
+ 1332               		.cfi_startproc
+ 1333 0474 1F92      		push r1
+ 1334               	.LCFI114:
+ 1335               		.cfi_def_cfa_offset 4
+ 1336               		.cfi_offset 1, -3
+ 1337 0476 0F92      		push r0
+ 1338               	.LCFI115:
+ 1339               		.cfi_def_cfa_offset 5
+ 1340               		.cfi_offset 0, -4
+ 1341 0478 0FB6      		in r0,__SREG__
+ 1342 047a 0F92      		push r0
+ 1343 047c 1124      		clr __zero_reg__
+ 1344 047e 0BB6      		in r0,__RAMPZ__
+ 1345 0480 0F92      		push r0
+ 1346 0482 2F93      		push r18
+ 1347               	.LCFI116:
+ 1348               		.cfi_def_cfa_offset 6
+ 1349               		.cfi_offset 18, -5
+ 1350 0484 3F93      		push r19
+ 1351               	.LCFI117:
+ 1352               		.cfi_def_cfa_offset 7
+ 1353               		.cfi_offset 19, -6
+ 1354 0486 4F93      		push r20
+ 1355               	.LCFI118:
+ 1356               		.cfi_def_cfa_offset 8
+ 1357               		.cfi_offset 20, -7
+ 1358 0488 5F93      		push r21
+ 1359               	.LCFI119:
+ 1360               		.cfi_def_cfa_offset 9
+ 1361               		.cfi_offset 21, -8
+ 1362 048a 6F93      		push r22
+ 1363               	.LCFI120:
+ 1364               		.cfi_def_cfa_offset 10
+ 1365               		.cfi_offset 22, -9
+ 1366 048c 7F93      		push r23
+ 1367               	.LCFI121:
+ 1368               		.cfi_def_cfa_offset 11
+ 1369               		.cfi_offset 23, -10
+ 1370 048e 8F93      		push r24
+ 1371               	.LCFI122:
+ 1372               		.cfi_def_cfa_offset 12
+ 1373               		.cfi_offset 24, -11
+ 1374 0490 9F93      		push r25
+ 1375               	.LCFI123:
+ 1376               		.cfi_def_cfa_offset 13
+ 1377               		.cfi_offset 25, -12
+ 1378 0492 AF93      		push r26
+ 1379               	.LCFI124:
+ 1380               		.cfi_def_cfa_offset 14
+ 1381               		.cfi_offset 26, -13
+ 1382 0494 BF93      		push r27
+ 1383               	.LCFI125:
+ 1384               		.cfi_def_cfa_offset 15
+ 1385               		.cfi_offset 27, -14
+ 1386 0496 EF93      		push r30
+ 1387               	.LCFI126:
+ 1388               		.cfi_def_cfa_offset 16
+ 1389               		.cfi_offset 30, -15
+ 1390 0498 FF93      		push r31
+ 1391               	.LCFI127:
+ 1392               		.cfi_def_cfa_offset 17
+ 1393               		.cfi_offset 31, -16
+ 1394               	/* prologue: Signal */
+ 1395               	/* frame size = 0 */
+ 1396               	/* stack size = 16 */
+ 1397               	.L__stack_usage = 16
+ 222:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	uint8_t c;
+ 223:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	
+ 224:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	c = USARTC0.DATA;
+ 1398               		.loc 1 224 0
+ 1399 049a 8091 A008 		lds r24,2208
+ 1400               	.LVL47:
+ 225:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	//printf("R:%x",c);	
+ 226:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	push(c, &(port[WEST].rx));
+ 1401               		.loc 1 226 0
+ 1402 049e 60E0      		ldi r22,lo8(port+288)
+ 1403 04a0 70E0      		ldi r23,hi8(port+288)
+ 1404 04a2 0E94 0000 		call push
+ 1405               	.LVL48:
+ 1406               	/* epilogue start */
+ 227:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** }
+ 1407               		.loc 1 227 0
+ 1408 04a6 FF91      		pop r31
+ 1409 04a8 EF91      		pop r30
+ 1410 04aa BF91      		pop r27
+ 1411 04ac AF91      		pop r26
+ 1412 04ae 9F91      		pop r25
+ 1413 04b0 8F91      		pop r24
+ 1414 04b2 7F91      		pop r23
+ 1415 04b4 6F91      		pop r22
+ 1416 04b6 5F91      		pop r21
+ 1417 04b8 4F91      		pop r20
+ 1418 04ba 3F91      		pop r19
+ 1419 04bc 2F91      		pop r18
+ 1420 04be 0F90      		pop r0
+ 1421 04c0 0BBE      		out __RAMPZ__,r0
+ 1422 04c2 0F90      		pop r0
+ 1423 04c4 0FBE      		out __SREG__,r0
+ 1424 04c6 0F90      		pop r0
+ 1425 04c8 1F90      		pop r1
+ 1426 04ca 1895      		reti
+ 1427               		.cfi_endproc
+ 1428               	.LFE21:
+ 1430               	.global	__vector_27
+ 1432               	__vector_27:
+ 1433               	.LFB22:
+ 228:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** ISR(USARTC0_TXC_vect)
+ 229:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** {
+ 1434               		.loc 1 229 0
+ 1435               		.cfi_startproc
+ 1436 04cc 1F92      		push r1
+ 1437               	.LCFI128:
+ 1438               		.cfi_def_cfa_offset 4
+ 1439               		.cfi_offset 1, -3
+ 1440 04ce 0F92      		push r0
+ 1441               	.LCFI129:
+ 1442               		.cfi_def_cfa_offset 5
+ 1443               		.cfi_offset 0, -4
+ 1444 04d0 0FB6      		in r0,__SREG__
+ 1445 04d2 0F92      		push r0
+ 1446 04d4 1124      		clr __zero_reg__
+ 1447 04d6 0BB6      		in r0,__RAMPZ__
+ 1448 04d8 0F92      		push r0
+ 1449 04da 2F93      		push r18
+ 1450               	.LCFI130:
+ 1451               		.cfi_def_cfa_offset 6
+ 1452               		.cfi_offset 18, -5
+ 1453 04dc 3F93      		push r19
+ 1454               	.LCFI131:
+ 1455               		.cfi_def_cfa_offset 7
+ 1456               		.cfi_offset 19, -6
+ 1457 04de 4F93      		push r20
+ 1458               	.LCFI132:
+ 1459               		.cfi_def_cfa_offset 8
+ 1460               		.cfi_offset 20, -7
+ 1461 04e0 5F93      		push r21
+ 1462               	.LCFI133:
+ 1463               		.cfi_def_cfa_offset 9
+ 1464               		.cfi_offset 21, -8
+ 1465 04e2 6F93      		push r22
+ 1466               	.LCFI134:
+ 1467               		.cfi_def_cfa_offset 10
+ 1468               		.cfi_offset 22, -9
+ 1469 04e4 7F93      		push r23
+ 1470               	.LCFI135:
+ 1471               		.cfi_def_cfa_offset 11
+ 1472               		.cfi_offset 23, -10
+ 1473 04e6 8F93      		push r24
+ 1474               	.LCFI136:
+ 1475               		.cfi_def_cfa_offset 12
+ 1476               		.cfi_offset 24, -11
+ 1477 04e8 9F93      		push r25
+ 1478               	.LCFI137:
+ 1479               		.cfi_def_cfa_offset 13
+ 1480               		.cfi_offset 25, -12
+ 1481 04ea AF93      		push r26
+ 1482               	.LCFI138:
+ 1483               		.cfi_def_cfa_offset 14
+ 1484               		.cfi_offset 26, -13
+ 1485 04ec BF93      		push r27
+ 1486               	.LCFI139:
+ 1487               		.cfi_def_cfa_offset 15
+ 1488               		.cfi_offset 27, -14
+ 1489 04ee EF93      		push r30
+ 1490               	.LCFI140:
+ 1491               		.cfi_def_cfa_offset 16
+ 1492               		.cfi_offset 30, -15
+ 1493 04f0 FF93      		push r31
+ 1494               	.LCFI141:
+ 1495               		.cfi_def_cfa_offset 17
+ 1496               		.cfi_offset 31, -16
+ 1497               	/* prologue: Signal */
+ 1498               	/* frame size = 0 */
+ 1499               	/* stack size = 16 */
+ 1500               	.L__stack_usage = 16
+ 230:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	int16_t c;
+ 231:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	
+ 232:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	c  = pop(&(port[WEST].tx));
+ 1501               		.loc 1 232 0
+ 1502 04f2 80E0      		ldi r24,lo8(port+320)
+ 1503 04f4 90E0      		ldi r25,hi8(port+320)
+ 1504 04f6 0E94 0000 		call pop
+ 1505               	.LVL49:
+ 233:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	
+ 234:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	if(c != -1)
+ 1506               		.loc 1 234 0
+ 1507 04fa 8F3F      		cpi r24,-1
+ 1508 04fc 2FEF      		ldi r18,-1
+ 1509 04fe 9207      		cpc r25,r18
+ 1510 0500 01F0      		breq .L56
+ 235:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	{
+ 236:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		USARTC0.DATA = c;
+ 1511               		.loc 1 236 0
+ 1512 0502 8093 A008 		sts 2208,r24
+ 1513               	.L56:
+ 1514               	/* epilogue start */
+ 237:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	}
+ 238:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** }
+ 1515               		.loc 1 238 0
+ 1516 0506 FF91      		pop r31
+ 1517 0508 EF91      		pop r30
+ 1518 050a BF91      		pop r27
+ 1519 050c AF91      		pop r26
+ 1520 050e 9F91      		pop r25
+ 1521 0510 8F91      		pop r24
+ 1522               	.LVL50:
+ 1523 0512 7F91      		pop r23
+ 1524 0514 6F91      		pop r22
+ 1525 0516 5F91      		pop r21
+ 1526 0518 4F91      		pop r20
+ 1527 051a 3F91      		pop r19
+ 1528 051c 2F91      		pop r18
+ 1529 051e 0F90      		pop r0
+ 1530 0520 0BBE      		out __RAMPZ__,r0
+ 1531 0522 0F90      		pop r0
+ 1532 0524 0FBE      		out __SREG__,r0
+ 1533 0526 0F90      		pop r0
+ 1534 0528 1F90      		pop r1
+ 1535 052a 1895      		reti
+ 1536               		.cfi_endproc
+ 1537               	.LFE22:
+ 1539               	.global	__vector_88
+ 1541               	__vector_88:
+ 1542               	.LFB23:
+ 239:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 
+ 240:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** ISR(USARTD0_RXC_vect)
+ 241:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** {
+ 1543               		.loc 1 241 0
+ 1544               		.cfi_startproc
+ 1545 052c 1F92      		push r1
+ 1546               	.LCFI142:
+ 1547               		.cfi_def_cfa_offset 4
+ 1548               		.cfi_offset 1, -3
+ 1549 052e 0F92      		push r0
+ 1550               	.LCFI143:
+ 1551               		.cfi_def_cfa_offset 5
+ 1552               		.cfi_offset 0, -4
+ 1553 0530 0FB6      		in r0,__SREG__
+ 1554 0532 0F92      		push r0
+ 1555 0534 1124      		clr __zero_reg__
+ 1556 0536 0BB6      		in r0,__RAMPZ__
+ 1557 0538 0F92      		push r0
+ 1558 053a 2F93      		push r18
+ 1559               	.LCFI144:
+ 1560               		.cfi_def_cfa_offset 6
+ 1561               		.cfi_offset 18, -5
+ 1562 053c 3F93      		push r19
+ 1563               	.LCFI145:
+ 1564               		.cfi_def_cfa_offset 7
+ 1565               		.cfi_offset 19, -6
+ 1566 053e 4F93      		push r20
+ 1567               	.LCFI146:
+ 1568               		.cfi_def_cfa_offset 8
+ 1569               		.cfi_offset 20, -7
+ 1570 0540 5F93      		push r21
+ 1571               	.LCFI147:
+ 1572               		.cfi_def_cfa_offset 9
+ 1573               		.cfi_offset 21, -8
+ 1574 0542 6F93      		push r22
+ 1575               	.LCFI148:
+ 1576               		.cfi_def_cfa_offset 10
+ 1577               		.cfi_offset 22, -9
+ 1578 0544 7F93      		push r23
+ 1579               	.LCFI149:
+ 1580               		.cfi_def_cfa_offset 11
+ 1581               		.cfi_offset 23, -10
+ 1582 0546 8F93      		push r24
+ 1583               	.LCFI150:
+ 1584               		.cfi_def_cfa_offset 12
+ 1585               		.cfi_offset 24, -11
+ 1586 0548 9F93      		push r25
+ 1587               	.LCFI151:
+ 1588               		.cfi_def_cfa_offset 13
+ 1589               		.cfi_offset 25, -12
+ 1590 054a AF93      		push r26
+ 1591               	.LCFI152:
+ 1592               		.cfi_def_cfa_offset 14
+ 1593               		.cfi_offset 26, -13
+ 1594 054c BF93      		push r27
+ 1595               	.LCFI153:
+ 1596               		.cfi_def_cfa_offset 15
+ 1597               		.cfi_offset 27, -14
+ 1598 054e EF93      		push r30
+ 1599               	.LCFI154:
+ 1600               		.cfi_def_cfa_offset 16
+ 1601               		.cfi_offset 30, -15
+ 1602 0550 FF93      		push r31
+ 1603               	.LCFI155:
+ 1604               		.cfi_def_cfa_offset 17
+ 1605               		.cfi_offset 31, -16
+ 1606               	/* prologue: Signal */
+ 1607               	/* frame size = 0 */
+ 1608               	/* stack size = 16 */
+ 1609               	.L__stack_usage = 16
+ 242:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	uint8_t c;
+ 243:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	
+ 244:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	c = USARTD0.DATA;
+ 1610               		.loc 1 244 0
+ 1611 0552 8091 A009 		lds r24,2464
+ 1612               	.LVL51:
+ 245:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	//printf("R:%x",c);
+ 246:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	push(c, &(port[DOWN].rx));
+ 1613               		.loc 1 246 0
+ 1614 0556 60E0      		ldi r22,lo8(port+24)
+ 1615 0558 70E0      		ldi r23,hi8(port+24)
+ 1616 055a 0E94 0000 		call push
+ 1617               	.LVL52:
+ 1618               	/* epilogue start */
+ 247:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** }
+ 1619               		.loc 1 247 0
+ 1620 055e FF91      		pop r31
+ 1621 0560 EF91      		pop r30
+ 1622 0562 BF91      		pop r27
+ 1623 0564 AF91      		pop r26
+ 1624 0566 9F91      		pop r25
+ 1625 0568 8F91      		pop r24
+ 1626 056a 7F91      		pop r23
+ 1627 056c 6F91      		pop r22
+ 1628 056e 5F91      		pop r21
+ 1629 0570 4F91      		pop r20
+ 1630 0572 3F91      		pop r19
+ 1631 0574 2F91      		pop r18
+ 1632 0576 0F90      		pop r0
+ 1633 0578 0BBE      		out __RAMPZ__,r0
+ 1634 057a 0F90      		pop r0
+ 1635 057c 0FBE      		out __SREG__,r0
+ 1636 057e 0F90      		pop r0
+ 1637 0580 1F90      		pop r1
+ 1638 0582 1895      		reti
+ 1639               		.cfi_endproc
+ 1640               	.LFE23:
+ 1642               	.global	__vector_90
+ 1644               	__vector_90:
+ 1645               	.LFB24:
+ 248:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** ISR(USARTD0_TXC_vect)
+ 249:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** {
+ 1646               		.loc 1 249 0
+ 1647               		.cfi_startproc
+ 1648 0584 1F92      		push r1
+ 1649               	.LCFI156:
+ 1650               		.cfi_def_cfa_offset 4
+ 1651               		.cfi_offset 1, -3
+ 1652 0586 0F92      		push r0
+ 1653               	.LCFI157:
+ 1654               		.cfi_def_cfa_offset 5
+ 1655               		.cfi_offset 0, -4
+ 1656 0588 0FB6      		in r0,__SREG__
+ 1657 058a 0F92      		push r0
+ 1658 058c 1124      		clr __zero_reg__
+ 1659 058e 0BB6      		in r0,__RAMPZ__
+ 1660 0590 0F92      		push r0
+ 1661 0592 2F93      		push r18
+ 1662               	.LCFI158:
+ 1663               		.cfi_def_cfa_offset 6
+ 1664               		.cfi_offset 18, -5
+ 1665 0594 3F93      		push r19
+ 1666               	.LCFI159:
+ 1667               		.cfi_def_cfa_offset 7
+ 1668               		.cfi_offset 19, -6
+ 1669 0596 4F93      		push r20
+ 1670               	.LCFI160:
+ 1671               		.cfi_def_cfa_offset 8
+ 1672               		.cfi_offset 20, -7
+ 1673 0598 5F93      		push r21
+ 1674               	.LCFI161:
+ 1675               		.cfi_def_cfa_offset 9
+ 1676               		.cfi_offset 21, -8
+ 1677 059a 6F93      		push r22
+ 1678               	.LCFI162:
+ 1679               		.cfi_def_cfa_offset 10
+ 1680               		.cfi_offset 22, -9
+ 1681 059c 7F93      		push r23
+ 1682               	.LCFI163:
+ 1683               		.cfi_def_cfa_offset 11
+ 1684               		.cfi_offset 23, -10
+ 1685 059e 8F93      		push r24
+ 1686               	.LCFI164:
+ 1687               		.cfi_def_cfa_offset 12
+ 1688               		.cfi_offset 24, -11
+ 1689 05a0 9F93      		push r25
+ 1690               	.LCFI165:
+ 1691               		.cfi_def_cfa_offset 13
+ 1692               		.cfi_offset 25, -12
+ 1693 05a2 AF93      		push r26
+ 1694               	.LCFI166:
+ 1695               		.cfi_def_cfa_offset 14
+ 1696               		.cfi_offset 26, -13
+ 1697 05a4 BF93      		push r27
+ 1698               	.LCFI167:
+ 1699               		.cfi_def_cfa_offset 15
+ 1700               		.cfi_offset 27, -14
+ 1701 05a6 EF93      		push r30
+ 1702               	.LCFI168:
+ 1703               		.cfi_def_cfa_offset 16
+ 1704               		.cfi_offset 30, -15
+ 1705 05a8 FF93      		push r31
+ 1706               	.LCFI169:
+ 1707               		.cfi_def_cfa_offset 17
+ 1708               		.cfi_offset 31, -16
+ 1709               	/* prologue: Signal */
+ 1710               	/* frame size = 0 */
+ 1711               	/* stack size = 16 */
+ 1712               	.L__stack_usage = 16
+ 250:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	int16_t c;
+ 251:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	
+ 252:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	c  = pop(&(port[DOWN].tx));
+ 1713               		.loc 1 252 0
+ 1714 05aa 80E0      		ldi r24,lo8(port+56)
+ 1715 05ac 90E0      		ldi r25,hi8(port+56)
+ 1716 05ae 0E94 0000 		call pop
+ 1717               	.LVL53:
+ 253:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	
+ 254:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	if(c != -1)
+ 1718               		.loc 1 254 0
+ 1719 05b2 8F3F      		cpi r24,-1
+ 1720 05b4 2FEF      		ldi r18,-1
+ 1721 05b6 9207      		cpc r25,r18
+ 1722 05b8 01F0      		breq .L62
+ 255:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	{
+ 256:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 		USARTD0.DATA = c;
+ 1723               		.loc 1 256 0
+ 1724 05ba 8093 A009 		sts 2464,r24
+ 1725               	.L62:
+ 1726               	/* epilogue start */
+ 257:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** 	}
+ 258:/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/hw-block/hwSerial.c **** }
+ 1727               		.loc 1 258 0
+ 1728 05be FF91      		pop r31
+ 1729 05c0 EF91      		pop r30
+ 1730 05c2 BF91      		pop r27
+ 1731 05c4 AF91      		pop r26
+ 1732 05c6 9F91      		pop r25
+ 1733 05c8 8F91      		pop r24
+ 1734               	.LVL54:
+ 1735 05ca 7F91      		pop r23
+ 1736 05cc 6F91      		pop r22
+ 1737 05ce 5F91      		pop r21
+ 1738 05d0 4F91      		pop r20
+ 1739 05d2 3F91      		pop r19
+ 1740 05d4 2F91      		pop r18
+ 1741 05d6 0F90      		pop r0
+ 1742 05d8 0BBE      		out __RAMPZ__,r0
+ 1743 05da 0F90      		pop r0
+ 1744 05dc 0FBE      		out __SREG__,r0
+ 1745 05de 0F90      		pop r0
+ 1746 05e0 1F90      		pop r1
+ 1747 05e2 1895      		reti
+ 1748               		.cfi_endproc
+ 1749               	.LFE24:
+ 1751               		.comm	hwPort,18,1
+ 1752               	.Letext0:
+ 1753               		.file 2 "/usr/local/Cellar/avr-gcc/4.7.2/lib/gcc/avr/4.7.2/../../../../avr/include/stdint.h"
+ 1754               		.file 3 "/usr/local/Cellar/avr-gcc/4.7.2/lib/gcc/avr/4.7.2/../../../../avr/include/avr/iox256a3.h"
+ 1755               		.file 4 "/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/system/defs.bbh"
+ 1756               		.file 5 "/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/system/circ_buffer.bbh"
+ 1757               		.file 6 "/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/system/handler.bbh"
+ 1758               		.file 7 "/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/system/memory.bbh"
+ 1759               		.file 8 "/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/system/hardwaretime.bbh"
+ 1760               		.file 9 "/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/system/queues.bbh"
+ 1761               		.file 10 "/Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/system/serial.bbh"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 hwSerial.c
-     /tmp/ccD3UQLA.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccD3UQLA.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccD3UQLA.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccD3UQLA.s:5      *ABS*:000000000000003b __RAMPZ__
-     /tmp/ccD3UQLA.s:6      *ABS*:0000000000000034 __CCP__
-     /tmp/ccD3UQLA.s:7      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccD3UQLA.s:8      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccD3UQLA.s:14     .text:0000000000000000 u_putchar
-     /tmp/ccD3UQLA.s:38     .text:000000000000000c u_getchar
-     /tmp/ccD3UQLA.s:70     .text:0000000000000020 pPutChar
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccNaLI19.s:2      *ABS*:000000000000003e __SP_H__
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccNaLI19.s:3      *ABS*:000000000000003d __SP_L__
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccNaLI19.s:4      *ABS*:000000000000003f __SREG__
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccNaLI19.s:5      *ABS*:000000000000003b __RAMPZ__
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccNaLI19.s:6      *ABS*:0000000000000034 __CCP__
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccNaLI19.s:7      *ABS*:0000000000000000 __tmp_reg__
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccNaLI19.s:8      *ABS*:0000000000000001 __zero_reg__
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccNaLI19.s:14     .text:0000000000000000 u_putchar
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccNaLI19.s:38     .text:000000000000000c u_getchar
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccNaLI19.s:73     .text:0000000000000024 pPutChar
                             *COM*:0000000000000012 hwPort
-     /tmp/ccD3UQLA.s:118    .text:000000000000004a pGetChar
-     /tmp/ccD3UQLA.s:178    .text:000000000000007c initializeHWPort
-     /tmp/ccD3UQLA.s:227    .text:00000000000000a2 initHWPorts
-     /tmp/ccD3UQLA.s:444    .text:0000000000000176 initHWUart
-     /tmp/ccD3UQLA.s:475    .text:000000000000018c __vector_91
-     /tmp/ccD3UQLA.s:578    .text:00000000000001e4 __vector_93
-     /tmp/ccD3UQLA.s:687    .text:0000000000000244 __vector_28
-     /tmp/ccD3UQLA.s:790    .text:000000000000029c __vector_30
-     /tmp/ccD3UQLA.s:899    .text:00000000000002fc __vector_119
-     /tmp/ccD3UQLA.s:1002   .text:0000000000000354 __vector_121
-     /tmp/ccD3UQLA.s:1111   .text:00000000000003b4 __vector_58
-     /tmp/ccD3UQLA.s:1214   .text:000000000000040c __vector_60
-     /tmp/ccD3UQLA.s:1323   .text:000000000000046c __vector_25
-     /tmp/ccD3UQLA.s:1426   .text:00000000000004c4 __vector_27
-     /tmp/ccD3UQLA.s:1535   .text:0000000000000524 __vector_88
-     /tmp/ccD3UQLA.s:1638   .text:000000000000057c __vector_90
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccNaLI19.s:121    .text:000000000000004e pGetChar
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccNaLI19.s:184    .text:0000000000000084 initializeHWPort
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccNaLI19.s:233    .text:00000000000000aa initHWPorts
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccNaLI19.s:450    .text:000000000000017e initHWUart
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccNaLI19.s:481    .text:0000000000000194 __vector_91
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccNaLI19.s:584    .text:00000000000001ec __vector_93
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccNaLI19.s:693    .text:000000000000024c __vector_28
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccNaLI19.s:796    .text:00000000000002a4 __vector_30
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccNaLI19.s:905    .text:0000000000000304 __vector_119
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccNaLI19.s:1008   .text:000000000000035c __vector_121
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccNaLI19.s:1117   .text:00000000000003bc __vector_58
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccNaLI19.s:1220   .text:0000000000000414 __vector_60
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccNaLI19.s:1329   .text:0000000000000474 __vector_25
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccNaLI19.s:1432   .text:00000000000004cc __vector_27
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccNaLI19.s:1541   .text:000000000000052c __vector_88
+/var/folders/15/4vptxgpd5dld1xryx388y8700000gn/T//ccNaLI19.s:1644   .text:0000000000000584 __vector_90
 
 UNDEFINED SYMBOLS
 port
