@@ -1,0 +1,57 @@
+   1               		.file	"hwBoot.c"
+   2               	__SP_H__ = 0x3e
+   3               	__SP_L__ = 0x3d
+   4               	__SREG__ = 0x3f
+   5               	__RAMPZ__ = 0x3b
+   6               	__CCP__ = 0x34
+   7               	__tmp_reg__ = 0
+   8               	__zero_reg__ = 1
+   9               		.text
+  10               	.Ltext0:
+  11               		.cfi_sections	.debug_frame
+  12               	.global	jumpToHWBootSection
+  14               	jumpToHWBootSection:
+  15               	.LFB0:
+  16               		.file 1 "/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBoot.c"
+   1:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBoot.c **** #include <avr/io.h>
+   2:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBoot.c **** #include "../hw-api/hwBoot.h"
+   3:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBoot.c **** 
+   4:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBoot.c **** void jumpToHWBootSection(){
+  17               		.loc 1 4 0
+  18               		.cfi_startproc
+  19               	/* prologue: function */
+  20               	/* frame size = 0 */
+  21               	/* stack size = 0 */
+  22               	.L__stack_usage = 0
+   5:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBoot.c **** 	uint8_t temp = RST.CTRL | RST_SWRST_bm;
+  23               		.loc 1 5 0
+  24 0000 E8E7      		ldi r30,lo8(120)
+  25 0002 F0E0      		ldi r31,0
+  26 0004 8181      		ldd r24,Z+1
+  27 0006 8160      		ori r24,lo8(1)
+  28               	.LVL0:
+   6:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBoot.c **** 	CCP = CCP_IOREG_gc; // grab permission to modify the reset reg
+  29               		.loc 1 6 0
+  30 0008 98ED      		ldi r25,lo8(-40)
+  31 000a 94BF      		out __CCP__,r25
+   7:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBoot.c **** 	RST.CTRL = temp; // set the reset reg to trigger a SW reset
+  32               		.loc 1 7 0
+  33 000c 8183      		std Z+1,r24
+  34 000e 0895      		ret
+  35               		.cfi_endproc
+  36               	.LFE0:
+  38               	.Letext0:
+  39               		.file 2 "/usr/lib/avr/include/stdint.h"
+  40               		.file 3 "/usr/lib/avr/include/avr/iox256a3.h"
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 hwBoot.c
+     /tmp/ccV2DFJo.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccV2DFJo.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccV2DFJo.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccV2DFJo.s:5      *ABS*:000000000000003b __RAMPZ__
+     /tmp/ccV2DFJo.s:6      *ABS*:0000000000000034 __CCP__
+     /tmp/ccV2DFJo.s:7      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccV2DFJo.s:8      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccV2DFJo.s:14     .text:0000000000000000 jumpToHWBootSection
+
+NO UNDEFINED SYMBOLS

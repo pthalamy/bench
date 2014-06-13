@@ -1,0 +1,1605 @@
+   1               		.file	"twi_master_driver.c"
+   2               	__SP_H__ = 0x3e
+   3               	__SP_L__ = 0x3d
+   4               	__SREG__ = 0x3f
+   5               	__RAMPZ__ = 0x3b
+   6               	__CCP__ = 0x34
+   7               	__tmp_reg__ = 0
+   8               	__zero_reg__ = 1
+   9               		.text
+  10               	.Ltext0:
+  11               		.cfi_sections	.debug_frame
+  12               	.global	TWI_MasterInit
+  14               	TWI_MasterInit:
+  15               	.LFB7:
+  16               		.file 1 "/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c"
+   1:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** /* This file has been prepared for Doxygen automatic documentation generation.*/
+   2:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** /*! \file *********************************************************************
+   3:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *
+   4:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  * \brief
+   5:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *      XMEGA TWI master driver source file.
+   6:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *
+   7:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *      This file contains the function implementations the XMEGA master TWI
+   8:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *      driver.
+   9:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *
+  10:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *      The driver is not intended for size and/or speed critical code, since
+  11:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *      most functions are just a few lines of code, and the function call
+  12:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *      overhead would decrease code performance. The driver is intended for
+  13:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *      rapid prototyping and documentation purposes for getting started with
+  14:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *      the XMEGA TWI master module.
+  15:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *
+  16:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *      For size and/or speed critical code, it is recommended to copy the
+  17:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *      function contents directly into your application instead of making
+  18:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *      a function call.
+  19:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *
+  20:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *      Several functions use the following construct:
+  21:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *          "some_register = ... | (some_parameter ? SOME_BIT_bm : 0) | ..."
+  22:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *      Although the use of the ternary operator ( if ? then : else ) is
+  23:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *      discouraged, in some occasions the operator makes it possible to write
+  24:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *      pretty clean and neat code. In this driver, the construct is used to
+  25:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *      set or not set a configuration bit based on a boolean input parameter,
+  26:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *      such as the "some_parameter" in the example above.
+  27:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *
+  28:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  * \par Application note:
+  29:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *      AVR1308: Using the XMEGA TWI
+  30:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *
+  31:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  * \par Documentation
+  32:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *      For comprehensive code documentation, supported compilers, compiler
+  33:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *      settings and supported devices see readme.html
+  34:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *
+  35:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  * \author
+  36:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *      Atmel Corporation: http://www.atmel.com \n
+  37:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *      Support email: avr@atmel.com
+  38:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *
+  39:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  * $Revision: 1569 $
+  40:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  * $Date: 2008-04-22 13:03:43 +0200 (ti, 22 apr 2008) $  \n
+  41:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *
+  42:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  * Copyright (c) 2008, Atmel Corporation All rights reserved.
+  43:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *
+  44:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  * Redistribution and use in source and binary forms, with or without
+  45:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  * modification, are permitted provided that the following conditions are met:
+  46:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *
+  47:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  * 1. Redistributions of source code must retain the above copyright notice,
+  48:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  * this list of conditions and the following disclaimer.
+  49:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *
+  50:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice,
+  51:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  * this list of conditions and the following disclaimer in the documentation
+  52:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  * and/or other materials provided with the distribution.
+  53:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *
+  54:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  * 3. The name of ATMEL may not be used to endorse or promote products derived
+  55:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  * from this software without specific prior written permission.
+  56:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *
+  57:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  * THIS SOFTWARE IS PROVIDED BY ATMEL "AS IS" AND ANY EXPRESS OR IMPLIED
+  58:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+  59:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE EXPRESSLY AND
+  60:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  * SPECIFICALLY DISCLAIMED. IN NO EVENT SHALL ATMEL BE LIABLE FOR ANY DIRECT,
+  61:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+  62:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+  63:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+  64:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  65:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+  66:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  67:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *****************************************************************************/
+  68:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 
+  69:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** #include "twi_master_driver.h"
+  70:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 
+  71:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 
+  72:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** /*! \brief Initialize the TWI module.
+  73:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *
+  74:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  TWI module initialization function.
+  75:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  Enables master read and write interrupts.
+  76:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  Remember to enable interrupts globally from the main application.
+  77:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *
+  78:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  \param twi                      The TWI_Master_t struct instance.
+  79:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  \param module                   The TWI module to use.
+  80:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  \param intLevel                 Master interrupt level.
+  81:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  \param baudRateRegisterSetting  The baud rate register value.
+  82:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  */
+  83:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** void TWI_MasterInit(TWI_Master_t *twi,
+  84:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****                     TWI_t *module,
+  85:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****                     TWI_MASTER_INTLVL_t intLevel,
+  86:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****                     uint8_t baudRateRegisterSetting)
+  87:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** {
+  17               		.loc 1 87 0
+  18               		.cfi_startproc
+  19               	.LVL0:
+  20               	/* prologue: function */
+  21               	/* frame size = 0 */
+  22               	/* stack size = 0 */
+  23               	.L__stack_usage = 0
+  24 0000 FC01      		movw r30,r24
+  88:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	twi->interface = module;
+  25               		.loc 1 88 0
+  26 0002 6083      		st Z,r22
+  27 0004 7183      		std Z+1,r23
+  89:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	twi->interface->MASTER.CTRLA = intLevel |
+  28               		.loc 1 89 0
+  29 0006 4863      		ori r20,lo8(56)
+  30               	.LVL1:
+  31 0008 DB01      		movw r26,r22
+  32 000a 1196      		adiw r26,1
+  33 000c 4C93      		st X,r20
+  90:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	                               TWI_MASTER_RIEN_bm |
+  91:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	                               TWI_MASTER_WIEN_bm |
+  92:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	                               TWI_MASTER_ENABLE_bm;
+  93:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	twi->interface->MASTER.BAUD = baudRateRegisterSetting;
+  34               		.loc 1 93 0
+  35 000e A081      		ld r26,Z
+  36 0010 B181      		ldd r27,Z+1
+  37 0012 1596      		adiw r26,5
+  38 0014 2C93      		st X,r18
+  94:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	twi->interface->MASTER.STATUS = TWI_MASTER_BUSSTATE_IDLE_gc;
+  39               		.loc 1 94 0
+  40 0016 0190      		ld __tmp_reg__,Z+
+  41 0018 F081      		ld r31,Z
+  42 001a E02D      		mov r30,__tmp_reg__
+  43 001c 81E0      		ldi r24,lo8(1)
+  44               	.LVL2:
+  45 001e 8483      		std Z+4,r24
+  46 0020 0895      		ret
+  47               		.cfi_endproc
+  48               	.LFE7:
+  50               	.global	TWI_MasterState
+  52               	TWI_MasterState:
+  53               	.LFB8:
+  95:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** }
+  96:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 
+  97:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 
+  98:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** /*! \brief Returns the TWI bus state.
+  99:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *
+ 100:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  Returns the TWI bus state (type defined in device headerfile),
+ 101:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  unknown, idle, owner or busy.
+ 102:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *
+ 103:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  \param twi The TWI_Master_t struct instance.
+ 104:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *
+ 105:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  \retval TWI_MASTER_BUSSTATE_UNKNOWN_gc Bus state is unknown.
+ 106:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  \retval TWI_MASTER_BUSSTATE_IDLE_gc    Bus state is idle.
+ 107:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  \retval TWI_MASTER_BUSSTATE_OWNER_gc   Bus state is owned by the master.
+ 108:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  \retval TWI_MASTER_BUSSTATE_BUSY_gc    Bus state is busy.
+ 109:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  */
+ 110:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** TWI_MASTER_BUSSTATE_t TWI_MasterState(TWI_Master_t *twi)
+ 111:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** {
+  54               		.loc 1 111 0
+  55               		.cfi_startproc
+  56               	.LVL3:
+  57               	/* prologue: function */
+  58               	/* frame size = 0 */
+  59               	/* stack size = 0 */
+  60               	.L__stack_usage = 0
+ 112:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	TWI_MASTER_BUSSTATE_t twi_status;
+ 113:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	twi_status = (TWI_MASTER_BUSSTATE_t) (twi->interface->MASTER.STATUS &
+  61               		.loc 1 113 0
+  62 0022 DC01      		movw r26,r24
+  63 0024 ED91      		ld r30,X+
+  64 0026 FC91      		ld r31,X
+  65 0028 8481      		ldd r24,Z+4
+  66               	.LVL4:
+ 114:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	                                      TWI_MASTER_BUSSTATE_gm);
+ 115:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	return twi_status;
+ 116:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** }
+  67               		.loc 1 116 0
+  68 002a 8370      		andi r24,lo8(3)
+  69               	.LVL5:
+  70 002c 0895      		ret
+  71               		.cfi_endproc
+  72               	.LFE8:
+  74               	.global	TWI_MasterReady
+  76               	TWI_MasterReady:
+  77               	.LFB9:
+ 117:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 
+ 118:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 
+ 119:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** /*! \brief Returns true if transaction is ready.
+ 120:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *
+ 121:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  This function returns a boolean whether the TWI Master is ready
+ 122:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  for a new transaction.
+ 123:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *
+ 124:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  \param twi The TWI_Master_t struct instance.
+ 125:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *
+ 126:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  \retval true  If transaction could be started.
+ 127:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  \retval false If transaction could not be started.
+ 128:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  */
+ 129:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** bool TWI_MasterReady(TWI_Master_t *twi)
+ 130:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** {
+  78               		.loc 1 130 0
+  79               		.cfi_startproc
+  80               	.LVL6:
+  81               	/* prologue: function */
+  82               	/* frame size = 0 */
+  83               	/* stack size = 0 */
+  84               	.L__stack_usage = 0
+ 131:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	bool twi_status = (twi->status & TWIM_STATUS_READY);
+  85               		.loc 1 131 0
+  86 002e FC01      		movw r30,r24
+  87 0030 8785      		ldd r24,Z+15
+  88               	.LVL7:
+ 132:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	return twi_status;
+ 133:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** }
+  89               		.loc 1 133 0
+  90 0032 8170      		andi r24,lo8(1)
+  91               	.LVL8:
+  92 0034 0895      		ret
+  93               		.cfi_endproc
+  94               	.LFE9:
+  96               	.global	TWI_MasterWrite
+  98               	TWI_MasterWrite:
+  99               	.LFB10:
+ 134:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 
+ 135:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 
+ 136:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** /*! \brief TWI write transaction.
+ 137:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *
+ 138:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  This function is TWI Master wrapper for a write-only transaction.
+ 139:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *
+ 140:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  \param twi          The TWI_Master_t struct instance.
+ 141:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  \param address      Slave address.
+ 142:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  \param writeData    Pointer to data to write.
+ 143:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  \param bytesToWrite Number of data bytes to write.
+ 144:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *
+ 145:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  \retval true  If transaction could be started.
+ 146:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  \retval false If transaction could not be started.
+ 147:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  */
+ 148:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** bool TWI_MasterWrite(TWI_Master_t *twi,
+ 149:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****                      uint8_t address,
+ 150:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****                      uint8_t *writeData,
+ 151:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****                      uint8_t bytesToWrite)
+ 152:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** {
+ 100               		.loc 1 152 0
+ 101               		.cfi_startproc
+ 102               	.LVL9:
+ 103               	/* prologue: function */
+ 104               	/* frame size = 0 */
+ 105               	/* stack size = 0 */
+ 106               	.L__stack_usage = 0
+ 107 0036 FC01      		movw r30,r24
+ 108               	.LVL10:
+ 109               	.LBB29:
+ 110               	.LBB30:
+ 153:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	bool twi_status = TWI_MasterWriteRead(twi, address, writeData, bytesToWrite, 0);
+ 154:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	return twi_status;
+ 155:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** }
+ 156:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 
+ 157:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 
+ 158:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** /*! \brief TWI read transaction.
+ 159:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *
+ 160:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  This function is a TWI Maste wrapper for read-only transaction.
+ 161:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *
+ 162:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  \param twi            The TWI_Master_t struct instance.
+ 163:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  \param address        The slave address.
+ 164:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  \param bytesToRead    The number of bytes to read.
+ 165:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *
+ 166:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  \retval true  If transaction could be started.
+ 167:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  \retval false If transaction could not be started.
+ 168:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  */
+ 169:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** bool TWI_MasterRead(TWI_Master_t *twi,
+ 170:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****                     uint8_t address,
+ 171:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****                     uint8_t bytesToRead)
+ 172:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** {
+ 173:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	bool twi_status = TWI_MasterWriteRead(twi, address, 0, 0, bytesToRead);
+ 174:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	return twi_status;
+ 175:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** }
+ 176:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 
+ 177:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 
+ 178:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** /*! \brief TWI write and/or read transaction.
+ 179:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *
+ 180:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  This function is a TWI Master write and/or read transaction. The function
+ 181:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  can be used to both write and/or read bytes to/from the TWI Slave in one
+ 182:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  transaction.
+ 183:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *
+ 184:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  \param twi            The TWI_Master_t struct instance.
+ 185:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  \param address        The slave address.
+ 186:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  \param writeData      Pointer to data to write.
+ 187:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  \param bytesToWrite   Number of bytes to write.
+ 188:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  \param bytesToRead    Number of bytes to read.
+ 189:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *
+ 190:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  \retval true  If transaction could be started.
+ 191:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  \retval false If transaction could not be started.
+ 192:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  */
+ 193:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** bool TWI_MasterWriteRead(TWI_Master_t *twi,
+ 194:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****                          uint8_t address,
+ 195:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****                          uint8_t *writeData,
+ 196:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****                          uint8_t bytesToWrite,
+ 197:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****                          uint8_t bytesToRead)
+ 198:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** {
+ 199:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	/*Parameter sanity check. */
+ 200:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	if (bytesToWrite > TWIM_WRITE_BUFFER_SIZE) {
+ 111               		.loc 1 200 0
+ 112 0038 2530      		cpi r18,lo8(5)
+ 113 003a 00F4      		brsh .L11
+ 201:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		return false;
+ 202:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	}
+ 203:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	if (bytesToRead > TWIM_READ_BUFFER_SIZE) {
+ 204:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		return false;
+ 205:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	}
+ 206:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 
+ 207:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	/*Initiate transaction if bus is ready. */
+ 208:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	if (twi->status == TWIM_STATUS_READY) {
+ 114               		.loc 1 208 0
+ 115 003c 8785      		ldd r24,Z+15
+ 116               	.LVL11:
+ 117 003e 8130      		cpi r24,lo8(1)
+ 118 0040 01F0      		breq .L15
+ 119               	.L11:
+ 201:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		return false;
+ 120               		.loc 1 201 0
+ 121 0042 80E0      		ldi r24,0
+ 122 0044 0895      		ret
+ 123               	.L15:
+ 209:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 
+ 210:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->status = TWIM_STATUS_BUSY;
+ 124               		.loc 1 210 0
+ 125 0046 8787      		std Z+15,r24
+ 211:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->result = TWIM_RESULT_UNKNOWN;
+ 126               		.loc 1 211 0
+ 127 0048 108A      		std Z+16,__zero_reg__
+ 212:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 
+ 213:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->address = address<<1;
+ 128               		.loc 1 213 0
+ 129 004a 660F      		lsl r22
+ 130               	.LVL12:
+ 131 004c 6283      		std Z+2,r22
+ 132               	.LVL13:
+ 133               	.LBB31:
+ 214:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 
+ 215:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		/* Fill write data buffer. */
+ 216:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		for (uint8_t bufferIndex=0; bufferIndex < bytesToWrite; bufferIndex++) {
+ 134               		.loc 1 216 0
+ 135 004e 2223      		tst r18
+ 136 0050 01F0      		breq .L9
+ 217:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 			twi->writeData[bufferIndex] = writeData[bufferIndex];
+ 137               		.loc 1 217 0
+ 138 0052 DA01      		movw r26,r20
+ 139 0054 8C91      		ld r24,X
+ 140 0056 8383      		std Z+3,r24
+ 141               	.LVL14:
+ 216:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		for (uint8_t bufferIndex=0; bufferIndex < bytesToWrite; bufferIndex++) {
+ 142               		.loc 1 216 0
+ 143 0058 2230      		cpi r18,lo8(2)
+ 144 005a 00F0      		brlo .L9
+ 145               		.loc 1 217 0
+ 146 005c 1196      		adiw r26,1
+ 147 005e 8C91      		ld r24,X
+ 148 0060 1197      		sbiw r26,1
+ 149 0062 8483      		std Z+4,r24
+ 150               	.LVL15:
+ 216:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		for (uint8_t bufferIndex=0; bufferIndex < bytesToWrite; bufferIndex++) {
+ 151               		.loc 1 216 0
+ 152 0064 2330      		cpi r18,lo8(3)
+ 153 0066 00F0      		brlo .L9
+ 154               		.loc 1 217 0
+ 155 0068 1296      		adiw r26,2
+ 156 006a 8C91      		ld r24,X
+ 157 006c 1297      		sbiw r26,2
+ 158 006e 8583      		std Z+5,r24
+ 159               	.LVL16:
+ 216:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		for (uint8_t bufferIndex=0; bufferIndex < bytesToWrite; bufferIndex++) {
+ 160               		.loc 1 216 0
+ 161 0070 2430      		cpi r18,lo8(4)
+ 162 0072 00F0      		brlo .L9
+ 163               		.loc 1 217 0
+ 164 0074 1396      		adiw r26,3
+ 165 0076 8C91      		ld r24,X
+ 166 0078 8683      		std Z+6,r24
+ 167               	.LVL17:
+ 168               	.L9:
+ 169               	.LBE31:
+ 218:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		}
+ 219:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 
+ 220:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->bytesToWrite = bytesToWrite;
+ 170               		.loc 1 220 0
+ 171 007a 2387      		std Z+11,r18
+ 221:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->bytesToRead = bytesToRead;
+ 172               		.loc 1 221 0
+ 173 007c 1486      		std Z+12,__zero_reg__
+ 222:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->bytesWritten = 0;
+ 174               		.loc 1 222 0
+ 175 007e 1586      		std Z+13,__zero_reg__
+ 223:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->bytesRead = 0;
+ 176               		.loc 1 223 0
+ 177 0080 1686      		std Z+14,__zero_reg__
+ 224:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 
+ 225:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		/* If write command, send the START condition + Address +
+ 226:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		 * 'R/_W = 0'
+ 227:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		 */
+ 228:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		if (twi->bytesToWrite > 0) {
+ 178               		.loc 1 228 0
+ 179 0082 8385      		ldd r24,Z+11
+ 180 0084 8111      		cpse r24,__zero_reg__
+ 181 0086 00C0      		rjmp .L16
+ 229:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 			uint8_t writeAddress = twi->address & ~0x01;
+ 230:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 			twi->interface->MASTER.ADDR = writeAddress;
+ 231:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		}
+ 232:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 
+ 233:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		/* If read command, send the START condition + Address +
+ 234:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		 * 'R/_W = 1'
+ 235:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		 */
+ 236:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		else if (twi->bytesToRead > 0) {
+ 182               		.loc 1 236 0
+ 183 0088 8485      		ldd r24,Z+12
+ 184 008a 8823      		tst r24
+ 185 008c 01F0      		breq .L12
+ 186               	.LVL18:
+ 187               	.LBB32:
+ 188               	.LBB33:
+ 237:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 			uint8_t readAddress = twi->address | 0x01;
+ 189               		.loc 1 237 0
+ 190 008e 8281      		ldd r24,Z+2
+ 191 0090 8160      		ori r24,lo8(1)
+ 192               	.LVL19:
+ 238:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 			twi->interface->MASTER.ADDR = readAddress;
+ 193               		.loc 1 238 0
+ 194 0092 0190      		ld __tmp_reg__,Z+
+ 195 0094 F081      		ld r31,Z
+ 196 0096 E02D      		mov r30,__tmp_reg__
+ 197               	.LVL20:
+ 198 0098 8683      		std Z+6,r24
+ 199 009a 81E0      		ldi r24,lo8(1)
+ 200               	.LVL21:
+ 201 009c 0895      		ret
+ 202               	.LVL22:
+ 203               	.L16:
+ 204               	.LBE33:
+ 205               	.LBE32:
+ 206               	.LBB34:
+ 229:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 			uint8_t writeAddress = twi->address & ~0x01;
+ 207               		.loc 1 229 0
+ 208 009e 8281      		ldd r24,Z+2
+ 209 00a0 8E7F      		andi r24,lo8(-2)
+ 210               	.LVL23:
+ 230:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 			twi->interface->MASTER.ADDR = writeAddress;
+ 211               		.loc 1 230 0
+ 212 00a2 0190      		ld __tmp_reg__,Z+
+ 213 00a4 F081      		ld r31,Z
+ 214 00a6 E02D      		mov r30,__tmp_reg__
+ 215               	.LVL24:
+ 216 00a8 8683      		std Z+6,r24
+ 217               	.LBE34:
+ 239:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		}
+ 240:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		return true;
+ 218               		.loc 1 240 0
+ 219 00aa 81E0      		ldi r24,lo8(1)
+ 220               	.LVL25:
+ 221 00ac 0895      		ret
+ 222               	.LVL26:
+ 223               	.L12:
+ 224 00ae 81E0      		ldi r24,lo8(1)
+ 225               	.LBE30:
+ 226               	.LBE29:
+ 155:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** }
+ 227               		.loc 1 155 0
+ 228 00b0 0895      		ret
+ 229               		.cfi_endproc
+ 230               	.LFE10:
+ 232               	.global	TWI_MasterRead
+ 234               	TWI_MasterRead:
+ 235               	.LFB11:
+ 172:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** {
+ 236               		.loc 1 172 0
+ 237               		.cfi_startproc
+ 238               	.LVL27:
+ 239               	/* prologue: function */
+ 240               	/* frame size = 0 */
+ 241               	/* stack size = 0 */
+ 242               	.L__stack_usage = 0
+ 243 00b2 FC01      		movw r30,r24
+ 244               	.LVL28:
+ 245               	.LBB44:
+ 246               	.LBB45:
+ 203:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	if (bytesToRead > TWIM_READ_BUFFER_SIZE) {
+ 247               		.loc 1 203 0
+ 248 00b4 4530      		cpi r20,lo8(5)
+ 249 00b6 00F4      		brsh .L21
+ 208:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	if (twi->status == TWIM_STATUS_READY) {
+ 250               		.loc 1 208 0
+ 251 00b8 8785      		ldd r24,Z+15
+ 252               	.LVL29:
+ 253 00ba 8130      		cpi r24,lo8(1)
+ 254 00bc 01F0      		breq .L23
+ 255               	.L21:
+ 204:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		return false;
+ 256               		.loc 1 204 0
+ 257 00be 80E0      		ldi r24,0
+ 258 00c0 0895      		ret
+ 259               	.L23:
+ 210:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->status = TWIM_STATUS_BUSY;
+ 260               		.loc 1 210 0
+ 261 00c2 8787      		std Z+15,r24
+ 211:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->result = TWIM_RESULT_UNKNOWN;
+ 262               		.loc 1 211 0
+ 263 00c4 108A      		std Z+16,__zero_reg__
+ 213:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->address = address<<1;
+ 264               		.loc 1 213 0
+ 265 00c6 660F      		lsl r22
+ 266               	.LVL30:
+ 267 00c8 6283      		std Z+2,r22
+ 268               	.LVL31:
+ 220:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->bytesToWrite = bytesToWrite;
+ 269               		.loc 1 220 0
+ 270 00ca 1386      		std Z+11,__zero_reg__
+ 221:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->bytesToRead = bytesToRead;
+ 271               		.loc 1 221 0
+ 272 00cc 4487      		std Z+12,r20
+ 222:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->bytesWritten = 0;
+ 273               		.loc 1 222 0
+ 274 00ce 1586      		std Z+13,__zero_reg__
+ 223:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->bytesRead = 0;
+ 275               		.loc 1 223 0
+ 276 00d0 1686      		std Z+14,__zero_reg__
+ 228:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		if (twi->bytesToWrite > 0) {
+ 277               		.loc 1 228 0
+ 278 00d2 8385      		ldd r24,Z+11
+ 279 00d4 8111      		cpse r24,__zero_reg__
+ 280 00d6 00C0      		rjmp .L24
+ 236:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		else if (twi->bytesToRead > 0) {
+ 281               		.loc 1 236 0
+ 282 00d8 8485      		ldd r24,Z+12
+ 283 00da 8823      		tst r24
+ 284 00dc 01F0      		breq .L22
+ 285               	.LVL32:
+ 286               	.LBB46:
+ 287               	.LBB47:
+ 237:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 			uint8_t readAddress = twi->address | 0x01;
+ 288               		.loc 1 237 0
+ 289 00de 8281      		ldd r24,Z+2
+ 290 00e0 8160      		ori r24,lo8(1)
+ 291               	.LVL33:
+ 238:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 			twi->interface->MASTER.ADDR = readAddress;
+ 292               		.loc 1 238 0
+ 293 00e2 0190      		ld __tmp_reg__,Z+
+ 294 00e4 F081      		ld r31,Z
+ 295 00e6 E02D      		mov r30,__tmp_reg__
+ 296               	.LVL34:
+ 297 00e8 8683      		std Z+6,r24
+ 298 00ea 81E0      		ldi r24,lo8(1)
+ 299               	.LVL35:
+ 300 00ec 0895      		ret
+ 301               	.LVL36:
+ 302               	.L24:
+ 303               	.LBE47:
+ 304               	.LBE46:
+ 305               	.LBB48:
+ 229:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 			uint8_t writeAddress = twi->address & ~0x01;
+ 306               		.loc 1 229 0
+ 307 00ee 8281      		ldd r24,Z+2
+ 308 00f0 8E7F      		andi r24,lo8(-2)
+ 309               	.LVL37:
+ 230:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 			twi->interface->MASTER.ADDR = writeAddress;
+ 310               		.loc 1 230 0
+ 311 00f2 0190      		ld __tmp_reg__,Z+
+ 312 00f4 F081      		ld r31,Z
+ 313 00f6 E02D      		mov r30,__tmp_reg__
+ 314               	.LVL38:
+ 315 00f8 8683      		std Z+6,r24
+ 316               	.LBE48:
+ 317               		.loc 1 240 0
+ 318 00fa 81E0      		ldi r24,lo8(1)
+ 319               	.LVL39:
+ 320 00fc 0895      		ret
+ 321               	.LVL40:
+ 322               	.L22:
+ 323 00fe 81E0      		ldi r24,lo8(1)
+ 324               	.LBE45:
+ 325               	.LBE44:
+ 175:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** }
+ 326               		.loc 1 175 0
+ 327 0100 0895      		ret
+ 328               		.cfi_endproc
+ 329               	.LFE11:
+ 331               	.global	TWI_MasterWriteRead
+ 333               	TWI_MasterWriteRead:
+ 334               	.LFB12:
+ 198:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** {
+ 335               		.loc 1 198 0
+ 336               		.cfi_startproc
+ 337               	.LVL41:
+ 338 0102 0F93      		push r16
+ 339               	.LCFI0:
+ 340               		.cfi_def_cfa_offset 4
+ 341               		.cfi_offset 16, -3
+ 342               	/* prologue: function */
+ 343               	/* frame size = 0 */
+ 344               	/* stack size = 1 */
+ 345               	.L__stack_usage = 1
+ 346 0104 FC01      		movw r30,r24
+ 200:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	if (bytesToWrite > TWIM_WRITE_BUFFER_SIZE) {
+ 347               		.loc 1 200 0
+ 348 0106 2530      		cpi r18,lo8(5)
+ 349 0108 00F4      		brsh .L33
+ 203:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	if (bytesToRead > TWIM_READ_BUFFER_SIZE) {
+ 350               		.loc 1 203 0
+ 351 010a 0530      		cpi r16,lo8(5)
+ 352 010c 00F4      		brsh .L33
+ 208:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	if (twi->status == TWIM_STATUS_READY) {
+ 353               		.loc 1 208 0
+ 354 010e 8785      		ldd r24,Z+15
+ 355               	.LVL42:
+ 356 0110 8130      		cpi r24,lo8(1)
+ 357 0112 01F0      		breq .L36
+ 358               	.L33:
+ 201:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		return false;
+ 359               		.loc 1 201 0
+ 360 0114 80E0      		ldi r24,0
+ 361               	.LVL43:
+ 362               	.L26:
+ 363               	/* epilogue start */
+ 241:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	} else {
+ 242:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		return false;
+ 243:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	}
+ 244:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** }
+ 364               		.loc 1 244 0
+ 365 0116 0F91      		pop r16
+ 366               	.LVL44:
+ 367 0118 0895      		ret
+ 368               	.LVL45:
+ 369               	.L36:
+ 210:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->status = TWIM_STATUS_BUSY;
+ 370               		.loc 1 210 0
+ 371 011a 8787      		std Z+15,r24
+ 211:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->result = TWIM_RESULT_UNKNOWN;
+ 372               		.loc 1 211 0
+ 373 011c 108A      		std Z+16,__zero_reg__
+ 213:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->address = address<<1;
+ 374               		.loc 1 213 0
+ 375 011e 660F      		lsl r22
+ 376               	.LVL46:
+ 377 0120 6283      		std Z+2,r22
+ 378               	.LVL47:
+ 379               	.LBB56:
+ 216:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		for (uint8_t bufferIndex=0; bufferIndex < bytesToWrite; bufferIndex++) {
+ 380               		.loc 1 216 0
+ 381 0122 2223      		tst r18
+ 382 0124 01F0      		breq .L30
+ 217:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 			twi->writeData[bufferIndex] = writeData[bufferIndex];
+ 383               		.loc 1 217 0
+ 384 0126 DA01      		movw r26,r20
+ 385 0128 8C91      		ld r24,X
+ 386 012a 8383      		std Z+3,r24
+ 387               	.LVL48:
+ 216:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		for (uint8_t bufferIndex=0; bufferIndex < bytesToWrite; bufferIndex++) {
+ 388               		.loc 1 216 0
+ 389 012c 2230      		cpi r18,lo8(2)
+ 390 012e 00F0      		brlo .L30
+ 217:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 			twi->writeData[bufferIndex] = writeData[bufferIndex];
+ 391               		.loc 1 217 0
+ 392 0130 1196      		adiw r26,1
+ 393 0132 8C91      		ld r24,X
+ 394 0134 1197      		sbiw r26,1
+ 395 0136 8483      		std Z+4,r24
+ 396               	.LVL49:
+ 216:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		for (uint8_t bufferIndex=0; bufferIndex < bytesToWrite; bufferIndex++) {
+ 397               		.loc 1 216 0
+ 398 0138 2330      		cpi r18,lo8(3)
+ 399 013a 00F0      		brlo .L30
+ 217:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 			twi->writeData[bufferIndex] = writeData[bufferIndex];
+ 400               		.loc 1 217 0
+ 401 013c 1296      		adiw r26,2
+ 402 013e 8C91      		ld r24,X
+ 403 0140 1297      		sbiw r26,2
+ 404 0142 8583      		std Z+5,r24
+ 405               	.LVL50:
+ 216:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		for (uint8_t bufferIndex=0; bufferIndex < bytesToWrite; bufferIndex++) {
+ 406               		.loc 1 216 0
+ 407 0144 2430      		cpi r18,lo8(4)
+ 408 0146 00F0      		brlo .L30
+ 217:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 			twi->writeData[bufferIndex] = writeData[bufferIndex];
+ 409               		.loc 1 217 0 discriminator 2
+ 410 0148 1396      		adiw r26,3
+ 411 014a 8C91      		ld r24,X
+ 412 014c 8683      		std Z+6,r24
+ 413               	.LVL51:
+ 414               	.L30:
+ 415               	.LBE56:
+ 220:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->bytesToWrite = bytesToWrite;
+ 416               		.loc 1 220 0
+ 417 014e 2387      		std Z+11,r18
+ 221:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->bytesToRead = bytesToRead;
+ 418               		.loc 1 221 0
+ 419 0150 0487      		std Z+12,r16
+ 222:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->bytesWritten = 0;
+ 420               		.loc 1 222 0
+ 421 0152 1586      		std Z+13,__zero_reg__
+ 223:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->bytesRead = 0;
+ 422               		.loc 1 223 0
+ 423 0154 1686      		std Z+14,__zero_reg__
+ 228:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		if (twi->bytesToWrite > 0) {
+ 424               		.loc 1 228 0
+ 425 0156 8385      		ldd r24,Z+11
+ 426 0158 8111      		cpse r24,__zero_reg__
+ 427 015a 00C0      		rjmp .L37
+ 236:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		else if (twi->bytesToRead > 0) {
+ 428               		.loc 1 236 0
+ 429 015c 8485      		ldd r24,Z+12
+ 430 015e 8823      		tst r24
+ 431 0160 01F0      		breq .L34
+ 432               	.LVL52:
+ 433               	.LBB57:
+ 434               	.LBB58:
+ 237:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 			uint8_t readAddress = twi->address | 0x01;
+ 435               		.loc 1 237 0
+ 436 0162 8281      		ldd r24,Z+2
+ 437 0164 8160      		ori r24,lo8(1)
+ 438               	.LVL53:
+ 238:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 			twi->interface->MASTER.ADDR = readAddress;
+ 439               		.loc 1 238 0
+ 440 0166 0190      		ld __tmp_reg__,Z+
+ 441 0168 F081      		ld r31,Z
+ 442 016a E02D      		mov r30,__tmp_reg__
+ 443               	.LVL54:
+ 444 016c 8683      		std Z+6,r24
+ 445 016e 81E0      		ldi r24,lo8(1)
+ 446               	.LVL55:
+ 447 0170 00C0      		rjmp .L26
+ 448               	.LVL56:
+ 449               	.L37:
+ 450               	.LBE58:
+ 451               	.LBE57:
+ 452               	.LBB59:
+ 229:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 			uint8_t writeAddress = twi->address & ~0x01;
+ 453               		.loc 1 229 0
+ 454 0172 8281      		ldd r24,Z+2
+ 455 0174 8E7F      		andi r24,lo8(-2)
+ 456               	.LVL57:
+ 230:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 			twi->interface->MASTER.ADDR = writeAddress;
+ 457               		.loc 1 230 0
+ 458 0176 0190      		ld __tmp_reg__,Z+
+ 459 0178 F081      		ld r31,Z
+ 460 017a E02D      		mov r30,__tmp_reg__
+ 461               	.LVL58:
+ 462 017c 8683      		std Z+6,r24
+ 463               	.LBE59:
+ 240:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		return true;
+ 464               		.loc 1 240 0
+ 465 017e 81E0      		ldi r24,lo8(1)
+ 466               	.LVL59:
+ 467 0180 00C0      		rjmp .L26
+ 468               	.LVL60:
+ 469               	.L34:
+ 470 0182 81E0      		ldi r24,lo8(1)
+ 471 0184 00C0      		rjmp .L26
+ 472               		.cfi_endproc
+ 473               	.LFE12:
+ 475               	.global	TWI_MasterInterruptHandler
+ 477               	TWI_MasterInterruptHandler:
+ 478               	.LFB13:
+ 245:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 
+ 246:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 
+ 247:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** /*! \brief Common TWI master interrupt service routine.
+ 248:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *
+ 249:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  Check current status and calls the appropriate handler.
+ 250:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *
+ 251:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  \param twi  The TWI_Master_t struct instance.
+ 252:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  */
+ 253:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** void TWI_MasterInterruptHandler(TWI_Master_t *twi)
+ 254:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** {
+ 479               		.loc 1 254 0
+ 480               		.cfi_startproc
+ 481               	.LVL61:
+ 482 0186 CF93      		push r28
+ 483               	.LCFI1:
+ 484               		.cfi_def_cfa_offset 4
+ 485               		.cfi_offset 28, -3
+ 486 0188 DF93      		push r29
+ 487               	.LCFI2:
+ 488               		.cfi_def_cfa_offset 5
+ 489               		.cfi_offset 29, -4
+ 490               	/* prologue: function */
+ 491               	/* frame size = 0 */
+ 492               	/* stack size = 2 */
+ 493               	.L__stack_usage = 2
+ 494 018a FC01      		movw r30,r24
+ 255:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	uint8_t currentStatus = twi->interface->MASTER.STATUS;
+ 495               		.loc 1 255 0
+ 496 018c A081      		ld r26,Z
+ 497 018e B181      		ldd r27,Z+1
+ 498 0190 1496      		adiw r26,4
+ 499 0192 8C91      		ld r24,X
+ 500 0194 1497      		sbiw r26,4
+ 501               	.LVL62:
+ 502 0196 982F      		mov r25,r24
+ 503 0198 9C70      		andi r25,lo8(12)
+ 256:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 
+ 257:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	/* If arbitration lost or bus error. */
+ 258:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	if ((currentStatus & TWI_MASTER_ARBLOST_bm) ||
+ 504               		.loc 1 258 0
+ 505 019a 01F4      		brne .L51
+ 259:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	    (currentStatus & TWI_MASTER_BUSERR_bm)) {
+ 260:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 
+ 261:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		TWI_MasterArbitrationLostBusErrorHandler(twi);
+ 262:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	}
+ 263:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 
+ 264:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	/* If master write interrupt. */
+ 265:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	else if (currentStatus & TWI_MASTER_WIF_bm) {
+ 506               		.loc 1 265 0
+ 507 019c 86FD      		sbrc r24,6
+ 508 019e 00C0      		rjmp .L52
+ 266:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		TWI_MasterWriteHandler(twi);
+ 267:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	}
+ 268:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 
+ 269:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	/* If master read interrupt. */
+ 270:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	else if (currentStatus & TWI_MASTER_RIF_bm) {
+ 509               		.loc 1 270 0
+ 510 01a0 87FD      		sbrc r24,7
+ 511 01a2 00C0      		rjmp .L53
+ 512               	.LVL63:
+ 513               	.LBB77:
+ 514               	.LBB78:
+ 271:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		TWI_MasterReadHandler(twi);
+ 272:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	}
+ 273:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 
+ 274:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	/* If unexpected state. */
+ 275:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	else {
+ 276:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		TWI_MasterTransactionFinished(twi, TWIM_RESULT_FAIL);
+ 277:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	}
+ 278:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** }
+ 279:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 
+ 280:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 
+ 281:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** /*! \brief TWI master arbitration lost and bus error interrupt handler.
+ 282:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *
+ 283:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  Handles TWI responses to lost arbitration and bus error.
+ 284:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *
+ 285:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  \param twi  The TWI_Master_t struct instance.
+ 286:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  */
+ 287:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** void TWI_MasterArbitrationLostBusErrorHandler(TWI_Master_t *twi)
+ 288:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** {
+ 289:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	uint8_t currentStatus = twi->interface->MASTER.STATUS;
+ 290:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 
+ 291:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	/* If bus error. */
+ 292:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	if (currentStatus & TWI_MASTER_BUSERR_bm) {
+ 293:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->result = TWIM_RESULT_BUS_ERROR;
+ 294:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	}
+ 295:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	/* If arbitration lost. */
+ 296:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	else {
+ 297:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->result = TWIM_RESULT_ARBITRATION_LOST;
+ 298:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	}
+ 299:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 
+ 300:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	/* Clear interrupt flag. */
+ 301:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	twi->interface->MASTER.STATUS = currentStatus | TWI_MASTER_ARBLOST_bm;
+ 302:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 
+ 303:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	twi->status = TWIM_STATUS_READY;
+ 304:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** }
+ 305:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 
+ 306:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 
+ 307:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** /*! \brief TWI master write interrupt handler.
+ 308:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *
+ 309:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  Handles TWI transactions (master write) and responses to (N)ACK.
+ 310:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *
+ 311:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  \param twi The TWI_Master_t struct instance.
+ 312:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  */
+ 313:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** void TWI_MasterWriteHandler(TWI_Master_t *twi)
+ 314:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** {
+ 315:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	/* Local variables used in if tests to avoid compiler warning. */
+ 316:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	uint8_t bytesToWrite  = twi->bytesToWrite;
+ 317:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	uint8_t bytesToRead   = twi->bytesToRead;
+ 318:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 
+ 319:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	/* If NOT acknowledged (NACK) by slave cancel the transaction. */
+ 320:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	if (twi->interface->MASTER.STATUS & TWI_MASTER_RXACK_bm) {
+ 321:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->interface->MASTER.CTRLC = TWI_MASTER_CMD_STOP_gc;
+ 322:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->result = TWIM_RESULT_NACK_RECEIVED;
+ 323:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->status = TWIM_STATUS_READY;
+ 324:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	}
+ 325:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 
+ 326:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	/* If more bytes to write, send data. */
+ 327:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	else if (twi->bytesWritten < bytesToWrite) {
+ 328:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		uint8_t data = twi->writeData[twi->bytesWritten];
+ 329:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->interface->MASTER.DATA = data;
+ 330:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		++twi->bytesWritten;
+ 331:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	}
+ 332:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 
+ 333:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	/* If bytes to read, send repeated START condition + Address +
+ 334:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	 * 'R/_W = 1'
+ 335:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	 */
+ 336:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	else if (twi->bytesRead < bytesToRead) {
+ 337:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		uint8_t readAddress = twi->address | 0x01;
+ 338:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->interface->MASTER.ADDR = readAddress;
+ 339:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	}
+ 340:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 
+ 341:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	/* If transaction finished, send STOP condition and set RESULT OK. */
+ 342:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	else {
+ 343:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->interface->MASTER.CTRLC = TWI_MASTER_CMD_STOP_gc;
+ 344:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		TWI_MasterTransactionFinished(twi, TWIM_RESULT_OK);
+ 345:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	}
+ 346:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** }
+ 347:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 
+ 348:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 
+ 349:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** /*! \brief TWI master read interrupt handler.
+ 350:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *
+ 351:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  This is the master read interrupt handler that takes care of
+ 352:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  reading bytes from the TWI slave.
+ 353:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *
+ 354:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  \param twi The TWI_Master_t struct instance.
+ 355:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  */
+ 356:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** void TWI_MasterReadHandler(TWI_Master_t *twi)
+ 357:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** {
+ 358:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	/* Fetch data if bytes to be read. */
+ 359:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	if (twi->bytesRead < TWIM_READ_BUFFER_SIZE) {
+ 360:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		uint8_t data = twi->interface->MASTER.DATA;
+ 361:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->readData[twi->bytesRead] = data;
+ 362:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->bytesRead++;
+ 363:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	}
+ 364:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 
+ 365:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	/* If buffer overflow, issue STOP and BUFFER_OVERFLOW condition. */
+ 366:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	else {
+ 367:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->interface->MASTER.CTRLC = TWI_MASTER_CMD_STOP_gc;
+ 368:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		TWI_MasterTransactionFinished(twi, TWIM_RESULT_BUFFER_OVERFLOW);
+ 369:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	}
+ 370:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 
+ 371:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	/* Local variable used in if test to avoid compiler warning. */
+ 372:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	uint8_t bytesToRead = twi->bytesToRead;
+ 373:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 
+ 374:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	/* If more bytes to read, issue ACK and start a byte read. */
+ 375:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	if (twi->bytesRead < bytesToRead) {
+ 376:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->interface->MASTER.CTRLC = TWI_MASTER_CMD_RECVTRANS_gc;
+ 377:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	}
+ 378:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 
+ 379:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	/* If transaction finished, issue NACK and STOP condition. */
+ 380:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	else {
+ 381:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->interface->MASTER.CTRLC = TWI_MASTER_ACKACT_bm |
+ 382:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		                               TWI_MASTER_CMD_STOP_gc;
+ 383:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		TWI_MasterTransactionFinished(twi, TWIM_RESULT_OK);
+ 384:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	}
+ 385:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** }
+ 386:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 
+ 387:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 
+ 388:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** /*! \brief TWI transaction finished handler.
+ 389:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *
+ 390:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  Prepares module for new transaction.
+ 391:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *
+ 392:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  \param twi     The TWI_Master_t struct instance.
+ 393:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  *  \param result  The result of the operation.
+ 394:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c ****  */
+ 395:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** void TWI_MasterTransactionFinished(TWI_Master_t *twi, uint8_t result)
+ 396:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** {
+ 397:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	twi->result = result;
+ 515               		.loc 1 397 0
+ 516 01a4 86E0      		ldi r24,lo8(6)
+ 517               	.LVL64:
+ 518 01a6 808B      		std Z+16,r24
+ 398:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	twi->status = TWIM_STATUS_READY;
+ 519               		.loc 1 398 0
+ 520 01a8 81E0      		ldi r24,lo8(1)
+ 521 01aa 8787      		std Z+15,r24
+ 522               	/* epilogue start */
+ 523               	.LBE78:
+ 524               	.LBE77:
+ 278:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** }
+ 525               		.loc 1 278 0
+ 526 01ac DF91      		pop r29
+ 527 01ae CF91      		pop r28
+ 528 01b0 0895      		ret
+ 529               	.LVL65:
+ 530               	.L51:
+ 531               	.LBB79:
+ 532               	.LBB80:
+ 289:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	uint8_t currentStatus = twi->interface->MASTER.STATUS;
+ 533               		.loc 1 289 0
+ 534 01b2 1496      		adiw r26,4
+ 535 01b4 8C91      		ld r24,X
+ 536 01b6 1497      		sbiw r26,4
+ 537               	.LVL66:
+ 292:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	if (currentStatus & TWI_MASTER_BUSERR_bm) {
+ 538               		.loc 1 292 0
+ 539 01b8 82FD      		sbrc r24,2
+ 540 01ba 00C0      		rjmp .L54
+ 297:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->result = TWIM_RESULT_ARBITRATION_LOST;
+ 541               		.loc 1 297 0
+ 542 01bc 93E0      		ldi r25,lo8(3)
+ 543 01be 908B      		std Z+16,r25
+ 544               	.L41:
+ 301:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	twi->interface->MASTER.STATUS = currentStatus | TWI_MASTER_ARBLOST_bm;
+ 545               		.loc 1 301 0
+ 546 01c0 8860      		ori r24,lo8(8)
+ 547               	.LVL67:
+ 548 01c2 1496      		adiw r26,4
+ 549 01c4 8C93      		st X,r24
+ 303:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	twi->status = TWIM_STATUS_READY;
+ 550               		.loc 1 303 0
+ 551 01c6 81E0      		ldi r24,lo8(1)
+ 552 01c8 8787      		std Z+15,r24
+ 553               	.LVL68:
+ 554               	.L38:
+ 555               	/* epilogue start */
+ 556               	.LBE80:
+ 557               	.LBE79:
+ 278:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** }
+ 558               		.loc 1 278 0
+ 559 01ca DF91      		pop r29
+ 560 01cc CF91      		pop r28
+ 561 01ce 0895      		ret
+ 562               	.LVL69:
+ 563               	.L54:
+ 564               	.LBB82:
+ 565               	.LBB81:
+ 293:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->result = TWIM_RESULT_BUS_ERROR;
+ 566               		.loc 1 293 0
+ 567 01d0 94E0      		ldi r25,lo8(4)
+ 568 01d2 908B      		std Z+16,r25
+ 569 01d4 00C0      		rjmp .L41
+ 570               	.LVL70:
+ 571               	.L52:
+ 572               	.LBE81:
+ 573               	.LBE82:
+ 574               	.LBB83:
+ 575               	.LBB84:
+ 316:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	uint8_t bytesToWrite  = twi->bytesToWrite;
+ 576               		.loc 1 316 0
+ 577 01d6 9385      		ldd r25,Z+11
+ 578               	.LVL71:
+ 317:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	uint8_t bytesToRead   = twi->bytesToRead;
+ 579               		.loc 1 317 0
+ 580 01d8 2485      		ldd r18,Z+12
+ 581               	.LVL72:
+ 320:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	if (twi->interface->MASTER.STATUS & TWI_MASTER_RXACK_bm) {
+ 582               		.loc 1 320 0
+ 583 01da 1496      		adiw r26,4
+ 584 01dc 8C91      		ld r24,X
+ 585 01de 1497      		sbiw r26,4
+ 586               	.LVL73:
+ 587 01e0 84FD      		sbrc r24,4
+ 588 01e2 00C0      		rjmp .L55
+ 327:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	else if (twi->bytesWritten < bytesToWrite) {
+ 589               		.loc 1 327 0
+ 590 01e4 8585      		ldd r24,Z+13
+ 591 01e6 8917      		cp r24,r25
+ 592 01e8 00F0      		brlo .L56
+ 336:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	else if (twi->bytesRead < bytesToRead) {
+ 593               		.loc 1 336 0
+ 594 01ea 8685      		ldd r24,Z+14
+ 595 01ec 8217      		cp r24,r18
+ 596 01ee 00F0      		brlo .L57
+ 343:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->interface->MASTER.CTRLC = TWI_MASTER_CMD_STOP_gc;
+ 597               		.loc 1 343 0
+ 598 01f0 83E0      		ldi r24,lo8(3)
+ 599 01f2 1396      		adiw r26,3
+ 600 01f4 8C93      		st X,r24
+ 601               	.LVL74:
+ 602               	.LBB85:
+ 603               	.LBB86:
+ 397:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	twi->result = result;
+ 604               		.loc 1 397 0
+ 605 01f6 81E0      		ldi r24,lo8(1)
+ 606 01f8 808B      		std Z+16,r24
+ 607               		.loc 1 398 0
+ 608 01fa 8787      		std Z+15,r24
+ 609 01fc 00C0      		rjmp .L38
+ 610               	.LVL75:
+ 611               	.L55:
+ 612               	.LBE86:
+ 613               	.LBE85:
+ 321:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->interface->MASTER.CTRLC = TWI_MASTER_CMD_STOP_gc;
+ 614               		.loc 1 321 0
+ 615 01fe 83E0      		ldi r24,lo8(3)
+ 616 0200 1396      		adiw r26,3
+ 617 0202 8C93      		st X,r24
+ 322:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->result = TWIM_RESULT_NACK_RECEIVED;
+ 618               		.loc 1 322 0
+ 619 0204 85E0      		ldi r24,lo8(5)
+ 620 0206 808B      		std Z+16,r24
+ 323:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->status = TWIM_STATUS_READY;
+ 621               		.loc 1 323 0
+ 622 0208 81E0      		ldi r24,lo8(1)
+ 623 020a 8787      		std Z+15,r24
+ 624 020c 00C0      		rjmp .L38
+ 625               	.LVL76:
+ 626               	.L53:
+ 627               	.LBE84:
+ 628               	.LBE83:
+ 629               	.LBB91:
+ 630               	.LBB92:
+ 359:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	if (twi->bytesRead < TWIM_READ_BUFFER_SIZE) {
+ 631               		.loc 1 359 0
+ 632 020e 8685      		ldd r24,Z+14
+ 633               	.LVL77:
+ 634 0210 8430      		cpi r24,lo8(4)
+ 635 0212 00F4      		brsh .L48
+ 636               	.LBB93:
+ 360:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		uint8_t data = twi->interface->MASTER.DATA;
+ 637               		.loc 1 360 0
+ 638 0214 1796      		adiw r26,7
+ 639 0216 8C91      		ld r24,X
+ 640 0218 1797      		sbiw r26,7
+ 641               	.LVL78:
+ 361:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->readData[twi->bytesRead] = data;
+ 642               		.loc 1 361 0
+ 643 021a 9685      		ldd r25,Z+14
+ 644 021c EF01      		movw r28,r30
+ 645 021e C90F      		add r28,r25
+ 646 0220 D11D      		adc r29,__zero_reg__
+ 647 0222 8F83      		std Y+7,r24
+ 362:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->bytesRead++;
+ 648               		.loc 1 362 0
+ 649 0224 8685      		ldd r24,Z+14
+ 650               	.LVL79:
+ 651 0226 8F5F      		subi r24,lo8(-(1))
+ 652 0228 8687      		std Z+14,r24
+ 653               	.LVL80:
+ 654               	.L49:
+ 655               	.LBE93:
+ 372:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	uint8_t bytesToRead = twi->bytesToRead;
+ 656               		.loc 1 372 0
+ 657 022a 9485      		ldd r25,Z+12
+ 658               	.LVL81:
+ 375:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	if (twi->bytesRead < bytesToRead) {
+ 659               		.loc 1 375 0
+ 660 022c 8685      		ldd r24,Z+14
+ 661 022e 8917      		cp r24,r25
+ 662 0230 00F0      		brlo .L58
+ 381:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->interface->MASTER.CTRLC = TWI_MASTER_ACKACT_bm |
+ 663               		.loc 1 381 0
+ 664 0232 87E0      		ldi r24,lo8(7)
+ 665 0234 1396      		adiw r26,3
+ 666 0236 8C93      		st X,r24
+ 667               	.LVL82:
+ 668               	.LBB94:
+ 669               	.LBB95:
+ 397:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	twi->result = result;
+ 670               		.loc 1 397 0
+ 671 0238 81E0      		ldi r24,lo8(1)
+ 672 023a 808B      		std Z+16,r24
+ 673               		.loc 1 398 0
+ 674 023c 8787      		std Z+15,r24
+ 675 023e 00C0      		rjmp .L38
+ 676               	.LVL83:
+ 677               	.L56:
+ 678               	.LBE95:
+ 679               	.LBE94:
+ 680               	.LBE92:
+ 681               	.LBE91:
+ 682               	.LBB100:
+ 683               	.LBB89:
+ 684               	.LBB87:
+ 328:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		uint8_t data = twi->writeData[twi->bytesWritten];
+ 685               		.loc 1 328 0
+ 686 0240 8585      		ldd r24,Z+13
+ 687 0242 EF01      		movw r28,r30
+ 688 0244 C80F      		add r28,r24
+ 689 0246 D11D      		adc r29,__zero_reg__
+ 690 0248 8B81      		ldd r24,Y+3
+ 691               	.LVL84:
+ 329:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->interface->MASTER.DATA = data;
+ 692               		.loc 1 329 0
+ 693 024a 1796      		adiw r26,7
+ 694 024c 8C93      		st X,r24
+ 330:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		++twi->bytesWritten;
+ 695               		.loc 1 330 0
+ 696 024e 8585      		ldd r24,Z+13
+ 697               	.LVL85:
+ 698 0250 8F5F      		subi r24,lo8(-(1))
+ 699 0252 8587      		std Z+13,r24
+ 700               	.LVL86:
+ 701 0254 00C0      		rjmp .L38
+ 702               	.LVL87:
+ 703               	.L48:
+ 704               	.LBE87:
+ 705               	.LBE89:
+ 706               	.LBE100:
+ 707               	.LBB101:
+ 708               	.LBB98:
+ 367:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->interface->MASTER.CTRLC = TWI_MASTER_CMD_STOP_gc;
+ 709               		.loc 1 367 0
+ 710 0256 83E0      		ldi r24,lo8(3)
+ 711 0258 1396      		adiw r26,3
+ 712 025a 8C93      		st X,r24
+ 713               	.LVL88:
+ 714               	.LBB96:
+ 715               	.LBB97:
+ 397:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	twi->result = result;
+ 716               		.loc 1 397 0
+ 717 025c 82E0      		ldi r24,lo8(2)
+ 718 025e 808B      		std Z+16,r24
+ 719               		.loc 1 398 0
+ 720 0260 81E0      		ldi r24,lo8(1)
+ 721 0262 8787      		std Z+15,r24
+ 722 0264 A081      		ld r26,Z
+ 723 0266 B181      		ldd r27,Z+1
+ 724 0268 00C0      		rjmp .L49
+ 725               	.LVL89:
+ 726               	.L57:
+ 727               	.LBE97:
+ 728               	.LBE96:
+ 729               	.LBE98:
+ 730               	.LBE101:
+ 731               	.LBB102:
+ 732               	.LBB90:
+ 733               	.LBB88:
+ 337:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		uint8_t readAddress = twi->address | 0x01;
+ 734               		.loc 1 337 0
+ 735 026a 8281      		ldd r24,Z+2
+ 736 026c 8160      		ori r24,lo8(1)
+ 737               	.LVL90:
+ 338:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->interface->MASTER.ADDR = readAddress;
+ 738               		.loc 1 338 0
+ 739 026e 1696      		adiw r26,6
+ 740 0270 8C93      		st X,r24
+ 741 0272 00C0      		rjmp .L38
+ 742               	.LVL91:
+ 743               	.L58:
+ 744               	.LBE88:
+ 745               	.LBE90:
+ 746               	.LBE102:
+ 747               	.LBB103:
+ 748               	.LBB99:
+ 376:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->interface->MASTER.CTRLC = TWI_MASTER_CMD_RECVTRANS_gc;
+ 749               		.loc 1 376 0
+ 750 0274 82E0      		ldi r24,lo8(2)
+ 751 0276 1396      		adiw r26,3
+ 752 0278 8C93      		st X,r24
+ 753 027a 00C0      		rjmp .L38
+ 754               	.LBE99:
+ 755               	.LBE103:
+ 756               		.cfi_endproc
+ 757               	.LFE13:
+ 759               	.global	TWI_MasterArbitrationLostBusErrorHandler
+ 761               	TWI_MasterArbitrationLostBusErrorHandler:
+ 762               	.LFB14:
+ 288:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** {
+ 763               		.loc 1 288 0
+ 764               		.cfi_startproc
+ 765               	.LVL92:
+ 766               	/* prologue: function */
+ 767               	/* frame size = 0 */
+ 768               	/* stack size = 0 */
+ 769               	.L__stack_usage = 0
+ 770 027c FC01      		movw r30,r24
+ 289:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	uint8_t currentStatus = twi->interface->MASTER.STATUS;
+ 771               		.loc 1 289 0
+ 772 027e A081      		ld r26,Z
+ 773 0280 B181      		ldd r27,Z+1
+ 774 0282 1496      		adiw r26,4
+ 775 0284 8C91      		ld r24,X
+ 776 0286 1497      		sbiw r26,4
+ 777               	.LVL93:
+ 292:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	if (currentStatus & TWI_MASTER_BUSERR_bm) {
+ 778               		.loc 1 292 0
+ 779 0288 82FD      		sbrc r24,2
+ 780 028a 00C0      		rjmp .L62
+ 297:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->result = TWIM_RESULT_ARBITRATION_LOST;
+ 781               		.loc 1 297 0
+ 782 028c 93E0      		ldi r25,lo8(3)
+ 783 028e 908B      		std Z+16,r25
+ 301:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	twi->interface->MASTER.STATUS = currentStatus | TWI_MASTER_ARBLOST_bm;
+ 784               		.loc 1 301 0
+ 785 0290 8860      		ori r24,lo8(8)
+ 786               	.LVL94:
+ 787 0292 1496      		adiw r26,4
+ 788 0294 8C93      		st X,r24
+ 303:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	twi->status = TWIM_STATUS_READY;
+ 789               		.loc 1 303 0
+ 790 0296 81E0      		ldi r24,lo8(1)
+ 791 0298 8787      		std Z+15,r24
+ 792 029a 0895      		ret
+ 793               	.LVL95:
+ 794               	.L62:
+ 293:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->result = TWIM_RESULT_BUS_ERROR;
+ 795               		.loc 1 293 0
+ 796 029c 94E0      		ldi r25,lo8(4)
+ 797 029e 908B      		std Z+16,r25
+ 301:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	twi->interface->MASTER.STATUS = currentStatus | TWI_MASTER_ARBLOST_bm;
+ 798               		.loc 1 301 0
+ 799 02a0 8860      		ori r24,lo8(8)
+ 800               	.LVL96:
+ 801 02a2 1496      		adiw r26,4
+ 802 02a4 8C93      		st X,r24
+ 303:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	twi->status = TWIM_STATUS_READY;
+ 803               		.loc 1 303 0
+ 804 02a6 81E0      		ldi r24,lo8(1)
+ 805 02a8 8787      		std Z+15,r24
+ 806 02aa 0895      		ret
+ 807               		.cfi_endproc
+ 808               	.LFE14:
+ 810               	.global	TWI_MasterWriteHandler
+ 812               	TWI_MasterWriteHandler:
+ 813               	.LFB15:
+ 314:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** {
+ 814               		.loc 1 314 0
+ 815               		.cfi_startproc
+ 816               	.LVL97:
+ 817 02ac CF93      		push r28
+ 818               	.LCFI3:
+ 819               		.cfi_def_cfa_offset 4
+ 820               		.cfi_offset 28, -3
+ 821 02ae DF93      		push r29
+ 822               	.LCFI4:
+ 823               		.cfi_def_cfa_offset 5
+ 824               		.cfi_offset 29, -4
+ 825               	/* prologue: function */
+ 826               	/* frame size = 0 */
+ 827               	/* stack size = 2 */
+ 828               	.L__stack_usage = 2
+ 829 02b0 FC01      		movw r30,r24
+ 316:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	uint8_t bytesToWrite  = twi->bytesToWrite;
+ 830               		.loc 1 316 0
+ 831 02b2 9385      		ldd r25,Z+11
+ 832               	.LVL98:
+ 317:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	uint8_t bytesToRead   = twi->bytesToRead;
+ 833               		.loc 1 317 0
+ 834 02b4 2485      		ldd r18,Z+12
+ 835               	.LVL99:
+ 320:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	if (twi->interface->MASTER.STATUS & TWI_MASTER_RXACK_bm) {
+ 836               		.loc 1 320 0
+ 837 02b6 A081      		ld r26,Z
+ 838 02b8 B181      		ldd r27,Z+1
+ 839 02ba 1496      		adiw r26,4
+ 840 02bc 8C91      		ld r24,X
+ 841 02be 1497      		sbiw r26,4
+ 842               	.LVL100:
+ 843 02c0 84FD      		sbrc r24,4
+ 844 02c2 00C0      		rjmp .L68
+ 327:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	else if (twi->bytesWritten < bytesToWrite) {
+ 845               		.loc 1 327 0
+ 846 02c4 8585      		ldd r24,Z+13
+ 847 02c6 8917      		cp r24,r25
+ 848 02c8 00F0      		brlo .L69
+ 336:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	else if (twi->bytesRead < bytesToRead) {
+ 849               		.loc 1 336 0
+ 850 02ca 8685      		ldd r24,Z+14
+ 851 02cc 8217      		cp r24,r18
+ 852 02ce 00F0      		brlo .L70
+ 343:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->interface->MASTER.CTRLC = TWI_MASTER_CMD_STOP_gc;
+ 853               		.loc 1 343 0
+ 854 02d0 83E0      		ldi r24,lo8(3)
+ 855 02d2 1396      		adiw r26,3
+ 856 02d4 8C93      		st X,r24
+ 857               	.LVL101:
+ 858               	.LBB104:
+ 859               	.LBB105:
+ 397:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	twi->result = result;
+ 860               		.loc 1 397 0
+ 861 02d6 81E0      		ldi r24,lo8(1)
+ 862 02d8 808B      		std Z+16,r24
+ 863               		.loc 1 398 0
+ 864 02da 8787      		std Z+15,r24
+ 865               	/* epilogue start */
+ 866               	.LBE105:
+ 867               	.LBE104:
+ 346:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** }
+ 868               		.loc 1 346 0
+ 869 02dc DF91      		pop r29
+ 870 02de CF91      		pop r28
+ 871 02e0 0895      		ret
+ 872               	.LVL102:
+ 873               	.L69:
+ 874               	.LBB106:
+ 328:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		uint8_t data = twi->writeData[twi->bytesWritten];
+ 875               		.loc 1 328 0
+ 876 02e2 8585      		ldd r24,Z+13
+ 877 02e4 EF01      		movw r28,r30
+ 878 02e6 C80F      		add r28,r24
+ 879 02e8 D11D      		adc r29,__zero_reg__
+ 880 02ea 8B81      		ldd r24,Y+3
+ 881               	.LVL103:
+ 329:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->interface->MASTER.DATA = data;
+ 882               		.loc 1 329 0
+ 883 02ec 1796      		adiw r26,7
+ 884 02ee 8C93      		st X,r24
+ 330:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		++twi->bytesWritten;
+ 885               		.loc 1 330 0
+ 886 02f0 8585      		ldd r24,Z+13
+ 887               	.LVL104:
+ 888 02f2 8F5F      		subi r24,lo8(-(1))
+ 889 02f4 8587      		std Z+13,r24
+ 890               	.LVL105:
+ 891               	/* epilogue start */
+ 892               	.LBE106:
+ 346:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** }
+ 893               		.loc 1 346 0
+ 894 02f6 DF91      		pop r29
+ 895 02f8 CF91      		pop r28
+ 896 02fa 0895      		ret
+ 897               	.L68:
+ 321:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->interface->MASTER.CTRLC = TWI_MASTER_CMD_STOP_gc;
+ 898               		.loc 1 321 0
+ 899 02fc 83E0      		ldi r24,lo8(3)
+ 900 02fe 1396      		adiw r26,3
+ 901 0300 8C93      		st X,r24
+ 322:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->result = TWIM_RESULT_NACK_RECEIVED;
+ 902               		.loc 1 322 0
+ 903 0302 85E0      		ldi r24,lo8(5)
+ 904 0304 808B      		std Z+16,r24
+ 323:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->status = TWIM_STATUS_READY;
+ 905               		.loc 1 323 0
+ 906 0306 81E0      		ldi r24,lo8(1)
+ 907 0308 8787      		std Z+15,r24
+ 908               	/* epilogue start */
+ 346:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** }
+ 909               		.loc 1 346 0
+ 910 030a DF91      		pop r29
+ 911 030c CF91      		pop r28
+ 912 030e 0895      		ret
+ 913               	.L70:
+ 914               	.LBB107:
+ 337:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		uint8_t readAddress = twi->address | 0x01;
+ 915               		.loc 1 337 0
+ 916 0310 8281      		ldd r24,Z+2
+ 917 0312 8160      		ori r24,lo8(1)
+ 918               	.LVL106:
+ 338:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->interface->MASTER.ADDR = readAddress;
+ 919               		.loc 1 338 0
+ 920 0314 1696      		adiw r26,6
+ 921 0316 8C93      		st X,r24
+ 922               	/* epilogue start */
+ 923               	.LBE107:
+ 346:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** }
+ 924               		.loc 1 346 0
+ 925 0318 DF91      		pop r29
+ 926 031a CF91      		pop r28
+ 927 031c 0895      		ret
+ 928               		.cfi_endproc
+ 929               	.LFE15:
+ 931               	.global	TWI_MasterReadHandler
+ 933               	TWI_MasterReadHandler:
+ 934               	.LFB16:
+ 357:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** {
+ 935               		.loc 1 357 0
+ 936               		.cfi_startproc
+ 937               	.LVL107:
+ 938 031e CF93      		push r28
+ 939               	.LCFI5:
+ 940               		.cfi_def_cfa_offset 4
+ 941               		.cfi_offset 28, -3
+ 942 0320 DF93      		push r29
+ 943               	.LCFI6:
+ 944               		.cfi_def_cfa_offset 5
+ 945               		.cfi_offset 29, -4
+ 946               	/* prologue: function */
+ 947               	/* frame size = 0 */
+ 948               	/* stack size = 2 */
+ 949               	.L__stack_usage = 2
+ 950 0322 FC01      		movw r30,r24
+ 359:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	if (twi->bytesRead < TWIM_READ_BUFFER_SIZE) {
+ 951               		.loc 1 359 0
+ 952 0324 8685      		ldd r24,Z+14
+ 953               	.LVL108:
+ 954               	.LBB108:
+ 360:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		uint8_t data = twi->interface->MASTER.DATA;
+ 955               		.loc 1 360 0
+ 956 0326 A081      		ld r26,Z
+ 957 0328 B181      		ldd r27,Z+1
+ 958               	.LBE108:
+ 359:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	if (twi->bytesRead < TWIM_READ_BUFFER_SIZE) {
+ 959               		.loc 1 359 0
+ 960 032a 8430      		cpi r24,lo8(4)
+ 961 032c 00F4      		brsh .L72
+ 962               	.LBB109:
+ 360:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		uint8_t data = twi->interface->MASTER.DATA;
+ 963               		.loc 1 360 0
+ 964 032e 1796      		adiw r26,7
+ 965 0330 8C91      		ld r24,X
+ 966 0332 1797      		sbiw r26,7
+ 967               	.LVL109:
+ 361:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->readData[twi->bytesRead] = data;
+ 968               		.loc 1 361 0
+ 969 0334 9685      		ldd r25,Z+14
+ 970 0336 EF01      		movw r28,r30
+ 971 0338 C90F      		add r28,r25
+ 972 033a D11D      		adc r29,__zero_reg__
+ 973 033c 8F83      		std Y+7,r24
+ 362:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->bytesRead++;
+ 974               		.loc 1 362 0
+ 975 033e 8685      		ldd r24,Z+14
+ 976               	.LVL110:
+ 977 0340 8F5F      		subi r24,lo8(-(1))
+ 978 0342 8687      		std Z+14,r24
+ 979               	.LVL111:
+ 980               	.LBE109:
+ 372:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	uint8_t bytesToRead = twi->bytesToRead;
+ 981               		.loc 1 372 0
+ 982 0344 9485      		ldd r25,Z+12
+ 983               	.LVL112:
+ 375:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	if (twi->bytesRead < bytesToRead) {
+ 984               		.loc 1 375 0
+ 985 0346 8685      		ldd r24,Z+14
+ 986 0348 8917      		cp r24,r25
+ 987 034a 00F0      		brlo .L76
+ 988               	.L74:
+ 381:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->interface->MASTER.CTRLC = TWI_MASTER_ACKACT_bm |
+ 989               		.loc 1 381 0
+ 990 034c 87E0      		ldi r24,lo8(7)
+ 991 034e 1396      		adiw r26,3
+ 992 0350 8C93      		st X,r24
+ 993               	.LVL113:
+ 994               	.LBB110:
+ 995               	.LBB111:
+ 397:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	twi->result = result;
+ 996               		.loc 1 397 0
+ 997 0352 81E0      		ldi r24,lo8(1)
+ 998 0354 808B      		std Z+16,r24
+ 999               		.loc 1 398 0
+ 1000 0356 8787      		std Z+15,r24
+ 1001               	/* epilogue start */
+ 1002               	.LBE111:
+ 1003               	.LBE110:
+ 385:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** }
+ 1004               		.loc 1 385 0
+ 1005 0358 DF91      		pop r29
+ 1006 035a CF91      		pop r28
+ 1007 035c 0895      		ret
+ 1008               	.LVL114:
+ 1009               	.L72:
+ 367:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->interface->MASTER.CTRLC = TWI_MASTER_CMD_STOP_gc;
+ 1010               		.loc 1 367 0
+ 1011 035e 83E0      		ldi r24,lo8(3)
+ 1012 0360 1396      		adiw r26,3
+ 1013 0362 8C93      		st X,r24
+ 1014               	.LVL115:
+ 1015               	.LBB112:
+ 1016               	.LBB113:
+ 397:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	twi->result = result;
+ 1017               		.loc 1 397 0
+ 1018 0364 82E0      		ldi r24,lo8(2)
+ 1019 0366 808B      		std Z+16,r24
+ 1020               		.loc 1 398 0
+ 1021 0368 81E0      		ldi r24,lo8(1)
+ 1022 036a 8787      		std Z+15,r24
+ 1023 036c A081      		ld r26,Z
+ 1024 036e B181      		ldd r27,Z+1
+ 1025               	.LBE113:
+ 1026               	.LBE112:
+ 372:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	uint8_t bytesToRead = twi->bytesToRead;
+ 1027               		.loc 1 372 0
+ 1028 0370 9485      		ldd r25,Z+12
+ 1029               	.LVL116:
+ 375:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	if (twi->bytesRead < bytesToRead) {
+ 1030               		.loc 1 375 0
+ 1031 0372 8685      		ldd r24,Z+14
+ 1032 0374 8917      		cp r24,r25
+ 1033 0376 00F4      		brsh .L74
+ 1034               	.LVL117:
+ 1035               	.L76:
+ 376:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 		twi->interface->MASTER.CTRLC = TWI_MASTER_CMD_RECVTRANS_gc;
+ 1036               		.loc 1 376 0
+ 1037 0378 82E0      		ldi r24,lo8(2)
+ 1038 037a 1396      		adiw r26,3
+ 1039 037c 8C93      		st X,r24
+ 1040               	/* epilogue start */
+ 385:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** }
+ 1041               		.loc 1 385 0
+ 1042 037e DF91      		pop r29
+ 1043 0380 CF91      		pop r28
+ 1044 0382 0895      		ret
+ 1045               		.cfi_endproc
+ 1046               	.LFE16:
+ 1048               	.global	TWI_MasterTransactionFinished
+ 1050               	TWI_MasterTransactionFinished:
+ 1051               	.LFB17:
+ 396:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** {
+ 1052               		.loc 1 396 0
+ 1053               		.cfi_startproc
+ 1054               	.LVL118:
+ 1055               	/* prologue: function */
+ 1056               	/* frame size = 0 */
+ 1057               	/* stack size = 0 */
+ 1058               	.L__stack_usage = 0
+ 397:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.c **** 	twi->result = result;
+ 1059               		.loc 1 397 0
+ 1060 0384 FC01      		movw r30,r24
+ 1061 0386 608B      		std Z+16,r22
+ 1062               		.loc 1 398 0
+ 1063 0388 21E0      		ldi r18,lo8(1)
+ 1064 038a 2787      		std Z+15,r18
+ 1065 038c 0895      		ret
+ 1066               		.cfi_endproc
+ 1067               	.LFE17:
+ 1069               	.Letext0:
+ 1070               		.file 2 "/usr/lib/avr/include/stdint.h"
+ 1071               		.file 3 "/usr/lib/avr/include/avr/iox256a3.h"
+ 1072               		.file 4 "/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.h"
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 twi_master_driver.c
+     /tmp/cc1o1DkT.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/cc1o1DkT.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/cc1o1DkT.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/cc1o1DkT.s:5      *ABS*:000000000000003b __RAMPZ__
+     /tmp/cc1o1DkT.s:6      *ABS*:0000000000000034 __CCP__
+     /tmp/cc1o1DkT.s:7      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/cc1o1DkT.s:8      *ABS*:0000000000000001 __zero_reg__
+     /tmp/cc1o1DkT.s:14     .text:0000000000000000 TWI_MasterInit
+     /tmp/cc1o1DkT.s:52     .text:0000000000000022 TWI_MasterState
+     /tmp/cc1o1DkT.s:76     .text:000000000000002e TWI_MasterReady
+     /tmp/cc1o1DkT.s:98     .text:0000000000000036 TWI_MasterWrite
+     /tmp/cc1o1DkT.s:234    .text:00000000000000b2 TWI_MasterRead
+     /tmp/cc1o1DkT.s:333    .text:0000000000000102 TWI_MasterWriteRead
+     /tmp/cc1o1DkT.s:477    .text:0000000000000186 TWI_MasterInterruptHandler
+     /tmp/cc1o1DkT.s:761    .text:000000000000027c TWI_MasterArbitrationLostBusErrorHandler
+     /tmp/cc1o1DkT.s:812    .text:00000000000002ac TWI_MasterWriteHandler
+     /tmp/cc1o1DkT.s:933    .text:000000000000031e TWI_MasterReadHandler
+     /tmp/cc1o1DkT.s:1050   .text:0000000000000384 TWI_MasterTransactionFinished
+
+NO UNDEFINED SYMBOLS

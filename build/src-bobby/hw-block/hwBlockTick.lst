@@ -1,0 +1,234 @@
+   1               		.file	"hwBlockTick.c"
+   2               	__SP_H__ = 0x3e
+   3               	__SP_L__ = 0x3d
+   4               	__SREG__ = 0x3f
+   5               	__RAMPZ__ = 0x3b
+   6               	__CCP__ = 0x34
+   7               	__tmp_reg__ = 0
+   8               	__zero_reg__ = 1
+   9               		.text
+  10               	.Ltext0:
+  11               		.cfi_sections	.debug_frame
+  12               	.global	scaryBlockTickHack
+  14               	scaryBlockTickHack:
+  15               	.LFB6:
+  16               		.file 1 "/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBlockTick.c"
+   1:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBlockTick.c **** #include <avr/io.h>
+   2:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBlockTick.c **** #include <avr/interrupt.h>
+   3:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBlockTick.c **** #include "../system/defs.h"
+   4:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBlockTick.c **** #include "../system/block.h"
+   5:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBlockTick.c **** #include <avr/wdt.h>
+   6:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBlockTick.c **** #include "../hw-api/hwBlockTick.h"
+   7:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBlockTick.c **** 
+   8:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBlockTick.c **** extern int blockTickRunning;
+   9:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBlockTick.c **** 
+  10:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBlockTick.c **** void scaryBlockTickHack(void)
+  11:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBlockTick.c **** {
+  17               		.loc 1 11 0
+  18               		.cfi_startproc
+  19               	/* prologue: function */
+  20               	/* frame size = 0 */
+  21               	/* stack size = 0 */
+  22               	.L__stack_usage = 0
+  12:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBlockTick.c **** 	TCF0.CTRLA = TC_CLKSEL_DIV1_gc;
+  23               		.loc 1 12 0
+  24 0000 E0E0      		ldi r30,0
+  25 0002 FBE0      		ldi r31,lo8(11)
+  26 0004 81E0      		ldi r24,lo8(1)
+  27 0006 8083      		st Z,r24
+  13:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBlockTick.c **** 	
+  14:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBlockTick.c **** 	TCF0.PER = 16000;  // 2000hz blocktick
+  28               		.loc 1 14 0
+  29 0008 80E8      		ldi r24,lo8(-128)
+  30 000a 9EE3      		ldi r25,lo8(62)
+  31 000c 86A3      		std Z+38,r24
+  32 000e 97A3      		std Z+39,r25
+  15:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBlockTick.c **** 	TCF0.INTCTRLA = TC_OVFINTLVL_MED_gc;
+  33               		.loc 1 15 0
+  34 0010 82E0      		ldi r24,lo8(2)
+  35 0012 8683      		std Z+6,r24
+  36 0014 0895      		ret
+  37               		.cfi_endproc
+  38               	.LFE6:
+  40               	.global	initBlockTick
+  42               	initBlockTick:
+  43               	.LFB7:
+  16:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBlockTick.c **** }
+  17:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBlockTick.c **** 
+  18:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBlockTick.c **** 
+  19:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBlockTick.c **** void initBlockTick()
+  20:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBlockTick.c **** {
+  44               		.loc 1 20 0
+  45               		.cfi_startproc
+  46               	/* prologue: function */
+  47               	/* frame size = 0 */
+  48               	/* stack size = 0 */
+  49               	.L__stack_usage = 0
+  21:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBlockTick.c **** 
+  22:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBlockTick.c **** 	blockTickRunning=0;
+  50               		.loc 1 22 0
+  51 0016 1092 0000 		sts blockTickRunning,__zero_reg__
+  52 001a 1092 0000 		sts blockTickRunning+1,__zero_reg__
+  23:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBlockTick.c ****      
+  24:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBlockTick.c **** //	scaryBlockTickHack();
+  25:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBlockTick.c **** 
+  26:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBlockTick.c **** 	/* Enable interrupt levels. */
+  27:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBlockTick.c **** 	PMIC.CTRL |= PMIC_HILVLEN_bm | PMIC_MEDLVLEN_bm | PMIC_LOLVLEN_bm;
+  53               		.loc 1 27 0
+  54 001e E0EA      		ldi r30,lo8(-96)
+  55 0020 F0E0      		ldi r31,0
+  56 0022 8281      		ldd r24,Z+2
+  57 0024 8760      		ori r24,lo8(7)
+  58 0026 8283      		std Z+2,r24
+  28:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBlockTick.c **** 	sei();
+  59               		.loc 1 28 0
+  60               	/* #APP */
+  61               	 ;  28 "/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBlockTick.c" 1
+  62 0028 7894      		sei
+  63               	 ;  0 "" 2
+  64               	/* #NOAPP */
+  65 002a 0895      		ret
+  66               		.cfi_endproc
+  67               	.LFE7:
+  69               	.global	__vector_108
+  71               	__vector_108:
+  72               	.LFB8:
+  29:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBlockTick.c **** 	
+  30:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBlockTick.c **** }
+  31:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBlockTick.c **** 
+  32:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBlockTick.c **** // part of scary blocktick hack
+  33:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBlockTick.c **** // called every 38400 khz or so
+  34:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBlockTick.c **** ISR(TCF0_OVF_vect)
+  35:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBlockTick.c **** {
+  73               		.loc 1 35 0
+  74               		.cfi_startproc
+  75 002c 1F92      		push r1
+  76               	.LCFI0:
+  77               		.cfi_def_cfa_offset 4
+  78               		.cfi_offset 1, -3
+  79 002e 0F92      		push r0
+  80               	.LCFI1:
+  81               		.cfi_def_cfa_offset 5
+  82               		.cfi_offset 0, -4
+  83 0030 0FB6      		in r0,__SREG__
+  84 0032 0F92      		push r0
+  85 0034 1124      		clr __zero_reg__
+  86 0036 0BB6      		in r0,__RAMPZ__
+  87 0038 0F92      		push r0
+  88 003a 2F93      		push r18
+  89               	.LCFI2:
+  90               		.cfi_def_cfa_offset 6
+  91               		.cfi_offset 18, -5
+  92 003c 3F93      		push r19
+  93               	.LCFI3:
+  94               		.cfi_def_cfa_offset 7
+  95               		.cfi_offset 19, -6
+  96 003e 4F93      		push r20
+  97               	.LCFI4:
+  98               		.cfi_def_cfa_offset 8
+  99               		.cfi_offset 20, -7
+ 100 0040 5F93      		push r21
+ 101               	.LCFI5:
+ 102               		.cfi_def_cfa_offset 9
+ 103               		.cfi_offset 21, -8
+ 104 0042 6F93      		push r22
+ 105               	.LCFI6:
+ 106               		.cfi_def_cfa_offset 10
+ 107               		.cfi_offset 22, -9
+ 108 0044 7F93      		push r23
+ 109               	.LCFI7:
+ 110               		.cfi_def_cfa_offset 11
+ 111               		.cfi_offset 23, -10
+ 112 0046 8F93      		push r24
+ 113               	.LCFI8:
+ 114               		.cfi_def_cfa_offset 12
+ 115               		.cfi_offset 24, -11
+ 116 0048 9F93      		push r25
+ 117               	.LCFI9:
+ 118               		.cfi_def_cfa_offset 13
+ 119               		.cfi_offset 25, -12
+ 120 004a AF93      		push r26
+ 121               	.LCFI10:
+ 122               		.cfi_def_cfa_offset 14
+ 123               		.cfi_offset 26, -13
+ 124 004c BF93      		push r27
+ 125               	.LCFI11:
+ 126               		.cfi_def_cfa_offset 15
+ 127               		.cfi_offset 27, -14
+ 128 004e EF93      		push r30
+ 129               	.LCFI12:
+ 130               		.cfi_def_cfa_offset 16
+ 131               		.cfi_offset 30, -15
+ 132 0050 FF93      		push r31
+ 133               	.LCFI13:
+ 134               		.cfi_def_cfa_offset 17
+ 135               		.cfi_offset 31, -16
+ 136               	/* prologue: Signal */
+ 137               	/* frame size = 0 */
+ 138               	/* stack size = 16 */
+ 139               	.L__stack_usage = 16
+  36:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBlockTick.c **** 	if (!blockTickRunning)
+ 140               		.loc 1 36 0
+ 141 0052 8091 0000 		lds r24,blockTickRunning
+ 142 0056 9091 0000 		lds r25,blockTickRunning+1
+ 143 005a 892B      		or r24,r25
+ 144 005c 01F4      		brne .L3
+  37:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBlockTick.c **** 	  {
+  38:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBlockTick.c **** 	    wdt_reset();
+ 145               		.loc 1 38 0
+ 146               	/* #APP */
+ 147               	 ;  38 "/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBlockTick.c" 1
+ 148 005e A895      		wdr
+ 149               	 ;  0 "" 2
+  39:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBlockTick.c **** //	    printf("\nExecuting Blocktick\n");
+  40:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBlockTick.c **** 	    blockTick();
+ 150               		.loc 1 40 0
+ 151               	/* #NOAPP */
+ 152 0060 0E94 0000 		call blockTick
+ 153               	.LVL0:
+ 154               	.L3:
+ 155               	/* epilogue start */
+  41:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBlockTick.c **** 	  }
+  42:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwBlockTick.c **** }
+ 156               		.loc 1 42 0
+ 157 0064 FF91      		pop r31
+ 158 0066 EF91      		pop r30
+ 159 0068 BF91      		pop r27
+ 160 006a AF91      		pop r26
+ 161 006c 9F91      		pop r25
+ 162 006e 8F91      		pop r24
+ 163 0070 7F91      		pop r23
+ 164 0072 6F91      		pop r22
+ 165 0074 5F91      		pop r21
+ 166 0076 4F91      		pop r20
+ 167 0078 3F91      		pop r19
+ 168 007a 2F91      		pop r18
+ 169 007c 0F90      		pop r0
+ 170 007e 0BBE      		out __RAMPZ__,r0
+ 171 0080 0F90      		pop r0
+ 172 0082 0FBE      		out __SREG__,r0
+ 173 0084 0F90      		pop r0
+ 174 0086 1F90      		pop r1
+ 175 0088 1895      		reti
+ 176               		.cfi_endproc
+ 177               	.LFE8:
+ 179               	.Letext0:
+ 180               		.file 2 "/usr/lib/avr/include/stdint.h"
+ 181               		.file 3 "/usr/lib/avr/include/avr/iox256a3.h"
+ 182               		.file 4 "/home/pthalamy/CMU/bench/benchmark/build/src-bobby/system/block.bbh"
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 hwBlockTick.c
+     /tmp/ccZiRlil.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccZiRlil.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccZiRlil.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccZiRlil.s:5      *ABS*:000000000000003b __RAMPZ__
+     /tmp/ccZiRlil.s:6      *ABS*:0000000000000034 __CCP__
+     /tmp/ccZiRlil.s:7      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccZiRlil.s:8      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccZiRlil.s:14     .text:0000000000000000 scaryBlockTickHack
+     /tmp/ccZiRlil.s:42     .text:0000000000000016 initBlockTick
+     /tmp/ccZiRlil.s:71     .text:000000000000002c __vector_108
+
+UNDEFINED SYMBOLS
+blockTickRunning
+blockTick

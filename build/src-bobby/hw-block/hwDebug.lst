@@ -1,0 +1,269 @@
+   1               		.file	"hwDebug.c"
+   2               	__SP_H__ = 0x3e
+   3               	__SP_L__ = 0x3d
+   4               	__SREG__ = 0x3f
+   5               	__RAMPZ__ = 0x3b
+   6               	__CCP__ = 0x34
+   7               	__tmp_reg__ = 0
+   8               	__zero_reg__ = 1
+   9               		.text
+  10               	.Ltext0:
+  11               		.cfi_sections	.debug_frame
+  12               	.global	debugPutChar
+  14               	debugPutChar:
+  15               	.LFB2:
+  16               		.file 1 "/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c"
+   1:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** #include "../hw-api/hwDebug.h"
+   2:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** #include <avr/io.h>
+   3:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** 
+   4:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** #define DEBUG 3
+   5:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** #ifdef DEBUG
+   6:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** 
+   7:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** #if DEBUG == 5 // UP
+   8:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** 
+   9:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** #define DEBUGPORT 5
+  10:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** #define DEBUGUART USARTD1
+  11:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** 
+  12:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** #elif DEBUG == 1 // NORTH
+  13:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** 
+  14:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** #define DEBUGPORT 1
+  15:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** #define DEBUGUART USARTC1
+  16:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** 
+  17:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** #elif DEBUG == 4 //SOUTH
+  18:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** 
+  19:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** #define DEBUGPORT 4
+  20:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** #define DEBUGUART USARTE0
+  21:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** 
+  22:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** #elif DEBUG == 2 //EAST
+  23:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** 
+  24:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** #define DEBUGPORT 2
+  25:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** #define DEBUGUART USARTF0
+  26:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** 
+  27:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** #elif DEBUG == 3 //WEST
+  28:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** 
+  29:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** #define DEBUGPORT 3
+  30:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** #define DEBUGUART USARTC0
+  31:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** 
+  32:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** #elif DEBUG == 0 //DOWN
+  33:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** 
+  34:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** #define DEBUGPORT 0
+  35:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** #define DEBUGUART USARTD0
+  36:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** 
+  37:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** #endif
+  38:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** #ifndef DEBUGPORT
+  39:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** #error Invalid DEBUG option chosen - use a face enum.
+  40:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** #endif
+  41:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** 
+  42:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** #endif
+  43:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** 
+  44:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** FILE debug;
+  45:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** 
+  46:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** void initDebugUart(USART_t * uart)
+  47:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** {
+  48:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** 	uart->CTRLA = 0;	// disable RX/TX interrupts
+  49:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** 	uart->CTRLB = USART_RXEN_bm | USART_TXEN_bm;
+  50:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** 	uart->CTRLC = USART_CHSIZE_8BIT_gc;
+  51:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** 	uart->BAUDCTRLA = 103;  // 115200  103;	// 19200?!
+  52:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** 	uart->BAUDCTRLB = 0;
+  53:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** }
+  54:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** 
+  55:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** int
+  56:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** debugPutChar(char c, FILE * fb)
+  57:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** {
+  17               		.loc 1 57 0
+  18               		.cfi_startproc
+  19               	/* prologue: function */
+  20               	/* frame size = 0 */
+  21               	/* stack size = 0 */
+  22               	.L__stack_usage = 0
+  23               	.LVL0:
+  24               	.L3:
+  58:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** #ifdef DEBUG
+  59:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c ****     while(!(DEBUGUART.STATUS & USART_DREIF_bm));
+  25               		.loc 1 59 0 discriminator 1
+  26 0000 9091 A108 		lds r25,2209
+  27 0004 95FF      		sbrs r25,5
+  28 0006 00C0      		rjmp .L3
+  60:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c ****     DEBUGUART.DATA = c;
+  29               		.loc 1 60 0
+  30 0008 8093 A008 		sts 2208,r24
+  61:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** #endif
+  62:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c ****     return 0;
+  63:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** }
+  31               		.loc 1 63 0
+  32 000c 80E0      		ldi r24,0
+  33 000e 90E0      		ldi r25,0
+  34               	.LVL1:
+  35 0010 0895      		ret
+  36               		.cfi_endproc
+  37               	.LFE2:
+  39               	.global	debugGetChar
+  41               	debugGetChar:
+  42               	.LFB3:
+  64:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** 
+  65:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** int
+  66:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** debugGetChar(FILE * fb)
+  67:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** {
+  43               		.loc 1 67 0
+  44               		.cfi_startproc
+  45               	.LVL2:
+  46               	/* prologue: function */
+  47               	/* frame size = 0 */
+  48               	/* stack size = 0 */
+  49               	.L__stack_usage = 0
+  68:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** #ifdef DEBUG
+  69:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** 	//char c;
+  70:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** 	// Wait for the receive buffer to be filled
+  71:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c ****     //loop_until_bit_is_set(UCSR0A, RXC0);
+  72:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** 	if((DEBUGUART.STATUS & USART_RXCIF_bm))
+  50               		.loc 1 72 0
+  51 0012 8091 A108 		lds r24,2209
+  52               	.LVL3:
+  53 0016 87FF      		sbrs r24,7
+  54 0018 00C0      		rjmp .L7
+  73:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** 	{
+  74:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** 		// Read the receive buffer
+  75:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** 		//c = uart->DATA;
+  76:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** 	  return DEBUGUART.DATA;
+  55               		.loc 1 76 0
+  56 001a 8091 A008 		lds r24,2208
+  57 001e 90E0      		ldi r25,0
+  58 0020 0895      		ret
+  59               	.L7:
+  77:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** 	}
+  78:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** 	else
+  79:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** 	{
+  80:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** 	    return -1;
+  60               		.loc 1 80 0
+  61 0022 8FEF      		ldi r24,lo8(-1)
+  62 0024 9FEF      		ldi r25,lo8(-1)
+  81:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** 	}
+  82:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** #else
+  83:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** 	return -1;
+  84:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** #endif
+  85:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** }
+  63               		.loc 1 85 0
+  64 0026 0895      		ret
+  65               		.cfi_endproc
+  66               	.LFE3:
+  68               	.global	initDebugUart
+  70               	initDebugUart:
+  71               	.LFB1:
+  47:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** {
+  72               		.loc 1 47 0
+  73               		.cfi_startproc
+  74               	.LVL4:
+  75               	/* prologue: function */
+  76               	/* frame size = 0 */
+  77               	/* stack size = 0 */
+  78               	.L__stack_usage = 0
+  79 0028 FC01      		movw r30,r24
+  48:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** 	uart->CTRLA = 0;	// disable RX/TX interrupts
+  80               		.loc 1 48 0
+  81 002a 1382      		std Z+3,__zero_reg__
+  49:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** 	uart->CTRLB = USART_RXEN_bm | USART_TXEN_bm;
+  82               		.loc 1 49 0
+  83 002c 88E1      		ldi r24,lo8(24)
+  84               	.LVL5:
+  85 002e 8483      		std Z+4,r24
+  50:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** 	uart->CTRLC = USART_CHSIZE_8BIT_gc;
+  86               		.loc 1 50 0
+  87 0030 83E0      		ldi r24,lo8(3)
+  88 0032 8583      		std Z+5,r24
+  51:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** 	uart->BAUDCTRLA = 103;  // 115200  103;	// 19200?!
+  89               		.loc 1 51 0
+  90 0034 87E6      		ldi r24,lo8(103)
+  91 0036 8683      		std Z+6,r24
+  52:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** 	uart->BAUDCTRLB = 0;
+  92               		.loc 1 52 0
+  93 0038 1782      		std Z+7,__zero_reg__
+  94 003a 0895      		ret
+  95               		.cfi_endproc
+  96               	.LFE1:
+  98               	.global	initHWDebug
+ 100               	initHWDebug:
+ 101               	.LFB4:
+  86:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** 
+  87:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** 
+  88:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** void initHWDebug() 
+  89:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** {
+ 102               		.loc 1 89 0
+ 103               		.cfi_startproc
+ 104               	/* prologue: function */
+ 105               	/* frame size = 0 */
+ 106               	/* stack size = 0 */
+ 107               	.L__stack_usage = 0
+ 108               	.LVL6:
+ 109               	.LBB4:
+ 110               	.LBB5:
+  48:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** 	uart->CTRLA = 0;	// disable RX/TX interrupts
+ 111               		.loc 1 48 0
+ 112 003c E0EA      		ldi r30,lo8(-96)
+ 113 003e F8E0      		ldi r31,lo8(8)
+ 114 0040 1382      		std Z+3,__zero_reg__
+  49:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** 	uart->CTRLB = USART_RXEN_bm | USART_TXEN_bm;
+ 115               		.loc 1 49 0
+ 116 0042 88E1      		ldi r24,lo8(24)
+ 117 0044 8483      		std Z+4,r24
+  50:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** 	uart->CTRLC = USART_CHSIZE_8BIT_gc;
+ 118               		.loc 1 50 0
+ 119 0046 23E0      		ldi r18,lo8(3)
+ 120 0048 2583      		std Z+5,r18
+  51:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** 	uart->BAUDCTRLA = 103;  // 115200  103;	// 19200?!
+ 121               		.loc 1 51 0
+ 122 004a 87E6      		ldi r24,lo8(103)
+ 123 004c 8683      		std Z+6,r24
+  52:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** 	uart->BAUDCTRLB = 0;
+ 124               		.loc 1 52 0
+ 125 004e 1782      		std Z+7,__zero_reg__
+ 126               	.LBE5:
+ 127               	.LBE4:
+  90:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** #ifdef DEBUG
+  91:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c ****     initDebugUart(&DEBUGUART);
+  92:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c ****      
+  93:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c ****     fdev_setup_stream(&debug, debugPutChar, debugGetChar, _FDEV_SETUP_RW);
+ 128               		.loc 1 93 0
+ 129 0050 80E0      		ldi r24,lo8(gs(debugPutChar))
+ 130 0052 90E0      		ldi r25,hi8(gs(debugPutChar))
+ 131 0054 8093 0000 		sts debug+8,r24
+ 132 0058 9093 0000 		sts debug+8+1,r25
+ 133 005c 80E0      		ldi r24,lo8(gs(debugGetChar))
+ 134 005e 90E0      		ldi r25,hi8(gs(debugGetChar))
+ 135 0060 8093 0000 		sts debug+10,r24
+ 136 0064 9093 0000 		sts debug+10+1,r25
+ 137 0068 2093 0000 		sts debug+3,r18
+ 138 006c 1092 0000 		sts debug+12,__zero_reg__
+ 139 0070 1092 0000 		sts debug+12+1,__zero_reg__
+  94:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c **** 
+  95:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwDebug.c ****     stdout = &debug;
+ 140               		.loc 1 95 0
+ 141 0074 80E0      		ldi r24,lo8(debug)
+ 142 0076 90E0      		ldi r25,hi8(debug)
+ 143 0078 8093 0000 		sts __iob+2,r24
+ 144 007c 9093 0000 		sts __iob+2+1,r25
+ 145 0080 0895      		ret
+ 146               		.cfi_endproc
+ 147               	.LFE4:
+ 149               		.comm	debug,14,1
+ 150               	.Letext0:
+ 151               		.file 2 "/usr/lib/avr/include/stdio.h"
+ 152               		.file 3 "/usr/lib/avr/include/stdint.h"
+ 153               		.file 4 "/usr/lib/avr/include/avr/iox256a3.h"
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 hwDebug.c
+     /tmp/ccBq3bD0.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccBq3bD0.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccBq3bD0.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccBq3bD0.s:5      *ABS*:000000000000003b __RAMPZ__
+     /tmp/ccBq3bD0.s:6      *ABS*:0000000000000034 __CCP__
+     /tmp/ccBq3bD0.s:7      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccBq3bD0.s:8      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccBq3bD0.s:14     .text:0000000000000000 debugPutChar
+     /tmp/ccBq3bD0.s:41     .text:0000000000000012 debugGetChar
+     /tmp/ccBq3bD0.s:70     .text:0000000000000028 initDebugUart
+     /tmp/ccBq3bD0.s:100    .text:000000000000003c initHWDebug
+                            *COM*:000000000000000e debug
+
+UNDEFINED SYMBOLS
+__iob
+__do_clear_bss

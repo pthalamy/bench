@@ -1,0 +1,2105 @@
+System Debug Enabled
+Benchmark run is bench_OPFLOATADD_100.bb
+Benchmark size is 1200
+All facts processed
+bench_OPFLOATADD_100.bb:Cycles:49427:Benchsize:1200
+System Debug Enabled
+Benchmark run is bench_OPFLOATADD_200.bb
+Benchmark size is 2400
+All facts processed
+bench_OPFLOATADD_200.bb:Cycles:87435:Benchsize:2400
+System Debug Enabled
+Benchmark run is bench_OPFLOATADD_300.bb
+Benchmark size is 3600
+All facts processed
+bench_OPFLOATADD_300.bb:Cycles:123307:Benchsize:3600
+System Debug Enabled
+Benchmark run is bench_OPFLOATADD_400.bb
+Benchmark size is 4800
+All facts processed
+bench_OPFLOATADD_400.bb:Cycles:159179:Benchsize:4800
+System Debug Enabled
+Benchmark run is bench_OPFLOATADD_500.bb
+Benchmark size is 6000
+All facts processed
+bench_OPFLOATADD_500.bb:Cycles:205945:Benchsize:6000
+System Debug Enabled
+Benchmark run is bench_OPFLOATADD_600.bb
+Benchmark size is 7200
+All facts processed
+bench_OPFLOATADD_600.bb:Cycles:241817:Benchsize:7200
+System Debug Enabled
+Benchmark run is bench_OPFLOATADD_700.bb
+Benchmark size is 8400
+All facts processed
+bench_OPFLOATADD_700.bb:Cycles:279825:Benchsize:8400
+System Debug Enabled
+Benchmark run is bench_OPFLOATADD_800.bb
+Benchmark size is 9600
+All facts processed
+bench_OPFLOATADD_800.bb:Cycles:315697:Benchsize:9600
+System Debug Enabled
+Benchmark run is bench_OPFLOATADD_900.bb
+Benchmark size is 10800
+All facts processed
+bench_OPFLOATADD_900.bb:Cycles:375038:Benchsize:10800
+System Debug Enabled
+Benchmark run is bench_OPFLOATADD_1000.bb
+Benchmark size is 12000
+All facts processed
+bench_OPFLOATADD_1000.bb:Cycles:413386:Benchsize:12000
+System Debug Enabled
+Benchmark run is bench_OPFLOATADD_1100.bb
+Benchmark size is 13200
+All facts processed
+bench_OPFLOATADD_1100.bb:Cycles:451514:Benchsize:13200
+System Debug Enabled
+Benchmark run is bench_OPFLOATDIV_100.bb
+Benchmark size is 1200
+All facts processed
+bench_OPFLOATDIV_100.bb:Cycles:50627:Benchsize:1200
+System Debug Enabled
+Benchmark run is bench_OPFLOATDIV_200.bb
+Benchmark size is 2400
+All facts processed
+bench_OPFLOATDIV_200.bb:Cycles:89835:Benchsize:2400
+System Debug Enabled
+Benchmark run is bench_OPFLOATDIV_300.bb
+Benchmark size is 3600
+All facts processed
+bench_OPFLOATDIV_300.bb:Cycles:126907:Benchsize:3600
+System Debug Enabled
+Benchmark run is bench_OPFLOATDIV_400.bb
+Benchmark size is 4800
+All facts processed
+bench_OPFLOATDIV_400.bb:Cycles:163979:Benchsize:4800
+System Debug Enabled
+Benchmark run is bench_OPFLOATDIV_500.bb
+Benchmark size is 6000
+All facts processed
+bench_OPFLOATDIV_500.bb:Cycles:211945:Benchsize:6000
+System Debug Enabled
+Benchmark run is bench_OPFLOATDIV_600.bb
+Benchmark size is 7200
+All facts processed
+bench_OPFLOATDIV_600.bb:Cycles:251153:Benchsize:7200
+System Debug Enabled
+Benchmark run is bench_OPFLOATDIV_700.bb
+Benchmark size is 8400
+All facts processed
+bench_OPFLOATDIV_700.bb:Cycles:288225:Benchsize:8400
+System Debug Enabled
+Benchmark run is bench_OPFLOATDIV_800.bb
+Benchmark size is 9600
+All facts processed
+bench_OPFLOATDIV_800.bb:Cycles:327433:Benchsize:9600
+System Debug Enabled
+Benchmark run is bench_OPFLOATDIV_900.bb
+Benchmark size is 10800
+All facts processed
+bench_OPFLOATDIV_900.bb:Cycles:386718:Benchsize:10800
+System Debug Enabled
+Benchmark run is bench_OPFLOATDIV_1000.bb
+Benchmark size is 12000
+All facts processed
+bench_OPFLOATDIV_1000.bb:Cycles:428320:Benchsize:12000
+System Debug Enabled
+Benchmark run is bench_OPFLOATDIV_1100.bb
+Benchmark size is 13200
+All facts processed
+bench_OPFLOATDIV_1100.bb:Cycles:467758:Benchsize:13200
+System Debug Enabled
+Benchmark run is bench_OPFLOATEQ_100.bb
+Benchmark size is 1200
+All facts processed
+bench_OPFLOATEQ_100.bb:Cycles:45527:Benchsize:1200
+System Debug Enabled
+Benchmark run is bench_OPFLOATEQ_200.bb
+Benchmark size is 2400
+All facts processed
+bench_OPFLOATEQ_200.bb:Cycles:77499:Benchsize:2400
+System Debug Enabled
+Benchmark run is bench_OPFLOATEQ_300.bb
+Benchmark size is 3600
+All facts processed
+bench_OPFLOATEQ_300.bb:Cycles:109471:Benchsize:3600
+System Debug Enabled
+Benchmark run is bench_OPFLOATEQ_400.bb
+Benchmark size is 4800
+All facts processed
+bench_OPFLOATEQ_400.bb:Cycles:141443:Benchsize:4800
+System Debug Enabled
+Benchmark run is bench_OPFLOATEQ_500.bb
+Benchmark size is 6000
+All facts processed
+bench_OPFLOATEQ_500.bb:Cycles:184309:Benchsize:6000
+System Debug Enabled
+Benchmark run is bench_OPFLOATEQ_600.bb
+Benchmark size is 7200
+All facts processed
+bench_OPFLOATEQ_600.bb:Cycles:216281:Benchsize:7200
+System Debug Enabled
+Benchmark run is bench_OPFLOATEQ_700.bb
+Benchmark size is 8400
+All facts processed
+bench_OPFLOATEQ_700.bb:Cycles:248253:Benchsize:8400
+System Debug Enabled
+Benchmark run is bench_OPFLOATEQ_800.bb
+Benchmark size is 9600
+All facts processed
+bench_OPFLOATEQ_800.bb:Cycles:280225:Benchsize:9600
+System Debug Enabled
+Benchmark run is bench_OPFLOATEQ_900.bb
+Benchmark size is 10800
+All facts processed
+bench_OPFLOATEQ_900.bb:Cycles:312197:Benchsize:10800
+System Debug Enabled
+Benchmark run is bench_OPFLOATEQ_1000.bb
+Benchmark size is 12000
+All facts processed
+bench_OPFLOATEQ_1000.bb:Cycles:365034:Benchsize:12000
+System Debug Enabled
+Benchmark run is bench_OPFLOATEQ_1100.bb
+Benchmark size is 13200
+All facts processed
+bench_OPFLOATEQ_1100.bb:Cycles:399042:Benchsize:13200
+System Debug Enabled
+Benchmark run is bench_OPFLOATGT_100.bb
+Benchmark size is 1200
+All facts processed
+bench_OPFLOATGT_100.bb:Cycles:45527:Benchsize:1200
+System Debug Enabled
+Benchmark run is bench_OPFLOATGT_200.bb
+Benchmark size is 2400
+All facts processed
+bench_OPFLOATGT_200.bb:Cycles:77499:Benchsize:2400
+System Debug Enabled
+Benchmark run is bench_OPFLOATGT_300.bb
+Benchmark size is 3600
+All facts processed
+bench_OPFLOATGT_300.bb:Cycles:109471:Benchsize:3600
+System Debug Enabled
+Benchmark run is bench_OPFLOATGT_400.bb
+Benchmark size is 4800
+All facts processed
+bench_OPFLOATGT_400.bb:Cycles:141443:Benchsize:4800
+System Debug Enabled
+Benchmark run is bench_OPFLOATGT_500.bb
+Benchmark size is 6000
+All facts processed
+bench_OPFLOATGT_500.bb:Cycles:184309:Benchsize:6000
+System Debug Enabled
+Benchmark run is bench_OPFLOATGT_600.bb
+Benchmark size is 7200
+All facts processed
+bench_OPFLOATGT_600.bb:Cycles:216281:Benchsize:7200
+System Debug Enabled
+Benchmark run is bench_OPFLOATGT_700.bb
+Benchmark size is 8400
+All facts processed
+bench_OPFLOATGT_700.bb:Cycles:248253:Benchsize:8400
+System Debug Enabled
+Benchmark run is bench_OPFLOATGT_800.bb
+Benchmark size is 9600
+All facts processed
+bench_OPFLOATGT_800.bb:Cycles:280225:Benchsize:9600
+System Debug Enabled
+Benchmark run is bench_OPFLOATGT_900.bb
+Benchmark size is 10800
+All facts processed
+bench_OPFLOATGT_900.bb:Cycles:312197:Benchsize:10800
+System Debug Enabled
+Benchmark run is bench_OPFLOATGT_1000.bb
+Benchmark size is 12000
+All facts processed
+bench_OPFLOATGT_1000.bb:Cycles:365034:Benchsize:12000
+System Debug Enabled
+Benchmark run is bench_OPFLOATGT_1100.bb
+Benchmark size is 13200
+All facts processed
+bench_OPFLOATGT_1100.bb:Cycles:399042:Benchsize:13200
+System Debug Enabled
+Benchmark run is bench_OPFLOATGTE_100.bb
+Benchmark size is 1200
+All facts processed
+bench_OPFLOATGTE_100.bb:Cycles:45327:Benchsize:1200
+System Debug Enabled
+Benchmark run is bench_OPFLOATGTE_200.bb
+Benchmark size is 2400
+All facts processed
+bench_OPFLOATGTE_200.bb:Cycles:77099:Benchsize:2400
+System Debug Enabled
+Benchmark run is bench_OPFLOATGTE_300.bb
+Benchmark size is 3600
+All facts processed
+bench_OPFLOATGTE_300.bb:Cycles:108871:Benchsize:3600
+System Debug Enabled
+Benchmark run is bench_OPFLOATGTE_400.bb
+Benchmark size is 4800
+All facts processed
+bench_OPFLOATGTE_400.bb:Cycles:140643:Benchsize:4800
+System Debug Enabled
+Benchmark run is bench_OPFLOATGTE_500.bb
+Benchmark size is 6000
+All facts processed
+bench_OPFLOATGTE_500.bb:Cycles:180561:Benchsize:6000
+System Debug Enabled
+Benchmark run is bench_OPFLOATGTE_600.bb
+Benchmark size is 7200
+All facts processed
+bench_OPFLOATGTE_600.bb:Cycles:215081:Benchsize:7200
+System Debug Enabled
+Benchmark run is bench_OPFLOATGTE_700.bb
+Benchmark size is 8400
+All facts processed
+bench_OPFLOATGTE_700.bb:Cycles:244717:Benchsize:8400
+System Debug Enabled
+Benchmark run is bench_OPFLOATGTE_800.bb
+Benchmark size is 9600
+All facts processed
+bench_OPFLOATGTE_800.bb:Cycles:276489:Benchsize:9600
+System Debug Enabled
+Benchmark run is bench_OPFLOATGTE_900.bb
+Benchmark size is 10800
+All facts processed
+bench_OPFLOATGTE_900.bb:Cycles:308261:Benchsize:10800
+System Debug Enabled
+Benchmark run is bench_OPFLOATGTE_1000.bb
+Benchmark size is 12000
+All facts processed
+bench_OPFLOATGTE_1000.bb:Cycles:340033:Benchsize:12000
+System Debug Enabled
+Benchmark run is bench_OPFLOATGTE_1100.bb
+Benchmark size is 13200
+All facts processed
+bench_OPFLOATGTE_1100.bb:Cycles:396732:Benchsize:13200
+System Debug Enabled
+Benchmark run is bench_OPFLOATLT_100.bb
+Benchmark size is 1200
+All facts processed
+bench_OPFLOATLT_100.bb:Cycles:45427:Benchsize:1200
+System Debug Enabled
+Benchmark run is bench_OPFLOATLT_200.bb
+Benchmark size is 2400
+All facts processed
+bench_OPFLOATLT_200.bb:Cycles:77299:Benchsize:2400
+System Debug Enabled
+Benchmark run is bench_OPFLOATLT_300.bb
+Benchmark size is 3600
+All facts processed
+bench_OPFLOATLT_300.bb:Cycles:109171:Benchsize:3600
+System Debug Enabled
+Benchmark run is bench_OPFLOATLT_400.bb
+Benchmark size is 4800
+All facts processed
+bench_OPFLOATLT_400.bb:Cycles:141043:Benchsize:4800
+System Debug Enabled
+Benchmark run is bench_OPFLOATLT_500.bb
+Benchmark size is 6000
+All facts processed
+bench_OPFLOATLT_500.bb:Cycles:183809:Benchsize:6000
+System Debug Enabled
+Benchmark run is bench_OPFLOATLT_600.bb
+Benchmark size is 7200
+All facts processed
+bench_OPFLOATLT_600.bb:Cycles:215681:Benchsize:7200
+System Debug Enabled
+Benchmark run is bench_OPFLOATLT_700.bb
+Benchmark size is 8400
+All facts processed
+bench_OPFLOATLT_700.bb:Cycles:247553:Benchsize:8400
+System Debug Enabled
+Benchmark run is bench_OPFLOATLT_800.bb
+Benchmark size is 9600
+All facts processed
+bench_OPFLOATLT_800.bb:Cycles:279425:Benchsize:9600
+System Debug Enabled
+Benchmark run is bench_OPFLOATLT_900.bb
+Benchmark size is 10800
+All facts processed
+bench_OPFLOATLT_900.bb:Cycles:311297:Benchsize:10800
+System Debug Enabled
+Benchmark run is bench_OPFLOATLT_1000.bb
+Benchmark size is 12000
+All facts processed
+bench_OPFLOATLT_1000.bb:Cycles:363924:Benchsize:12000
+System Debug Enabled
+Benchmark run is bench_OPFLOATLT_1100.bb
+Benchmark size is 13200
+All facts processed
+bench_OPFLOATLT_1100.bb:Cycles:397832:Benchsize:13200
+System Debug Enabled
+Benchmark run is bench_OPFLOATLTE_100.bb
+Benchmark size is 1200
+All facts processed
+bench_OPFLOATLTE_100.bb:Cycles:45327:Benchsize:1200
+System Debug Enabled
+Benchmark run is bench_OPFLOATLTE_200.bb
+Benchmark size is 2400
+All facts processed
+bench_OPFLOATLTE_200.bb:Cycles:77099:Benchsize:2400
+System Debug Enabled
+Benchmark run is bench_OPFLOATLTE_300.bb
+Benchmark size is 3600
+All facts processed
+bench_OPFLOATLTE_300.bb:Cycles:108871:Benchsize:3600
+System Debug Enabled
+Benchmark run is bench_OPFLOATLTE_400.bb
+Benchmark size is 4800
+All facts processed
+bench_OPFLOATLTE_400.bb:Cycles:140643:Benchsize:4800
+System Debug Enabled
+Benchmark run is bench_OPFLOATLTE_500.bb
+Benchmark size is 6000
+All facts processed
+bench_OPFLOATLTE_500.bb:Cycles:180561:Benchsize:6000
+System Debug Enabled
+Benchmark run is bench_OPFLOATLTE_600.bb
+Benchmark size is 7200
+All facts processed
+bench_OPFLOATLTE_600.bb:Cycles:215081:Benchsize:7200
+System Debug Enabled
+Benchmark run is bench_OPFLOATLTE_700.bb
+Benchmark size is 8400
+All facts processed
+bench_OPFLOATLTE_700.bb:Cycles:244717:Benchsize:8400
+System Debug Enabled
+Benchmark run is bench_OPFLOATLTE_800.bb
+Benchmark size is 9600
+All facts processed
+bench_OPFLOATLTE_800.bb:Cycles:276489:Benchsize:9600
+System Debug Enabled
+Benchmark run is bench_OPFLOATLTE_900.bb
+Benchmark size is 10800
+All facts processed
+bench_OPFLOATLTE_900.bb:Cycles:308261:Benchsize:10800
+System Debug Enabled
+Benchmark run is bench_OPFLOATLTE_1000.bb
+Benchmark size is 12000
+All facts processed
+bench_OPFLOATLTE_1000.bb:Cycles:340033:Benchsize:12000
+System Debug Enabled
+Benchmark run is bench_OPFLOATLTE_1100.bb
+Benchmark size is 13200
+All facts processed
+bench_OPFLOATLTE_1100.bb:Cycles:396732:Benchsize:13200
+System Debug Enabled
+Benchmark run is bench_OPFLOATMOD_100.bb
+Benchmark size is 1200
+All facts processed
+bench_OPFLOATMOD_100.bb:Cycles:47727:Benchsize:1200
+System Debug Enabled
+Benchmark run is bench_OPFLOATMOD_200.bb
+Benchmark size is 2400
+All facts processed
+bench_OPFLOATMOD_200.bb:Cycles:81899:Benchsize:2400
+System Debug Enabled
+Benchmark run is bench_OPFLOATMOD_300.bb
+Benchmark size is 3600
+All facts processed
+bench_OPFLOATMOD_300.bb:Cycles:116071:Benchsize:3600
+System Debug Enabled
+Benchmark run is bench_OPFLOATMOD_400.bb
+Benchmark size is 4800
+All facts processed
+bench_OPFLOATMOD_400.bb:Cycles:152379:Benchsize:4800
+System Debug Enabled
+Benchmark run is bench_OPFLOATMOD_500.bb
+Benchmark size is 6000
+All facts processed
+bench_OPFLOATMOD_500.bb:Cycles:195309:Benchsize:6000
+System Debug Enabled
+Benchmark run is bench_OPFLOATMOD_600.bb
+Benchmark size is 7200
+All facts processed
+bench_OPFLOATMOD_600.bb:Cycles:231617:Benchsize:7200
+System Debug Enabled
+Benchmark run is bench_OPFLOATMOD_700.bb
+Benchmark size is 8400
+All facts processed
+bench_OPFLOATMOD_700.bb:Cycles:265789:Benchsize:8400
+System Debug Enabled
+Benchmark run is bench_OPFLOATMOD_800.bb
+Benchmark size is 9600
+All facts processed
+bench_OPFLOATMOD_800.bb:Cycles:299961:Benchsize:9600
+System Debug Enabled
+Benchmark run is bench_OPFLOATMOD_900.bb
+Benchmark size is 10800
+All facts processed
+bench_OPFLOATMOD_900.bb:Cycles:334133:Benchsize:10800
+System Debug Enabled
+Benchmark run is bench_OPFLOATMOD_1000.bb
+Benchmark size is 12000
+All facts processed
+bench_OPFLOATMOD_1000.bb:Cycles:393012:Benchsize:12000
+System Debug Enabled
+Benchmark run is bench_OPFLOATMOD_1100.bb
+Benchmark size is 13200
+All facts processed
+bench_OPFLOATMOD_1100.bb:Cycles:429440:Benchsize:13200
+System Debug Enabled
+Benchmark run is bench_OPFLOATMUL_100.bb
+Benchmark size is 1200
+All facts processed
+bench_OPFLOATMUL_100.bb:Cycles:49127:Benchsize:1200
+System Debug Enabled
+Benchmark run is bench_OPFLOATMUL_200.bb
+Benchmark size is 2400
+All facts processed
+bench_OPFLOATMUL_200.bb:Cycles:84699:Benchsize:2400
+System Debug Enabled
+Benchmark run is bench_OPFLOATMUL_300.bb
+Benchmark size is 3600
+All facts processed
+bench_OPFLOATMUL_300.bb:Cycles:122407:Benchsize:3600
+System Debug Enabled
+Benchmark run is bench_OPFLOATMUL_400.bb
+Benchmark size is 4800
+All facts processed
+bench_OPFLOATMUL_400.bb:Cycles:157979:Benchsize:4800
+System Debug Enabled
+Benchmark run is bench_OPFLOATMUL_500.bb
+Benchmark size is 6000
+All facts processed
+bench_OPFLOATMUL_500.bb:Cycles:204445:Benchsize:6000
+System Debug Enabled
+Benchmark run is bench_OPFLOATMUL_600.bb
+Benchmark size is 7200
+All facts processed
+bench_OPFLOATMUL_600.bb:Cycles:240017:Benchsize:7200
+System Debug Enabled
+Benchmark run is bench_OPFLOATMUL_700.bb
+Benchmark size is 8400
+All facts processed
+bench_OPFLOATMUL_700.bb:Cycles:275589:Benchsize:8400
+System Debug Enabled
+Benchmark run is bench_OPFLOATMUL_800.bb
+Benchmark size is 9600
+All facts processed
+bench_OPFLOATMUL_800.bb:Cycles:313297:Benchsize:9600
+System Debug Enabled
+Benchmark run is bench_OPFLOATMUL_900.bb
+Benchmark size is 10800
+All facts processed
+bench_OPFLOATMUL_900.bb:Cycles:370174:Benchsize:10800
+System Debug Enabled
+Benchmark run is bench_OPFLOATMUL_1000.bb
+Benchmark size is 12000
+All facts processed
+bench_OPFLOATMUL_1000.bb:Cycles:410166:Benchsize:12000
+System Debug Enabled
+Benchmark run is bench_OPFLOATMUL_1100.bb
+Benchmark size is 13200
+All facts processed
+bench_OPFLOATMUL_1100.bb:Cycles:447994:Benchsize:13200
+System Debug Enabled
+Benchmark run is bench_OPFLOATNEQ_100.bb
+Benchmark size is 1200
+All facts processed
+bench_OPFLOATNEQ_100.bb:Cycles:44927:Benchsize:1200
+System Debug Enabled
+Benchmark run is bench_OPFLOATNEQ_200.bb
+Benchmark size is 2400
+All facts processed
+bench_OPFLOATNEQ_200.bb:Cycles:76299:Benchsize:2400
+System Debug Enabled
+Benchmark run is bench_OPFLOATNEQ_300.bb
+Benchmark size is 3600
+All facts processed
+bench_OPFLOATNEQ_300.bb:Cycles:107671:Benchsize:3600
+System Debug Enabled
+Benchmark run is bench_OPFLOATNEQ_400.bb
+Benchmark size is 4800
+All facts processed
+bench_OPFLOATNEQ_400.bb:Cycles:139043:Benchsize:4800
+System Debug Enabled
+Benchmark run is bench_OPFLOATNEQ_500.bb
+Benchmark size is 6000
+All facts processed
+bench_OPFLOATNEQ_500.bb:Cycles:178561:Benchsize:6000
+System Debug Enabled
+Benchmark run is bench_OPFLOATNEQ_600.bb
+Benchmark size is 7200
+All facts processed
+bench_OPFLOATNEQ_600.bb:Cycles:210545:Benchsize:7200
+System Debug Enabled
+Benchmark run is bench_OPFLOATNEQ_700.bb
+Benchmark size is 8400
+All facts processed
+bench_OPFLOATNEQ_700.bb:Cycles:241917:Benchsize:8400
+System Debug Enabled
+Benchmark run is bench_OPFLOATNEQ_800.bb
+Benchmark size is 9600
+All facts processed
+bench_OPFLOATNEQ_800.bb:Cycles:273289:Benchsize:9600
+System Debug Enabled
+Benchmark run is bench_OPFLOATNEQ_900.bb
+Benchmark size is 10800
+All facts processed
+bench_OPFLOATNEQ_900.bb:Cycles:304661:Benchsize:10800
+System Debug Enabled
+Benchmark run is bench_OPFLOATNEQ_1000.bb
+Benchmark size is 12000
+All facts processed
+bench_OPFLOATNEQ_1000.bb:Cycles:336033:Benchsize:12000
+System Debug Enabled
+Benchmark run is bench_OPFLOATNEQ_1100.bb
+Benchmark size is 13200
+All facts processed
+bench_OPFLOATNEQ_1100.bb:Cycles:391892:Benchsize:13200
+System Debug Enabled
+Benchmark run is bench_OPFLOATSUB_100.bb
+Benchmark size is 1200
+All facts processed
+bench_OPFLOATSUB_100.bb:Cycles:49327:Benchsize:1200
+System Debug Enabled
+Benchmark run is bench_OPFLOATSUB_200.bb
+Benchmark size is 2400
+All facts processed
+bench_OPFLOATSUB_200.bb:Cycles:87235:Benchsize:2400
+System Debug Enabled
+Benchmark run is bench_OPFLOATSUB_300.bb
+Benchmark size is 3600
+All facts processed
+bench_OPFLOATSUB_300.bb:Cycles:123007:Benchsize:3600
+System Debug Enabled
+Benchmark run is bench_OPFLOATSUB_400.bb
+Benchmark size is 4800
+All facts processed
+bench_OPFLOATSUB_400.bb:Cycles:158779:Benchsize:4800
+System Debug Enabled
+Benchmark run is bench_OPFLOATSUB_500.bb
+Benchmark size is 6000
+All facts processed
+bench_OPFLOATSUB_500.bb:Cycles:205445:Benchsize:6000
+System Debug Enabled
+Benchmark run is bench_OPFLOATSUB_600.bb
+Benchmark size is 7200
+All facts processed
+bench_OPFLOATSUB_600.bb:Cycles:241217:Benchsize:7200
+System Debug Enabled
+Benchmark run is bench_OPFLOATSUB_700.bb
+Benchmark size is 8400
+All facts processed
+bench_OPFLOATSUB_700.bb:Cycles:279125:Benchsize:8400
+System Debug Enabled
+Benchmark run is bench_OPFLOATSUB_800.bb
+Benchmark size is 9600
+All facts processed
+bench_OPFLOATSUB_800.bb:Cycles:314897:Benchsize:9600
+System Debug Enabled
+Benchmark run is bench_OPFLOATSUB_900.bb
+Benchmark size is 10800
+All facts processed
+bench_OPFLOATSUB_900.bb:Cycles:371974:Benchsize:10800
+System Debug Enabled
+Benchmark run is bench_OPFLOATSUB_1000.bb
+Benchmark size is 12000
+All facts processed
+bench_OPFLOATSUB_1000.bb:Cycles:412386:Benchsize:12000
+System Debug Enabled
+Benchmark run is bench_OPFLOATSUB_1100.bb
+Benchmark size is 13200
+All facts processed
+bench_OPFLOATSUB_1100.bb:Cycles:450304:Benchsize:13200
+System Debug Enabled
+Benchmark run is bench_OPINTADD_100.bb
+Benchmark size is 1200
+All facts processed
+bench_OPINTADD_100.bb:Cycles:41627:Benchsize:1200
+System Debug Enabled
+Benchmark run is bench_OPINTADD_200.bb
+Benchmark size is 2400
+All facts processed
+bench_OPINTADD_200.bb:Cycles:67563:Benchsize:2400
+System Debug Enabled
+Benchmark run is bench_OPINTADD_300.bb
+Benchmark size is 3600
+All facts processed
+bench_OPINTADD_300.bb:Cycles:95635:Benchsize:3600
+System Debug Enabled
+Benchmark run is bench_OPINTADD_400.bb
+Benchmark size is 4800
+All facts processed
+bench_OPINTADD_400.bb:Cycles:123707:Benchsize:4800
+System Debug Enabled
+Benchmark run is bench_OPINTADD_500.bb
+Benchmark size is 6000
+All facts processed
+bench_OPINTADD_500.bb:Cycles:151779:Benchsize:6000
+System Debug Enabled
+Benchmark run is bench_OPINTADD_600.bb
+Benchmark size is 7200
+All facts processed
+bench_OPINTADD_600.bb:Cycles:188609:Benchsize:7200
+System Debug Enabled
+Benchmark run is bench_OPINTADD_700.bb
+Benchmark size is 8400
+All facts processed
+bench_OPINTADD_700.bb:Cycles:216681:Benchsize:8400
+System Debug Enabled
+Benchmark run is bench_OPINTADD_800.bb
+Benchmark size is 9600
+All facts processed
+bench_OPINTADD_800.bb:Cycles:242617:Benchsize:9600
+System Debug Enabled
+Benchmark run is bench_OPINTADD_900.bb
+Benchmark size is 10800
+All facts processed
+bench_OPINTADD_900.bb:Cycles:270689:Benchsize:10800
+System Debug Enabled
+Benchmark run is bench_OPINTADD_1000.bb
+Benchmark size is 12000
+All facts processed
+bench_OPINTADD_1000.bb:Cycles:298761:Benchsize:12000
+System Debug Enabled
+Benchmark run is bench_OPINTADD_1100.bb
+Benchmark size is 13200
+All facts processed
+bench_OPINTADD_1100.bb:Cycles:324697:Benchsize:13200
+System Debug Enabled
+Benchmark run is bench_OPINTDIV_100.bb
+Benchmark size is 1200
+All facts processed
+bench_OPINTDIV_100.bb:Cycles:113071:Benchsize:1200
+System Debug Enabled
+Benchmark run is bench_OPINTDIV_200.bb
+Benchmark size is 2400
+All facts processed
+bench_OPINTDIV_200.bb:Cycles:223481:Benchsize:2400
+System Debug Enabled
+Benchmark run is bench_OPINTDIV_300.bb
+Benchmark size is 3600
+All facts processed
+bench_OPINTDIV_300.bb:Cycles:322997:Benchsize:3600
+System Debug Enabled
+Benchmark run is bench_OPINTDIV_400.bb
+Benchmark size is 4800
+All facts processed
+bench_OPINTDIV_400.bb:Cycles:450604:Benchsize:4800
+System Debug Enabled
+Benchmark run is bench_OPINTDIV_500.bb
+Benchmark size is 6000
+All facts processed
+bench_OPINTDIV_500.bb:Cycles:557207:Benchsize:6000
+System Debug Enabled
+Benchmark run is bench_OPINTDIV_600.bb
+Benchmark size is 7200
+All facts processed
+bench_OPINTDIV_600.bb:Cycles:656231:Benchsize:7200
+System Debug Enabled
+Benchmark run is bench_OPINTDIV_700.bb
+Benchmark size is 8400
+All facts processed
+bench_OPINTDIV_700.bb:Cycles:755255:Benchsize:8400
+System Debug Enabled
+Benchmark run is bench_OPINTDIV_800.bb
+Benchmark size is 9600
+All facts processed
+bench_OPINTDIV_800.bb:Cycles:856333:Benchsize:9600
+System Debug Enabled
+Benchmark run is bench_OPINTDIV_900.bb
+Benchmark size is 10800
+All facts processed
+bench_OPINTDIV_900.bb:Cycles:955357:Benchsize:10800
+System Debug Enabled
+Benchmark run is bench_OPINTDIV_1000.bb
+Benchmark size is 12000
+All facts processed
+bench_OPINTDIV_1000.bb:Cycles:1054381:Benchsize:12000
+System Debug Enabled
+Benchmark run is bench_OPINTDIV_1100.bb
+Benchmark size is 13200
+All facts processed
+bench_OPINTDIV_1100.bb:Cycles:1153405:Benchsize:13200
+System Debug Enabled
+Benchmark run is bench_OPINTEQ_100.bb
+Benchmark size is 1200
+All facts processed
+bench_OPINTEQ_100.bb:Cycles:42727:Benchsize:1200
+System Debug Enabled
+Benchmark run is bench_OPINTEQ_200.bb
+Benchmark size is 2400
+All facts processed
+bench_OPINTEQ_200.bb:Cycles:71899:Benchsize:2400
+System Debug Enabled
+Benchmark run is bench_OPINTEQ_300.bb
+Benchmark size is 3600
+All facts processed
+bench_OPINTEQ_300.bb:Cycles:98935:Benchsize:3600
+System Debug Enabled
+Benchmark run is bench_OPINTEQ_400.bb
+Benchmark size is 4800
+All facts processed
+bench_OPINTEQ_400.bb:Cycles:128107:Benchsize:4800
+System Debug Enabled
+Benchmark run is bench_OPINTEQ_500.bb
+Benchmark size is 6000
+All facts processed
+bench_OPINTEQ_500.bb:Cycles:157279:Benchsize:6000
+System Debug Enabled
+Benchmark run is bench_OPINTEQ_600.bb
+Benchmark size is 7200
+All facts processed
+bench_OPINTEQ_600.bb:Cycles:195209:Benchsize:7200
+System Debug Enabled
+Benchmark run is bench_OPINTEQ_700.bb
+Benchmark size is 8400
+All facts processed
+bench_OPINTEQ_700.bb:Cycles:224381:Benchsize:8400
+System Debug Enabled
+Benchmark run is bench_OPINTEQ_800.bb
+Benchmark size is 9600
+All facts processed
+bench_OPINTEQ_800.bb:Cycles:253553:Benchsize:9600
+System Debug Enabled
+Benchmark run is bench_OPINTEQ_900.bb
+Benchmark size is 10800
+All facts processed
+bench_OPINTEQ_900.bb:Cycles:282725:Benchsize:10800
+System Debug Enabled
+Benchmark run is bench_OPINTEQ_1000.bb
+Benchmark size is 12000
+All facts processed
+bench_OPINTEQ_1000.bb:Cycles:311897:Benchsize:12000
+System Debug Enabled
+Benchmark run is bench_OPINTEQ_1100.bb
+Benchmark size is 13200
+All facts processed
+bench_OPINTEQ_1100.bb:Cycles:338933:Benchsize:13200
+System Debug Enabled
+Benchmark run is bench_OPINTGT_100.bb
+Benchmark size is 1200
+All facts processed
+bench_OPINTGT_100.bb:Cycles:42827:Benchsize:1200
+System Debug Enabled
+Benchmark run is bench_OPINTGT_200.bb
+Benchmark size is 2400
+All facts processed
+bench_OPINTGT_200.bb:Cycles:72099:Benchsize:2400
+System Debug Enabled
+Benchmark run is bench_OPINTGT_300.bb
+Benchmark size is 3600
+All facts processed
+bench_OPINTGT_300.bb:Cycles:99235:Benchsize:3600
+System Debug Enabled
+Benchmark run is bench_OPINTGT_400.bb
+Benchmark size is 4800
+All facts processed
+bench_OPINTGT_400.bb:Cycles:128507:Benchsize:4800
+System Debug Enabled
+Benchmark run is bench_OPINTGT_500.bb
+Benchmark size is 6000
+All facts processed
+bench_OPINTGT_500.bb:Cycles:157779:Benchsize:6000
+System Debug Enabled
+Benchmark run is bench_OPINTGT_600.bb
+Benchmark size is 7200
+All facts processed
+bench_OPINTGT_600.bb:Cycles:195809:Benchsize:7200
+System Debug Enabled
+Benchmark run is bench_OPINTGT_700.bb
+Benchmark size is 8400
+All facts processed
+bench_OPINTGT_700.bb:Cycles:225081:Benchsize:8400
+System Debug Enabled
+Benchmark run is bench_OPINTGT_800.bb
+Benchmark size is 9600
+All facts processed
+bench_OPINTGT_800.bb:Cycles:254353:Benchsize:9600
+System Debug Enabled
+Benchmark run is bench_OPINTGT_900.bb
+Benchmark size is 10800
+All facts processed
+bench_OPINTGT_900.bb:Cycles:283625:Benchsize:10800
+System Debug Enabled
+Benchmark run is bench_OPINTGT_1000.bb
+Benchmark size is 12000
+All facts processed
+bench_OPINTGT_1000.bb:Cycles:312897:Benchsize:12000
+System Debug Enabled
+Benchmark run is bench_OPINTGT_1100.bb
+Benchmark size is 13200
+All facts processed
+bench_OPINTGT_1100.bb:Cycles:340033:Benchsize:13200
+System Debug Enabled
+Benchmark run is bench_OPINTGTE_100.bb
+Benchmark size is 1200
+All facts processed
+bench_OPINTGTE_100.bb:Cycles:42627:Benchsize:1200
+System Debug Enabled
+Benchmark run is bench_OPINTGTE_200.bb
+Benchmark size is 2400
+All facts processed
+bench_OPINTGTE_200.bb:Cycles:71699:Benchsize:2400
+System Debug Enabled
+Benchmark run is bench_OPINTGTE_300.bb
+Benchmark size is 3600
+All facts processed
+bench_OPINTGTE_300.bb:Cycles:98635:Benchsize:3600
+System Debug Enabled
+Benchmark run is bench_OPINTGTE_400.bb
+Benchmark size is 4800
+All facts processed
+bench_OPINTGTE_400.bb:Cycles:127707:Benchsize:4800
+System Debug Enabled
+Benchmark run is bench_OPINTGTE_500.bb
+Benchmark size is 6000
+All facts processed
+bench_OPINTGTE_500.bb:Cycles:156779:Benchsize:6000
+System Debug Enabled
+Benchmark run is bench_OPINTGTE_600.bb
+Benchmark size is 7200
+All facts processed
+bench_OPINTGTE_600.bb:Cycles:194609:Benchsize:7200
+System Debug Enabled
+Benchmark run is bench_OPINTGTE_700.bb
+Benchmark size is 8400
+All facts processed
+bench_OPINTGTE_700.bb:Cycles:223681:Benchsize:8400
+System Debug Enabled
+Benchmark run is bench_OPINTGTE_800.bb
+Benchmark size is 9600
+All facts processed
+bench_OPINTGTE_800.bb:Cycles:252753:Benchsize:9600
+System Debug Enabled
+Benchmark run is bench_OPINTGTE_900.bb
+Benchmark size is 10800
+All facts processed
+bench_OPINTGTE_900.bb:Cycles:281825:Benchsize:10800
+System Debug Enabled
+Benchmark run is bench_OPINTGTE_1000.bb
+Benchmark size is 12000
+All facts processed
+bench_OPINTGTE_1000.bb:Cycles:308761:Benchsize:12000
+System Debug Enabled
+Benchmark run is bench_OPINTGTE_1100.bb
+Benchmark size is 13200
+All facts processed
+bench_OPINTGTE_1100.bb:Cycles:337833:Benchsize:13200
+System Debug Enabled
+Benchmark run is bench_OPINTLT_100.bb
+Benchmark size is 1200
+All facts processed
+bench_OPINTLT_100.bb:Cycles:42227:Benchsize:1200
+System Debug Enabled
+Benchmark run is bench_OPINTLT_200.bb
+Benchmark size is 2400
+All facts processed
+bench_OPINTLT_200.bb:Cycles:68763:Benchsize:2400
+System Debug Enabled
+Benchmark run is bench_OPINTLT_300.bb
+Benchmark size is 3600
+All facts processed
+bench_OPINTLT_300.bb:Cycles:97435:Benchsize:3600
+System Debug Enabled
+Benchmark run is bench_OPINTLT_400.bb
+Benchmark size is 4800
+All facts processed
+bench_OPINTLT_400.bb:Cycles:126107:Benchsize:4800
+System Debug Enabled
+Benchmark run is bench_OPINTLT_500.bb
+Benchmark size is 6000
+All facts processed
+bench_OPINTLT_500.bb:Cycles:154779:Benchsize:6000
+System Debug Enabled
+Benchmark run is bench_OPINTLT_600.bb
+Benchmark size is 7200
+All facts processed
+bench_OPINTLT_600.bb:Cycles:192209:Benchsize:7200
+System Debug Enabled
+Benchmark run is bench_OPINTLT_700.bb
+Benchmark size is 8400
+All facts processed
+bench_OPINTLT_700.bb:Cycles:220881:Benchsize:8400
+System Debug Enabled
+Benchmark run is bench_OPINTLT_800.bb
+Benchmark size is 9600
+All facts processed
+bench_OPINTLT_800.bb:Cycles:249553:Benchsize:9600
+System Debug Enabled
+Benchmark run is bench_OPINTLT_900.bb
+Benchmark size is 10800
+All facts processed
+bench_OPINTLT_900.bb:Cycles:276089:Benchsize:10800
+System Debug Enabled
+Benchmark run is bench_OPINTLT_1000.bb
+Benchmark size is 12000
+All facts processed
+bench_OPINTLT_1000.bb:Cycles:304761:Benchsize:12000
+System Debug Enabled
+Benchmark run is bench_OPINTLT_1100.bb
+Benchmark size is 13200
+All facts processed
+bench_OPINTLT_1100.bb:Cycles:333433:Benchsize:13200
+System Debug Enabled
+Benchmark run is bench_OPINTLTE_100.bb
+Benchmark size is 1200
+All facts processed
+bench_OPINTLTE_100.bb:Cycles:42227:Benchsize:1200
+System Debug Enabled
+Benchmark run is bench_OPINTLTE_200.bb
+Benchmark size is 2400
+All facts processed
+bench_OPINTLTE_200.bb:Cycles:71017:Benchsize:2400
+System Debug Enabled
+Benchmark run is bench_OPINTLTE_300.bb
+Benchmark size is 3600
+All facts processed
+bench_OPINTLTE_300.bb:Cycles:97435:Benchsize:3600
+System Debug Enabled
+Benchmark run is bench_OPINTLTE_400.bb
+Benchmark size is 4800
+All facts processed
+bench_OPINTLTE_400.bb:Cycles:126107:Benchsize:4800
+System Debug Enabled
+Benchmark run is bench_OPINTLTE_500.bb
+Benchmark size is 6000
+All facts processed
+bench_OPINTLTE_500.bb:Cycles:154779:Benchsize:6000
+System Debug Enabled
+Benchmark run is bench_OPINTLTE_600.bb
+Benchmark size is 7200
+All facts processed
+bench_OPINTLTE_600.bb:Cycles:192209:Benchsize:7200
+System Debug Enabled
+Benchmark run is bench_OPINTLTE_700.bb
+Benchmark size is 8400
+All facts processed
+bench_OPINTLTE_700.bb:Cycles:220881:Benchsize:8400
+System Debug Enabled
+Benchmark run is bench_OPINTLTE_800.bb
+Benchmark size is 9600
+All facts processed
+bench_OPINTLTE_800.bb:Cycles:249553:Benchsize:9600
+System Debug Enabled
+Benchmark run is bench_OPINTLTE_900.bb
+Benchmark size is 10800
+All facts processed
+bench_OPINTLTE_900.bb:Cycles:276089:Benchsize:10800
+System Debug Enabled
+Benchmark run is bench_OPINTLTE_1000.bb
+Benchmark size is 12000
+All facts processed
+bench_OPINTLTE_1000.bb:Cycles:304761:Benchsize:12000
+System Debug Enabled
+Benchmark run is bench_OPINTLTE_1100.bb
+Benchmark size is 13200
+All facts processed
+bench_OPINTLTE_1100.bb:Cycles:333433:Benchsize:13200
+System Debug Enabled
+Benchmark run is bench_OPINTMOD_100.bb
+Benchmark size is 1200
+All facts processed
+bench_OPINTMOD_100.bb:Cycles:112671:Benchsize:1200
+System Debug Enabled
+Benchmark run is bench_OPINTMOD_200.bb
+Benchmark size is 2400
+All facts processed
+bench_OPINTMOD_200.bb:Cycles:222681:Benchsize:2400
+System Debug Enabled
+Benchmark run is bench_OPINTMOD_300.bb
+Benchmark size is 3600
+All facts processed
+bench_OPINTMOD_300.bb:Cycles:321797:Benchsize:3600
+System Debug Enabled
+Benchmark run is bench_OPINTMOD_400.bb
+Benchmark size is 4800
+All facts processed
+bench_OPINTMOD_400.bb:Cycles:448894:Benchsize:4800
+System Debug Enabled
+Benchmark run is bench_OPINTMOD_500.bb
+Benchmark size is 6000
+All facts processed
+bench_OPINTMOD_500.bb:Cycles:555207:Benchsize:6000
+System Debug Enabled
+Benchmark run is bench_OPINTMOD_600.bb
+Benchmark size is 7200
+All facts processed
+bench_OPINTMOD_600.bb:Cycles:653831:Benchsize:7200
+System Debug Enabled
+Benchmark run is bench_OPINTMOD_700.bb
+Benchmark size is 8400
+All facts processed
+bench_OPINTMOD_700.bb:Cycles:752455:Benchsize:8400
+System Debug Enabled
+Benchmark run is bench_OPINTMOD_800.bb
+Benchmark size is 9600
+All facts processed
+bench_OPINTMOD_800.bb:Cycles:851079:Benchsize:9600
+System Debug Enabled
+Benchmark run is bench_OPINTMOD_900.bb
+Benchmark size is 10800
+All facts processed
+bench_OPINTMOD_900.bb:Cycles:951757:Benchsize:10800
+System Debug Enabled
+Benchmark run is bench_OPINTMOD_1000.bb
+Benchmark size is 12000
+All facts processed
+bench_OPINTMOD_1000.bb:Cycles:1050381:Benchsize:12000
+System Debug Enabled
+Benchmark run is bench_OPINTMOD_1100.bb
+Benchmark size is 13200
+All facts processed
+bench_OPINTMOD_1100.bb:Cycles:1149005:Benchsize:13200
+System Debug Enabled
+Benchmark run is bench_OPINTMUL_100.bb
+Benchmark size is 1200
+All facts processed
+bench_OPINTMUL_100.bb:Cycles:45727:Benchsize:1200
+System Debug Enabled
+Benchmark run is bench_OPINTMUL_200.bb
+Benchmark size is 2400
+All facts processed
+bench_OPINTMUL_200.bb:Cycles:77899:Benchsize:2400
+System Debug Enabled
+Benchmark run is bench_OPINTMUL_300.bb
+Benchmark size is 3600
+All facts processed
+bench_OPINTMUL_300.bb:Cycles:110071:Benchsize:3600
+System Debug Enabled
+Benchmark run is bench_OPINTMUL_400.bb
+Benchmark size is 4800
+All facts processed
+bench_OPINTMUL_400.bb:Cycles:142243:Benchsize:4800
+System Debug Enabled
+Benchmark run is bench_OPINTMUL_500.bb
+Benchmark size is 6000
+All facts processed
+bench_OPINTMUL_500.bb:Cycles:185309:Benchsize:6000
+System Debug Enabled
+Benchmark run is bench_OPINTMUL_600.bb
+Benchmark size is 7200
+All facts processed
+bench_OPINTMUL_600.bb:Cycles:217481:Benchsize:7200
+System Debug Enabled
+Benchmark run is bench_OPINTMUL_700.bb
+Benchmark size is 8400
+All facts processed
+bench_OPINTMUL_700.bb:Cycles:249653:Benchsize:8400
+System Debug Enabled
+Benchmark run is bench_OPINTMUL_800.bb
+Benchmark size is 9600
+All facts processed
+bench_OPINTMUL_800.bb:Cycles:281825:Benchsize:9600
+System Debug Enabled
+Benchmark run is bench_OPINTMUL_900.bb
+Benchmark size is 10800
+All facts processed
+bench_OPINTMUL_900.bb:Cycles:313997:Benchsize:10800
+System Debug Enabled
+Benchmark run is bench_OPINTMUL_1000.bb
+Benchmark size is 12000
+All facts processed
+bench_OPINTMUL_1000.bb:Cycles:367144:Benchsize:12000
+System Debug Enabled
+Benchmark run is bench_OPINTMUL_1100.bb
+Benchmark size is 13200
+All facts processed
+bench_OPINTMUL_1100.bb:Cycles:401462:Benchsize:13200
+System Debug Enabled
+Benchmark run is bench_OPINTNEQ_100.bb
+Benchmark size is 1200
+All facts processed
+bench_OPINTNEQ_100.bb:Cycles:42227:Benchsize:1200
+System Debug Enabled
+Benchmark run is bench_OPINTNEQ_200.bb
+Benchmark size is 2400
+All facts processed
+bench_OPINTNEQ_200.bb:Cycles:68763:Benchsize:2400
+System Debug Enabled
+Benchmark run is bench_OPINTNEQ_300.bb
+Benchmark size is 3600
+All facts processed
+bench_OPINTNEQ_300.bb:Cycles:97435:Benchsize:3600
+System Debug Enabled
+Benchmark run is bench_OPINTNEQ_400.bb
+Benchmark size is 4800
+All facts processed
+bench_OPINTNEQ_400.bb:Cycles:126107:Benchsize:4800
+System Debug Enabled
+Benchmark run is bench_OPINTNEQ_500.bb
+Benchmark size is 6000
+All facts processed
+bench_OPINTNEQ_500.bb:Cycles:154779:Benchsize:6000
+System Debug Enabled
+Benchmark run is bench_OPINTNEQ_600.bb
+Benchmark size is 7200
+All facts processed
+bench_OPINTNEQ_600.bb:Cycles:192209:Benchsize:7200
+System Debug Enabled
+Benchmark run is bench_OPINTNEQ_700.bb
+Benchmark size is 8400
+All facts processed
+bench_OPINTNEQ_700.bb:Cycles:220881:Benchsize:8400
+System Debug Enabled
+Benchmark run is bench_OPINTNEQ_800.bb
+Benchmark size is 9600
+All facts processed
+bench_OPINTNEQ_800.bb:Cycles:249553:Benchsize:9600
+System Debug Enabled
+Benchmark run is bench_OPINTNEQ_900.bb
+Benchmark size is 10800
+All facts processed
+bench_OPINTNEQ_900.bb:Cycles:276089:Benchsize:10800
+System Debug Enabled
+Benchmark run is bench_OPINTNEQ_1000.bb
+Benchmark size is 12000
+All facts processed
+bench_OPINTNEQ_1000.bb:Cycles:304761:Benchsize:12000
+System Debug Enabled
+Benchmark run is bench_OPINTNEQ_1100.bb
+Benchmark size is 13200
+All facts processed
+bench_OPINTNEQ_1100.bb:Cycles:333433:Benchsize:13200
+System Debug Enabled
+Benchmark run is bench_OPINTSUB_100.bb
+Benchmark size is 1200
+All facts processed
+bench_OPINTSUB_100.bb:Cycles:41727:Benchsize:1200
+System Debug Enabled
+Benchmark run is bench_OPINTSUB_200.bb
+Benchmark size is 2400
+All facts processed
+bench_OPINTSUB_200.bb:Cycles:67763:Benchsize:2400
+System Debug Enabled
+Benchmark run is bench_OPINTSUB_300.bb
+Benchmark size is 3600
+All facts processed
+bench_OPINTSUB_300.bb:Cycles:95935:Benchsize:3600
+System Debug Enabled
+Benchmark run is bench_OPINTSUB_400.bb
+Benchmark size is 4800
+All facts processed
+bench_OPINTSUB_400.bb:Cycles:124107:Benchsize:4800
+System Debug Enabled
+Benchmark run is bench_OPINTSUB_500.bb
+Benchmark size is 6000
+All facts processed
+bench_OPINTSUB_500.bb:Cycles:152279:Benchsize:6000
+System Debug Enabled
+Benchmark run is bench_OPINTSUB_600.bb
+Benchmark size is 7200
+All facts processed
+bench_OPINTSUB_600.bb:Cycles:189209:Benchsize:7200
+System Debug Enabled
+Benchmark run is bench_OPINTSUB_700.bb
+Benchmark size is 8400
+All facts processed
+bench_OPINTSUB_700.bb:Cycles:217381:Benchsize:8400
+System Debug Enabled
+Benchmark run is bench_OPINTSUB_800.bb
+Benchmark size is 9600
+All facts processed
+bench_OPINTSUB_800.bb:Cycles:243417:Benchsize:9600
+System Debug Enabled
+Benchmark run is bench_OPINTSUB_900.bb
+Benchmark size is 10800
+All facts processed
+bench_OPINTSUB_900.bb:Cycles:271589:Benchsize:10800
+System Debug Enabled
+Benchmark run is bench_OPINTSUB_1000.bb
+Benchmark size is 12000
+All facts processed
+bench_OPINTSUB_1000.bb:Cycles:299761:Benchsize:12000
+System Debug Enabled
+Benchmark run is bench_OPINTSUB_1100.bb
+Benchmark size is 13200
+All facts processed
+bench_OPINTSUB_1100.bb:Cycles:327933:Benchsize:13200
+System Debug Enabled
+Benchmark run is bench_NOP_100.bb
+Benchmark size is 100
+All facts processed
+bench_NOP_100.bb:Cycles:24889:Benchsize:100
+System Debug Enabled
+Benchmark run is bench_NOP_200.bb
+Benchmark size is 200
+All facts processed
+bench_NOP_200.bb:Cycles:34089:Benchsize:200
+System Debug Enabled
+Benchmark run is bench_NOP_300.bb
+Benchmark size is 300
+All facts processed
+bench_NOP_300.bb:Cycles:45425:Benchsize:300
+System Debug Enabled
+Benchmark run is bench_NOP_400.bb
+Benchmark size is 400
+All facts processed
+bench_NOP_400.bb:Cycles:56761:Benchsize:400
+System Debug Enabled
+Benchmark run is bench_NOP_500.bb
+Benchmark size is 500
+All facts processed
+bench_NOP_500.bb:Cycles:65961:Benchsize:500
+System Debug Enabled
+Benchmark run is bench_NOP_600.bb
+Benchmark size is 600
+All facts processed
+bench_NOP_600.bb:Cycles:77297:Benchsize:600
+System Debug Enabled
+Benchmark run is bench_NOP_700.bb
+Benchmark size is 700
+All facts processed
+bench_NOP_700.bb:Cycles:88633:Benchsize:700
+System Debug Enabled
+Benchmark run is bench_NOP_800.bb
+Benchmark size is 800
+All facts processed
+bench_NOP_800.bb:Cycles:97833:Benchsize:800
+System Debug Enabled
+Benchmark run is bench_NOP_900.bb
+Benchmark size is 900
+All facts processed
+bench_NOP_900.bb:Cycles:109169:Benchsize:900
+System Debug Enabled
+Benchmark run is bench_NOP_1000.bb
+Benchmark size is 1000
+All facts processed
+bench_NOP_1000.bb:Cycles:120505:Benchsize:1000
+System Debug Enabled
+Benchmark run is bench_NOP_1100.bb
+Benchmark size is 1100
+All facts processed
+bench_NOP_1100.bb:Cycles:129705:Benchsize:1100
+System Debug Enabled
+Benchmark run is bench_NOP_1200.bb
+Benchmark size is 1200
+All facts processed
+bench_NOP_1200.bb:Cycles:141041:Benchsize:1200
+System Debug Enabled
+Benchmark run is bench_NOP_1300.bb
+Benchmark size is 1300
+All facts processed
+bench_NOP_1300.bb:Cycles:152377:Benchsize:1300
+System Debug Enabled
+Benchmark run is bench_NOP_1400.bb
+Benchmark size is 1400
+All facts processed
+bench_NOP_1400.bb:Cycles:161577:Benchsize:1400
+System Debug Enabled
+Benchmark run is bench_NOP_1500.bb
+Benchmark size is 1500
+All facts processed
+bench_NOP_1500.bb:Cycles:183807:Benchsize:1500
+System Debug Enabled
+Benchmark run is bench_NOP_1600.bb
+Benchmark size is 1600
+All facts processed
+bench_NOP_1600.bb:Cycles:193007:Benchsize:1600
+System Debug Enabled
+Benchmark run is bench_NOP_1700.bb
+Benchmark size is 1700
+All facts processed
+bench_NOP_1700.bb:Cycles:204343:Benchsize:1700
+System Debug Enabled
+Benchmark run is bench_NOP_1800.bb
+Benchmark size is 1800
+All facts processed
+bench_NOP_1800.bb:Cycles:215679:Benchsize:1800
+System Debug Enabled
+Benchmark run is bench_NOP_1900.bb
+Benchmark size is 1900
+All facts processed
+bench_NOP_1900.bb:Cycles:224879:Benchsize:1900
+System Debug Enabled
+Benchmark run is bench_NOP_2000.bb
+Benchmark size is 2000
+All facts processed
+bench_NOP_2000.bb:Cycles:236215:Benchsize:2000
+System Debug Enabled
+Benchmark run is bench_NOP_2100.bb
+Benchmark size is 2100
+All facts processed
+bench_NOP_2100.bb:Cycles:247551:Benchsize:2100
+System Debug Enabled
+Benchmark run is bench_NOP_2200.bb
+Benchmark size is 2200
+All facts processed
+bench_NOP_2200.bb:Cycles:256751:Benchsize:2200
+System Debug Enabled
+Benchmark run is bench_NOP_2300.bb
+Benchmark size is 2300
+All facts processed
+bench_NOP_2300.bb:Cycles:268087:Benchsize:2300
+System Debug Enabled
+Benchmark run is bench_NOP_2400.bb
+Benchmark size is 2400
+All facts processed
+bench_NOP_2400.bb:Cycles:279423:Benchsize:2400
+System Debug Enabled
+Benchmark run is bench_NOP_2500.bb
+Benchmark size is 2500
+All facts processed
+bench_NOP_2500.bb:Cycles:288623:Benchsize:2500
+System Debug Enabled
+Benchmark run is bench_NOP_2600.bb
+Benchmark size is 2600
+All facts processed
+bench_NOP_2600.bb:Cycles:299959:Benchsize:2600
+System Debug Enabled
+Benchmark run is bench_NOP_2700.bb
+Benchmark size is 2700
+All facts processed
+bench_NOP_2700.bb:Cycles:312075:Benchsize:2700
+System Debug Enabled
+Benchmark run is bench_NOP_2800.bb
+Benchmark size is 2800
+All facts processed
+bench_NOP_2800.bb:Cycles:320495:Benchsize:2800
+System Debug Enabled
+Benchmark run is bench_NOP_2900.bb
+Benchmark size is 2900
+All facts processed
+bench_NOP_2900.bb:Cycles:331831:Benchsize:2900
+System Debug Enabled
+Benchmark run is bench_NOP_3000.bb
+Benchmark size is 3000
+All facts processed
+bench_NOP_3000.bb:Cycles:343167:Benchsize:3000
+System Debug Enabled
+Benchmark run is bench_NOP_3100.bb
+Benchmark size is 3100
+All facts processed
+bench_NOP_3100.bb:Cycles:376056:Benchsize:3100
+System Debug Enabled
+Benchmark run is bench_NOP_3200.bb
+Benchmark size is 3200
+All facts processed
+bench_NOP_3200.bb:Cycles:385806:Benchsize:3200
+System Debug Enabled
+Benchmark run is bench_NOP_3300.bb
+Benchmark size is 3300
+All facts processed
+bench_NOP_3300.bb:Cycles:396812:Benchsize:3300
+System Debug Enabled
+Benchmark run is bench_NOP_3400.bb
+Benchmark size is 3400
+All facts processed
+bench_NOP_3400.bb:Cycles:409964:Benchsize:3400
+System Debug Enabled
+Benchmark run is bench_NOP_3500.bb
+Benchmark size is 3500
+All facts processed
+bench_NOP_3500.bb:Cycles:419714:Benchsize:3500
+System Debug Enabled
+Benchmark run is bench_NOP_3600.bb
+Benchmark size is 3600
+All facts processed
+bench_NOP_3600.bb:Cycles:431738:Benchsize:3600
+System Debug Enabled
+Benchmark run is bench_NOP_3700.bb
+Benchmark size is 3700
+All facts processed
+bench_NOP_3700.bb:Cycles:442854:Benchsize:3700
+System Debug Enabled
+Benchmark run is bench_NOP_3800.bb
+Benchmark size is 3800
+All facts processed
+bench_NOP_3800.bb:Cycles:455896:Benchsize:3800
+System Debug Enabled
+Benchmark run is bench_NOP_3900.bb
+Benchmark size is 3900
+All facts processed
+bench_NOP_3900.bb:Cycles:465646:Benchsize:3900
+System Debug Enabled
+Benchmark run is bench_NOP_4000.bb
+Benchmark size is 4000
+All facts processed
+bench_NOP_4000.bb:Cycles:477780:Benchsize:4000
+System Debug Enabled
+Benchmark run is bench_NOP_4100.bb
+Benchmark size is 4100
+All facts processed
+bench_NOP_4100.bb:Cycles:489804:Benchsize:4100
+System Debug Enabled
+Benchmark run is bench_NOP_4200.bb
+Benchmark size is 4200
+All facts processed
+bench_NOP_4200.bb:Cycles:499554:Benchsize:4200
+System Debug Enabled
+Benchmark run is bench_NOP_4300.bb
+Benchmark size is 4300
+All facts processed
+bench_NOP_4300.bb:Cycles:511688:Benchsize:4300
+System Debug Enabled
+Benchmark run is bench_NOP_4400.bb
+Benchmark size is 4400
+All facts processed
+bench_NOP_4400.bb:Cycles:523712:Benchsize:4400
+System Debug Enabled
+Benchmark run is bench_NOP_4500.bb
+Benchmark size is 4500
+All facts processed
+bench_NOP_4500.bb:Cycles:535558:Benchsize:4500
+System Debug Enabled
+Benchmark run is bench_NOP_4600.bb
+Benchmark size is 4600
+All facts processed
+bench_NOP_4600.bb:Cycles:544851:Benchsize:4600
+System Debug Enabled
+Benchmark run is bench_NOP_4700.bb
+Benchmark size is 4700
+All facts processed
+bench_NOP_4700.bb:Cycles:556105:Benchsize:4700
+System Debug Enabled
+Benchmark run is bench_NOP_4800.bb
+Benchmark size is 4800
+All facts processed
+bench_NOP_4800.bb:Cycles:567359:Benchsize:4800
+System Debug Enabled
+Benchmark run is bench_NOP_4900.bb
+Benchmark size is 4900
+All facts processed
+bench_NOP_4900.bb:Cycles:576559:Benchsize:4900
+System Debug Enabled
+Benchmark run is bench_NOP_5000.bb
+Benchmark size is 5000
+All facts processed
+bench_NOP_5000.bb:Cycles:587813:Benchsize:5000
+System Debug Enabled
+Benchmark run is bench_NOP_5100.bb
+Benchmark size is 5100
+All facts processed
+bench_NOP_5100.bb:Cycles:599067:Benchsize:5100
+System Debug Enabled
+Benchmark run is bench_NOP_5200.bb
+Benchmark size is 5200
+All facts processed
+bench_NOP_5200.bb:Cycles:608267:Benchsize:5200
+System Debug Enabled
+Benchmark run is bench_NOP_5300.bb
+Benchmark size is 5300
+All facts processed
+bench_NOP_5300.bb:Cycles:619521:Benchsize:5300
+System Debug Enabled
+Benchmark run is bench_NOP_5400.bb
+Benchmark size is 5400
+All facts processed
+bench_NOP_5400.bb:Cycles:628721:Benchsize:5400
+System Debug Enabled
+Benchmark run is bench_NOP_5500.bb
+Benchmark size is 5500
+All facts processed
+bench_NOP_5500.bb:Cycles:639975:Benchsize:5500
+System Debug Enabled
+Benchmark run is bench_NOP_5600.bb
+Benchmark size is 5600
+All facts processed
+bench_NOP_5600.bb:Cycles:651229:Benchsize:5600
+System Debug Enabled
+Benchmark run is bench_NOP_5700.bb
+Benchmark size is 5700
+All facts processed
+bench_NOP_5700.bb:Cycles:660429:Benchsize:5700
+System Debug Enabled
+Benchmark run is bench_NOP_5800.bb
+Benchmark size is 5800
+All facts processed
+bench_NOP_5800.bb:Cycles:671683:Benchsize:5800
+System Debug Enabled
+Benchmark run is bench_NOP_5900.bb
+Benchmark size is 5900
+All facts processed
+bench_NOP_5900.bb:Cycles:682937:Benchsize:5900
+System Debug Enabled
+Benchmark run is bench_NOP_6000.bb
+Benchmark size is 6000
+All facts processed
+bench_NOP_6000.bb:Cycles:692137:Benchsize:6000
+System Debug Enabled
+Benchmark run is bench_ALLOC_100.bb
+Benchmark size is 200
+All facts processed
+bench_ALLOC_100.bb:Cycles:75899:Benchsize:200
+System Debug Enabled
+Benchmark run is bench_ALLOC_200.bb
+Benchmark size is 400
+All facts processed
+bench_ALLOC_200.bb:Cycles:138243:Benchsize:400
+System Debug Enabled
+Benchmark run is bench_ALLOC_300.bb
+Benchmark size is 600
+All facts processed
+bench_ALLOC_300.bb:Cycles:209345:Benchsize:600
+System Debug Enabled
+Benchmark run is bench_ALLOC_400.bb
+Benchmark size is 800
+All facts processed
+bench_ALLOC_400.bb:Cycles:271689:Benchsize:800
+System Debug Enabled
+Benchmark run is bench_ALLOC_500.bb
+Benchmark size is 1000
+All facts processed
+bench_ALLOC_500.bb:Cycles:355338:Benchsize:1000
+System Debug Enabled
+Benchmark run is bench_ALLOC_600.bb
+Benchmark size is 1200
+All facts processed
+bench_ALLOC_600.bb:Cycles:423808:Benchsize:1200
+System Debug Enabled
+Benchmark run is bench_ALLOC_700.bb
+Benchmark size is 1400
+All facts processed
+bench_ALLOC_700.bb:Cycles:488188:Benchsize:1400
+System Debug Enabled
+Benchmark run is bench_ALLOC_800.bb
+Benchmark size is 1600
+All facts processed
+bench_ALLOC_800.bb:Cycles:554189:Benchsize:1600
+System Debug Enabled
+Benchmark run is bench_ALLOC_900.bb
+Benchmark size is 1800
+All facts processed
+bench_ALLOC_900.bb:Cycles:616205:Benchsize:1800
+System Debug Enabled
+Benchmark run is bench_ALLOC_1000.bb
+Benchmark size is 2000
+All facts processed
+bench_ALLOC_1000.bb:Cycles:676085:Benchsize:2000
+System Debug Enabled
+Benchmark run is bench_ALLOC_1100.bb
+Benchmark size is 2200
+All facts processed
+bench_ALLOC_1100.bb:Cycles:737490:Benchsize:2200
+System Debug Enabled
+Benchmark run is bench_ALLOC_1200.bb
+Benchmark size is 2400
+All facts processed
+bench_ALLOC_1200.bb:Cycles:798028:Benchsize:2400
+System Debug Enabled
+Benchmark run is bench_ALLOC_1300.bb
+Benchmark size is 2600
+All facts processed
+bench_ALLOC_1300.bb:Cycles:858402:Benchsize:2600
+System Debug Enabled
+Benchmark run is bench_ALLOC_1400.bb
+Benchmark size is 2800
+All facts processed
+bench_ALLOC_1400.bb:Cycles:918940:Benchsize:2800
+System Debug Enabled
+Benchmark run is bench_ALLOC_1500.bb
+Benchmark size is 3000
+All facts processed
+bench_ALLOC_1500.bb:Cycles:977260:Benchsize:3000
+System Debug Enabled
+Benchmark run is bench_ALLOC_1600.bb
+Benchmark size is 3200
+All facts processed
+bench_ALLOC_1600.bb:Cycles:1037716:Benchsize:3200
+System Debug Enabled
+Benchmark run is bench_ALLOC_1800.bb
+Benchmark size is 3600
+All facts processed
+bench_ALLOC_1800.bb:Cycles:1156656:Benchsize:3600
+System Debug Enabled
+Benchmark run is bench_ALLOC_1900.bb
+Benchmark size is 3800
+All facts processed
+bench_ALLOC_1900.bb:Cycles:1217030:Benchsize:3800
+System Debug Enabled
+Benchmark run is bench_ALLOC_2000.bb
+Benchmark size is 4000
+All facts processed
+bench_ALLOC_2000.bb:Cycles:1277486:Benchsize:4000
+System Debug Enabled
+Benchmark run is bench_ALLOC_2100.bb
+Benchmark size is 4200
+All facts processed
+bench_ALLOC_2100.bb:Cycles:1337942:Benchsize:4200
+System Debug Enabled
+Benchmark run is bench_ALLOC_2200.bb
+Benchmark size is 4400
+All facts processed
+bench_ALLOC_2200.bb:Cycles:1396344:Benchsize:4400
+System Debug Enabled
+Benchmark run is bench_ALLOC_2400.bb
+Benchmark size is 4800
+All facts processed
+bench_ALLOC_2400.bb:Cycles:1517256:Benchsize:4800
+System Debug Enabled
+Benchmark run is bench_ALLOC_2500.bb
+Benchmark size is 5000
+All facts processed
+bench_ALLOC_2500.bb:Cycles:1577712:Benchsize:5000
+System Debug Enabled
+Benchmark run is bench_ALLOC_2600.bb
+Benchmark size is 5200
+All facts processed
+bench_ALLOC_2600.bb:Cycles:1636114:Benchsize:5200
+System Debug Enabled
+Benchmark run is bench_ALLOC_2700.bb
+Benchmark size is 5400
+All facts processed
+bench_ALLOC_2700.bb:Cycles:1696570:Benchsize:5400
+System Debug Enabled
+Benchmark run is bench_ALLOC_2800.bb
+Benchmark size is 5600
+All facts processed
+bench_ALLOC_2800.bb:Cycles:1757026:Benchsize:5600
+System Debug Enabled
+Benchmark run is bench_ALLOC_2900.bb
+Benchmark size is 5800
+All facts processed
+bench_ALLOC_2900.bb:Cycles:1817482:Benchsize:5800
+System Debug Enabled
+Benchmark run is bench_ALLOC_3000.bb
+Benchmark size is 6000
+All facts processed
+bench_ALLOC_3000.bb:Cycles:1875884:Benchsize:6000
+System Debug Enabled
+Benchmark run is bench_ALLOC_3100.bb
+Benchmark size is 6200
+All facts processed
+bench_ALLOC_3100.bb:Cycles:1936340:Benchsize:6200
+System Debug Enabled
+Benchmark run is bench_ALLOC_3200.bb
+Benchmark size is 6400
+All facts processed
+bench_ALLOC_3200.bb:Cycles:1996796:Benchsize:6400
+System Debug Enabled
+Benchmark run is bench_ALLOC_3300.bb
+Benchmark size is 6600
+All facts processed
+bench_ALLOC_3300.bb:Cycles:2057252:Benchsize:6600
+System Debug Enabled
+Benchmark run is bench_ALLOC_3400.bb
+Benchmark size is 6800
+All facts processed
+bench_ALLOC_3400.bb:Cycles:2136620:Benchsize:6800
+System Debug Enabled
+Benchmark run is bench_ALLOC_3500.bb
+Benchmark size is 7000
+All facts processed
+bench_ALLOC_3500.bb:Cycles:2200160:Benchsize:7000
+System Debug Enabled
+Benchmark run is bench_ALLOC_3600.bb
+Benchmark size is 7200
+All facts processed
+bench_ALLOC_3600.bb:Cycles:2264797:Benchsize:7200
+System Debug Enabled
+Benchmark run is bench_ALLOC_3700.bb
+Benchmark size is 7400
+All facts processed
+bench_ALLOC_3700.bb:Cycles:2324874:Benchsize:7400
+System Debug Enabled
+Benchmark run is bench_ALLOC_3800.bb
+Benchmark size is 7600
+All facts processed
+bench_ALLOC_3800.bb:Cycles:2385330:Benchsize:7600
+System Debug Enabled
+Benchmark run is bench_ALLOC_3900.bb
+Benchmark size is 7800
+All facts processed
+bench_ALLOC_3900.bb:Cycles:2445786:Benchsize:7800
+System Debug Enabled
+Benchmark run is bench_ALLOC_4000.bb
+Benchmark size is 8000
+All facts processed
+bench_ALLOC_4000.bb:Cycles:2506242:Benchsize:8000
+System Debug Enabled
+Benchmark run is bench_ALLOC_4100.bb
+Benchmark size is 8200
+All facts processed
+bench_ALLOC_4100.bb:Cycles:2564644:Benchsize:8200
+System Debug Enabled
+Benchmark run is bench_ALLOC_4200.bb
+Benchmark size is 8400
+All facts processed
+bench_ALLOC_4200.bb:Cycles:2625100:Benchsize:8400
+System Debug Enabled
+Benchmark run is bench_ALLOC_4300.bb
+Benchmark size is 8600
+All facts processed
+bench_ALLOC_4300.bb:Cycles:2685556:Benchsize:8600
+System Debug Enabled
+Benchmark run is bench_ALLOC_4400.bb
+Benchmark size is 8800
+All facts processed
+bench_ALLOC_4400.bb:Cycles:2746012:Benchsize:8800
+System Debug Enabled
+Benchmark run is bench_ALLOC_4500.bb
+Benchmark size is 9000
+All facts processed
+bench_ALLOC_4500.bb:Cycles:2804414:Benchsize:9000
+System Debug Enabled
+Benchmark run is bench_ALLOC_4600.bb
+Benchmark size is 9200
+All facts processed
+bench_ALLOC_4600.bb:Cycles:2864870:Benchsize:9200
+System Debug Enabled
+Benchmark run is bench_ALLOC_4700.bb
+Benchmark size is 9400
+All facts processed
+bench_ALLOC_4700.bb:Cycles:2925326:Benchsize:9400
+System Debug Enabled
+Benchmark run is bench_ALLOC_4800.bb
+Benchmark size is 9600
+All facts processed
+bench_ALLOC_4800.bb:Cycles:2985782:Benchsize:9600
+System Debug Enabled
+Benchmark run is bench_ALLOC_4900.bb
+Benchmark size is 9800
+All facts processed
+bench_ALLOC_4900.bb:Cycles:3044184:Benchsize:9800
+System Debug Enabled
+Benchmark run is bench_ALLOC_5000.bb
+Benchmark size is 10000
+All facts processed
+bench_ALLOC_5000.bb:Cycles:3104640:Benchsize:10000
+System Debug Enabled
+Benchmark run is bench_ALLOC_5100.bb
+Benchmark size is 10200
+All facts processed
+bench_ALLOC_5100.bb:Cycles:3165096:Benchsize:10200
+System Debug Enabled
+Benchmark run is bench_ALLOC_5200.bb
+Benchmark size is 10400
+All facts processed
+bench_ALLOC_5200.bb:Cycles:3225552:Benchsize:10400
+System Debug Enabled
+Benchmark run is bench_ALLOC_5300.bb
+Benchmark size is 10600
+All facts processed
+bench_ALLOC_5300.bb:Cycles:3283954:Benchsize:10600
+System Debug Enabled
+Benchmark run is bench_ALLOC_5400.bb
+Benchmark size is 10800
+All facts processed
+bench_ALLOC_5400.bb:Cycles:3344410:Benchsize:10800
+System Debug Enabled
+Benchmark run is bench_ALLOC_5500.bb
+Benchmark size is 11000
+All facts processed
+bench_ALLOC_5500.bb:Cycles:3404866:Benchsize:11000
+System Debug Enabled
+Benchmark run is bench_ALLOC_5600.bb
+Benchmark size is 11200
+All facts processed
+bench_ALLOC_5600.bb:Cycles:3465322:Benchsize:11200
+System Debug Enabled
+Benchmark run is bench_ALLOC_5700.bb
+Benchmark size is 11400
+All facts processed
+bench_ALLOC_5700.bb:Cycles:3523724:Benchsize:11400
+System Debug Enabled
+Benchmark run is bench_ALLOC_5800.bb
+Benchmark size is 11600
+All facts processed
+bench_ALLOC_5800.bb:Cycles:3584180:Benchsize:11600
+System Debug Enabled
+Benchmark run is bench_ALLOC_5900.bb
+Benchmark size is 11800
+All facts processed
+bench_ALLOC_5900.bb:Cycles:3644636:Benchsize:11800
+System Debug Enabled
+Benchmark run is bench_ALLOC_6000.bb
+Benchmark size is 12000
+All facts processed
+bench_ALLOC_6000.bb:Cycles:3705092:Benchsize:12000
+System Debug Enabled
+Benchmark run is bench_MOVE_100.bb
+Benchmark size is 200
+All facts processed
+bench_MOVE_100.bb:Cycles:43527:Benchsize:200
+System Debug Enabled
+Benchmark run is bench_MOVE_200.bb
+Benchmark size is 400
+All facts processed
+bench_MOVE_200.bb:Cycles:73499:Benchsize:400
+System Debug Enabled
+Benchmark run is bench_MOVE_300.bb
+Benchmark size is 600
+All facts processed
+bench_MOVE_300.bb:Cycles:103471:Benchsize:600
+System Debug Enabled
+Benchmark run is bench_MOVE_400.bb
+Benchmark size is 800
+All facts processed
+bench_MOVE_400.bb:Cycles:131307:Benchsize:800
+System Debug Enabled
+Benchmark run is bench_MOVE_500.bb
+Benchmark size is 1000
+All facts processed
+bench_MOVE_500.bb:Cycles:161279:Benchsize:1000
+System Debug Enabled
+Benchmark run is bench_MOVE_600.bb
+Benchmark size is 1200
+All facts processed
+bench_MOVE_600.bb:Cycles:203382:Benchsize:1200
+System Debug Enabled
+Benchmark run is bench_MOVE_700.bb
+Benchmark size is 1400
+All facts processed
+bench_MOVE_700.bb:Cycles:232117:Benchsize:1400
+System Debug Enabled
+Benchmark run is bench_MOVE_800.bb
+Benchmark size is 1600
+All facts processed
+bench_MOVE_800.bb:Cycles:259953:Benchsize:1600
+System Debug Enabled
+Benchmark run is bench_MOVE_900.bb
+Benchmark size is 1800
+All facts processed
+bench_MOVE_900.bb:Cycles:289925:Benchsize:1800
+System Debug Enabled
+Benchmark run is bench_MOVE_1000.bb
+Benchmark size is 2000
+All facts processed
+bench_MOVE_1000.bb:Cycles:319897:Benchsize:2000
+System Debug Enabled
+Benchmark run is bench_MOVE_1100.bb
+Benchmark size is 2200
+All facts processed
+bench_MOVE_1100.bb:Cycles:371174:Benchsize:2200
+System Debug Enabled
+Benchmark run is bench_MOVE_1200.bb
+Benchmark size is 2400
+All facts processed
+bench_MOVE_1200.bb:Cycles:401944:Benchsize:2400
+System Debug Enabled
+Benchmark run is bench_MOVE_1300.bb
+Benchmark size is 2600
+All facts processed
+bench_MOVE_1300.bb:Cycles:434970:Benchsize:2600
+System Debug Enabled
+Benchmark run is bench_MOVE_1400.bb
+Benchmark size is 2800
+All facts processed
+bench_MOVE_1400.bb:Cycles:467776:Benchsize:2800
+System Debug Enabled
+Benchmark run is bench_MOVE_1500.bb
+Benchmark size is 3000
+All facts processed
+bench_MOVE_1500.bb:Cycles:498656:Benchsize:3000
+System Debug Enabled
+Benchmark run is bench_MOVE_1600.bb
+Benchmark size is 3200
+All facts processed
+bench_MOVE_1600.bb:Cycles:529769:Benchsize:3200
+System Debug Enabled
+Benchmark run is bench_MOVE_1700.bb
+Benchmark size is 3400
+All facts processed
+bench_MOVE_1700.bb:Cycles:560689:Benchsize:3400
+System Debug Enabled
+Benchmark run is bench_MOVE_1800.bb
+Benchmark size is 3600
+All facts processed
+bench_MOVE_1800.bb:Cycles:590415:Benchsize:3600
+System Debug Enabled
+Benchmark run is bench_MOVE_1900.bb
+Benchmark size is 3800
+All facts processed
+bench_MOVE_1900.bb:Cycles:620223:Benchsize:3800
+System Debug Enabled
+Benchmark run is bench_MOVE_2000.bb
+Benchmark size is 4000
+All facts processed
+bench_MOVE_2000.bb:Cycles:650031:Benchsize:4000
+System Debug Enabled
+Benchmark run is bench_MOVE_2100.bb
+Benchmark size is 4200
+All facts processed
+bench_MOVE_2100.bb:Cycles:679839:Benchsize:4200
+System Debug Enabled
+Benchmark run is bench_MOVE_2200.bb
+Benchmark size is 4400
+All facts processed
+bench_MOVE_2200.bb:Cycles:707593:Benchsize:4400
+System Debug Enabled
+Benchmark run is bench_MOVE_2300.bb
+Benchmark size is 4600
+All facts processed
+bench_MOVE_2300.bb:Cycles:737401:Benchsize:4600
+System Debug Enabled
+Benchmark run is bench_MOVE_2400.bb
+Benchmark size is 4800
+All facts processed
+bench_MOVE_2400.bb:Cycles:767209:Benchsize:4800
+System Debug Enabled
+Benchmark run is bench_MOVE_2500.bb
+Benchmark size is 5000
+All facts processed
+bench_MOVE_2500.bb:Cycles:797017:Benchsize:5000
+System Debug Enabled
+Benchmark run is bench_MOVE_2600.bb
+Benchmark size is 5200
+All facts processed
+bench_MOVE_2600.bb:Cycles:826825:Benchsize:5200
+System Debug Enabled
+Benchmark run is bench_MOVE_2700.bb
+Benchmark size is 5400
+All facts processed
+bench_MOVE_2700.bb:Cycles:856633:Benchsize:5400
+System Debug Enabled
+Benchmark run is bench_MOVE_2800.bb
+Benchmark size is 5600
+All facts processed
+bench_MOVE_2800.bb:Cycles:884387:Benchsize:5600
+System Debug Enabled
+Benchmark run is bench_MOVE_2900.bb
+Benchmark size is 5800
+All facts processed
+bench_MOVE_2900.bb:Cycles:914195:Benchsize:5800
+System Debug Enabled
+Benchmark run is bench_MOVE_3000.bb
+Benchmark size is 6000
+All facts processed
+bench_MOVE_3000.bb:Cycles:944003:Benchsize:6000
+System Debug Enabled
+Benchmark run is bench_MOVE_3100.bb
+Benchmark size is 6200
+All facts processed
+bench_MOVE_3100.bb:Cycles:973811:Benchsize:6200
+System Debug Enabled
+Benchmark run is bench_MOVE_3200.bb
+Benchmark size is 6400
+All facts processed
+bench_MOVE_3200.bb:Cycles:1003619:Benchsize:6400
+System Debug Enabled
+Benchmark run is bench_MOVE_3300.bb
+Benchmark size is 6600
+All facts processed
+bench_MOVE_3300.bb:Cycles:1033427:Benchsize:6600
+System Debug Enabled
+Benchmark run is bench_MOVE_3400.bb
+Benchmark size is 6800
+All facts processed
+bench_MOVE_3400.bb:Cycles:1063235:Benchsize:6800
+System Debug Enabled
+Benchmark run is bench_MOVE_3500.bb
+Benchmark size is 7000
+All facts processed
+bench_MOVE_3500.bb:Cycles:1090989:Benchsize:7000
+System Debug Enabled
+Benchmark run is bench_MOVE_3600.bb
+Benchmark size is 7200
+All facts processed
+bench_MOVE_3600.bb:Cycles:1120797:Benchsize:7200
+System Debug Enabled
+Benchmark run is bench_MOVE_3700.bb
+Benchmark size is 7400
+All facts processed
+bench_MOVE_3700.bb:Cycles:1150605:Benchsize:7400
+System Debug Enabled
+Benchmark run is bench_MOVE_3800.bb
+Benchmark size is 7600
+All facts processed
+bench_MOVE_3800.bb:Cycles:1180413:Benchsize:7600
+System Debug Enabled
+Benchmark run is bench_MOVE_3900.bb
+Benchmark size is 7800
+All facts processed
+bench_MOVE_3900.bb:Cycles:1210221:Benchsize:7800
+System Debug Enabled
+Benchmark run is bench_MOVE_4000.bb
+Benchmark size is 8000
+All facts processed
+bench_MOVE_4000.bb:Cycles:1240029:Benchsize:8000
+System Debug Enabled
+Benchmark run is bench_MOVE_4100.bb
+Benchmark size is 8200
+All facts processed
+bench_MOVE_4100.bb:Cycles:1267783:Benchsize:8200
+System Debug Enabled
+Benchmark run is bench_MOVE_4200.bb
+Benchmark size is 8400
+All facts processed
+bench_MOVE_4200.bb:Cycles:1297591:Benchsize:8400
+System Debug Enabled
+Benchmark run is bench_MOVE_4300.bb
+Benchmark size is 8600
+All facts processed
+bench_MOVE_4300.bb:Cycles:1327399:Benchsize:8600
+System Debug Enabled
+Benchmark run is bench_MOVE_4400.bb
+Benchmark size is 8800
+All facts processed
+bench_MOVE_4400.bb:Cycles:1357207:Benchsize:8800
+System Debug Enabled
+Benchmark run is bench_MOVE_4500.bb
+Benchmark size is 9000
+All facts processed
+bench_MOVE_4500.bb:Cycles:1387015:Benchsize:9000
+System Debug Enabled
+Benchmark run is bench_MOVE_4600.bb
+Benchmark size is 9200
+All facts processed
+bench_MOVE_4600.bb:Cycles:1416823:Benchsize:9200
+System Debug Enabled
+Benchmark run is bench_MOVE_4700.bb
+Benchmark size is 9400
+All facts processed
+bench_MOVE_4700.bb:Cycles:1444577:Benchsize:9400
+System Debug Enabled
+Benchmark run is bench_MOVE_4800.bb
+Benchmark size is 9600
+All facts processed
+bench_MOVE_4800.bb:Cycles:1474385:Benchsize:9600
+System Debug Enabled
+Benchmark run is bench_MOVE_4900.bb
+Benchmark size is 9800
+All facts processed
+bench_MOVE_4900.bb:Cycles:1504193:Benchsize:9800
+System Debug Enabled
+Benchmark run is bench_MOVE_5000.bb
+Benchmark size is 10000
+All facts processed
+bench_MOVE_5000.bb:Cycles:1534001:Benchsize:10000
+System Debug Enabled
+Benchmark run is bench_MOVE_5100.bb
+Benchmark size is 10200
+All facts processed
+bench_MOVE_5100.bb:Cycles:1563809:Benchsize:10200
+System Debug Enabled
+Benchmark run is bench_MOVE_5200.bb
+Benchmark size is 10400
+All facts processed
+bench_MOVE_5200.bb:Cycles:1593617:Benchsize:10400
+System Debug Enabled
+Benchmark run is bench_MOVE_5300.bb
+Benchmark size is 10600
+All facts processed
+bench_MOVE_5300.bb:Cycles:1623425:Benchsize:10600
+System Debug Enabled
+Benchmark run is bench_MOVE_5400.bb
+Benchmark size is 10800
+All facts processed
+bench_MOVE_5400.bb:Cycles:1651179:Benchsize:10800
+System Debug Enabled
+Benchmark run is bench_MOVE_5500.bb
+Benchmark size is 11000
+All facts processed
+bench_MOVE_5500.bb:Cycles:1680987:Benchsize:11000
+System Debug Enabled
+Benchmark run is bench_MOVE_5600.bb
+Benchmark size is 11200
+All facts processed
+bench_MOVE_5600.bb:Cycles:1710795:Benchsize:11200
+System Debug Enabled
+Benchmark run is bench_MOVE_5700.bb
+Benchmark size is 11400
+All facts processed
+bench_MOVE_5700.bb:Cycles:1740603:Benchsize:11400
+System Debug Enabled
+Benchmark run is bench_MOVE_5800.bb
+Benchmark size is 11600
+All facts processed
+bench_MOVE_5800.bb:Cycles:1770411:Benchsize:11600
+System Debug Enabled
+Benchmark run is bench_MOVE_5900.bb
+Benchmark size is 11800
+All facts processed
+bench_MOVE_5900.bb:Cycles:1800219:Benchsize:11800
+System Debug Enabled
+Benchmark run is bench_MOVE_6000.bb
+Benchmark size is 12000
+All facts processed
+bench_MOVE_6000.bb:Cycles:1827973:Benchsize:12000
+  System Debug Enabled
+Benchmark run is bench_MOVE_6000.bb
+Benchmark size is 12000
+All facts processed
+bench_MOVE_6000.bb:Cycles:1827973:Benchsize:12000

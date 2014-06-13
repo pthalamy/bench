@@ -1,0 +1,13 @@
+x#!/bin/ksh
+
+
+if [[ $# -lt 1 ]] ; then
+	echo I need an argument
+	exit
+elif [[ $# -gt 1 ]] ; then
+	echo I have too many arguments
+	exit
+fi
+
+echo Copying $1 to /Users/pthalamy/Studies/CMU/benchmark/build/apps/sample-meld/arch-x86_64-Linux/meldinterp-runtime/ends.bb
+cp $1 /Users/pthalamy/Studies/CMU/benchmark/build/apps/sample-meld/arch-x86_64-Linux/meldinterp-runtime/ends.bb

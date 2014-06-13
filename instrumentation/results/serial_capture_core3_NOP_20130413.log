@@ -1,0 +1,300 @@
+System Debug Enabled
+Benchmark run is bench_NOP_100.bb
+Benchmark size is 100
+All facts processed
+bench_NOP_100.bb:Cycles:18952:Benchsize:100
+System Debug Enabled
+Benchmark run is bench_NOP_200.bb
+Benchmark size is 200
+All facts processed
+bench_NOP_200.bb:Cycles:25988:Benchsize:200
+System Debug Enabled
+Benchmark run is bench_NOP_300.bb
+Benchmark size is 300
+All facts processed
+bench_NOP_300.bb:Cycles:30888:Benchsize:300
+System Debug Enabled
+Benchmark run is bench_NOP_400.bb
+Benchmark size is 400
+All facts processed
+bench_NOP_400.bb:Cycles:35788:Benchsize:400
+System Debug Enabled
+Benchmark run is bench_NOP_500.bb
+Benchmark size is 500
+All facts processed
+bench_NOP_500.bb:Cycles:42824:Benchsize:500
+System Debug Enabled
+Benchmark run is bench_NOP_600.bb
+Benchmark size is 600
+All facts processed
+bench_NOP_600.bb:Cycles:47724:Benchsize:600
+System Debug Enabled
+Benchmark run is bench_NOP_700.bb
+Benchmark size is 700
+All facts processed
+bench_NOP_700.bb:Cycles:52624:Benchsize:700
+System Debug Enabled
+Benchmark run is bench_NOP_800.bb
+Benchmark size is 800
+All facts processed
+bench_NOP_800.bb:Cycles:59660:Benchsize:800
+System Debug Enabled
+Benchmark run is bench_NOP_900.bb
+Benchmark size is 900
+All facts processed
+bench_NOP_900.bb:Cycles:64560:Benchsize:900
+System Debug Enabled
+Benchmark run is bench_NOP_1000.bb
+Benchmark size is 1000
+All facts processed
+bench_NOP_1000.bb:Cycles:71596:Benchsize:1000
+System Debug Enabled
+Benchmark run is bench_NOP_1100.bb
+Benchmark size is 1100
+All facts processed
+bench_NOP_1100.bb:Cycles:76496:Benchsize:1100
+System Debug Enabled
+Benchmark run is bench_NOP_1200.bb
+Benchmark size is 1200
+All facts processed
+bench_NOP_1200.bb:Cycles:81396:Benchsize:1200
+System Debug Enabled
+Benchmark run is bench_NOP_1300.bb
+Benchmark size is 1300
+All facts processed
+bench_NOP_1300.bb:Cycles:88432:Benchsize:1300
+System Debug Enabled
+Benchmark run is bench_NOP_1400.bb
+Benchmark size is 1400
+All facts processed
+bench_NOP_1400.bb:Cycles:93332:Benchsize:1400
+System Debug Enabled
+Benchmark run is bench_NOP_1500.bb
+Benchmark size is 1500
+All facts processed
+bench_NOP_1500.bb:Cycles:98232:Benchsize:1500
+System Debug Enabled
+Benchmark run is bench_NOP_1600.bb
+Benchmark size is 1600
+All facts processed
+bench_NOP_1600.bb:Cycles:105268:Benchsize:1600
+System Debug Enabled
+Benchmark run is bench_NOP_1700.bb
+Benchmark size is 1700
+All facts processed
+bench_NOP_1700.bb:Cycles:110168:Benchsize:1700
+System Debug Enabled
+Benchmark run is bench_NOP_1800.bb
+Benchmark size is 1800
+All facts processed
+bench_NOP_1800.bb:Cycles:115068:Benchsize:1800
+System Debug Enabled
+Benchmark run is bench_NOP_1900.bb
+Benchmark size is 1900
+All facts processed
+bench_NOP_1900.bb:Cycles:122104:Benchsize:1900
+System Debug Enabled
+Benchmark run is bench_NOP_2000.bb
+Benchmark size is 2000
+All facts processed
+bench_NOP_2000.bb:Cycles:127004:Benchsize:2000
+System Debug Enabled
+Benchmark run is bench_NOP_2100.bb
+Benchmark size is 2100
+All facts processed
+bench_NOP_2100.bb:Cycles:131904:Benchsize:2100
+System Debug Enabled
+Benchmark run is bench_NOP_2200.bb
+Benchmark size is 2200
+All facts processed
+bench_NOP_2200.bb:Cycles:138940:Benchsize:2200
+System Debug Enabled
+Benchmark run is bench_NOP_2300.bb
+Benchmark size is 2300
+All facts processed
+bench_NOP_2300.bb:Cycles:143840:Benchsize:2300
+System Debug Enabled
+Benchmark run is bench_NOP_2400.bb
+Benchmark size is 2400
+All facts processed
+bench_NOP_2400.bb:Cycles:148740:Benchsize:2400
+System Debug Enabled
+Benchmark run is bench_NOP_2500.bb
+Benchmark size is 2500
+All facts processed
+bench_NOP_2500.bb:Cycles:155776:Benchsize:2500
+System Debug Enabled
+Benchmark run is bench_NOP_2600.bb
+Benchmark size is 2600
+All facts processed
+bench_NOP_2600.bb:Cycles:160676:Benchsize:2600
+System Debug Enabled
+Benchmark run is bench_NOP_2700.bb
+Benchmark size is 2700
+All facts processed
+bench_NOP_2700.bb:Cycles:167712:Benchsize:2700
+System Debug Enabled
+Benchmark run is bench_NOP_2800.bb
+Benchmark size is 2800
+All facts processed
+bench_NOP_2800.bb:Cycles:172612:Benchsize:2800
+System Debug Enabled
+Benchmark run is bench_NOP_2900.bb
+Benchmark size is 2900
+All facts processed
+bench_NOP_2900.bb:Cycles:177512:Benchsize:2900
+System Debug Enabled
+Benchmark run is bench_NOP_3000.bb
+Benchmark size is 3000
+All facts processed
+bench_NOP_3000.bb:Cycles:192694:Benchsize:3000
+System Debug Enabled
+Benchmark run is bench_NOP_3100.bb
+Benchmark size is 3100
+All facts processed
+bench_NOP_3100.bb:Cycles:200342:Benchsize:3100
+System Debug Enabled
+Benchmark run is bench_NOP_3200.bb
+Benchmark size is 3200
+All facts processed
+bench_NOP_3200.bb:Cycles:205242:Benchsize:3200
+System Debug Enabled
+Benchmark run is bench_NOP_3300.bb
+Benchmark size is 3300
+All facts processed
+bench_NOP_3300.bb:Cycles:210142:Benchsize:3300
+System Debug Enabled
+Benchmark run is bench_NOP_3400.bb
+Benchmark size is 3400
+All facts processed
+bench_NOP_3400.bb:Cycles:217178:Benchsize:3400
+System Debug Enabled
+Benchmark run is bench_NOP_3500.bb
+Benchmark size is 3500
+All facts processed
+bench_NOP_3500.bb:Cycles:222078:Benchsize:3500
+System Debug Enabled
+Benchmark run is bench_NOP_3600.bb
+Benchmark size is 3600
+All facts processed
+bench_NOP_3600.bb:Cycles:226978:Benchsize:3600
+System Debug Enabled
+Benchmark run is bench_NOP_3700.bb
+Benchmark size is 3700
+All facts processed
+bench_NOP_3700.bb:Cycles:234014:Benchsize:3700
+System Debug Enabled
+Benchmark run is bench_NOP_3800.bb
+Benchmark size is 3800
+All facts processed
+bench_NOP_3800.bb:Cycles:238914:Benchsize:3800
+System Debug Enabled
+Benchmark run is bench_NOP_3900.bb
+Benchmark size is 3900
+All facts processed
+bench_NOP_3900.bb:Cycles:243814:Benchsize:3900
+System Debug Enabled
+Benchmark run is bench_NOP_4000.bb
+Benchmark size is 4000
+All facts processed
+bench_NOP_4000.bb:Cycles:250850:Benchsize:4000
+System Debug Enabled
+Benchmark run is bench_NOP_4100.bb
+Benchmark size is 4100
+All facts processed
+bench_NOP_4100.bb:Cycles:255750:Benchsize:4100
+System Debug Enabled
+Benchmark run is bench_NOP_4200.bb
+Benchmark size is 4200
+All facts processed
+bench_NOP_4200.bb:Cycles:260650:Benchsize:4200
+System Debug Enabled
+Benchmark run is bench_NOP_4300.bb
+Benchmark size is 4300
+All facts processed
+bench_NOP_4300.bb:Cycles:267686:Benchsize:4300
+System Debug Enabled
+Benchmark run is bench_NOP_4400.bb
+Benchmark size is 4400
+All facts processed
+bench_NOP_4400.bb:Cycles:272586:Benchsize:4400
+System Debug Enabled
+Benchmark run is bench_NOP_4500.bb
+Benchmark size is 4500
+All facts processed
+bench_NOP_4500.bb:Cycles:279622:Benchsize:4500
+System Debug Enabled
+Benchmark run is bench_NOP_4600.bb
+Benchmark size is 4600
+All facts processed
+bench_NOP_4600.bb:Cycles:284522:Benchsize:4600
+System Debug Enabled
+Benchmark run is bench_NOP_4700.bb
+Benchmark size is 4700
+All facts processed
+bench_NOP_4700.bb:Cycles:289422:Benchsize:4700
+System Debug Enabled
+Benchmark run is bench_NOP_4800.bb
+Benchmark size is 4800
+All facts processed
+bench_NOP_4800.bb:Cycles:296458:Benchsize:4800
+System Debug Enabled
+Benchmark run is bench_NOP_4900.bb
+Benchmark size is 4900
+All facts processed
+bench_NOP_4900.bb:Cycles:301358:Benchsize:4900
+System Debug Enabled
+Benchmark run is bench_NOP_5000.bb
+Benchmark size is 5000
+All facts processed
+bench_NOP_5000.bb:Cycles:306258:Benchsize:5000
+System Debug Enabled
+Benchmark run is bench_NOP_5100.bb
+Benchmark size is 5100
+All facts processed
+bench_NOP_5100.bb:Cycles:313294:Benchsize:5100
+System Debug Enabled
+Benchmark run is bench_NOP_5200.bb
+Benchmark size is 5200
+All facts processed
+bench_NOP_5200.bb:Cycles:318194:Benchsize:5200
+System Debug Enabled
+Benchmark run is bench_NOP_5300.bb
+Benchmark size is 5300
+All facts processed
+bench_NOP_5300.bb:Cycles:323094:Benchsize:5300
+System Debug Enabled
+Benchmark run is bench_NOP_5400.bb
+Benchmark size is 5400
+All facts processed
+bench_NOP_5400.bb:Cycles:330130:Benchsize:5400
+System Debug Enabled
+Benchmark run is bench_NOP_5500.bb
+Benchmark size is 5500
+All facts processed
+bench_NOP_5500.bb:Cycles:335030:Benchsize:5500
+System Debug Enabled
+Benchmark run is bench_NOP_5600.bb
+Benchmark size is 5600
+All facts processed
+bench_NOP_5600.bb:Cycles:339930:Benchsize:5600
+System Debug Enabled
+Benchmark run is bench_NOP_5700.bb
+Benchmark size is 5700
+All facts processed
+bench_NOP_5700.bb:Cycles:346966:Benchsize:5700
+System Debug Enabled
+Benchmark run is bench_NOP_5800.bb
+Benchmark size is 5800
+All facts processed
+bench_NOP_5800.bb:Cycles:351866:Benchsize:5800
+System Debug Enabled
+Benchmark run is bench_NOP_5900.bb
+Benchmark size is 5900
+All facts processed
+bench_NOP_5900.bb:Cycles:356766:Benchsize:5900
+System Debug Enabled
+Benchmark run is bench_NOP_6000.bb
+Benchmark size is 6000
+All facts processed
+bench_NOP_6000.bb:Cycles:363802:Benchsize:6000

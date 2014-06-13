@@ -1,0 +1,48 @@
+   1               		.file	"system.c"
+   2               	__SP_H__ = 0x3e
+   3               	__SP_L__ = 0x3d
+   4               	__SREG__ = 0x3f
+   5               	__RAMPZ__ = 0x3b
+   6               	__CCP__ = 0x34
+   7               	__tmp_reg__ = 0
+   8               	__zero_reg__ = 1
+   9               		.text
+  10               	.Ltext0:
+  11               		.cfi_sections	.debug_frame
+  12               		.section	.text.startup,"ax",@progbits
+  13               	.global	main
+  15               	main:
+  16               	.LFB6:
+  17               		.file 1 "/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/system.c"
+   1:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/system.c **** #include "system/system.h"
+   2:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/system.c **** 
+   3:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/system.c **** int main(void)
+   4:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/system.c **** {
+  18               		.loc 1 4 0
+  19               		.cfi_startproc
+  20               	/* prologue: function */
+  21               	/* frame size = 0 */
+  22               	/* stack size = 0 */
+  23               	.L__stack_usage = 0
+   5:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/system.c **** 		return blockProgram();
+  24               		.loc 1 5 0
+  25 0000 0C94 0000 		jmp blockProgram
+  26               	.LVL0:
+  27               		.cfi_endproc
+  28               	.LFE6:
+  30               		.text
+  31               	.Letext0:
+  32               		.file 2 "/home/pthalamy/CMU/bench/benchmark/build/src-bobby/system/system.bbh"
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 system.c
+     /tmp/ccTLAWNQ.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccTLAWNQ.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccTLAWNQ.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccTLAWNQ.s:5      *ABS*:000000000000003b __RAMPZ__
+     /tmp/ccTLAWNQ.s:6      *ABS*:0000000000000034 __CCP__
+     /tmp/ccTLAWNQ.s:7      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccTLAWNQ.s:8      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccTLAWNQ.s:15     .text.startup:0000000000000000 main
+
+UNDEFINED SYMBOLS
+blockProgram

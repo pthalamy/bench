@@ -1,0 +1,2388 @@
+10 shift/reduce conflicts
+non-shiftable terminal used on the rhs of 0 rules
+6 rules not reduced
+
+warning: rule <decls : decl > will never be reduced
+warning: rule <decls : decl decls > will never be reduced
+warning: rule <rules : rule > will never be reduced
+warning: rule <rules : rule rules > will never be reduced
+warning: rule <thms : thm > will never be reduced
+warning: rule <thms : thm COMMA thms > will never be reduced
+warning: non-shiftable terminal EOFappears on the rhs of <program : parts EOF >
+error:  state 103: shift/reduce conflict (shift RPAREN, reduce by rule 81)
+error:  state 122: shift/reduce conflict (shift IDENT, reduce by rule 28)
+error:  state 128: shift/reduce conflict (shift DOTPROD, reduce by rule 76)
+error:  state 128: shift/reduce conflict (shift EXP, reduce by rule 76)
+error:  state 128: shift/reduce conflict (shift CONS, reduce by rule 76)
+error:  state 128: shift/reduce conflict (shift MOD, reduce by rule 76)
+error:  state 128: shift/reduce conflict (shift MINUS, reduce by rule 76)
+error:  state 128: shift/reduce conflict (shift PLUS, reduce by rule 76)
+error:  state 128: shift/reduce conflict (shift TIMES, reduce by rule 76)
+error:  state 128: shift/reduce conflict (shift DIVIDE, reduce by rule 76)
+
+state 0:
+
+	program : . parts EOF 
+
+	IDENT	shift 14
+	TYPE	shift 13
+	EXTERN	shift 12
+	CONST	shift 11
+	BANG	shift 10
+	SCHEDULE	shift 9
+	DELETE	shift 8
+
+	program	goto 184
+	parts	goto 7
+	decl	goto 6
+	rule	goto 5
+	thm	goto 4
+	constdecl	goto 3
+	thmTime	goto 2
+	thmTimes	goto 1
+
+	.	reduce by rule 4
+
+
+state 1:
+
+	rule : thmTimes . PROVES clauses DOT 
+	rule : thmTimes . DOT 
+
+	DOT	shift 16
+	PROVES	shift 15
+
+
+	.	error
+
+
+state 2:
+
+	thmTimes : thmTime .  (reduce by rule 33)
+	thmTimes : thmTime . COMMA thmTimes 
+
+	COMMA	shift 17
+
+
+	.	reduce by rule 33
+
+
+state 3:
+
+	parts : constdecl . parts 
+
+	IDENT	shift 14
+	TYPE	shift 13
+	EXTERN	shift 12
+	CONST	shift 11
+	BANG	shift 10
+	SCHEDULE	shift 9
+	DELETE	shift 8
+
+	parts	goto 18
+	decl	goto 6
+	rule	goto 5
+	thm	goto 4
+	constdecl	goto 3
+	thmTime	goto 2
+	thmTimes	goto 1
+
+	.	reduce by rule 4
+
+
+state 4:
+
+	thmTime : thm . AT time 
+	thmTime : thm .  (reduce by rule 36)
+
+	AT	shift 19
+
+
+	.	reduce by rule 36
+
+
+state 5:
+
+	parts : rule . parts 
+
+	IDENT	shift 14
+	TYPE	shift 13
+	EXTERN	shift 12
+	CONST	shift 11
+	BANG	shift 10
+	SCHEDULE	shift 9
+	DELETE	shift 8
+
+	parts	goto 20
+	decl	goto 6
+	rule	goto 5
+	thm	goto 4
+	constdecl	goto 3
+	thmTime	goto 2
+	thmTimes	goto 1
+
+	.	reduce by rule 4
+
+
+state 6:
+
+	parts : decl . parts 
+
+	IDENT	shift 14
+	TYPE	shift 13
+	EXTERN	shift 12
+	CONST	shift 11
+	BANG	shift 10
+	SCHEDULE	shift 9
+	DELETE	shift 8
+
+	parts	goto 21
+	decl	goto 6
+	rule	goto 5
+	thm	goto 4
+	constdecl	goto 3
+	thmTime	goto 2
+	thmTimes	goto 1
+
+	.	reduce by rule 4
+
+
+state 7:
+
+	program : parts . EOF 
+
+	EOF	shift 22
+
+
+	.	error
+
+
+state 8:
+
+	thm : DELETE . LPAREN exp COMMA tuple RPAREN 
+
+	LPAREN	shift 23
+
+
+	.	error
+
+
+state 9:
+
+	thm : SCHEDULE . LPAREN exp COMMA tuple COMMA exp RPAREN 
+
+	LPAREN	shift 24
+
+
+	.	error
+
+
+state 10:
+
+	thm : BANG . IDENT LPAREN exps RPAREN 
+
+	IDENT	shift 25
+
+
+	.	error
+
+
+state 11:
+
+	constdecl : CONST . IDENT EQUAL const DOT 
+
+	IDENT	shift 26
+
+
+	.	error
+
+
+state 12:
+
+	decl : EXTERN . typ IDENT LPAREN typs RPAREN DOT 
+	decl : EXTERN . typ IDENT LPAREN RPAREN DOT 
+	decl : EXTERN . TYPE IDENT DOT 
+
+	IDENT	shift 33
+	LPAREN	shift 32
+	TYPE	shift 31
+	INT	shift 30
+	FLOAT	shift 29
+	ADDR	shift 28
+
+	typ	goto 27
+
+	.	error
+
+
+state 13:
+
+	decl : TYPE . theorem LPAREN aggtyps RPAREN DOT 
+	decl : TYPE . PERSISTENT theorem LPAREN aggtyps RPAREN DOT 
+
+	IDENT	shift 38
+	VIRTUALNEIGHBOR	shift 37
+	LINEAR	shift 36
+	PERSISTENT	shift 35
+
+	theorem	goto 34
+
+	.	error
+
+
+state 14:
+
+	thm : IDENT . LPAREN exps RPAREN 
+
+	LPAREN	shift 39
+
+
+	.	error
+
+
+state 15:
+
+	rule : thmTimes PROVES . clauses DOT 
+
+	INTNUM	shift 60
+	FLOATNUM	shift 59
+	IDENT	shift 58
+	MINUS	shift 57
+	NIL	shift 56
+	HASH	shift 55
+	LPAREN	shift 54
+	ANY	shift 53
+	FORALL	shift 52
+	BANG	shift 10
+	DELTA	shift 51
+	SCHEDULE	shift 9
+	DELETE	shift 8
+	PROVED	shift 50
+
+	thm	goto 49
+	exp	goto 48
+	constraint	goto 47
+	deltaexp	goto 46
+	provedexp	goto 45
+	clause	goto 44
+	clauses	goto 43
+	const	goto 42
+	intval	goto 41
+	floatval	goto 40
+
+	.	error
+
+
+state 16:
+
+	rule : thmTimes DOT .  (reduce by rule 32)
+
+
+
+	.	reduce by rule 32
+
+
+state 17:
+
+	thmTimes : thmTime COMMA . thmTimes 
+
+	IDENT	shift 14
+	BANG	shift 10
+	SCHEDULE	shift 9
+	DELETE	shift 8
+
+	thm	goto 4
+	thmTime	goto 2
+	thmTimes	goto 61
+
+	.	error
+
+
+state 18:
+
+	parts : constdecl parts .  (reduce by rule 2)
+
+
+
+	.	reduce by rule 2
+
+
+state 19:
+
+	thmTime : thm AT . time 
+
+	PLUS	shift 63
+
+	time	goto 62
+
+	.	error
+
+
+state 20:
+
+	parts : rule parts .  (reduce by rule 3)
+
+
+
+	.	reduce by rule 3
+
+
+state 21:
+
+	parts : decl parts .  (reduce by rule 1)
+
+
+
+	.	reduce by rule 1
+
+
+state 22:
+
+	program : parts EOF .  (reduce by rule 0)
+
+
+
+	.	reduce by rule 0
+
+
+state 23:
+
+	thm : DELETE LPAREN . exp COMMA tuple RPAREN 
+
+	INTNUM	shift 60
+	FLOATNUM	shift 59
+	IDENT	shift 65
+	MINUS	shift 57
+	NIL	shift 56
+	HASH	shift 55
+	LPAREN	shift 54
+	ANY	shift 53
+
+	exp	goto 64
+	const	goto 42
+	intval	goto 41
+	floatval	goto 40
+
+	.	error
+
+
+state 24:
+
+	thm : SCHEDULE LPAREN . exp COMMA tuple COMMA exp RPAREN 
+
+	INTNUM	shift 60
+	FLOATNUM	shift 59
+	IDENT	shift 65
+	MINUS	shift 57
+	NIL	shift 56
+	HASH	shift 55
+	LPAREN	shift 54
+	ANY	shift 53
+
+	exp	goto 66
+	const	goto 42
+	intval	goto 41
+	floatval	goto 40
+
+	.	error
+
+
+state 25:
+
+	thm : BANG IDENT . LPAREN exps RPAREN 
+
+	LPAREN	shift 67
+
+
+	.	error
+
+
+state 26:
+
+	constdecl : CONST IDENT . EQUAL const DOT 
+
+	EQUAL	shift 68
+
+
+	.	error
+
+
+state 27:
+
+	decl : EXTERN typ . IDENT LPAREN typs RPAREN DOT 
+	decl : EXTERN typ . IDENT LPAREN RPAREN DOT 
+	typ : typ . LIST 
+	typ : typ . SET 
+
+	IDENT	shift 71
+	LIST	shift 70
+	SET	shift 69
+
+
+	.	error
+
+
+state 28:
+
+	typ : ADDR .  (reduce by rule 23)
+
+
+
+	.	reduce by rule 23
+
+
+state 29:
+
+	typ : FLOAT .  (reduce by rule 26)
+
+
+
+	.	reduce by rule 26
+
+
+state 30:
+
+	typ : INT .  (reduce by rule 22)
+
+
+
+	.	reduce by rule 22
+
+
+state 31:
+
+	decl : EXTERN TYPE . IDENT DOT 
+
+	IDENT	shift 72
+
+
+	.	error
+
+
+state 32:
+
+	typ : LPAREN . typs RPAREN 
+
+	IDENT	shift 33
+	LPAREN	shift 32
+	INT	shift 30
+	FLOAT	shift 29
+	ADDR	shift 28
+
+	typ	goto 74
+	typs	goto 73
+
+	.	error
+
+
+state 33:
+
+	typ : IDENT .  (reduce by rule 28)
+
+
+
+	.	reduce by rule 28
+
+
+state 34:
+
+	decl : TYPE theorem . LPAREN aggtyps RPAREN DOT 
+
+	LPAREN	shift 75
+
+
+	.	error
+
+
+state 35:
+
+	decl : TYPE PERSISTENT . theorem LPAREN aggtyps RPAREN DOT 
+
+	IDENT	shift 38
+	VIRTUALNEIGHBOR	shift 37
+	LINEAR	shift 36
+
+	theorem	goto 76
+
+	.	error
+
+
+state 36:
+
+	theorem : LINEAR . IDENT 
+
+	IDENT	shift 77
+
+
+	.	error
+
+
+state 37:
+
+	theorem : VIRTUALNEIGHBOR . IDENT 
+
+	IDENT	shift 78
+
+
+	.	error
+
+
+state 38:
+
+	theorem : IDENT .  (reduce by rule 12)
+
+
+
+	.	reduce by rule 12
+
+
+state 39:
+
+	thm : IDENT LPAREN . exps RPAREN 
+
+	INTNUM	shift 60
+	FLOATNUM	shift 59
+	IDENT	shift 65
+	MINUS	shift 57
+	NIL	shift 56
+	HASH	shift 55
+	LPAREN	shift 54
+	ANY	shift 53
+
+	exp	goto 80
+	exps	goto 79
+	const	goto 42
+	intval	goto 41
+	floatval	goto 40
+
+	.	error
+
+
+state 40:
+
+	const : floatval .  (reduce by rule 52)
+
+
+
+	.	reduce by rule 52
+
+
+state 41:
+
+	const : intval .  (reduce by rule 51)
+
+
+
+	.	reduce by rule 51
+
+
+state 42:
+
+	exp : const .  (reduce by rule 74)
+
+
+
+	.	reduce by rule 74
+
+
+state 43:
+
+	rule : thmTimes PROVES clauses . DOT 
+
+	DOT	shift 81
+
+
+	.	error
+
+
+state 44:
+
+	clauses : clause .  (reduce by rule 58)
+	clauses : clause . COMMA clauses 
+
+	COMMA	shift 82
+
+
+	.	reduce by rule 58
+
+
+state 45:
+
+	clause : provedexp .  (reduce by rule 64)
+
+
+
+	.	reduce by rule 64
+
+
+state 46:
+
+	clause : deltaexp .  (reduce by rule 63)
+
+
+
+	.	reduce by rule 63
+
+
+state 47:
+
+	clause : constraint .  (reduce by rule 62)
+
+
+
+	.	reduce by rule 62
+
+
+state 48:
+
+	exp : exp . binop exp 
+	constraint : exp . cmpop exp 
+
+	DIVIDE	shift 98
+	TIMES	shift 97
+	PLUS	shift 96
+	MINUS	shift 95
+	MOD	shift 94
+	CONS	shift 93
+	EXP	shift 92
+	DOTPROD	shift 91
+	EQUAL	shift 90
+	NEQUAL	shift 89
+	LESS	shift 88
+	GREATER	shift 87
+	LESSEQ	shift 86
+	GREATEREQ	shift 85
+
+	binop	goto 84
+	cmpop	goto 83
+
+	.	error
+
+
+state 49:
+
+	clause : thm .  (reduce by rule 60)
+
+
+
+	.	reduce by rule 60
+
+
+state 50:
+
+	provedexp : PROVED . LPAREN exp COMMA tuple RPAREN cmpop exp 
+
+	LPAREN	shift 99
+
+
+	.	error
+
+
+state 51:
+
+	deltaexp : DELTA . LPAREN deltathm RPAREN cmpop exp 
+
+	LPAREN	shift 100
+
+
+	.	error
+
+
+state 52:
+
+	clause : FORALL . thm LBRACKET clauses RBRACKET 
+
+	IDENT	shift 14
+	BANG	shift 10
+	SCHEDULE	shift 9
+	DELETE	shift 8
+
+	thm	goto 101
+
+	.	error
+
+
+state 53:
+
+	exp : ANY .  (reduce by rule 73)
+
+
+
+	.	reduce by rule 73
+
+
+state 54:
+
+	exp : LPAREN . exp RPAREN 
+	exp : LPAREN . exps RPAREN 
+
+	INTNUM	shift 60
+	FLOATNUM	shift 59
+	IDENT	shift 65
+	MINUS	shift 57
+	NIL	shift 56
+	HASH	shift 55
+	LPAREN	shift 54
+	ANY	shift 53
+
+	exp	goto 103
+	exps	goto 102
+	const	goto 42
+	intval	goto 41
+	floatval	goto 40
+
+	.	error
+
+
+state 55:
+
+	const : HASH . INTNUM 
+
+	INTNUM	shift 104
+
+
+	.	error
+
+
+state 56:
+
+	exp : NIL .  (reduce by rule 75)
+
+
+
+	.	reduce by rule 75
+
+
+state 57:
+
+	intval : MINUS . INTNUM 
+	floatval : MINUS . FLOATNUM 
+
+	INTNUM	shift 106
+	FLOATNUM	shift 105
+
+
+	.	error
+
+
+state 58:
+
+	thm : IDENT . LPAREN exps RPAREN 
+	exp : IDENT .  (reduce by rule 72)
+	exp : IDENT . LPAREN exps RPAREN 
+	exp : IDENT . LPAREN RPAREN 
+
+	LPAREN	shift 107
+
+
+	.	reduce by rule 72
+
+
+state 59:
+
+	floatval : FLOATNUM .  (reduce by rule 56)
+
+
+
+	.	reduce by rule 56
+
+
+state 60:
+
+	intval : INTNUM .  (reduce by rule 54)
+
+
+
+	.	reduce by rule 54
+
+
+state 61:
+
+	thmTimes : thmTime COMMA thmTimes .  (reduce by rule 34)
+
+
+
+	.	reduce by rule 34
+
+
+state 62:
+
+	thmTime : thm AT time .  (reduce by rule 35)
+
+
+
+	.	reduce by rule 35
+
+
+state 63:
+
+	time : PLUS . intval MILLISECS 
+	time : PLUS . intval SECS 
+
+	INTNUM	shift 60
+	MINUS	shift 109
+
+	intval	goto 108
+
+	.	error
+
+
+state 64:
+
+	thm : DELETE LPAREN exp . COMMA tuple RPAREN 
+	exp : exp . binop exp 
+
+	DIVIDE	shift 98
+	TIMES	shift 97
+	PLUS	shift 96
+	MINUS	shift 95
+	MOD	shift 94
+	CONS	shift 93
+	EXP	shift 92
+	DOTPROD	shift 91
+	COMMA	shift 110
+
+	binop	goto 84
+
+	.	error
+
+
+state 65:
+
+	exp : IDENT .  (reduce by rule 72)
+	exp : IDENT . LPAREN exps RPAREN 
+	exp : IDENT . LPAREN RPAREN 
+
+	LPAREN	shift 111
+
+
+	.	reduce by rule 72
+
+
+state 66:
+
+	thm : SCHEDULE LPAREN exp . COMMA tuple COMMA exp RPAREN 
+	exp : exp . binop exp 
+
+	DIVIDE	shift 98
+	TIMES	shift 97
+	PLUS	shift 96
+	MINUS	shift 95
+	MOD	shift 94
+	CONS	shift 93
+	EXP	shift 92
+	DOTPROD	shift 91
+	COMMA	shift 112
+
+	binop	goto 84
+
+	.	error
+
+
+state 67:
+
+	thm : BANG IDENT LPAREN . exps RPAREN 
+
+	INTNUM	shift 60
+	FLOATNUM	shift 59
+	IDENT	shift 65
+	MINUS	shift 57
+	NIL	shift 56
+	HASH	shift 55
+	LPAREN	shift 54
+	ANY	shift 53
+
+	exp	goto 80
+	exps	goto 113
+	const	goto 42
+	intval	goto 41
+	floatval	goto 40
+
+	.	error
+
+
+state 68:
+
+	constdecl : CONST IDENT EQUAL . const DOT 
+
+	INTNUM	shift 60
+	FLOATNUM	shift 59
+	MINUS	shift 57
+	HASH	shift 55
+
+	const	goto 114
+	intval	goto 41
+	floatval	goto 40
+
+	.	error
+
+
+state 69:
+
+	typ : typ SET .  (reduce by rule 25)
+
+
+
+	.	reduce by rule 25
+
+
+state 70:
+
+	typ : typ LIST .  (reduce by rule 24)
+
+
+
+	.	reduce by rule 24
+
+
+state 71:
+
+	decl : EXTERN typ IDENT . LPAREN typs RPAREN DOT 
+	decl : EXTERN typ IDENT . LPAREN RPAREN DOT 
+
+	LPAREN	shift 115
+
+
+	.	error
+
+
+state 72:
+
+	decl : EXTERN TYPE IDENT . DOT 
+
+	DOT	shift 116
+
+
+	.	error
+
+
+state 73:
+
+	typ : LPAREN typs . RPAREN 
+
+	RPAREN	shift 117
+
+
+	.	error
+
+
+state 74:
+
+	typ : typ . LIST 
+	typ : typ . SET 
+	typs : typ .  (reduce by rule 17)
+	typs : typ . COMMA typs 
+
+	COMMA	shift 118
+	LIST	shift 70
+	SET	shift 69
+
+
+	.	reduce by rule 17
+
+
+state 75:
+
+	decl : TYPE theorem LPAREN . aggtyps RPAREN DOT 
+
+	IDENT	shift 122
+	LPAREN	shift 32
+	INT	shift 30
+	FLOAT	shift 29
+	ADDR	shift 28
+
+	aggtyp	goto 121
+	aggtyps	goto 120
+	typ	goto 119
+
+	.	error
+
+
+state 76:
+
+	decl : TYPE PERSISTENT theorem . LPAREN aggtyps RPAREN DOT 
+
+	LPAREN	shift 123
+
+
+	.	error
+
+
+state 77:
+
+	theorem : LINEAR IDENT .  (reduce by rule 14)
+
+
+
+	.	reduce by rule 14
+
+
+state 78:
+
+	theorem : VIRTUALNEIGHBOR IDENT .  (reduce by rule 13)
+
+
+
+	.	reduce by rule 13
+
+
+state 79:
+
+	thm : IDENT LPAREN exps . RPAREN 
+
+	RPAREN	shift 124
+
+
+	.	error
+
+
+state 80:
+
+	exp : exp . binop exp 
+	exps : exp .  (reduce by rule 81)
+	exps : exp . COMMA exps 
+
+	DIVIDE	shift 98
+	TIMES	shift 97
+	PLUS	shift 96
+	MINUS	shift 95
+	MOD	shift 94
+	CONS	shift 93
+	EXP	shift 92
+	DOTPROD	shift 91
+	COMMA	shift 125
+
+	binop	goto 84
+
+	.	reduce by rule 81
+
+
+state 81:
+
+	rule : thmTimes PROVES clauses DOT .  (reduce by rule 31)
+
+
+
+	.	reduce by rule 31
+
+
+state 82:
+
+	clauses : clause COMMA . clauses 
+
+	INTNUM	shift 60
+	FLOATNUM	shift 59
+	IDENT	shift 58
+	MINUS	shift 57
+	NIL	shift 56
+	HASH	shift 55
+	LPAREN	shift 54
+	ANY	shift 53
+	FORALL	shift 52
+	BANG	shift 10
+	DELTA	shift 51
+	SCHEDULE	shift 9
+	DELETE	shift 8
+	PROVED	shift 50
+
+	thm	goto 49
+	exp	goto 48
+	constraint	goto 47
+	deltaexp	goto 46
+	provedexp	goto 45
+	clause	goto 44
+	clauses	goto 126
+	const	goto 42
+	intval	goto 41
+	floatval	goto 40
+
+	.	error
+
+
+state 83:
+
+	constraint : exp cmpop . exp 
+
+	INTNUM	shift 60
+	FLOATNUM	shift 59
+	IDENT	shift 65
+	MINUS	shift 57
+	NIL	shift 56
+	HASH	shift 55
+	LPAREN	shift 54
+	ANY	shift 53
+
+	exp	goto 127
+	const	goto 42
+	intval	goto 41
+	floatval	goto 40
+
+	.	error
+
+
+state 84:
+
+	exp : exp binop . exp 
+
+	INTNUM	shift 60
+	FLOATNUM	shift 59
+	IDENT	shift 65
+	MINUS	shift 57
+	NIL	shift 56
+	HASH	shift 55
+	LPAREN	shift 54
+	ANY	shift 53
+
+	exp	goto 128
+	const	goto 42
+	intval	goto 41
+	floatval	goto 40
+
+	.	error
+
+
+state 85:
+
+	cmpop : GREATEREQ .  (reduce by rule 71)
+
+
+
+	.	reduce by rule 71
+
+
+state 86:
+
+	cmpop : LESSEQ .  (reduce by rule 70)
+
+
+
+	.	reduce by rule 70
+
+
+state 87:
+
+	cmpop : GREATER .  (reduce by rule 69)
+
+
+
+	.	reduce by rule 69
+
+
+state 88:
+
+	cmpop : LESS .  (reduce by rule 68)
+
+
+
+	.	reduce by rule 68
+
+
+state 89:
+
+	cmpop : NEQUAL .  (reduce by rule 67)
+
+
+
+	.	reduce by rule 67
+
+
+state 90:
+
+	cmpop : EQUAL .  (reduce by rule 66)
+
+
+
+	.	reduce by rule 66
+
+
+state 91:
+
+	binop : DOTPROD .  (reduce by rule 90)
+
+
+
+	.	reduce by rule 90
+
+
+state 92:
+
+	binop : EXP .  (reduce by rule 89)
+
+
+
+	.	reduce by rule 89
+
+
+state 93:
+
+	binop : CONS .  (reduce by rule 83)
+
+
+
+	.	reduce by rule 83
+
+
+state 94:
+
+	binop : MOD .  (reduce by rule 88)
+
+
+
+	.	reduce by rule 88
+
+
+state 95:
+
+	binop : MINUS .  (reduce by rule 87)
+
+
+
+	.	reduce by rule 87
+
+
+state 96:
+
+	binop : PLUS .  (reduce by rule 86)
+
+
+
+	.	reduce by rule 86
+
+
+state 97:
+
+	binop : TIMES .  (reduce by rule 85)
+
+
+
+	.	reduce by rule 85
+
+
+state 98:
+
+	binop : DIVIDE .  (reduce by rule 84)
+
+
+
+	.	reduce by rule 84
+
+
+state 99:
+
+	provedexp : PROVED LPAREN . exp COMMA tuple RPAREN cmpop exp 
+
+	INTNUM	shift 60
+	FLOATNUM	shift 59
+	IDENT	shift 65
+	MINUS	shift 57
+	NIL	shift 56
+	HASH	shift 55
+	LPAREN	shift 54
+	ANY	shift 53
+
+	exp	goto 129
+	const	goto 42
+	intval	goto 41
+	floatval	goto 40
+
+	.	error
+
+
+state 100:
+
+	deltaexp : DELTA LPAREN . deltathm RPAREN cmpop exp 
+
+	IDENT	shift 132
+
+	deltathm	goto 131
+	deltavar	goto 130
+
+	.	error
+
+
+state 101:
+
+	clause : FORALL thm . LBRACKET clauses RBRACKET 
+
+	LBRACKET	shift 133
+
+
+	.	error
+
+
+state 102:
+
+	exp : LPAREN exps . RPAREN 
+
+	RPAREN	shift 134
+
+
+	.	error
+
+error:  state 103: shift/reduce conflict (shift RPAREN, reduce by rule 81)
+
+state 103:
+
+	exp : exp . binop exp 
+	exp : LPAREN exp . RPAREN 
+	exps : exp .  (reduce by rule 81)
+	exps : exp . COMMA exps 
+
+	DIVIDE	shift 98
+	TIMES	shift 97
+	PLUS	shift 96
+	MINUS	shift 95
+	MOD	shift 94
+	CONS	shift 93
+	EXP	shift 92
+	DOTPROD	shift 91
+	COMMA	shift 125
+	RPAREN	shift 135
+
+	binop	goto 84
+
+	.	error
+
+
+state 104:
+
+	const : HASH INTNUM .  (reduce by rule 53)
+
+
+
+	.	reduce by rule 53
+
+
+state 105:
+
+	floatval : MINUS FLOATNUM .  (reduce by rule 57)
+
+
+
+	.	reduce by rule 57
+
+
+state 106:
+
+	intval : MINUS INTNUM .  (reduce by rule 55)
+
+
+
+	.	reduce by rule 55
+
+
+state 107:
+
+	thm : IDENT LPAREN . exps RPAREN 
+	exp : IDENT LPAREN . exps RPAREN 
+	exp : IDENT LPAREN . RPAREN 
+
+	INTNUM	shift 60
+	FLOATNUM	shift 59
+	IDENT	shift 65
+	MINUS	shift 57
+	NIL	shift 56
+	HASH	shift 55
+	LPAREN	shift 54
+	RPAREN	shift 137
+	ANY	shift 53
+
+	exp	goto 80
+	exps	goto 136
+	const	goto 42
+	intval	goto 41
+	floatval	goto 40
+
+	.	error
+
+
+state 108:
+
+	time : PLUS intval . MILLISECS 
+	time : PLUS intval . SECS 
+
+	SECS	shift 139
+	MILLISECS	shift 138
+
+
+	.	error
+
+
+state 109:
+
+	intval : MINUS . INTNUM 
+
+	INTNUM	shift 106
+
+
+	.	error
+
+
+state 110:
+
+	thm : DELETE LPAREN exp COMMA . tuple RPAREN 
+
+	IDENT	shift 141
+
+	tuple	goto 140
+
+	.	error
+
+
+state 111:
+
+	exp : IDENT LPAREN . exps RPAREN 
+	exp : IDENT LPAREN . RPAREN 
+
+	INTNUM	shift 60
+	FLOATNUM	shift 59
+	IDENT	shift 65
+	MINUS	shift 57
+	NIL	shift 56
+	HASH	shift 55
+	LPAREN	shift 54
+	RPAREN	shift 137
+	ANY	shift 53
+
+	exp	goto 80
+	exps	goto 142
+	const	goto 42
+	intval	goto 41
+	floatval	goto 40
+
+	.	error
+
+
+state 112:
+
+	thm : SCHEDULE LPAREN exp COMMA . tuple COMMA exp RPAREN 
+
+	IDENT	shift 141
+
+	tuple	goto 143
+
+	.	error
+
+
+state 113:
+
+	thm : BANG IDENT LPAREN exps . RPAREN 
+
+	RPAREN	shift 144
+
+
+	.	error
+
+
+state 114:
+
+	constdecl : CONST IDENT EQUAL const . DOT 
+
+	DOT	shift 145
+
+
+	.	error
+
+
+state 115:
+
+	decl : EXTERN typ IDENT LPAREN . typs RPAREN DOT 
+	decl : EXTERN typ IDENT LPAREN . RPAREN DOT 
+
+	IDENT	shift 33
+	LPAREN	shift 32
+	RPAREN	shift 147
+	INT	shift 30
+	FLOAT	shift 29
+	ADDR	shift 28
+
+	typ	goto 74
+	typs	goto 146
+
+	.	error
+
+
+state 116:
+
+	decl : EXTERN TYPE IDENT DOT .  (reduce by rule 11)
+
+
+
+	.	reduce by rule 11
+
+
+state 117:
+
+	typ : LPAREN typs RPAREN .  (reduce by rule 27)
+
+
+
+	.	reduce by rule 27
+
+
+state 118:
+
+	typs : typ COMMA . typs 
+
+	IDENT	shift 33
+	LPAREN	shift 32
+	INT	shift 30
+	FLOAT	shift 29
+	ADDR	shift 28
+
+	typ	goto 74
+	typs	goto 148
+
+	.	error
+
+
+state 119:
+
+	aggtyp : typ .  (reduce by rule 19)
+	aggtyp : typ . IDENT typ 
+	typ : typ . LIST 
+	typ : typ . SET 
+
+	IDENT	shift 149
+	LIST	shift 70
+	SET	shift 69
+
+
+	.	reduce by rule 19
+
+
+state 120:
+
+	decl : TYPE theorem LPAREN aggtyps . RPAREN DOT 
+
+	RPAREN	shift 150
+
+
+	.	error
+
+
+state 121:
+
+	aggtyps : aggtyp .  (reduce by rule 15)
+	aggtyps : aggtyp . COMMA aggtyps 
+
+	COMMA	shift 151
+
+
+	.	reduce by rule 15
+
+error:  state 122: shift/reduce conflict (shift IDENT, reduce by rule 28)
+
+state 122:
+
+	aggtyp : IDENT . typ 
+	typ : IDENT .  (reduce by rule 28)
+
+	IDENT	shift 33
+	LPAREN	shift 32
+	INT	shift 30
+	FLOAT	shift 29
+	ADDR	shift 28
+
+	typ	goto 152
+
+	.	reduce by rule 28
+
+
+state 123:
+
+	decl : TYPE PERSISTENT theorem LPAREN . aggtyps RPAREN DOT 
+
+	IDENT	shift 122
+	LPAREN	shift 32
+	INT	shift 30
+	FLOAT	shift 29
+	ADDR	shift 28
+
+	aggtyp	goto 121
+	aggtyps	goto 153
+	typ	goto 119
+
+	.	error
+
+
+state 124:
+
+	thm : IDENT LPAREN exps RPAREN .  (reduce by rule 45)
+
+
+
+	.	reduce by rule 45
+
+
+state 125:
+
+	exps : exp COMMA . exps 
+
+	INTNUM	shift 60
+	FLOATNUM	shift 59
+	IDENT	shift 65
+	MINUS	shift 57
+	NIL	shift 56
+	HASH	shift 55
+	LPAREN	shift 54
+	ANY	shift 53
+
+	exp	goto 80
+	exps	goto 154
+	const	goto 42
+	intval	goto 41
+	floatval	goto 40
+
+	.	error
+
+
+state 126:
+
+	clauses : clause COMMA clauses .  (reduce by rule 59)
+
+
+
+	.	reduce by rule 59
+
+
+state 127:
+
+	exp : exp . binop exp 
+	constraint : exp cmpop exp .  (reduce by rule 65)
+
+	DIVIDE	shift 98
+	TIMES	shift 97
+	PLUS	shift 96
+	MINUS	shift 95
+	MOD	shift 94
+	CONS	shift 93
+	EXP	shift 92
+	DOTPROD	shift 91
+
+	binop	goto 84
+
+	.	reduce by rule 65
+
+error:  state 128: shift/reduce conflict (shift DOTPROD, reduce by rule 76)
+error:  state 128: shift/reduce conflict (shift EXP, reduce by rule 76)
+error:  state 128: shift/reduce conflict (shift CONS, reduce by rule 76)
+error:  state 128: shift/reduce conflict (shift MOD, reduce by rule 76)
+error:  state 128: shift/reduce conflict (shift MINUS, reduce by rule 76)
+error:  state 128: shift/reduce conflict (shift PLUS, reduce by rule 76)
+error:  state 128: shift/reduce conflict (shift TIMES, reduce by rule 76)
+error:  state 128: shift/reduce conflict (shift DIVIDE, reduce by rule 76)
+
+state 128:
+
+	exp : exp . binop exp 
+	exp : exp binop exp .  (reduce by rule 76)
+
+	DIVIDE	shift 98
+	TIMES	shift 97
+	PLUS	shift 96
+	MINUS	shift 95
+	MOD	shift 94
+	CONS	shift 93
+	EXP	shift 92
+	DOTPROD	shift 91
+
+	binop	goto 84
+
+	.	reduce by rule 76
+
+
+state 129:
+
+	exp : exp . binop exp 
+	provedexp : PROVED LPAREN exp . COMMA tuple RPAREN cmpop exp 
+
+	DIVIDE	shift 98
+	TIMES	shift 97
+	PLUS	shift 96
+	MINUS	shift 95
+	MOD	shift 94
+	CONS	shift 93
+	EXP	shift 92
+	DOTPROD	shift 91
+	COMMA	shift 155
+
+	binop	goto 84
+
+	.	error
+
+
+state 130:
+
+	deltathm : deltavar . SEMI IDENT LPAREN exps RPAREN 
+
+	SEMI	shift 156
+
+
+	.	error
+
+
+state 131:
+
+	deltaexp : DELTA LPAREN deltathm . RPAREN cmpop exp 
+
+	RPAREN	shift 157
+
+
+	.	error
+
+
+state 132:
+
+	deltavar : IDENT .  (reduce by rule 41)
+
+
+
+	.	reduce by rule 41
+
+
+state 133:
+
+	clause : FORALL thm LBRACKET . clauses RBRACKET 
+
+	INTNUM	shift 60
+	FLOATNUM	shift 59
+	IDENT	shift 58
+	MINUS	shift 57
+	NIL	shift 56
+	HASH	shift 55
+	LPAREN	shift 54
+	ANY	shift 53
+	FORALL	shift 52
+	BANG	shift 10
+	DELTA	shift 51
+	SCHEDULE	shift 9
+	DELETE	shift 8
+	PROVED	shift 50
+
+	thm	goto 49
+	exp	goto 48
+	constraint	goto 47
+	deltaexp	goto 46
+	provedexp	goto 45
+	clause	goto 44
+	clauses	goto 158
+	const	goto 42
+	intval	goto 41
+	floatval	goto 40
+
+	.	error
+
+
+state 134:
+
+	exp : LPAREN exps RPAREN .  (reduce by rule 80)
+
+
+
+	.	reduce by rule 80
+
+
+state 135:
+
+	exp : LPAREN exp RPAREN .  (reduce by rule 79)
+
+
+
+	.	reduce by rule 79
+
+
+state 136:
+
+	thm : IDENT LPAREN exps . RPAREN 
+	exp : IDENT LPAREN exps . RPAREN 
+
+	RPAREN	shift 159
+
+
+	.	error
+
+
+state 137:
+
+	exp : IDENT LPAREN RPAREN .  (reduce by rule 78)
+
+
+
+	.	reduce by rule 78
+
+
+state 138:
+
+	time : PLUS intval MILLISECS .  (reduce by rule 37)
+
+
+
+	.	reduce by rule 37
+
+
+state 139:
+
+	time : PLUS intval SECS .  (reduce by rule 38)
+
+
+
+	.	reduce by rule 38
+
+
+state 140:
+
+	thm : DELETE LPAREN exp COMMA tuple . RPAREN 
+
+	RPAREN	shift 160
+
+
+	.	error
+
+
+state 141:
+
+	tuple : IDENT .  (reduce by rule 49)
+
+
+
+	.	reduce by rule 49
+
+
+state 142:
+
+	exp : IDENT LPAREN exps . RPAREN 
+
+	RPAREN	shift 161
+
+
+	.	error
+
+
+state 143:
+
+	thm : SCHEDULE LPAREN exp COMMA tuple . COMMA exp RPAREN 
+
+	COMMA	shift 162
+
+
+	.	error
+
+
+state 144:
+
+	thm : BANG IDENT LPAREN exps RPAREN .  (reduce by rule 46)
+
+
+
+	.	reduce by rule 46
+
+
+state 145:
+
+	constdecl : CONST IDENT EQUAL const DOT .  (reduce by rule 50)
+
+
+
+	.	reduce by rule 50
+
+
+state 146:
+
+	decl : EXTERN typ IDENT LPAREN typs . RPAREN DOT 
+
+	RPAREN	shift 163
+
+
+	.	error
+
+
+state 147:
+
+	decl : EXTERN typ IDENT LPAREN RPAREN . DOT 
+
+	DOT	shift 164
+
+
+	.	error
+
+
+state 148:
+
+	typs : typ COMMA typs .  (reduce by rule 18)
+
+
+
+	.	reduce by rule 18
+
+
+state 149:
+
+	aggtyp : typ IDENT . typ 
+
+	IDENT	shift 33
+	LPAREN	shift 32
+	INT	shift 30
+	FLOAT	shift 29
+	ADDR	shift 28
+
+	typ	goto 165
+
+	.	error
+
+
+state 150:
+
+	decl : TYPE theorem LPAREN aggtyps RPAREN . DOT 
+
+	DOT	shift 166
+
+
+	.	error
+
+
+state 151:
+
+	aggtyps : aggtyp COMMA . aggtyps 
+
+	IDENT	shift 122
+	LPAREN	shift 32
+	INT	shift 30
+	FLOAT	shift 29
+	ADDR	shift 28
+
+	aggtyp	goto 121
+	aggtyps	goto 167
+	typ	goto 119
+
+	.	error
+
+
+state 152:
+
+	aggtyp : IDENT typ .  (reduce by rule 20)
+	typ : typ . LIST 
+	typ : typ . SET 
+
+	LIST	shift 70
+	SET	shift 69
+
+
+	.	reduce by rule 20
+
+
+state 153:
+
+	decl : TYPE PERSISTENT theorem LPAREN aggtyps . RPAREN DOT 
+
+	RPAREN	shift 168
+
+
+	.	error
+
+
+state 154:
+
+	exps : exp COMMA exps .  (reduce by rule 82)
+
+
+
+	.	reduce by rule 82
+
+
+state 155:
+
+	provedexp : PROVED LPAREN exp COMMA . tuple RPAREN cmpop exp 
+
+	IDENT	shift 141
+
+	tuple	goto 169
+
+	.	error
+
+
+state 156:
+
+	deltathm : deltavar SEMI . IDENT LPAREN exps RPAREN 
+
+	IDENT	shift 170
+
+
+	.	error
+
+
+state 157:
+
+	deltaexp : DELTA LPAREN deltathm RPAREN . cmpop exp 
+
+	EQUAL	shift 90
+	NEQUAL	shift 89
+	LESS	shift 88
+	GREATER	shift 87
+	LESSEQ	shift 86
+	GREATEREQ	shift 85
+
+	cmpop	goto 171
+
+	.	error
+
+
+state 158:
+
+	clause : FORALL thm LBRACKET clauses . RBRACKET 
+
+	RBRACKET	shift 172
+
+
+	.	error
+
+
+state 159:
+
+	thm : IDENT LPAREN exps RPAREN .  (reduce by rule 45)
+	exp : IDENT LPAREN exps RPAREN .  (reduce by rule 77)
+
+	DIVIDE	reduce by rule 77
+	TIMES	reduce by rule 77
+	PLUS	reduce by rule 77
+	MINUS	reduce by rule 77
+	MOD	reduce by rule 77
+	CONS	reduce by rule 77
+	EXP	reduce by rule 77
+	DOTPROD	reduce by rule 77
+	DOT	reduce by rule 45
+	COMMA	reduce by rule 45
+	EQUAL	reduce by rule 77
+	NEQUAL	reduce by rule 77
+	LESS	reduce by rule 77
+	GREATER	reduce by rule 77
+	LESSEQ	reduce by rule 77
+	GREATEREQ	reduce by rule 77
+	RBRACKET	reduce by rule 45
+
+
+	.	error
+
+
+state 160:
+
+	thm : DELETE LPAREN exp COMMA tuple RPAREN .  (reduce by rule 44)
+
+
+
+	.	reduce by rule 44
+
+
+state 161:
+
+	exp : IDENT LPAREN exps RPAREN .  (reduce by rule 77)
+
+
+
+	.	reduce by rule 77
+
+
+state 162:
+
+	thm : SCHEDULE LPAREN exp COMMA tuple COMMA . exp RPAREN 
+
+	INTNUM	shift 60
+	FLOATNUM	shift 59
+	IDENT	shift 65
+	MINUS	shift 57
+	NIL	shift 56
+	HASH	shift 55
+	LPAREN	shift 54
+	ANY	shift 53
+
+	exp	goto 173
+	const	goto 42
+	intval	goto 41
+	floatval	goto 40
+
+	.	error
+
+
+state 163:
+
+	decl : EXTERN typ IDENT LPAREN typs RPAREN . DOT 
+
+	DOT	shift 174
+
+
+	.	error
+
+
+state 164:
+
+	decl : EXTERN typ IDENT LPAREN RPAREN DOT .  (reduce by rule 10)
+
+
+
+	.	reduce by rule 10
+
+
+state 165:
+
+	aggtyp : typ IDENT typ .  (reduce by rule 21)
+	typ : typ . LIST 
+	typ : typ . SET 
+
+	LIST	shift 70
+	SET	shift 69
+
+
+	.	reduce by rule 21
+
+
+state 166:
+
+	decl : TYPE theorem LPAREN aggtyps RPAREN DOT .  (reduce by rule 7)
+
+
+
+	.	reduce by rule 7
+
+
+state 167:
+
+	aggtyps : aggtyp COMMA aggtyps .  (reduce by rule 16)
+
+
+
+	.	reduce by rule 16
+
+
+state 168:
+
+	decl : TYPE PERSISTENT theorem LPAREN aggtyps RPAREN . DOT 
+
+	DOT	shift 175
+
+
+	.	error
+
+
+state 169:
+
+	provedexp : PROVED LPAREN exp COMMA tuple . RPAREN cmpop exp 
+
+	RPAREN	shift 176
+
+
+	.	error
+
+
+state 170:
+
+	deltathm : deltavar SEMI IDENT . LPAREN exps RPAREN 
+
+	LPAREN	shift 177
+
+
+	.	error
+
+
+state 171:
+
+	deltaexp : DELTA LPAREN deltathm RPAREN cmpop . exp 
+
+	INTNUM	shift 60
+	FLOATNUM	shift 59
+	IDENT	shift 65
+	MINUS	shift 57
+	NIL	shift 56
+	HASH	shift 55
+	LPAREN	shift 54
+	ANY	shift 53
+
+	exp	goto 178
+	const	goto 42
+	intval	goto 41
+	floatval	goto 40
+
+	.	error
+
+
+state 172:
+
+	clause : FORALL thm LBRACKET clauses RBRACKET .  (reduce by rule 61)
+
+
+
+	.	reduce by rule 61
+
+
+state 173:
+
+	thm : SCHEDULE LPAREN exp COMMA tuple COMMA exp . RPAREN 
+	exp : exp . binop exp 
+
+	DIVIDE	shift 98
+	TIMES	shift 97
+	PLUS	shift 96
+	MINUS	shift 95
+	MOD	shift 94
+	CONS	shift 93
+	EXP	shift 92
+	DOTPROD	shift 91
+	RPAREN	shift 179
+
+	binop	goto 84
+
+	.	error
+
+
+state 174:
+
+	decl : EXTERN typ IDENT LPAREN typs RPAREN DOT .  (reduce by rule 9)
+
+
+
+	.	reduce by rule 9
+
+
+state 175:
+
+	decl : TYPE PERSISTENT theorem LPAREN aggtyps RPAREN DOT .  (reduce by rule 8)
+
+
+
+	.	reduce by rule 8
+
+
+state 176:
+
+	provedexp : PROVED LPAREN exp COMMA tuple RPAREN . cmpop exp 
+
+	EQUAL	shift 90
+	NEQUAL	shift 89
+	LESS	shift 88
+	GREATER	shift 87
+	LESSEQ	shift 86
+	GREATEREQ	shift 85
+
+	cmpop	goto 180
+
+	.	error
+
+
+state 177:
+
+	deltathm : deltavar SEMI IDENT LPAREN . exps RPAREN 
+
+	INTNUM	shift 60
+	FLOATNUM	shift 59
+	IDENT	shift 65
+	MINUS	shift 57
+	NIL	shift 56
+	HASH	shift 55
+	LPAREN	shift 54
+	ANY	shift 53
+
+	exp	goto 80
+	exps	goto 181
+	const	goto 42
+	intval	goto 41
+	floatval	goto 40
+
+	.	error
+
+
+state 178:
+
+	exp : exp . binop exp 
+	deltaexp : DELTA LPAREN deltathm RPAREN cmpop exp .  (reduce by rule 39)
+
+	DIVIDE	shift 98
+	TIMES	shift 97
+	PLUS	shift 96
+	MINUS	shift 95
+	MOD	shift 94
+	CONS	shift 93
+	EXP	shift 92
+	DOTPROD	shift 91
+
+	binop	goto 84
+
+	.	reduce by rule 39
+
+
+state 179:
+
+	thm : SCHEDULE LPAREN exp COMMA tuple COMMA exp RPAREN .  (reduce by rule 43)
+
+
+
+	.	reduce by rule 43
+
+
+state 180:
+
+	provedexp : PROVED LPAREN exp COMMA tuple RPAREN cmpop . exp 
+
+	INTNUM	shift 60
+	FLOATNUM	shift 59
+	IDENT	shift 65
+	MINUS	shift 57
+	NIL	shift 56
+	HASH	shift 55
+	LPAREN	shift 54
+	ANY	shift 53
+
+	exp	goto 182
+	const	goto 42
+	intval	goto 41
+	floatval	goto 40
+
+	.	error
+
+
+state 181:
+
+	deltathm : deltavar SEMI IDENT LPAREN exps . RPAREN 
+
+	RPAREN	shift 183
+
+
+	.	error
+
+
+state 182:
+
+	exp : exp . binop exp 
+	provedexp : PROVED LPAREN exp COMMA tuple RPAREN cmpop exp .  (reduce by rule 42)
+
+	DIVIDE	shift 98
+	TIMES	shift 97
+	PLUS	shift 96
+	MINUS	shift 95
+	MOD	shift 94
+	CONS	shift 93
+	EXP	shift 92
+	DOTPROD	shift 91
+
+	binop	goto 84
+
+	.	reduce by rule 42
+
+
+state 183:
+
+	deltathm : deltavar SEMI IDENT LPAREN exps RPAREN .  (reduce by rule 40)
+
+
+
+	.	reduce by rule 40
+
+
+state 184:
+
+
+	EOF	accept
+
+
+	.	error
+
+279 of 650 action table entries left after compaction
+174 goto table entries

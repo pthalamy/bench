@@ -1,0 +1,2 @@
+#define BENCHMARKSIZE "200"
+#define BENCHMARKNAME "bench_MOVE_100.bb"

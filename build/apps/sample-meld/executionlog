@@ -1,0 +1,11 @@
+current op on block 1082284864: START, op cost: 0
+current op on block 1082284864: RETURN, op cost: 1
+current op on block 1082284864: RETURN, op cost: 1
+current op on block 1082284864: RETURN, op cost: 1
+current op on block 1082284864: RETURN, op cost: 1
+current op on block 1082284864: RETURN, op cost: 1
+current op on block 1082284864: RETURN, op cost: 1
+current op on block 1082284864: IF, op cost: 8
+current op on block 1082284864: IF, op cost: 8
+current op on block 1082284864: RETURN, op cost: 1
+current op on block 1082284864: STOP, op cost: 0

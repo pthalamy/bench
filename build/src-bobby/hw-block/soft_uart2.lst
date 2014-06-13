@@ -1,0 +1,978 @@
+   1               		.file	"soft_uart2.c"
+   2               	__SP_H__ = 0x3e
+   3               	__SP_L__ = 0x3d
+   4               	__SREG__ = 0x3f
+   5               	__RAMPZ__ = 0x3b
+   6               	__CCP__ = 0x34
+   7               	__tmp_reg__ = 0
+   8               	__zero_reg__ = 1
+   9               		.text
+  10               	.Ltext0:
+  11               		.cfi_sections	.debug_frame
+  12               	.global	timer_set
+  14               	timer_set:
+  15               	.LFB12:
+  16               		.file 1 "/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c"
+   1:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** #include "soft_uart2.h"
+   2:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 
+   3:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** #include "../system/handler.h"
+   4:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 
+   5:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** soft_uart_t soft_uart[NUM_SOFTWARE_UARTS];
+   6:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 
+   7:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** /*
+   8:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** void timer_isr(soft_uart_t * uart)
+   9:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** {
+  10:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	char			start_bit, flag_in;
+  11:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	
+  12:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** //	uart->timer1->PER = 93;
+  13:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 
+  14:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** // Transmitter Section
+  15:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	if ( uart->flag_tx_ready )
+  16:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 		{
+  17:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 		if ( --(uart->timer_tx_ctr) <= 0 )
+  18:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			{
+  19:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			//mask = (uart->internal_tx_buffer) & 0x01;
+  20:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			//(uart->internal_tx_buffer) >>= 1;
+  21:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			if ( ((uart->internal_tx_buffer) & 0x0001) == 0x01)
+  22:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 				{
+  23:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 				SET_TX_PIN_HIGH(uart);
+  24:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 				}
+  25:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			else
+  26:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 				{
+  27:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 				SET_TX_PIN_LOW(uart);
+  28:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 				}
+  29:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 				
+  30:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			uart->internal_tx_buffer >>= 1;
+  31:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			uart->timer_tx_ctr = 3;
+  32:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			if ( --(uart->bits_left_in_tx) <= 0 )
+  33:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 				{
+  34:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 					uart->flag_tx_ready = FALSE;
+  35:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 					SET_TX_PIN_HIGH(uart);	
+  36:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 					TriggerHandler(SYSTEM_SOFT_UART_UPDATE);		
+  37:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 				}
+  38:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			}
+  39:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 		}
+  40:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** // Receiver Section
+  41:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	if ( uart->flag_rx_off==FALSE )
+  42:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 		{
+  43:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 		if ( uart->flag_rx_waiting_for_stop_bit )
+  44:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			{
+  45:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			if ( --(uart->timer_rx_ctr) <=0 )
+  46:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 				{
+  47:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 				uart->flag_rx_waiting_for_stop_bit = FALSE;
+  48:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 				uart->flag_rx_ready = FALSE;
+  49:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 				uart->internal_rx_buffer &= 0xFF;
+  50:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 				if ( uart->internal_rx_buffer!=0xC2 )
+  51:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 					{
+  52:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 					(uart->inbuf)[uart->qin] = uart->internal_rx_buffer;
+  53:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 					TriggerHandler(SYSTEM_SOFT_UART_UPDATE);
+  54:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 					if ( ++(uart->qin)>=SOFT_IN_BUF_SIZE )
+  55:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 						{
+  56:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 						uart->qin = 0;
+  57:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 						}
+  58:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 					}
+  59:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 				}
+  60:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			}
+  61:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 		else		// rx_test_busy
+  62:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			{
+  63:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			if ( uart->flag_rx_ready==FALSE )
+  64:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 				{
+  65:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 					start_bit = GET_RX_PIN_STATUS(uart);
+  66:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** // Test for Start Bit
+  67:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 				if ( start_bit==0 )
+  68:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 					{
+  69:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 					uart->flag_rx_ready = TRUE;
+  70:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 					uart->internal_rx_buffer = 0;
+  71:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 					uart->timer_rx_ctr = 4;
+  72:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 					uart->bits_left_in_rx = uart->rx_num_of_bits;
+  73:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 					uart->rx_mask = 1;
+  74:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 					}
+  75:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 				}
+  76:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			else	// rx_busy
+  77:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 				{
+  78:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 				if ( --(uart->timer_rx_ctr)<=0 )
+  79:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 					{				// rcv
+  80:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 					uart->timer_rx_ctr = 3;
+  81:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 					flag_in = GET_RX_PIN_STATUS(uart);
+  82:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 					if ( flag_in )
+  83:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 						{
+  84:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 						(uart->internal_rx_buffer) |= uart->rx_mask;
+  85:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 						}
+  86:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 					uart->rx_mask <<= 1;
+  87:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 					if ( --(uart->bits_left_in_rx)<=0 )
+  88:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 						{
+  89:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 						uart->flag_rx_waiting_for_stop_bit = TRUE;
+  90:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 						}
+  91:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 					}
+  92:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 				}
+  93:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			}
+  94:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 		}
+  95:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	}
+  96:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** */
+  97:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 
+  98:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** void timer_set( uint32_t bps, TC0_t * tx_timer, TC1_t * rx_timer)
+  99:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** {
+  17               		.loc 1 99 0
+  18               		.cfi_startproc
+  19               	.LVL0:
+  20 0000 6F92      		push r6
+  21               	.LCFI0:
+  22               		.cfi_def_cfa_offset 4
+  23               		.cfi_offset 6, -3
+  24 0002 7F92      		push r7
+  25               	.LCFI1:
+  26               		.cfi_def_cfa_offset 5
+  27               		.cfi_offset 7, -4
+  28 0004 8F92      		push r8
+  29               	.LCFI2:
+  30               		.cfi_def_cfa_offset 6
+  31               		.cfi_offset 8, -5
+  32 0006 9F92      		push r9
+  33               	.LCFI3:
+  34               		.cfi_def_cfa_offset 7
+  35               		.cfi_offset 9, -6
+  36 0008 AF92      		push r10
+  37               	.LCFI4:
+  38               		.cfi_def_cfa_offset 8
+  39               		.cfi_offset 10, -7
+  40 000a BF92      		push r11
+  41               	.LCFI5:
+  42               		.cfi_def_cfa_offset 9
+  43               		.cfi_offset 11, -8
+  44 000c CF92      		push r12
+  45               	.LCFI6:
+  46               		.cfi_def_cfa_offset 10
+  47               		.cfi_offset 12, -9
+  48 000e DF92      		push r13
+  49               	.LCFI7:
+  50               		.cfi_def_cfa_offset 11
+  51               		.cfi_offset 13, -10
+  52 0010 EF92      		push r14
+  53               	.LCFI8:
+  54               		.cfi_def_cfa_offset 12
+  55               		.cfi_offset 14, -11
+  56 0012 FF92      		push r15
+  57               	.LCFI9:
+  58               		.cfi_def_cfa_offset 13
+  59               		.cfi_offset 15, -12
+  60 0014 0F93      		push r16
+  61               	.LCFI10:
+  62               		.cfi_def_cfa_offset 14
+  63               		.cfi_offset 16, -13
+  64 0016 1F93      		push r17
+  65               	.LCFI11:
+  66               		.cfi_def_cfa_offset 15
+  67               		.cfi_offset 17, -14
+  68 0018 CF93      		push r28
+  69               	.LCFI12:
+  70               		.cfi_def_cfa_offset 16
+  71               		.cfi_offset 28, -15
+  72 001a DF93      		push r29
+  73               	.LCFI13:
+  74               		.cfi_def_cfa_offset 17
+  75               		.cfi_offset 29, -16
+  76               	/* prologue: function */
+  77               	/* frame size = 0 */
+  78               	/* stack size = 14 */
+  79               	.L__stack_usage = 14
+  80 001c 6B01      		movw r12,r22
+  81 001e 7C01      		movw r14,r24
+  82 0020 8A01      		movw r16,r20
+  83 0022 E901      		movw r28,r18
+ 100:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	uint16_t per;
+ 101:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	
+ 102:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	per = ((uint32_t)F_CPU / (bps));
+  84               		.loc 1 102 0
+  85 0024 812C      		mov r8,__zero_reg__
+  86 0026 88E4      		ldi r24,lo8(72)
+  87 0028 982E      		mov r9,r24
+  88 002a 88EE      		ldi r24,lo8(-24)
+  89 002c A82E      		mov r10,r24
+  90 002e BB24      		clr r11
+  91 0030 B394      		inc r11
+  92 0032 C501      		movw r24,r10
+  93 0034 B401      		movw r22,r8
+  94               	.LVL1:
+  95 0036 A701      		movw r20,r14
+  96 0038 9601      		movw r18,r12
+  97               	.LVL2:
+  98 003a 0E94 0000 		call __udivmodsi4
+  99               	.LVL3:
+ 103:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 
+ 104:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	tx_timer->INTCTRLA = TC_OVFINTLVL_HI_gc;
+ 100               		.loc 1 104 0
+ 101 003e 93E0      		ldi r25,lo8(3)
+ 102 0040 692E      		mov r6,r25
+ 103 0042 F801      		movw r30,r16
+ 104 0044 6682      		std Z+6,r6
+ 105:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	tx_timer->PER = per;
+ 105               		.loc 1 105 0
+ 106 0046 26A3      		std Z+38,r18
+ 107 0048 37A3      		std Z+39,r19
+ 106:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	tx_timer->CTRLA = TC_CLKSEL_DIV1_gc;
+ 108               		.loc 1 106 0
+ 109 004a 7724      		clr r7
+ 110 004c 7394      		inc r7
+ 111 004e 7082      		st Z,r7
+ 107:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	
+ 108:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** //	printf("TCE0 set to %x %x %x\r\n",tx_timer->INTCTRLA, tx_timer->PER, tx_timer->CTRLA);
+ 109:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	
+ 110:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	per = ((uint32_t)F_CPU / (bps*3));	
+ 112               		.loc 1 110 0
+ 113 0050 A701      		movw r20,r14
+ 114 0052 9601      		movw r18,r12
+ 115               	.LVL4:
+ 116 0054 220F      		lsl r18
+ 117 0056 331F      		rol r19
+ 118 0058 441F      		rol r20
+ 119 005a 551F      		rol r21
+ 120 005c 2C0D      		add r18,r12
+ 121 005e 3D1D      		adc r19,r13
+ 122 0060 4E1D      		adc r20,r14
+ 123 0062 5F1D      		adc r21,r15
+ 124 0064 C501      		movw r24,r10
+ 125 0066 B401      		movw r22,r8
+ 126 0068 0E94 0000 		call __udivmodsi4
+ 127               	.LVL5:
+ 111:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	//per = 31; // bps*9
+ 112:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	
+ 113:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	rx_timer->INTCTRLA = TC_OVFINTLVL_HI_gc;
+ 128               		.loc 1 113 0
+ 129 006c 6E82      		std Y+6,r6
+ 114:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	rx_timer->PER = per;
+ 130               		.loc 1 114 0
+ 131 006e 2EA3      		std Y+38,r18
+ 132 0070 3FA3      		std Y+39,r19
+ 115:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	rx_timer->CTRLA = TC_CLKSEL_DIV1_gc;	
+ 133               		.loc 1 115 0
+ 134 0072 7882      		st Y,r7
+ 135               	/* epilogue start */
+ 116:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** }
+ 136               		.loc 1 116 0
+ 137 0074 DF91      		pop r29
+ 138 0076 CF91      		pop r28
+ 139               	.LVL6:
+ 140 0078 1F91      		pop r17
+ 141 007a 0F91      		pop r16
+ 142 007c FF90      		pop r15
+ 143 007e EF90      		pop r14
+ 144 0080 DF90      		pop r13
+ 145 0082 CF90      		pop r12
+ 146               	.LVL7:
+ 147 0084 BF90      		pop r11
+ 148 0086 AF90      		pop r10
+ 149 0088 9F90      		pop r9
+ 150 008a 8F90      		pop r8
+ 151 008c 7F90      		pop r7
+ 152 008e 6F90      		pop r6
+ 153 0090 0895      		ret
+ 154               		.cfi_endproc
+ 155               	.LFE12:
+ 157               	.global	configure_soft_uart
+ 159               	configure_soft_uart:
+ 160               	.LFB13:
+ 117:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 
+ 118:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** void configure_soft_uart(soft_uart_t * uart, CircBuf * ctx, CircBuf * crx)
+ 119:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** {
+ 161               		.loc 1 119 0
+ 162               		.cfi_startproc
+ 163               	.LVL8:
+ 164               	/* prologue: function */
+ 165               	/* frame size = 0 */
+ 166               	/* stack size = 0 */
+ 167               	.L__stack_usage = 0
+ 168 0092 FC01      		movw r30,r24
+ 120:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	uart->rx = crx;
+ 169               		.loc 1 120 0
+ 170 0094 4087      		std Z+8,r20
+ 171 0096 5187      		std Z+9,r21
+ 121:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	uart->tx = ctx;
+ 172               		.loc 1 121 0
+ 173 0098 6683      		std Z+6,r22
+ 174 009a 7783      		std Z+7,r23
+ 122:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	uart->internal_rx_buffer =  0;
+ 175               		.loc 1 122 0
+ 176 009c 1082      		st Z,__zero_reg__
+ 123:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	uart->internal_tx_buffer  = 0;
+ 177               		.loc 1 123 0
+ 178 009e 1182      		std Z+1,__zero_reg__
+ 179 00a0 1282      		std Z+2,__zero_reg__
+ 180 00a2 0895      		ret
+ 181               		.cfi_endproc
+ 182               	.LFE13:
+ 184               	.global	init_soft_uart
+ 186               	init_soft_uart:
+ 187               	.LFB14:
+ 124:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** }
+ 125:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 
+ 126:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** void init_soft_uart()
+ 127:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** {
+ 188               		.loc 1 127 0
+ 189               		.cfi_startproc
+ 190               	/* prologue: function */
+ 191               	/* frame size = 0 */
+ 192               	/* stack size = 0 */
+ 193               	.L__stack_usage = 0
+ 128:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	PORTD.OUTSET = PIN5_bm | PIN6_bm; // set tx output high (idle)
+ 194               		.loc 1 128 0
+ 195 00a4 E0E6      		ldi r30,lo8(96)
+ 196 00a6 F6E0      		ldi r31,lo8(6)
+ 197 00a8 80E6      		ldi r24,lo8(96)
+ 198 00aa 8583      		std Z+5,r24
+ 129:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	PORTD.DIRSET = PIN5_bm | PIN6_bm; // tx pins as output
+ 199               		.loc 1 129 0
+ 200 00ac 8183      		std Z+1,r24
+ 130:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	PORTD.DIRCLR = PIN4_bm | PIN7_bm; // rx pins as input
+ 201               		.loc 1 130 0
+ 202 00ae 80E9      		ldi r24,lo8(-112)
+ 203 00b0 8283      		std Z+2,r24
+ 131:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	
+ 132:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	PORTD.PIN4CTRL |= PORT_OPC_PULLUP_gc;	// set pullups on rx lines to prevent floating noise
+ 204               		.loc 1 132 0
+ 205 00b2 8489      		ldd r24,Z+20
+ 206 00b4 8861      		ori r24,lo8(24)
+ 207 00b6 848B      		std Z+20,r24
+ 133:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	PORTD.PIN7CTRL |= PORT_OPC_PULLUP_gc;	
+ 208               		.loc 1 133 0
+ 209 00b8 8789      		ldd r24,Z+23
+ 210 00ba 8861      		ori r24,lo8(24)
+ 211 00bc 878B      		std Z+23,r24
+ 134:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 
+ 135:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	soft_uart[1].rx_state = SU_RX_IDLE;
+ 212               		.loc 1 135 0
+ 213 00be 1092 0000 		sts soft_uart+14,__zero_reg__
+ 214               	.LVL9:
+ 215               	.LBB6:
+ 216               	.LBB7:
+ 104:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	tx_timer->INTCTRLA = TC_OVFINTLVL_HI_gc;
+ 217               		.loc 1 104 0
+ 218 00c2 E0E0      		ldi r30,0
+ 219 00c4 FAE0      		ldi r31,lo8(10)
+ 220 00c6 33E0      		ldi r19,lo8(3)
+ 221 00c8 3683      		std Z+6,r19
+ 105:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	tx_timer->PER = per;
+ 222               		.loc 1 105 0
+ 223 00ca 81E4      		ldi r24,lo8(65)
+ 224 00cc 93E0      		ldi r25,lo8(3)
+ 225 00ce 86A3      		std Z+38,r24
+ 226 00d0 97A3      		std Z+39,r25
+ 106:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	tx_timer->CTRLA = TC_CLKSEL_DIV1_gc;
+ 227               		.loc 1 106 0
+ 228 00d2 21E0      		ldi r18,lo8(1)
+ 229 00d4 2083      		st Z,r18
+ 230               	.LVL10:
+ 113:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	rx_timer->INTCTRLA = TC_OVFINTLVL_HI_gc;
+ 231               		.loc 1 113 0
+ 232 00d6 E0E4      		ldi r30,lo8(64)
+ 233 00d8 F9E0      		ldi r31,lo8(9)
+ 234 00da 3683      		std Z+6,r19
+ 114:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	rx_timer->PER = per;
+ 235               		.loc 1 114 0
+ 236 00dc 85E1      		ldi r24,lo8(21)
+ 237 00de 91E0      		ldi r25,lo8(1)
+ 238 00e0 86A3      		std Z+38,r24
+ 239 00e2 97A3      		std Z+39,r25
+ 115:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	rx_timer->CTRLA = TC_CLKSEL_DIV1_gc;	
+ 240               		.loc 1 115 0
+ 241 00e4 2083      		st Z,r18
+ 242 00e6 0895      		ret
+ 243               	.LBE7:
+ 244               	.LBE6:
+ 245               		.cfi_endproc
+ 246               	.LFE14:
+ 248               	.global	su_getchar
+ 250               	su_getchar:
+ 251               	.LFB15:
+ 136:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 
+ 137:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	timer_set( BAUD_RATE, &TCE0, &TCD1);	
+ 138:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** }
+ 139:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 
+ 140:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** int su_getchar(soft_uart_t * uart)
+ 141:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** {
+ 252               		.loc 1 141 0
+ 253               		.cfi_startproc
+ 254               	.LVL11:
+ 255 00e8 CF93      		push r28
+ 256               	.LCFI14:
+ 257               		.cfi_def_cfa_offset 4
+ 258               		.cfi_offset 28, -3
+ 259 00ea DF93      		push r29
+ 260               	.LCFI15:
+ 261               		.cfi_def_cfa_offset 5
+ 262               		.cfi_offset 29, -4
+ 263               	/* prologue: function */
+ 264               	/* frame size = 0 */
+ 265               	/* stack size = 2 */
+ 266               	.L__stack_usage = 2
+ 267 00ec EC01      		movw r28,r24
+ 142:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	char		ch;
+ 143:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 
+ 144:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	if(isEmpty((uart->rx)))
+ 268               		.loc 1 144 0
+ 269 00ee 8885      		ldd r24,Y+8
+ 270 00f0 9985      		ldd r25,Y+9
+ 271               	.LVL12:
+ 272 00f2 0E94 0000 		call isEmpty
+ 273               	.LVL13:
+ 274 00f6 8111      		cpse r24,__zero_reg__
+ 275 00f8 00C0      		rjmp .L6
+ 145:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	{
+ 146:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 		return -1;
+ 147:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	}
+ 148:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	else
+ 149:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	{	
+ 150:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 		ch = pop((uart->rx));
+ 276               		.loc 1 150 0
+ 277 00fa 8885      		ldd r24,Y+8
+ 278 00fc 9985      		ldd r25,Y+9
+ 279 00fe 0E94 0000 		call pop
+ 280               	.LVL14:
+ 151:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 		return( ch );
+ 281               		.loc 1 151 0
+ 282 0102 9927      		clr r25
+ 283               	.LVL15:
+ 284               	.L5:
+ 285               	/* epilogue start */
+ 152:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	}
+ 153:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** }
+ 286               		.loc 1 153 0
+ 287 0104 DF91      		pop r29
+ 288 0106 CF91      		pop r28
+ 289               	.LVL16:
+ 290 0108 0895      		ret
+ 291               	.LVL17:
+ 292               	.L6:
+ 146:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 		return -1;
+ 293               		.loc 1 146 0
+ 294 010a 8FEF      		ldi r24,lo8(-1)
+ 295 010c 9FEF      		ldi r25,lo8(-1)
+ 296 010e 00C0      		rjmp .L5
+ 297               		.cfi_endproc
+ 298               	.LFE15:
+ 300               	.global	set_tx_char
+ 302               	set_tx_char:
+ 303               	.LFB16:
+ 154:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 
+ 155:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** void set_tx_char(int ch, soft_uart_t * uart)
+ 156:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** {
+ 304               		.loc 1 156 0
+ 305               		.cfi_startproc
+ 306               	.LVL18:
+ 307               	/* prologue: function */
+ 308               	/* frame size = 0 */
+ 309               	/* stack size = 0 */
+ 310               	.L__stack_usage = 0
+ 157:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	if(ch != -1)
+ 311               		.loc 1 157 0
+ 312 0110 8F3F      		cpi r24,-1
+ 313 0112 2FEF      		ldi r18,-1
+ 314 0114 9207      		cpc r25,r18
+ 315 0116 01F0      		breq .L8
+ 158:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	{
+ 159:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 		uart->internal_tx_buffer = (ch << 1) | 0x200;
+ 316               		.loc 1 159 0
+ 317 0118 880F      		lsl r24
+ 318 011a 991F      		rol r25
+ 319               	.LVL19:
+ 320 011c 9260      		ori r25,2
+ 321 011e FB01      		movw r30,r22
+ 322 0120 8183      		std Z+1,r24
+ 323 0122 9283      		std Z+2,r25
+ 324               	.L8:
+ 325 0124 0895      		ret
+ 326               		.cfi_endproc
+ 327               	.LFE16:
+ 329               	.global	su_putchar
+ 331               	su_putchar:
+ 332               	.LFB17:
+ 160:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	}
+ 161:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** }
+ 162:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 
+ 163:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** void su_putchar( char ch, soft_uart_t * uart)
+ 164:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** {	
+ 333               		.loc 1 164 0
+ 334               		.cfi_startproc
+ 335               	.LVL20:
+ 336               	/* prologue: function */
+ 337               	/* frame size = 0 */
+ 338               	/* stack size = 0 */
+ 339               	.L__stack_usage = 0
+ 340 0126 FB01      		movw r30,r22
+ 341               	.L15:
+ 165:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	while ( uart->internal_tx_buffer != 0 );
+ 342               		.loc 1 165 0 discriminator 1
+ 343 0128 2181      		ldd r18,Z+1
+ 344 012a 3281      		ldd r19,Z+2
+ 345 012c 232B      		or r18,r19
+ 346 012e 01F4      		brne .L15
+ 347               	.LVL21:
+ 166:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	
+ 167:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	set_tx_char(ch, uart);
+ 348               		.loc 1 167 0
+ 349 0130 90E0      		ldi r25,0
+ 350               	.LBB8:
+ 351               	.LBB9:
+ 159:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 		uart->internal_tx_buffer = (ch << 1) | 0x200;
+ 352               		.loc 1 159 0
+ 353 0132 880F      		lsl r24
+ 354 0134 991F      		rol r25
+ 355               	.LVL22:
+ 356 0136 9260      		ori r25,2
+ 357 0138 8183      		std Z+1,r24
+ 358 013a 9283      		std Z+2,r25
+ 359 013c 0895      		ret
+ 360               	.LBE9:
+ 361               	.LBE8:
+ 362               		.cfi_endproc
+ 363               	.LFE17:
+ 365               	.global	kbhit
+ 367               	kbhit:
+ 368               	.LFB18:
+ 168:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** //	uart->user_tx_buffer = ch;
+ 169:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 
+ 170:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** // invoke_UART_transmit
+ 171:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** //	uart->timer_tx_ctr = 3;
+ 172:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** //	uart->bits_left_in_tx = uart->tx_num_of_bits;
+ 173:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 
+ 174:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	// insert start/stop bits around character
+ 175:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 
+ 176:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** }
+ 177:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 
+ 178:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** int kbhit( soft_uart_t * uart )
+ 179:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** {
+ 369               		.loc 1 179 0
+ 370               		.cfi_startproc
+ 371               	.LVL23:
+ 372               	/* prologue: function */
+ 373               	/* frame size = 0 */
+ 374               	/* stack size = 0 */
+ 375               	.L__stack_usage = 0
+ 180:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	return( !isEmpty(uart->rx));
+ 376               		.loc 1 180 0
+ 377 013e FC01      		movw r30,r24
+ 378 0140 8085      		ldd r24,Z+8
+ 379 0142 9185      		ldd r25,Z+9
+ 380               	.LVL24:
+ 381 0144 0E94 0000 		call isEmpty
+ 382               	.LVL25:
+ 383 0148 21E0      		ldi r18,lo8(1)
+ 384 014a 30E0      		ldi r19,0
+ 385 014c 8823      		tst r24
+ 386 014e 01F0      		breq .L17
+ 387 0150 20E0      		ldi r18,0
+ 388 0152 30E0      		ldi r19,0
+ 389               	.L17:
+ 181:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** }
+ 390               		.loc 1 181 0
+ 391 0154 C901      		movw r24,r18
+ 392 0156 0895      		ret
+ 393               		.cfi_endproc
+ 394               	.LFE18:
+ 396               	.global	__vector_83
+ 398               	__vector_83:
+ 399               	.LFB19:
+ 182:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 
+ 183:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** // rx ISR
+ 184:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** ISR(TCD1_OVF_vect)
+ 185:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** {
+ 400               		.loc 1 185 0
+ 401               		.cfi_startproc
+ 402 0158 1F92      		push r1
+ 403               	.LCFI16:
+ 404               		.cfi_def_cfa_offset 4
+ 405               		.cfi_offset 1, -3
+ 406 015a 0F92      		push r0
+ 407               	.LCFI17:
+ 408               		.cfi_def_cfa_offset 5
+ 409               		.cfi_offset 0, -4
+ 410 015c 0FB6      		in r0,__SREG__
+ 411 015e 0F92      		push r0
+ 412 0160 1124      		clr __zero_reg__
+ 413 0162 0BB6      		in r0,__RAMPZ__
+ 414 0164 0F92      		push r0
+ 415 0166 2F93      		push r18
+ 416               	.LCFI18:
+ 417               		.cfi_def_cfa_offset 6
+ 418               		.cfi_offset 18, -5
+ 419 0168 3F93      		push r19
+ 420               	.LCFI19:
+ 421               		.cfi_def_cfa_offset 7
+ 422               		.cfi_offset 19, -6
+ 423 016a 4F93      		push r20
+ 424               	.LCFI20:
+ 425               		.cfi_def_cfa_offset 8
+ 426               		.cfi_offset 20, -7
+ 427 016c 5F93      		push r21
+ 428               	.LCFI21:
+ 429               		.cfi_def_cfa_offset 9
+ 430               		.cfi_offset 21, -8
+ 431 016e 6F93      		push r22
+ 432               	.LCFI22:
+ 433               		.cfi_def_cfa_offset 10
+ 434               		.cfi_offset 22, -9
+ 435 0170 7F93      		push r23
+ 436               	.LCFI23:
+ 437               		.cfi_def_cfa_offset 11
+ 438               		.cfi_offset 23, -10
+ 439 0172 8F93      		push r24
+ 440               	.LCFI24:
+ 441               		.cfi_def_cfa_offset 12
+ 442               		.cfi_offset 24, -11
+ 443 0174 9F93      		push r25
+ 444               	.LCFI25:
+ 445               		.cfi_def_cfa_offset 13
+ 446               		.cfi_offset 25, -12
+ 447 0176 AF93      		push r26
+ 448               	.LCFI26:
+ 449               		.cfi_def_cfa_offset 14
+ 450               		.cfi_offset 26, -13
+ 451 0178 BF93      		push r27
+ 452               	.LCFI27:
+ 453               		.cfi_def_cfa_offset 15
+ 454               		.cfi_offset 27, -14
+ 455 017a EF93      		push r30
+ 456               	.LCFI28:
+ 457               		.cfi_def_cfa_offset 16
+ 458               		.cfi_offset 30, -15
+ 459 017c FF93      		push r31
+ 460               	.LCFI29:
+ 461               		.cfi_def_cfa_offset 17
+ 462               		.cfi_offset 31, -16
+ 463               	/* prologue: Signal */
+ 464               	/* frame size = 0 */
+ 465               	/* stack size = 16 */
+ 466               	.L__stack_usage = 16
+ 186:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	if(!soft_uart[0].sample_time)
+ 467               		.loc 1 186 0
+ 468 017e 8091 0000 		lds r24,soft_uart+5
+ 469 0182 8111      		cpse r24,__zero_reg__
+ 470 0184 00C0      		rjmp .L22
+ 187:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	{
+ 188:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 		if(soft_uart[0].rx_state == SU_RX_IDLE)
+ 471               		.loc 1 188 0
+ 472 0186 8091 0000 		lds r24,soft_uart+4
+ 473 018a 8111      		cpse r24,__zero_reg__
+ 474 018c 00C0      		rjmp .L23
+ 189:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 		{
+ 190:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			if(!(PORTD.IN & PIN4_bm))
+ 475               		.loc 1 190 0
+ 476 018e 8091 6806 		lds r24,1640
+ 477 0192 84FD      		sbrc r24,4
+ 478 0194 00C0      		rjmp .L24
+ 191:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			{
+ 192:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 				soft_uart[0].rx_state = SU_RX_BYTE;
+ 479               		.loc 1 192 0
+ 480 0196 81E0      		ldi r24,lo8(1)
+ 481 0198 8093 0000 		sts soft_uart+4,r24
+ 193:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 				soft_uart[0].rx_mask = 0x01;
+ 482               		.loc 1 193 0
+ 483 019c 8093 0000 		sts soft_uart+3,r24
+ 194:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 				soft_uart[0].sample_time = 3;	// begin sampling every third time
+ 484               		.loc 1 194 0
+ 485 01a0 83E0      		ldi r24,lo8(3)
+ 486 01a2 8093 0000 		sts soft_uart+5,r24
+ 195:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			}
+ 196:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 		}
+ 197:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 		else if (soft_uart[0].rx_state == SU_RX_BYTE)
+ 198:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 		{
+ 199:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			if(PORTD.IN & PIN4_bm)
+ 200:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			{
+ 201:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 				soft_uart[0].internal_rx_buffer |= soft_uart[0].rx_mask;
+ 202:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			}
+ 203:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			
+ 204:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			soft_uart[0].rx_mask <<= 1;
+ 205:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 
+ 206:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			if(!soft_uart[0].rx_mask)
+ 207:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			{
+ 208:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 				soft_uart[0].rx_state = SU_RX_STOP;
+ 209:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			}
+ 210:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			
+ 211:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			soft_uart[0].sample_time = 2;	
+ 212:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 		}
+ 213:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 		else if (soft_uart[0].rx_state == SU_RX_STOP)
+ 214:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 		{
+ 215:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			if(PORTD.IN & PIN4_bm)
+ 216:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			{
+ 217:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 				push(soft_uart[0].internal_rx_buffer, soft_uart[0].rx);
+ 218:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 				soft_uart[0].internal_rx_buffer = 0;
+ 219:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			}
+ 220:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			
+ 221:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			soft_uart[0].rx_state = SU_RX_IDLE;		
+ 222:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 		}
+ 223:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	}
+ 224:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	else
+ 225:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	{
+ 226:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 		soft_uart[0].sample_time--;
+ 227:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	}
+ 228:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 
+ 229:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	if(!soft_uart[1].sample_time)
+ 487               		.loc 1 229 0
+ 488 01a6 8091 0000 		lds r24,soft_uart+15
+ 489 01aa 8823      		tst r24
+ 490 01ac 01F0      		breq .L41
+ 491               	.L30:
+ 230:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	{
+ 231:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 		if(soft_uart[1].rx_state == SU_RX_IDLE)
+ 232:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 		{
+ 233:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			if(!(PORTD.IN & PIN7_bm))
+ 234:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			{
+ 235:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 				soft_uart[1].rx_state = SU_RX_BYTE;
+ 236:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 				soft_uart[1].rx_mask = 0x01;
+ 237:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 				soft_uart[1].sample_time = 3;	// begin sampling every third time
+ 238:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			}
+ 239:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 		}
+ 240:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 		else if (soft_uart[1].rx_state == SU_RX_BYTE)
+ 241:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 		{
+ 242:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			if(PORTD.IN & PIN7_bm)
+ 243:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			{
+ 244:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 				soft_uart[1].internal_rx_buffer |= soft_uart[1].rx_mask;
+ 245:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			}
+ 246:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			
+ 247:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			soft_uart[1].rx_mask <<= 1;
+ 248:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 
+ 249:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			if(!soft_uart[1].rx_mask)
+ 250:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			{
+ 251:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 				soft_uart[1].rx_state = SU_RX_STOP;
+ 252:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			}
+ 253:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			
+ 254:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			soft_uart[1].sample_time = 2;	
+ 255:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 		}
+ 256:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 		else if (soft_uart[1].rx_state == SU_RX_STOP)
+ 257:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 		{
+ 258:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			if(PORTD.IN & PIN7_bm)
+ 259:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			{
+ 260:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 				push(soft_uart[1].internal_rx_buffer, soft_uart[1].rx);
+ 261:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 				soft_uart[1].internal_rx_buffer = 0;
+ 262:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			}
+ 263:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			
+ 264:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			soft_uart[1].rx_state = SU_RX_IDLE;		
+ 265:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 		}
+ 266:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	}
+ 267:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	else
+ 268:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	{
+ 269:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 		soft_uart[1].sample_time--;
+ 492               		.loc 1 269 0
+ 493 01ae 8150      		subi r24,lo8(-(-1))
+ 494 01b0 8093 0000 		sts soft_uart+15,r24
+ 495               	.L21:
+ 496               	/* epilogue start */
+ 270:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	}	
+ 271:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** }
+ 497               		.loc 1 271 0
+ 498 01b4 FF91      		pop r31
+ 499 01b6 EF91      		pop r30
+ 500 01b8 BF91      		pop r27
+ 501 01ba AF91      		pop r26
+ 502 01bc 9F91      		pop r25
+ 503 01be 8F91      		pop r24
+ 504 01c0 7F91      		pop r23
+ 505 01c2 6F91      		pop r22
+ 506 01c4 5F91      		pop r21
+ 507 01c6 4F91      		pop r20
+ 508 01c8 3F91      		pop r19
+ 509 01ca 2F91      		pop r18
+ 510 01cc 0F90      		pop r0
+ 511 01ce 0BBE      		out __RAMPZ__,r0
+ 512 01d0 0F90      		pop r0
+ 513 01d2 0FBE      		out __SREG__,r0
+ 514 01d4 0F90      		pop r0
+ 515 01d6 1F90      		pop r1
+ 516 01d8 1895      		reti
+ 517               	.L22:
+ 226:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 		soft_uart[0].sample_time--;
+ 518               		.loc 1 226 0
+ 519 01da 8150      		subi r24,lo8(-(-1))
+ 520 01dc 8093 0000 		sts soft_uart+5,r24
+ 521               	.L24:
+ 229:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 	if(!soft_uart[1].sample_time)
+ 522               		.loc 1 229 0
+ 523 01e0 8091 0000 		lds r24,soft_uart+15
+ 524 01e4 8111      		cpse r24,__zero_reg__
+ 525 01e6 00C0      		rjmp .L30
+ 526               	.L41:
+ 231:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 		if(soft_uart[1].rx_state == SU_RX_IDLE)
+ 527               		.loc 1 231 0
+ 528 01e8 8091 0000 		lds r24,soft_uart+14
+ 529 01ec 8111      		cpse r24,__zero_reg__
+ 530 01ee 00C0      		rjmp .L31
+ 233:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			if(!(PORTD.IN & PIN7_bm))
+ 531               		.loc 1 233 0
+ 532 01f0 8091 6806 		lds r24,1640
+ 533 01f4 87FD      		sbrc r24,7
+ 534 01f6 00C0      		rjmp .L21
+ 235:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 				soft_uart[1].rx_state = SU_RX_BYTE;
+ 535               		.loc 1 235 0
+ 536 01f8 81E0      		ldi r24,lo8(1)
+ 537 01fa 8093 0000 		sts soft_uart+14,r24
+ 236:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 				soft_uart[1].rx_mask = 0x01;
+ 538               		.loc 1 236 0
+ 539 01fe 8093 0000 		sts soft_uart+13,r24
+ 237:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 				soft_uart[1].sample_time = 3;	// begin sampling every third time
+ 540               		.loc 1 237 0
+ 541 0202 83E0      		ldi r24,lo8(3)
+ 542 0204 8093 0000 		sts soft_uart+15,r24
+ 543 0208 00C0      		rjmp .L21
+ 544               	.L31:
+ 240:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 		else if (soft_uart[1].rx_state == SU_RX_BYTE)
+ 545               		.loc 1 240 0
+ 546 020a 8130      		cpi r24,lo8(1)
+ 547 020c 01F0      		breq .L42
+ 256:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 		else if (soft_uart[1].rx_state == SU_RX_STOP)
+ 548               		.loc 1 256 0
+ 549 020e 8230      		cpi r24,lo8(2)
+ 550 0210 01F4      		brne .L21
+ 258:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			if(PORTD.IN & PIN7_bm)
+ 551               		.loc 1 258 0
+ 552 0212 8091 6806 		lds r24,1640
+ 553 0216 87FD      		sbrc r24,7
+ 554 0218 00C0      		rjmp .L43
+ 555               	.L37:
+ 264:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			soft_uart[1].rx_state = SU_RX_IDLE;		
+ 556               		.loc 1 264 0
+ 557 021a 1092 0000 		sts soft_uart+14,__zero_reg__
+ 558 021e 00C0      		rjmp .L21
+ 559               	.L23:
+ 197:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 		else if (soft_uart[0].rx_state == SU_RX_BYTE)
+ 560               		.loc 1 197 0
+ 561 0220 8130      		cpi r24,lo8(1)
+ 562 0222 01F0      		breq .L44
+ 213:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 		else if (soft_uart[0].rx_state == SU_RX_STOP)
+ 563               		.loc 1 213 0
+ 564 0224 8230      		cpi r24,lo8(2)
+ 565 0226 01F4      		brne .L24
+ 215:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			if(PORTD.IN & PIN4_bm)
+ 566               		.loc 1 215 0
+ 567 0228 8091 6806 		lds r24,1640
+ 568 022c 84FD      		sbrc r24,4
+ 569 022e 00C0      		rjmp .L45
+ 570               	.L29:
+ 221:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			soft_uart[0].rx_state = SU_RX_IDLE;		
+ 571               		.loc 1 221 0
+ 572 0230 1092 0000 		sts soft_uart+4,__zero_reg__
+ 573 0234 00C0      		rjmp .L24
+ 574               	.L44:
+ 199:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			if(PORTD.IN & PIN4_bm)
+ 575               		.loc 1 199 0
+ 576 0236 8091 6806 		lds r24,1640
+ 577 023a 84FD      		sbrc r24,4
+ 578 023c 00C0      		rjmp .L26
+ 579 023e 8091 0000 		lds r24,soft_uart+3
+ 580               	.L27:
+ 204:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			soft_uart[0].rx_mask <<= 1;
+ 581               		.loc 1 204 0
+ 582 0242 880F      		lsl r24
+ 583 0244 8093 0000 		sts soft_uart+3,r24
+ 206:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			if(!soft_uart[0].rx_mask)
+ 584               		.loc 1 206 0
+ 585 0248 8111      		cpse r24,__zero_reg__
+ 586 024a 00C0      		rjmp .L28
+ 208:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 				soft_uart[0].rx_state = SU_RX_STOP;
+ 587               		.loc 1 208 0
+ 588 024c 82E0      		ldi r24,lo8(2)
+ 589 024e 8093 0000 		sts soft_uart+4,r24
+ 590               	.L28:
+ 211:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			soft_uart[0].sample_time = 2;	
+ 591               		.loc 1 211 0
+ 592 0252 82E0      		ldi r24,lo8(2)
+ 593 0254 8093 0000 		sts soft_uart+5,r24
+ 594 0258 00C0      		rjmp .L24
+ 595               	.L42:
+ 242:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			if(PORTD.IN & PIN7_bm)
+ 596               		.loc 1 242 0
+ 597 025a 8091 6806 		lds r24,1640
+ 598 025e 87FD      		sbrc r24,7
+ 599 0260 00C0      		rjmp .L34
+ 600 0262 8091 0000 		lds r24,soft_uart+13
+ 601               	.L35:
+ 247:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			soft_uart[1].rx_mask <<= 1;
+ 602               		.loc 1 247 0
+ 603 0266 880F      		lsl r24
+ 604 0268 8093 0000 		sts soft_uart+13,r24
+ 249:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			if(!soft_uart[1].rx_mask)
+ 605               		.loc 1 249 0
+ 606 026c 8111      		cpse r24,__zero_reg__
+ 607 026e 00C0      		rjmp .L36
+ 251:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 				soft_uart[1].rx_state = SU_RX_STOP;
+ 608               		.loc 1 251 0
+ 609 0270 82E0      		ldi r24,lo8(2)
+ 610 0272 8093 0000 		sts soft_uart+14,r24
+ 611               	.L36:
+ 254:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 			soft_uart[1].sample_time = 2;	
+ 612               		.loc 1 254 0
+ 613 0276 82E0      		ldi r24,lo8(2)
+ 614 0278 8093 0000 		sts soft_uart+15,r24
+ 615 027c 00C0      		rjmp .L21
+ 616               	.L26:
+ 201:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 				soft_uart[0].internal_rx_buffer |= soft_uart[0].rx_mask;
+ 617               		.loc 1 201 0
+ 618 027e 9091 0000 		lds r25,soft_uart
+ 619 0282 8091 0000 		lds r24,soft_uart+3
+ 620 0286 982B      		or r25,r24
+ 621 0288 9093 0000 		sts soft_uart,r25
+ 622 028c 00C0      		rjmp .L27
+ 623               	.L45:
+ 217:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 				push(soft_uart[0].internal_rx_buffer, soft_uart[0].rx);
+ 624               		.loc 1 217 0
+ 625 028e 8091 0000 		lds r24,soft_uart
+ 626 0292 6091 0000 		lds r22,soft_uart+8
+ 627 0296 7091 0000 		lds r23,soft_uart+8+1
+ 628 029a 0E94 0000 		call push
+ 629               	.LVL26:
+ 218:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 				soft_uart[0].internal_rx_buffer = 0;
+ 630               		.loc 1 218 0
+ 631 029e 1092 0000 		sts soft_uart,__zero_reg__
+ 632 02a2 00C0      		rjmp .L29
+ 633               	.L34:
+ 244:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 				soft_uart[1].internal_rx_buffer |= soft_uart[1].rx_mask;
+ 634               		.loc 1 244 0
+ 635 02a4 9091 0000 		lds r25,soft_uart+10
+ 636 02a8 8091 0000 		lds r24,soft_uart+13
+ 637 02ac 982B      		or r25,r24
+ 638 02ae 9093 0000 		sts soft_uart+10,r25
+ 639 02b2 00C0      		rjmp .L35
+ 640               	.L43:
+ 260:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 				push(soft_uart[1].internal_rx_buffer, soft_uart[1].rx);
+ 641               		.loc 1 260 0
+ 642 02b4 8091 0000 		lds r24,soft_uart+10
+ 643 02b8 6091 0000 		lds r22,soft_uart+18
+ 644 02bc 7091 0000 		lds r23,soft_uart+18+1
+ 645 02c0 0E94 0000 		call push
+ 646               	.LVL27:
+ 261:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.c **** 				soft_uart[1].internal_rx_buffer = 0;
+ 647               		.loc 1 261 0
+ 648 02c4 1092 0000 		sts soft_uart+10,__zero_reg__
+ 649 02c8 00C0      		rjmp .L37
+ 650               		.cfi_endproc
+ 651               	.LFE19:
+ 653               		.comm	soft_uart,20,1
+ 654               	.Letext0:
+ 655               		.file 2 "/usr/lib/avr/include/stdint.h"
+ 656               		.file 3 "/usr/lib/avr/include/avr/iox256a3.h"
+ 657               		.file 4 "/home/pthalamy/CMU/bench/benchmark/build/src-bobby/system/defs.bbh"
+ 658               		.file 5 "/home/pthalamy/CMU/bench/benchmark/build/src-bobby/system/circ_buffer.bbh"
+ 659               		.file 6 "/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/soft_uart2.h"
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 soft_uart2.c
+     /tmp/ccDKixJL.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccDKixJL.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccDKixJL.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccDKixJL.s:5      *ABS*:000000000000003b __RAMPZ__
+     /tmp/ccDKixJL.s:6      *ABS*:0000000000000034 __CCP__
+     /tmp/ccDKixJL.s:7      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccDKixJL.s:8      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccDKixJL.s:14     .text:0000000000000000 timer_set
+     /tmp/ccDKixJL.s:159    .text:0000000000000092 configure_soft_uart
+     /tmp/ccDKixJL.s:186    .text:00000000000000a4 init_soft_uart
+                            *COM*:0000000000000014 soft_uart
+     /tmp/ccDKixJL.s:250    .text:00000000000000e8 su_getchar
+     /tmp/ccDKixJL.s:302    .text:0000000000000110 set_tx_char
+     /tmp/ccDKixJL.s:331    .text:0000000000000126 su_putchar
+     /tmp/ccDKixJL.s:367    .text:000000000000013e kbhit
+     /tmp/ccDKixJL.s:398    .text:0000000000000158 __vector_83
+
+UNDEFINED SYMBOLS
+__udivmodsi4
+isEmpty
+pop
+push
+__do_clear_bss

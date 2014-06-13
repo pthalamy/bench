@@ -1,0 +1,822 @@
+   1               		.file	"hwAccelerometer.c"
+   2               	__SP_H__ = 0x3e
+   3               	__SP_L__ = 0x3d
+   4               	__SREG__ = 0x3f
+   5               	__RAMPZ__ = 0x3b
+   6               	__CCP__ = 0x34
+   7               	__tmp_reg__ = 0
+   8               	__zero_reg__ = 1
+   9               		.text
+  10               	.Ltext0:
+  11               		.cfi_sections	.debug_frame
+  12               	.global	newHWAccelData
+  14               	newHWAccelData:
+  15               	.LFB12:
+  16               		.file 1 "/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c"
+   1:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** #include <avr/io.h>
+   2:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** #include <avr/interrupt.h>
+   3:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** #include "../hw-api/hwAccelerometer.h"
+   4:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** #include "../system/defs.h"
+   5:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** #include "../system/accelerometer.h"
+   6:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** #include "../system/handler.h"
+   7:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** #include "twi_master_driver.h"
+   8:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 
+   9:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** #define ACCEL_I2C_ADDR 0x4C    	// 0x98 >> 1;  << 1 and OR with 0x01 for i2c read address
+  10:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** #define CPU_SPEED   32000000
+  11:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** #define BAUDRATE	100000
+  12:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** #define TWI_BAUDSETTING TWI_BAUD(CPU_SPEED, BAUDRATE)
+  13:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 
+  14:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** TWI_Master_t twiMaster;
+  15:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** extern AccelData _acc;
+  16:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 
+  17:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** int newHWAccelData()
+  18:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** {
+  17               		.loc 1 18 0
+  18               		.cfi_startproc
+  19               	/* prologue: function */
+  20               	/* frame size = 0 */
+  21               	/* stack size = 0 */
+  22               	.L__stack_usage = 0
+  19:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	return (twiMaster.result == TWIM_RESULT_OK && twiMaster.status == TWIM_STATUS_READY);
+  23               		.loc 1 19 0
+  24 0000 8091 0000 		lds r24,twiMaster+16
+  25 0004 8130      		cpi r24,lo8(1)
+  26 0006 01F0      		breq .L9
+  27 0008 80E0      		ldi r24,0
+  28 000a 90E0      		ldi r25,0
+  29               	.L2:
+  20:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** }
+  30               		.loc 1 20 0 discriminator 4
+  31 000c 0895      		ret
+  32               	.L9:
+  19:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	return (twiMaster.result == TWIM_RESULT_OK && twiMaster.status == TWIM_STATUS_READY);
+  33               		.loc 1 19 0 discriminator 1
+  34 000e 2091 0000 		lds r18,twiMaster+15
+  35 0012 90E0      		ldi r25,0
+  36 0014 2130      		cpi r18,lo8(1)
+  37 0016 01F0      		breq .L2
+  38 0018 80E0      		ldi r24,0
+  39 001a 0895      		ret
+  40               		.cfi_endproc
+  41               	.LFE12:
+  43               	.global	updateHWAccel
+  45               	updateHWAccel:
+  46               	.LFB13:
+  21:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 
+  22:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** // this is currently non-blocking.
+  23:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** void updateHWAccel()
+  24:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** {
+  47               		.loc 1 24 0
+  48               		.cfi_startproc
+  49 001c CF93      		push r28
+  50               	.LCFI0:
+  51               		.cfi_def_cfa_offset 4
+  52               		.cfi_offset 28, -3
+  53               	/* prologue: function */
+  54               	/* frame size = 0 */
+  55               	/* stack size = 1 */
+  56               	.L__stack_usage = 1
+  25:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	if(twiMaster.result == TWIM_RESULT_OK && twiMaster.status == TWIM_STATUS_READY)
+  57               		.loc 1 25 0
+  58 001e 8091 0000 		lds r24,twiMaster+16
+  59 0022 8130      		cpi r24,lo8(1)
+  60 0024 01F0      		breq .L17
+  61               	.L10:
+  62               	/* epilogue start */
+  26:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	{ 
+  27:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 		byte oldstatus = _acc.status & ACC_O_MASK;
+  28:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 		
+  29:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 		// I2C reads in as unsigned - we need to convert back to 2s complement (+- 32)
+  30:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 		_acc.x = (Angle)(twiMaster.readData[0] << 2) >> 2;
+  31:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 		_acc.y = (Angle)(twiMaster.readData[1] << 2) >> 2;
+  32:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 		_acc.z = (Angle)(twiMaster.readData[2] << 2) >> 2;
+  33:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 		_acc.status = twiMaster.readData[3];
+  34:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 		
+  35:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 		twiMaster.result = TWIM_RESULT_UNKNOWN;
+  36:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 		
+  37:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 		// if superceding event isn't registered, register sub-events, if necessary
+  38:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 		if(!triggerHandler(EVENT_ACCEL_CHANGE))
+  39:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 		{
+  40:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 			if(_acc.status & ACC_TAP)
+  41:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 			{
+  42:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 				triggerHandler(EVENT_ACCEL_TAP);
+  43:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 			}	
+  44:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 			if(_acc.status & ACC_SHAKE)
+  45:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 			{
+  46:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 				triggerHandler(EVENT_ACCEL_SHAKE);
+  47:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 			}	
+  48:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 			if(oldstatus != (_acc.status & ACC_O_MASK))
+  49:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 			{
+  50:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 				triggerHandler(EVENT_ACCEL_TAP);
+  51:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 			}			
+  52:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 		}
+  53:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	}
+  54:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** }
+  63               		.loc 1 54 0
+  64 0026 CF91      		pop r28
+  65 0028 0895      		ret
+  66               	.L17:
+  25:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	if(twiMaster.result == TWIM_RESULT_OK && twiMaster.status == TWIM_STATUS_READY)
+  67               		.loc 1 25 0 discriminator 1
+  68 002a 8091 0000 		lds r24,twiMaster+15
+  69 002e 8130      		cpi r24,lo8(1)
+  70 0030 01F4      		brne .L10
+  71               	.LBB2:
+  27:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 		byte oldstatus = _acc.status & ACC_O_MASK;
+  72               		.loc 1 27 0
+  73 0032 C091 0000 		lds r28,_acc+3
+  74               	.LVL0:
+  30:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 		_acc.x = (Angle)(twiMaster.readData[0] << 2) >> 2;
+  75               		.loc 1 30 0
+  76 0036 8091 0000 		lds r24,twiMaster+7
+  77 003a 880F      		lsl r24
+  78 003c 880F      		lsl r24
+  79 003e 8595      		asr r24
+  80 0040 8595      		asr r24
+  81 0042 8093 0000 		sts _acc,r24
+  31:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 		_acc.y = (Angle)(twiMaster.readData[1] << 2) >> 2;
+  82               		.loc 1 31 0
+  83 0046 8091 0000 		lds r24,twiMaster+8
+  84 004a 880F      		lsl r24
+  85 004c 880F      		lsl r24
+  86 004e 8595      		asr r24
+  87 0050 8595      		asr r24
+  88 0052 8093 0000 		sts _acc+1,r24
+  32:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 		_acc.z = (Angle)(twiMaster.readData[2] << 2) >> 2;
+  89               		.loc 1 32 0
+  90 0056 8091 0000 		lds r24,twiMaster+9
+  91 005a 880F      		lsl r24
+  92 005c 880F      		lsl r24
+  93 005e 8595      		asr r24
+  94 0060 8595      		asr r24
+  95 0062 8093 0000 		sts _acc+2,r24
+  33:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 		_acc.status = twiMaster.readData[3];
+  96               		.loc 1 33 0
+  97 0066 8091 0000 		lds r24,twiMaster+10
+  98 006a 8093 0000 		sts _acc+3,r24
+  35:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 		twiMaster.result = TWIM_RESULT_UNKNOWN;
+  99               		.loc 1 35 0
+ 100 006e 1092 0000 		sts twiMaster+16,__zero_reg__
+  38:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 		if(!triggerHandler(EVENT_ACCEL_CHANGE))
+ 101               		.loc 1 38 0
+ 102 0072 8BE0      		ldi r24,lo8(11)
+ 103 0074 0E94 0000 		call triggerHandler
+ 104               	.LVL1:
+ 105 0078 892B      		or r24,r25
+ 106 007a 01F4      		brne .L10
+  40:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 			if(_acc.status & ACC_TAP)
+ 107               		.loc 1 40 0
+ 108 007c 8091 0000 		lds r24,_acc+3
+ 109 0080 85FD      		sbrc r24,5
+ 110 0082 00C0      		rjmp .L18
+ 111               	.L14:
+  44:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 			if(_acc.status & ACC_SHAKE)
+ 112               		.loc 1 44 0
+ 113 0084 87FD      		sbrc r24,7
+ 114 0086 00C0      		rjmp .L19
+ 115               	.L15:
+  27:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 		byte oldstatus = _acc.status & ACC_O_MASK;
+ 116               		.loc 1 27 0
+ 117 0088 CF71      		andi r28,lo8(31)
+ 118               	.LVL2:
+  48:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 			if(oldstatus != (_acc.status & ACC_O_MASK))
+ 119               		.loc 1 48 0
+ 120 008a 2C2F      		mov r18,r28
+ 121 008c 30E0      		ldi r19,0
+ 122 008e 8F71      		andi r24,lo8(31)
+ 123 0090 90E0      		ldi r25,0
+ 124 0092 2817      		cp r18,r24
+ 125 0094 3907      		cpc r19,r25
+ 126 0096 01F0      		breq .L10
+  50:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 				triggerHandler(EVENT_ACCEL_TAP);
+ 127               		.loc 1 50 0
+ 128 0098 8CE0      		ldi r24,lo8(12)
+ 129               	/* epilogue start */
+ 130               	.LBE2:
+ 131               		.loc 1 54 0
+ 132 009a CF91      		pop r28
+ 133               	.LBB3:
+  50:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 				triggerHandler(EVENT_ACCEL_TAP);
+ 134               		.loc 1 50 0
+ 135 009c 0C94 0000 		jmp triggerHandler
+ 136               	.LVL3:
+ 137               	.L18:
+  42:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 				triggerHandler(EVENT_ACCEL_TAP);
+ 138               		.loc 1 42 0
+ 139 00a0 8CE0      		ldi r24,lo8(12)
+ 140 00a2 0E94 0000 		call triggerHandler
+ 141               	.LVL4:
+ 142 00a6 8091 0000 		lds r24,_acc+3
+ 143 00aa 00C0      		rjmp .L14
+ 144               	.L19:
+  46:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 				triggerHandler(EVENT_ACCEL_SHAKE);
+ 145               		.loc 1 46 0
+ 146 00ac 8DE0      		ldi r24,lo8(13)
+ 147 00ae 0E94 0000 		call triggerHandler
+ 148               	.LVL5:
+ 149 00b2 8091 0000 		lds r24,_acc+3
+ 150 00b6 00C0      		rjmp .L15
+ 151               	.LBE3:
+ 152               		.cfi_endproc
+ 153               	.LFE13:
+ 155               	.global	initHWAccel
+ 157               	initHWAccel:
+ 158               	.LFB14:
+  55:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 
+  56:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** // Doesn't *really* need to be blocking, just checked for success
+  57:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** // TODO: should block? yes no?
+  58:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** // Romain make it non blocking
+  59:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** void initHWAccel()
+  60:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** {
+ 159               		.loc 1 60 0
+ 160               		.cfi_startproc
+ 161 00b8 FF92      		push r15
+ 162               	.LCFI1:
+ 163               		.cfi_def_cfa_offset 4
+ 164               		.cfi_offset 15, -3
+ 165 00ba 0F93      		push r16
+ 166               	.LCFI2:
+ 167               		.cfi_def_cfa_offset 5
+ 168               		.cfi_offset 16, -4
+ 169 00bc 1F93      		push r17
+ 170               	.LCFI3:
+ 171               		.cfi_def_cfa_offset 6
+ 172               		.cfi_offset 17, -5
+ 173 00be CF93      		push r28
+ 174               	.LCFI4:
+ 175               		.cfi_def_cfa_offset 7
+ 176               		.cfi_offset 28, -6
+ 177 00c0 DF93      		push r29
+ 178               	.LCFI5:
+ 179               		.cfi_def_cfa_offset 8
+ 180               		.cfi_offset 29, -7
+ 181 00c2 1F92      		push __zero_reg__
+ 182 00c4 1F92      		push __zero_reg__
+ 183               	.LCFI6:
+ 184               		.cfi_def_cfa_offset 10
+ 185 00c6 CDB7      		in r28,__SP_L__
+ 186 00c8 DEB7      		in r29,__SP_H__
+ 187               	.LCFI7:
+ 188               		.cfi_def_cfa_register 28
+ 189               	/* prologue: function */
+ 190               	/* frame size = 2 */
+ 191               	/* stack size = 7 */
+ 192               	.L__stack_usage = 7
+  61:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	/* Initialize TWI master. */
+  62:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	TWI_MasterInit(&twiMaster,
+ 193               		.loc 1 62 0
+ 194 00ca 2BE9      		ldi r18,lo8(-101)
+ 195 00cc 40E4      		ldi r20,lo8(64)
+ 196 00ce 60EA      		ldi r22,lo8(-96)
+ 197 00d0 74E0      		ldi r23,lo8(4)
+ 198 00d2 80E0      		ldi r24,lo8(twiMaster)
+ 199 00d4 90E0      		ldi r25,hi8(twiMaster)
+ 200 00d6 0E94 0000 		call TWI_MasterInit
+ 201               	.LVL6:
+  63:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	               &TWIE,
+  64:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	               TWI_MASTER_INTLVL_LO_gc,
+  65:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	               TWI_BAUDSETTING);
+  66:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 
+  67:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	// prepare configuration data for the accelerometer
+  68:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	byte buf[2];
+  69:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 
+  70:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	// set mode to STANDBY if it isn't already (can't update registers in ACTIVE mode!)
+  71:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	buf[0] = 0x07;
+ 202               		.loc 1 71 0
+ 203 00da 17E0      		ldi r17,lo8(7)
+ 204 00dc 1983      		std Y+1,r17
+  72:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	buf[1] = 0x18;
+ 205               		.loc 1 72 0
+ 206 00de 88E1      		ldi r24,lo8(24)
+ 207 00e0 8A83      		std Y+2,r24
+  73:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	TWI_MasterWriteRead(&twiMaster, ACCEL_I2C_ADDR, buf, 2, 0);
+ 208               		.loc 1 73 0
+ 209 00e2 00E0      		ldi r16,0
+ 210 00e4 22E0      		ldi r18,lo8(2)
+ 211 00e6 AE01      		movw r20,r28
+ 212 00e8 4F5F      		subi r20,-1
+ 213 00ea 5F4F      		sbci r21,-1
+ 214 00ec 6CE4      		ldi r22,lo8(76)
+ 215 00ee 80E0      		ldi r24,lo8(twiMaster)
+ 216 00f0 90E0      		ldi r25,hi8(twiMaster)
+ 217 00f2 0E94 0000 		call TWI_MasterWriteRead
+ 218               	.LVL7:
+  74:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	// Romain while (twiMaster.status != TWIM_STATUS_READY);
+  75:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 
+  76:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	// set sleep mode
+  77:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	buf[0] = 0x05;
+ 219               		.loc 1 77 0
+ 220 00f6 85E0      		ldi r24,lo8(5)
+ 221 00f8 8983      		std Y+1,r24
+  78:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	buf[1] = 0x00;	// no sleep
+ 222               		.loc 1 78 0
+ 223 00fa 1A82      		std Y+2,__zero_reg__
+  79:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	TWI_MasterWriteRead(&twiMaster, ACCEL_I2C_ADDR, buf, 2, 0);
+ 224               		.loc 1 79 0
+ 225 00fc 22E0      		ldi r18,lo8(2)
+ 226 00fe AE01      		movw r20,r28
+ 227 0100 4F5F      		subi r20,-1
+ 228 0102 5F4F      		sbci r21,-1
+ 229 0104 6CE4      		ldi r22,lo8(76)
+ 230 0106 80E0      		ldi r24,lo8(twiMaster)
+ 231 0108 90E0      		ldi r25,hi8(twiMaster)
+ 232 010a 0E94 0000 		call TWI_MasterWriteRead
+ 233               	.LVL8:
+  80:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	// Romain while (twiMaster.status != TWIM_STATUS_READY);
+  81:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 
+  82:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	// set interrupts
+  83:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	buf[0] = 0x06;
+ 234               		.loc 1 83 0
+ 235 010e 86E0      		ldi r24,lo8(6)
+ 236 0110 8983      		std Y+1,r24
+  84:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	buf[1] = 0x07;	// 0x06 Interrupt Setup Register -> PDINT | PLINT | FBINT
+ 237               		.loc 1 84 0
+ 238 0112 1A83      		std Y+2,r17
+  85:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	TWI_MasterWriteRead(&twiMaster, ACCEL_I2C_ADDR, buf, 2, 0);
+ 239               		.loc 1 85 0
+ 240 0114 22E0      		ldi r18,lo8(2)
+ 241 0116 AE01      		movw r20,r28
+ 242 0118 4F5F      		subi r20,-1
+ 243 011a 5F4F      		sbci r21,-1
+ 244 011c 6CE4      		ldi r22,lo8(76)
+ 245 011e 80E0      		ldi r24,lo8(twiMaster)
+ 246 0120 90E0      		ldi r25,hi8(twiMaster)
+ 247 0122 0E94 0000 		call TWI_MasterWriteRead
+ 248               	.LVL9:
+  86:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	// Romain while (twiMaster.status != TWIM_STATUS_READY);
+  87:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 
+  88:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	// set filter rate
+  89:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	buf[0] = 0x08;
+ 249               		.loc 1 89 0
+ 250 0126 88E0      		ldi r24,lo8(8)
+ 251 0128 8983      		std Y+1,r24
+  90:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	buf[1] = 0xE0;	// 0x08 Sample Register -> Fil[0:2]
+ 252               		.loc 1 90 0
+ 253 012a 80EE      		ldi r24,lo8(-32)
+ 254 012c 8A83      		std Y+2,r24
+  91:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	TWI_MasterWriteRead(&twiMaster, ACCEL_I2C_ADDR, buf, 2, 0);
+ 255               		.loc 1 91 0
+ 256 012e 22E0      		ldi r18,lo8(2)
+ 257 0130 AE01      		movw r20,r28
+ 258 0132 4F5F      		subi r20,-1
+ 259 0134 5F4F      		sbci r21,-1
+ 260 0136 6CE4      		ldi r22,lo8(76)
+ 261 0138 80E0      		ldi r24,lo8(twiMaster)
+ 262 013a 90E0      		ldi r25,hi8(twiMaster)
+ 263 013c 0E94 0000 		call TWI_MasterWriteRead
+ 264               	.LVL10:
+  92:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	// Romain while (twiMaster.status != TWIM_STATUS_READY);
+  93:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	
+  94:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	// set tap detection
+  95:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	buf[0] = 0x09;
+ 265               		.loc 1 95 0
+ 266 0140 89E0      		ldi r24,lo8(9)
+ 267 0142 8983      		std Y+1,r24
+  96:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	buf[1] = 0x10;	// 0x09	Pulse detection -> +- 4 counts
+ 268               		.loc 1 96 0
+ 269 0144 80E1      		ldi r24,lo8(16)
+ 270 0146 F82E      		mov r15,r24
+ 271 0148 FA82      		std Y+2,r15
+  97:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	TWI_MasterWriteRead(&twiMaster, ACCEL_I2C_ADDR, buf, 2, 0);
+ 272               		.loc 1 97 0
+ 273 014a 22E0      		ldi r18,lo8(2)
+ 274 014c AE01      		movw r20,r28
+ 275 014e 4F5F      		subi r20,-1
+ 276 0150 5F4F      		sbci r21,-1
+ 277 0152 6CE4      		ldi r22,lo8(76)
+ 278 0154 80E0      		ldi r24,lo8(twiMaster)
+ 279 0156 90E0      		ldi r25,hi8(twiMaster)
+ 280 0158 0E94 0000 		call TWI_MasterWriteRead
+ 281               	.LVL11:
+  98:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	//Romain while (twiMaster.status != TWIM_STATUS_READY);
+  99:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 
+ 100:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	// set tap debounce
+ 101:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	buf[0] = 0x0A;
+ 282               		.loc 1 101 0
+ 283 015c 8AE0      		ldi r24,lo8(10)
+ 284 015e 8983      		std Y+1,r24
+ 102:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	buf[1] = 0x10;	// 0x0A Tap debounce ->	4 detections
+ 285               		.loc 1 102 0
+ 286 0160 FA82      		std Y+2,r15
+ 103:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	TWI_MasterWriteRead(&twiMaster, ACCEL_I2C_ADDR, buf, 2, 0);
+ 287               		.loc 1 103 0
+ 288 0162 22E0      		ldi r18,lo8(2)
+ 289 0164 AE01      		movw r20,r28
+ 290 0166 4F5F      		subi r20,-1
+ 291 0168 5F4F      		sbci r21,-1
+ 292 016a 6CE4      		ldi r22,lo8(76)
+ 293 016c 80E0      		ldi r24,lo8(twiMaster)
+ 294 016e 90E0      		ldi r25,hi8(twiMaster)
+ 295 0170 0E94 0000 		call TWI_MasterWriteRead
+ 296               	.LVL12:
+ 104:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	// Romain while (twiMaster.status != TWIM_STATUS_READY);	
+ 105:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	
+ 106:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	// enable the accelerometer
+ 107:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	buf[0] = 0x07;
+ 297               		.loc 1 107 0
+ 298 0174 1983      		std Y+1,r17
+ 108:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	buf[1] = 0x19;
+ 299               		.loc 1 108 0
+ 300 0176 89E1      		ldi r24,lo8(25)
+ 301 0178 8A83      		std Y+2,r24
+ 109:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	TWI_MasterWriteRead(&twiMaster, ACCEL_I2C_ADDR, buf, 2, 0);
+ 302               		.loc 1 109 0
+ 303 017a 22E0      		ldi r18,lo8(2)
+ 304 017c AE01      		movw r20,r28
+ 305 017e 4F5F      		subi r20,-1
+ 306 0180 5F4F      		sbci r21,-1
+ 307 0182 6CE4      		ldi r22,lo8(76)
+ 308 0184 80E0      		ldi r24,lo8(twiMaster)
+ 309 0186 90E0      		ldi r25,hi8(twiMaster)
+ 310 0188 0E94 0000 		call TWI_MasterWriteRead
+ 311               	.LVL13:
+ 110:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	//Romain while (twiMaster.status != TWIM_STATUS_READY);
+ 111:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	
+ 112:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	// set up input/interrupt to detect acceleromter IRQs
+ 113:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	PORTB.DIRCLR = PIN0_bm;					// set Pin0 as input
+ 312               		.loc 1 113 0
+ 313 018c E0E2      		ldi r30,lo8(32)
+ 314 018e F6E0      		ldi r31,lo8(6)
+ 315 0190 81E0      		ldi r24,lo8(1)
+ 316 0192 8283      		std Z+2,r24
+ 114:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	PORTB.PIN0CTRL = PORT_OPC_PULLUP_gc | PORT_ISC_FALLING_gc;	// set pullup, trigger interrupt on fal
+ 317               		.loc 1 114 0
+ 318 0194 9AE1      		ldi r25,lo8(26)
+ 319 0196 908B      		std Z+16,r25
+ 115:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	PORTB.INT0MASK = PIN0_bm;				// enable PIN0 to trigger INT0
+ 320               		.loc 1 115 0
+ 321 0198 8287      		std Z+10,r24
+ 116:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	PORTB.INTCTRL = PORT_INT0LVL_LO_gc;		// enable INT0 interrupt on LOW priority
+ 322               		.loc 1 116 0
+ 323 019a 8187      		std Z+9,r24
+ 324               	/* epilogue start */
+ 117:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** }
+ 325               		.loc 1 117 0
+ 326 019c 0F90      		pop __tmp_reg__
+ 327 019e 0F90      		pop __tmp_reg__
+ 328 01a0 DF91      		pop r29
+ 329 01a2 CF91      		pop r28
+ 330 01a4 1F91      		pop r17
+ 331 01a6 0F91      		pop r16
+ 332 01a8 FF90      		pop r15
+ 333 01aa 0895      		ret
+ 334               		.cfi_endproc
+ 335               	.LFE14:
+ 337               	.global	__vector_34
+ 339               	__vector_34:
+ 340               	.LFB15:
+ 118:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 
+ 119:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** // Acceleromter status change detection interrupt
+ 120:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** ISR(PORTB_INT0_vect)
+ 121:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** {
+ 341               		.loc 1 121 0
+ 342               		.cfi_startproc
+ 343 01ac 1F92      		push r1
+ 344               	.LCFI8:
+ 345               		.cfi_def_cfa_offset 4
+ 346               		.cfi_offset 1, -3
+ 347 01ae 0F92      		push r0
+ 348               	.LCFI9:
+ 349               		.cfi_def_cfa_offset 5
+ 350               		.cfi_offset 0, -4
+ 351 01b0 0FB6      		in r0,__SREG__
+ 352 01b2 0F92      		push r0
+ 353 01b4 1124      		clr __zero_reg__
+ 354 01b6 0BB6      		in r0,__RAMPZ__
+ 355 01b8 0F92      		push r0
+ 356 01ba 0F93      		push r16
+ 357               	.LCFI10:
+ 358               		.cfi_def_cfa_offset 6
+ 359               		.cfi_offset 16, -5
+ 360 01bc 2F93      		push r18
+ 361               	.LCFI11:
+ 362               		.cfi_def_cfa_offset 7
+ 363               		.cfi_offset 18, -6
+ 364 01be 3F93      		push r19
+ 365               	.LCFI12:
+ 366               		.cfi_def_cfa_offset 8
+ 367               		.cfi_offset 19, -7
+ 368 01c0 4F93      		push r20
+ 369               	.LCFI13:
+ 370               		.cfi_def_cfa_offset 9
+ 371               		.cfi_offset 20, -8
+ 372 01c2 5F93      		push r21
+ 373               	.LCFI14:
+ 374               		.cfi_def_cfa_offset 10
+ 375               		.cfi_offset 21, -9
+ 376 01c4 6F93      		push r22
+ 377               	.LCFI15:
+ 378               		.cfi_def_cfa_offset 11
+ 379               		.cfi_offset 22, -10
+ 380 01c6 7F93      		push r23
+ 381               	.LCFI16:
+ 382               		.cfi_def_cfa_offset 12
+ 383               		.cfi_offset 23, -11
+ 384 01c8 8F93      		push r24
+ 385               	.LCFI17:
+ 386               		.cfi_def_cfa_offset 13
+ 387               		.cfi_offset 24, -12
+ 388 01ca 9F93      		push r25
+ 389               	.LCFI18:
+ 390               		.cfi_def_cfa_offset 14
+ 391               		.cfi_offset 25, -13
+ 392 01cc AF93      		push r26
+ 393               	.LCFI19:
+ 394               		.cfi_def_cfa_offset 15
+ 395               		.cfi_offset 26, -14
+ 396 01ce BF93      		push r27
+ 397               	.LCFI20:
+ 398               		.cfi_def_cfa_offset 16
+ 399               		.cfi_offset 27, -15
+ 400 01d0 EF93      		push r30
+ 401               	.LCFI21:
+ 402               		.cfi_def_cfa_offset 17
+ 403               		.cfi_offset 30, -16
+ 404 01d2 FF93      		push r31
+ 405               	.LCFI22:
+ 406               		.cfi_def_cfa_offset 18
+ 407               		.cfi_offset 31, -17
+ 408 01d4 CF93      		push r28
+ 409               	.LCFI23:
+ 410               		.cfi_def_cfa_offset 19
+ 411               		.cfi_offset 28, -18
+ 412 01d6 DF93      		push r29
+ 413               	.LCFI24:
+ 414               		.cfi_def_cfa_offset 20
+ 415               		.cfi_offset 29, -19
+ 416 01d8 1F92      		push __zero_reg__
+ 417               	.LCFI25:
+ 418               		.cfi_def_cfa_offset 21
+ 419 01da CDB7      		in r28,__SP_L__
+ 420 01dc DEB7      		in r29,__SP_H__
+ 421               	.LCFI26:
+ 422               		.cfi_def_cfa_register 28
+ 423               	/* prologue: Signal */
+ 424               	/* frame size = 1 */
+ 425               	/* stack size = 20 */
+ 426               	.L__stack_usage = 20
+ 122:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 
+ 123:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	if(twiMaster.status == TWIM_STATUS_READY)
+ 427               		.loc 1 123 0
+ 428 01de 8091 0000 		lds r24,twiMaster+15
+ 429 01e2 8130      		cpi r24,lo8(1)
+ 430 01e4 01F0      		breq .L23
+ 431               	.L21:
+ 432               	/* epilogue start */
+ 124:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	{
+ 125:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 		byte buf = 0x00;		// read 4 bytes, starting at 0x00 (x,y,z,status)
+ 126:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 		TWI_MasterWriteRead(&twiMaster, ACCEL_I2C_ADDR, &buf, 1, 4);
+ 127:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	}
+ 128:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 
+ 129:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** }
+ 433               		.loc 1 129 0
+ 434 01e6 0F90      		pop __tmp_reg__
+ 435 01e8 DF91      		pop r29
+ 436 01ea CF91      		pop r28
+ 437 01ec FF91      		pop r31
+ 438 01ee EF91      		pop r30
+ 439 01f0 BF91      		pop r27
+ 440 01f2 AF91      		pop r26
+ 441 01f4 9F91      		pop r25
+ 442 01f6 8F91      		pop r24
+ 443 01f8 7F91      		pop r23
+ 444 01fa 6F91      		pop r22
+ 445 01fc 5F91      		pop r21
+ 446 01fe 4F91      		pop r20
+ 447 0200 3F91      		pop r19
+ 448 0202 2F91      		pop r18
+ 449 0204 0F91      		pop r16
+ 450 0206 0F90      		pop r0
+ 451 0208 0BBE      		out __RAMPZ__,r0
+ 452 020a 0F90      		pop r0
+ 453 020c 0FBE      		out __SREG__,r0
+ 454 020e 0F90      		pop r0
+ 455 0210 1F90      		pop r1
+ 456 0212 1895      		reti
+ 457               	.L23:
+ 458               	.LBB4:
+ 125:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 		byte buf = 0x00;		// read 4 bytes, starting at 0x00 (x,y,z,status)
+ 459               		.loc 1 125 0
+ 460 0214 1982      		std Y+1,__zero_reg__
+ 126:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 		TWI_MasterWriteRead(&twiMaster, ACCEL_I2C_ADDR, &buf, 1, 4);
+ 461               		.loc 1 126 0
+ 462 0216 04E0      		ldi r16,lo8(4)
+ 463 0218 21E0      		ldi r18,lo8(1)
+ 464 021a AE01      		movw r20,r28
+ 465 021c 4F5F      		subi r20,-1
+ 466 021e 5F4F      		sbci r21,-1
+ 467 0220 6CE4      		ldi r22,lo8(76)
+ 468 0222 80E0      		ldi r24,lo8(twiMaster)
+ 469 0224 90E0      		ldi r25,hi8(twiMaster)
+ 470 0226 0E94 0000 		call TWI_MasterWriteRead
+ 471               	.LVL14:
+ 472 022a 00C0      		rjmp .L21
+ 473               	.LBE4:
+ 474               		.cfi_endproc
+ 475               	.LFE15:
+ 477               	.global	__vector_46
+ 479               	__vector_46:
+ 480               	.LFB16:
+ 130:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 
+ 131:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** /*! TWIE Master Interrupt vector. */
+ 132:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** ISR(TWIE_TWIM_vect)
+ 133:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** {
+ 481               		.loc 1 133 0
+ 482               		.cfi_startproc
+ 483 022c 1F92      		push r1
+ 484               	.LCFI27:
+ 485               		.cfi_def_cfa_offset 4
+ 486               		.cfi_offset 1, -3
+ 487 022e 0F92      		push r0
+ 488               	.LCFI28:
+ 489               		.cfi_def_cfa_offset 5
+ 490               		.cfi_offset 0, -4
+ 491 0230 0FB6      		in r0,__SREG__
+ 492 0232 0F92      		push r0
+ 493 0234 1124      		clr __zero_reg__
+ 494 0236 0BB6      		in r0,__RAMPZ__
+ 495 0238 0F92      		push r0
+ 496 023a 2F93      		push r18
+ 497               	.LCFI29:
+ 498               		.cfi_def_cfa_offset 6
+ 499               		.cfi_offset 18, -5
+ 500 023c 3F93      		push r19
+ 501               	.LCFI30:
+ 502               		.cfi_def_cfa_offset 7
+ 503               		.cfi_offset 19, -6
+ 504 023e 4F93      		push r20
+ 505               	.LCFI31:
+ 506               		.cfi_def_cfa_offset 8
+ 507               		.cfi_offset 20, -7
+ 508 0240 5F93      		push r21
+ 509               	.LCFI32:
+ 510               		.cfi_def_cfa_offset 9
+ 511               		.cfi_offset 21, -8
+ 512 0242 6F93      		push r22
+ 513               	.LCFI33:
+ 514               		.cfi_def_cfa_offset 10
+ 515               		.cfi_offset 22, -9
+ 516 0244 7F93      		push r23
+ 517               	.LCFI34:
+ 518               		.cfi_def_cfa_offset 11
+ 519               		.cfi_offset 23, -10
+ 520 0246 8F93      		push r24
+ 521               	.LCFI35:
+ 522               		.cfi_def_cfa_offset 12
+ 523               		.cfi_offset 24, -11
+ 524 0248 9F93      		push r25
+ 525               	.LCFI36:
+ 526               		.cfi_def_cfa_offset 13
+ 527               		.cfi_offset 25, -12
+ 528 024a AF93      		push r26
+ 529               	.LCFI37:
+ 530               		.cfi_def_cfa_offset 14
+ 531               		.cfi_offset 26, -13
+ 532 024c BF93      		push r27
+ 533               	.LCFI38:
+ 534               		.cfi_def_cfa_offset 15
+ 535               		.cfi_offset 27, -14
+ 536 024e EF93      		push r30
+ 537               	.LCFI39:
+ 538               		.cfi_def_cfa_offset 16
+ 539               		.cfi_offset 30, -15
+ 540 0250 FF93      		push r31
+ 541               	.LCFI40:
+ 542               		.cfi_def_cfa_offset 17
+ 543               		.cfi_offset 31, -16
+ 544               	/* prologue: Signal */
+ 545               	/* frame size = 0 */
+ 546               	/* stack size = 16 */
+ 547               	.L__stack_usage = 16
+ 134:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 
+ 135:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 	TWI_MasterInterruptHandler(&twiMaster);
+ 548               		.loc 1 135 0
+ 549 0252 80E0      		ldi r24,lo8(twiMaster)
+ 550 0254 90E0      		ldi r25,hi8(twiMaster)
+ 551 0256 0E94 0000 		call TWI_MasterInterruptHandler
+ 552               	.LVL15:
+ 553               	/* epilogue start */
+ 136:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** }
+ 554               		.loc 1 136 0
+ 555 025a FF91      		pop r31
+ 556 025c EF91      		pop r30
+ 557 025e BF91      		pop r27
+ 558 0260 AF91      		pop r26
+ 559 0262 9F91      		pop r25
+ 560 0264 8F91      		pop r24
+ 561 0266 7F91      		pop r23
+ 562 0268 6F91      		pop r22
+ 563 026a 5F91      		pop r21
+ 564 026c 4F91      		pop r20
+ 565 026e 3F91      		pop r19
+ 566 0270 2F91      		pop r18
+ 567 0272 0F90      		pop r0
+ 568 0274 0BBE      		out __RAMPZ__,r0
+ 569 0276 0F90      		pop r0
+ 570 0278 0FBE      		out __SREG__,r0
+ 571 027a 0F90      		pop r0
+ 572 027c 1F90      		pop r1
+ 573 027e 1895      		reti
+ 574               		.cfi_endproc
+ 575               	.LFE16:
+ 577               	.global	setAccelRegister
+ 579               	setAccelRegister:
+ 580               	.LFB17:
+ 137:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 
+ 138:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** // helper function to setup accelerometer registers
+ 139:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** void setAccelRegister(byte one, byte two)
+ 140:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** {
+ 581               		.loc 1 140 0
+ 582               		.cfi_startproc
+ 583               	.LVL16:
+ 584 0280 0F93      		push r16
+ 585               	.LCFI41:
+ 586               		.cfi_def_cfa_offset 4
+ 587               		.cfi_offset 16, -3
+ 588 0282 CF93      		push r28
+ 589               	.LCFI42:
+ 590               		.cfi_def_cfa_offset 5
+ 591               		.cfi_offset 28, -4
+ 592 0284 DF93      		push r29
+ 593               	.LCFI43:
+ 594               		.cfi_def_cfa_offset 6
+ 595               		.cfi_offset 29, -5
+ 596 0286 1F92      		push __zero_reg__
+ 597 0288 1F92      		push __zero_reg__
+ 598               	.LCFI44:
+ 599               		.cfi_def_cfa_offset 8
+ 600 028a CDB7      		in r28,__SP_L__
+ 601 028c DEB7      		in r29,__SP_H__
+ 602               	.LCFI45:
+ 603               		.cfi_def_cfa_register 28
+ 604               	/* prologue: function */
+ 605               	/* frame size = 2 */
+ 606               	/* stack size = 5 */
+ 607               	.L__stack_usage = 5
+ 141:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c ****     byte buf[2];
+ 142:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** 
+ 143:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c ****     buf[0] = one;
+ 608               		.loc 1 143 0
+ 609 028e 8983      		std Y+1,r24
+ 144:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c ****     buf[1] = two;
+ 610               		.loc 1 144 0
+ 611 0290 6A83      		std Y+2,r22
+ 145:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c ****     
+ 146:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c ****     TWI_MasterWriteRead(&twiMaster, ACCEL_I2C_ADDR, buf, 2, 0);
+ 612               		.loc 1 146 0
+ 613 0292 00E0      		ldi r16,0
+ 614 0294 22E0      		ldi r18,lo8(2)
+ 615 0296 AE01      		movw r20,r28
+ 616 0298 4F5F      		subi r20,-1
+ 617 029a 5F4F      		sbci r21,-1
+ 618 029c 6CE4      		ldi r22,lo8(76)
+ 619               	.LVL17:
+ 620 029e 80E0      		ldi r24,lo8(twiMaster)
+ 621 02a0 90E0      		ldi r25,hi8(twiMaster)
+ 622               	.LVL18:
+ 623 02a2 0E94 0000 		call TWI_MasterWriteRead
+ 624               	.LVL19:
+ 625               	/* epilogue start */
+ 147:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c ****     // Romain while(twiMaster.status != TWIM_STATUS_READY);
+ 148:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwAccelerometer.c **** }
+ 626               		.loc 1 148 0
+ 627 02a6 0F90      		pop __tmp_reg__
+ 628 02a8 0F90      		pop __tmp_reg__
+ 629 02aa DF91      		pop r29
+ 630 02ac CF91      		pop r28
+ 631 02ae 0F91      		pop r16
+ 632 02b0 0895      		ret
+ 633               		.cfi_endproc
+ 634               	.LFE17:
+ 636               		.comm	twiMaster,17,1
+ 637               	.Letext0:
+ 638               		.file 2 "/usr/lib/avr/include/stdint.h"
+ 639               		.file 3 "/usr/lib/avr/include/avr/iox256a3.h"
+ 640               		.file 4 "/home/pthalamy/CMU/bench/benchmark/build/src-bobby/system/defs.bbh"
+ 641               		.file 5 "/home/pthalamy/CMU/bench/benchmark/build/src-bobby/system/accelerometer.bbh"
+ 642               		.file 6 "/home/pthalamy/CMU/bench/benchmark/build/src-bobby/system/handler.bbh"
+ 643               		.file 7 "/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/twi_master_driver.h"
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 hwAccelerometer.c
+     /tmp/cc9uRZ4g.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/cc9uRZ4g.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/cc9uRZ4g.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/cc9uRZ4g.s:5      *ABS*:000000000000003b __RAMPZ__
+     /tmp/cc9uRZ4g.s:6      *ABS*:0000000000000034 __CCP__
+     /tmp/cc9uRZ4g.s:7      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/cc9uRZ4g.s:8      *ABS*:0000000000000001 __zero_reg__
+     /tmp/cc9uRZ4g.s:14     .text:0000000000000000 newHWAccelData
+                            *COM*:0000000000000011 twiMaster
+     /tmp/cc9uRZ4g.s:45     .text:000000000000001c updateHWAccel
+     /tmp/cc9uRZ4g.s:157    .text:00000000000000b8 initHWAccel
+     /tmp/cc9uRZ4g.s:339    .text:00000000000001ac __vector_34
+     /tmp/cc9uRZ4g.s:479    .text:000000000000022c __vector_46
+     /tmp/cc9uRZ4g.s:579    .text:0000000000000280 setAccelRegister
+
+UNDEFINED SYMBOLS
+_acc
+triggerHandler
+TWI_MasterInit
+TWI_MasterWriteRead
+TWI_MasterInterruptHandler
+__do_clear_bss

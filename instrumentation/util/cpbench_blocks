@@ -1,0 +1,18 @@
+#!/bin/ksh
+
+
+if [[ $# -lt 1 ]] ; then
+	echo I need an argument
+	exit
+elif [[ $# -gt 1 ]] ; then
+	echo I have too many arguments
+	exit
+fi
+
+#removingtrailing directory name from benchmarkname 
+BENCHMARKNAME=`echo $1 | awk -F\/ '{print $2}`
+
+echo Copying $1 to /Users/pthalamy/Studies/CMU/benchmark/build/apps/sample-meld/arch-blocks/meldinterp-runtime/ends.bb
+cp $1 /Users/pthalamy/Studies/CMU/benchmark/build/apps/sample-meld/arch-blocks/meldinterp-runtime/ends.bb
+
+echo "#define BENCHMARKNAME \"$BENCHMARKNAME\"" >> /Users/pthalamy/Studies/CMU/benchmark/build/src-bobby/meldinterp-runtime/benchmark_name.h

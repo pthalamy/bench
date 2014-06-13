@@ -1,0 +1,412 @@
+   1               		.file	"hwMicrophone.c"
+   2               	__SP_H__ = 0x3e
+   3               	__SP_L__ = 0x3d
+   4               	__SREG__ = 0x3f
+   5               	__RAMPZ__ = 0x3b
+   6               	__CCP__ = 0x34
+   7               	__tmp_reg__ = 0
+   8               	__zero_reg__ = 1
+   9               		.text
+  10               	.Ltext0:
+  11               		.cfi_sections	.debug_frame
+  12               	.global	updateHWMic
+  14               	updateHWMic:
+  15               	.LFB5:
+  16               		.file 1 "/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c"
+   1:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c **** #include <avr/io.h>
+   2:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c **** #include <avr/interrupt.h>
+   3:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c **** #include "../system/defs.h"
+   4:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c **** #include "../system/microphone.h"
+   5:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c **** #include "../hw-api/hwMicrophone.h"
+   6:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c **** 
+   7:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c **** 
+   8:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c **** extern MicData _mic;
+   9:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c **** 
+  10:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c **** 
+  11:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c **** void updateHWMic()
+  12:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c **** {
+  17               		.loc 1 12 0
+  18               		.cfi_startproc
+  19               	/* prologue: function */
+  20               	/* frame size = 0 */
+  21               	/* stack size = 0 */
+  22               	.L__stack_usage = 0
+  23               	.LBB14:
+  13:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c ****     BB_LOCK(ATOMIC_RESTORESTATE)
+  24               		.loc 1 13 0
+  25 0000 2FB7      		in r18,__SREG__
+  26               	.LVL0:
+  27               	.LBB15:
+  28               	.LBB16:
+  29               		.file 2 "/usr/lib/avr/include/util/atomic.h"
+   1:/usr/lib/avr/include/util/atomic.h **** /* Copyright (c) 2007 Dean Camera
+   2:/usr/lib/avr/include/util/atomic.h ****    All rights reserved.
+   3:/usr/lib/avr/include/util/atomic.h **** 
+   4:/usr/lib/avr/include/util/atomic.h ****    Redistribution and use in source and binary forms, with or without
+   5:/usr/lib/avr/include/util/atomic.h ****    modification, are permitted provided that the following conditions are met:
+   6:/usr/lib/avr/include/util/atomic.h **** 
+   7:/usr/lib/avr/include/util/atomic.h ****    * Redistributions of source code must retain the above copyright
+   8:/usr/lib/avr/include/util/atomic.h ****      notice, this list of conditions and the following disclaimer.
+   9:/usr/lib/avr/include/util/atomic.h **** 
+  10:/usr/lib/avr/include/util/atomic.h ****    * Redistributions in binary form must reproduce the above copyright
+  11:/usr/lib/avr/include/util/atomic.h ****      notice, this list of conditions and the following disclaimer in
+  12:/usr/lib/avr/include/util/atomic.h ****      the documentation and/or other materials provided with the
+  13:/usr/lib/avr/include/util/atomic.h ****      distribution.
+  14:/usr/lib/avr/include/util/atomic.h **** 
+  15:/usr/lib/avr/include/util/atomic.h ****    * Neither the name of the copyright holders nor the names of
+  16:/usr/lib/avr/include/util/atomic.h ****      contributors may be used to endorse or promote products derived
+  17:/usr/lib/avr/include/util/atomic.h ****      from this software without specific prior written permission.
+  18:/usr/lib/avr/include/util/atomic.h **** 
+  19:/usr/lib/avr/include/util/atomic.h ****   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  20:/usr/lib/avr/include/util/atomic.h ****   AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  21:/usr/lib/avr/include/util/atomic.h ****   IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+  22:/usr/lib/avr/include/util/atomic.h ****   ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+  23:/usr/lib/avr/include/util/atomic.h ****   LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+  24:/usr/lib/avr/include/util/atomic.h ****   CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+  25:/usr/lib/avr/include/util/atomic.h ****   SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+  26:/usr/lib/avr/include/util/atomic.h ****   INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+  27:/usr/lib/avr/include/util/atomic.h ****   CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  28:/usr/lib/avr/include/util/atomic.h ****   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  29:/usr/lib/avr/include/util/atomic.h ****   POSSIBILITY OF SUCH DAMAGE.
+  30:/usr/lib/avr/include/util/atomic.h **** */
+  31:/usr/lib/avr/include/util/atomic.h **** 
+  32:/usr/lib/avr/include/util/atomic.h **** /* $Id: atomic.h 2158 2010-06-10 15:48:28Z joerg_wunsch $ */
+  33:/usr/lib/avr/include/util/atomic.h **** 
+  34:/usr/lib/avr/include/util/atomic.h **** #ifndef _UTIL_ATOMIC_H_
+  35:/usr/lib/avr/include/util/atomic.h **** #define _UTIL_ATOMIC_H_ 1
+  36:/usr/lib/avr/include/util/atomic.h **** 
+  37:/usr/lib/avr/include/util/atomic.h **** #include <avr/io.h>
+  38:/usr/lib/avr/include/util/atomic.h **** #include <avr/interrupt.h>
+  39:/usr/lib/avr/include/util/atomic.h **** 
+  40:/usr/lib/avr/include/util/atomic.h **** #if !defined(__DOXYGEN__)
+  41:/usr/lib/avr/include/util/atomic.h **** /* Internal helper functions. */
+  42:/usr/lib/avr/include/util/atomic.h **** static __inline__ uint8_t __iSeiRetVal(void)
+  43:/usr/lib/avr/include/util/atomic.h **** {
+  44:/usr/lib/avr/include/util/atomic.h ****     sei();
+  45:/usr/lib/avr/include/util/atomic.h ****     return 1;
+  46:/usr/lib/avr/include/util/atomic.h **** }
+  47:/usr/lib/avr/include/util/atomic.h **** 
+  48:/usr/lib/avr/include/util/atomic.h **** static __inline__ uint8_t __iCliRetVal(void)
+  49:/usr/lib/avr/include/util/atomic.h **** {
+  50:/usr/lib/avr/include/util/atomic.h ****     cli();
+  30               		.loc 2 50 0
+  31               	/* #APP */
+  32               	 ;  50 "/usr/lib/avr/include/util/atomic.h" 1
+  33 0002 F894      		cli
+  34               	 ;  0 "" 2
+  35               	.LVL1:
+  36               	/* #NOAPP */
+  37               	.LBE16:
+  38               	.LBE15:
+  14:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c ****     // read low, then high byte
+  15:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c ****     _mic = ADCA.CH0.RES;
+  39               		.loc 1 15 0
+  40 0004 E0E0      		ldi r30,0
+  41 0006 F2E0      		ldi r31,lo8(2)
+  42 0008 84A1      		ldd r24,Z+36
+  43 000a 95A1      		ldd r25,Z+37
+  16:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c **** 
+  17:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c ****     // sign extend to full 16 bits
+  18:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c ****     _mic = _mic >> 4;
+  44               		.loc 1 18 0
+  45 000c 9595      		asr r25
+  46 000e 8795      		ror r24
+  47 0010 9595      		asr r25
+  48 0012 8795      		ror r24
+  49 0014 9595      		asr r25
+  50 0016 8795      		ror r24
+  51 0018 9595      		asr r25
+  52 001a 8795      		ror r24
+  53 001c 8093 0000 		sts _mic,r24
+  54 0020 9093 0000 		sts _mic+1,r25
+  55               	.LVL2:
+  56               	.LBB17:
+  57               	.LBB18:
+  51:/usr/lib/avr/include/util/atomic.h ****     return 1;
+  52:/usr/lib/avr/include/util/atomic.h **** }
+  53:/usr/lib/avr/include/util/atomic.h **** 
+  54:/usr/lib/avr/include/util/atomic.h **** static __inline__ void __iSeiParam(const uint8_t *__s)
+  55:/usr/lib/avr/include/util/atomic.h **** {
+  56:/usr/lib/avr/include/util/atomic.h ****     sei();
+  57:/usr/lib/avr/include/util/atomic.h ****     __asm__ volatile ("" ::: "memory");
+  58:/usr/lib/avr/include/util/atomic.h ****     (void)__s;
+  59:/usr/lib/avr/include/util/atomic.h **** }
+  60:/usr/lib/avr/include/util/atomic.h **** 
+  61:/usr/lib/avr/include/util/atomic.h **** static __inline__ void __iCliParam(const uint8_t *__s)
+  62:/usr/lib/avr/include/util/atomic.h **** {
+  63:/usr/lib/avr/include/util/atomic.h ****     cli();
+  64:/usr/lib/avr/include/util/atomic.h ****     __asm__ volatile ("" ::: "memory");
+  65:/usr/lib/avr/include/util/atomic.h ****     (void)__s;
+  66:/usr/lib/avr/include/util/atomic.h **** }
+  67:/usr/lib/avr/include/util/atomic.h **** 
+  68:/usr/lib/avr/include/util/atomic.h **** static __inline__ void __iRestore(const  uint8_t *__s)
+  69:/usr/lib/avr/include/util/atomic.h **** {
+  70:/usr/lib/avr/include/util/atomic.h ****     SREG = *__s;
+  58               		.loc 2 70 0
+  59 0024 2FBF      		out __SREG__,r18
+  71:/usr/lib/avr/include/util/atomic.h ****     __asm__ volatile ("" ::: "memory");
+  60               		.loc 2 71 0
+  61 0026 0895      		ret
+  62               	.LBE18:
+  63               	.LBE17:
+  64               	.LBE14:
+  65               		.cfi_endproc
+  66               	.LFE5:
+  68               	.global	initHWMic
+  70               	initHWMic:
+  71               	.LFB6:
+  19:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c ****     BB_UNLOCK(NULL)
+  20:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c **** 
+  21:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c ****     // register event
+  22:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c ****     //triggerHandler(EVENT_MIC_DATA);
+  23:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c **** }
+  24:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c **** 
+  25:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c **** void initHWMic(void)
+  26:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c **** {
+  72               		.loc 1 26 0
+  73               		.cfi_startproc
+  74               	/* prologue: function */
+  75               	/* frame size = 0 */
+  76               	/* stack size = 0 */
+  77               	.L__stack_usage = 0
+  27:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c ****     // set-up basic function
+  28:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c ****     ADCA.CTRLA = ADC_ENABLE_bm;                                 // disable combined DMA but enable 
+  78               		.loc 1 28 0
+  79 0028 E0E0      		ldi r30,0
+  80 002a F2E0      		ldi r31,lo8(2)
+  81 002c 81E0      		ldi r24,lo8(1)
+  82 002e 8083      		st Z,r24
+  29:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c ****     ADCA.CTRLB = ADC_CONMODE_bm | ADC_RESOLUTION_LEFT12BIT_gc;  // use signed 12 bit left adjusted 
+  83               		.loc 1 29 0
+  84 0030 96E1      		ldi r25,lo8(22)
+  85 0032 9183      		std Z+1,r25
+  30:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c ****     ADCA.REFCTRL = ADC_REFSEL_VCC_gc | ADC_BANDGAP_bm;          // disable combined DMA but enable 
+  86               		.loc 1 30 0
+  87 0034 92E1      		ldi r25,lo8(18)
+  88 0036 9283      		std Z+2,r25
+  31:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c ****     ADCA.PRESCALER = ADC_PRESCALER_DIV512_gc;                   // DIV512 prescaler
+  89               		.loc 1 31 0
+  90 0038 97E0      		ldi r25,lo8(7)
+  91 003a 9483      		std Z+4,r25
+  32:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c **** 
+  33:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c ****     // set-up inputs (NOTE: define for ADC_CH_MUXNEG_PIN5_gv is incorrect)
+  34:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c ****     ADCA.CH0.MUXCTRL = ADC_CH_MUXPOS_PIN0_gc | ADC_CH_MUXNEG_PIN1_gc;   // take inputs from microph
+  92               		.loc 1 34 0
+  93 003c 81A3      		std Z+33,r24
+  35:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c ****     ADCA.CH0.CTRL = ADC_CH_GAIN_1X_gc | ADC_CH_INPUTMODE_DIFFWGAIN_gc;  // use differential gain (x
+  94               		.loc 1 35 0
+  95 003e 93E0      		ldi r25,lo8(3)
+  96 0040 90A3      		std Z+32,r25
+  36:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c **** 
+  37:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c ****     // set-up interrupts
+  38:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c ****     ADCA.CH0.INTCTRL = ADC_CH_INTLVL1_bm;    // interrupts on conversion completion with MED priori
+  97               		.loc 1 38 0
+  98 0042 92E0      		ldi r25,lo8(2)
+  99 0044 92A3      		std Z+34,r25
+  39:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c **** 
+  40:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c ****     // start conversion/clear interrupts
+  41:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c ****     ADCA.CH0.INTFLAGS = ADC_CH_CHIF_bm;
+ 100               		.loc 1 41 0
+ 101 0046 83A3      		std Z+35,r24
+  42:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c ****     ADCA.CH0.CTRL |= ADC_CH_START_bm;
+ 102               		.loc 1 42 0
+ 103 0048 80A1      		ldd r24,Z+32
+ 104 004a 8068      		ori r24,lo8(-128)
+ 105 004c 80A3      		std Z+32,r24
+ 106 004e 0895      		ret
+ 107               		.cfi_endproc
+ 108               	.LFE6:
+ 110               	.global	rejuvenateHWMic
+ 112               	rejuvenateHWMic:
+ 113               	.LFB7:
+  43:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c **** }
+  44:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c **** 
+  45:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c **** void rejuvenateHWMic(void)
+  46:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c **** {
+ 114               		.loc 1 46 0
+ 115               		.cfi_startproc
+ 116               	/* prologue: function */
+ 117               	/* frame size = 0 */
+ 118               	/* stack size = 0 */
+ 119               	.L__stack_usage = 0
+  47:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c ****     // set as outputs
+  48:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c ****     PORTA.DIRSET = PIN0_bm;
+ 120               		.loc 1 48 0
+ 121 0050 E0E0      		ldi r30,0
+ 122 0052 F6E0      		ldi r31,lo8(6)
+ 123 0054 91E0      		ldi r25,lo8(1)
+ 124 0056 9183      		std Z+1,r25
+  49:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c ****     PORTA.DIRSET = PIN5_bm;
+ 125               		.loc 1 49 0
+ 126 0058 80E2      		ldi r24,lo8(32)
+ 127 005a 8183      		std Z+1,r24
+  50:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c **** 
+  51:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c ****     // drive both back to zero
+  52:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c ****     PORTA.OUTCLR = PIN0_bm;
+ 128               		.loc 1 52 0
+ 129 005c 9683      		std Z+6,r25
+  53:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c ****     PORTA.OUTCLR = PIN5_bm;
+ 130               		.loc 1 53 0
+ 131 005e 8683      		std Z+6,r24
+  54:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c **** 
+  55:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c ****     // reset as inputs
+  56:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c ****     PORTA.DIRCLR = PIN0_bm;
+ 132               		.loc 1 56 0
+ 133 0060 9283      		std Z+2,r25
+  57:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c ****     PORTA.DIRCLR = PIN5_bm;
+ 134               		.loc 1 57 0
+ 135 0062 8283      		std Z+2,r24
+ 136 0064 0895      		ret
+ 137               		.cfi_endproc
+ 138               	.LFE7:
+ 140               	.global	__vector_71
+ 142               	__vector_71:
+ 143               	.LFB8:
+  58:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c **** 
+  59:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c **** }
+  60:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c **** 
+  61:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c **** ISR(ADCA_CH0_vect)
+  62:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c **** {
+ 144               		.loc 1 62 0
+ 145               		.cfi_startproc
+ 146 0066 1F92      		push r1
+ 147               	.LCFI0:
+ 148               		.cfi_def_cfa_offset 4
+ 149               		.cfi_offset 1, -3
+ 150 0068 0F92      		push r0
+ 151               	.LCFI1:
+ 152               		.cfi_def_cfa_offset 5
+ 153               		.cfi_offset 0, -4
+ 154 006a 0FB6      		in r0,__SREG__
+ 155 006c 0F92      		push r0
+ 156 006e 1124      		clr __zero_reg__
+ 157 0070 0BB6      		in r0,__RAMPZ__
+ 158 0072 0F92      		push r0
+ 159 0074 2F93      		push r18
+ 160               	.LCFI2:
+ 161               		.cfi_def_cfa_offset 6
+ 162               		.cfi_offset 18, -5
+ 163 0076 8F93      		push r24
+ 164               	.LCFI3:
+ 165               		.cfi_def_cfa_offset 7
+ 166               		.cfi_offset 24, -6
+ 167 0078 9F93      		push r25
+ 168               	.LCFI4:
+ 169               		.cfi_def_cfa_offset 8
+ 170               		.cfi_offset 25, -7
+ 171 007a EF93      		push r30
+ 172               	.LCFI5:
+ 173               		.cfi_def_cfa_offset 9
+ 174               		.cfi_offset 30, -8
+ 175 007c FF93      		push r31
+ 176               	.LCFI6:
+ 177               		.cfi_def_cfa_offset 10
+ 178               		.cfi_offset 31, -9
+ 179               	/* prologue: Signal */
+ 180               	/* frame size = 0 */
+ 181               	/* stack size = 9 */
+ 182               	.L__stack_usage = 9
+  63:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c ****     ADCA.CH0.INTFLAGS |= ADC_CH_CHIF_bm;
+ 183               		.loc 1 63 0
+ 184 007e E0E0      		ldi r30,0
+ 185 0080 F2E0      		ldi r31,lo8(2)
+ 186 0082 83A1      		ldd r24,Z+35
+ 187 0084 8160      		ori r24,lo8(1)
+ 188 0086 83A3      		std Z+35,r24
+ 189               	.LBB19:
+ 190               	.LBB20:
+  13:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c ****     BB_LOCK(ATOMIC_RESTORESTATE)
+ 191               		.loc 1 13 0
+ 192 0088 2FB7      		in r18,__SREG__
+ 193               	.LVL3:
+ 194               	.LBB21:
+ 195               	.LBB22:
+  50:/usr/lib/avr/include/util/atomic.h ****     cli();
+ 196               		.loc 2 50 0
+ 197               	/* #APP */
+ 198               	 ;  50 "/usr/lib/avr/include/util/atomic.h" 1
+ 199 008a F894      		cli
+ 200               	 ;  0 "" 2
+ 201               	.LVL4:
+ 202               	/* #NOAPP */
+ 203               	.LBE22:
+ 204               	.LBE21:
+  15:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c ****     _mic = ADCA.CH0.RES;
+ 205               		.loc 1 15 0
+ 206 008c E0E0      		ldi r30,0
+ 207 008e F2E0      		ldi r31,lo8(2)
+ 208 0090 84A1      		ldd r24,Z+36
+ 209 0092 95A1      		ldd r25,Z+37
+  18:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c ****     _mic = _mic >> 4;
+ 210               		.loc 1 18 0
+ 211 0094 9595      		asr r25
+ 212 0096 8795      		ror r24
+ 213 0098 9595      		asr r25
+ 214 009a 8795      		ror r24
+ 215 009c 9595      		asr r25
+ 216 009e 8795      		ror r24
+ 217 00a0 9595      		asr r25
+ 218 00a2 8795      		ror r24
+ 219 00a4 8093 0000 		sts _mic,r24
+ 220 00a8 9093 0000 		sts _mic+1,r25
+ 221               	.LVL5:
+ 222               	.LBB23:
+ 223               	.LBB24:
+  70:/usr/lib/avr/include/util/atomic.h ****     SREG = *__s;
+ 224               		.loc 2 70 0
+ 225 00ac 2FBF      		out __SREG__,r18
+ 226               		.loc 2 71 0
+ 227               	.LBE24:
+ 228               	.LBE23:
+ 229               	.LBE20:
+ 230               	.LBE19:
+  64:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c ****     
+  65:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c ****     // update the data
+  66:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c ****     updateHWMic();
+  67:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c **** 
+  68:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c ****     // restart the conversion
+  69:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c ****     ADCA.CH0.CTRL |= ADC_CH_START_bm;
+ 231               		.loc 1 69 0
+ 232 00ae E0E0      		ldi r30,0
+ 233 00b0 F2E0      		ldi r31,lo8(2)
+ 234 00b2 80A1      		ldd r24,Z+32
+ 235 00b4 8068      		ori r24,lo8(-128)
+ 236 00b6 80A3      		std Z+32,r24
+ 237               	/* epilogue start */
+  70:/home/pthalamy/CMU/bench/benchmark/build/src-bobby/hw-block/hwMicrophone.c **** }
+ 238               		.loc 1 70 0
+ 239 00b8 FF91      		pop r31
+ 240 00ba EF91      		pop r30
+ 241 00bc 9F91      		pop r25
+ 242 00be 8F91      		pop r24
+ 243 00c0 2F91      		pop r18
+ 244               	.LVL6:
+ 245 00c2 0F90      		pop r0
+ 246 00c4 0BBE      		out __RAMPZ__,r0
+ 247 00c6 0F90      		pop r0
+ 248 00c8 0FBE      		out __SREG__,r0
+ 249 00ca 0F90      		pop r0
+ 250 00cc 1F90      		pop r1
+ 251 00ce 1895      		reti
+ 252               		.cfi_endproc
+ 253               	.LFE8:
+ 255               	.Letext0:
+ 256               		.file 3 "/usr/lib/avr/include/stdint.h"
+ 257               		.file 4 "/usr/lib/avr/include/avr/iox256a3.h"
+ 258               		.file 5 "/home/pthalamy/CMU/bench/benchmark/build/src-bobby/system/microphone.bbh"
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 hwMicrophone.c
+     /tmp/ccHqZWvJ.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccHqZWvJ.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccHqZWvJ.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccHqZWvJ.s:5      *ABS*:000000000000003b __RAMPZ__
+     /tmp/ccHqZWvJ.s:6      *ABS*:0000000000000034 __CCP__
+     /tmp/ccHqZWvJ.s:7      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccHqZWvJ.s:8      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccHqZWvJ.s:14     .text:0000000000000000 updateHWMic
+     /tmp/ccHqZWvJ.s:70     .text:0000000000000028 initHWMic
+     /tmp/ccHqZWvJ.s:112    .text:0000000000000050 rejuvenateHWMic
+     /tmp/ccHqZWvJ.s:142    .text:0000000000000066 __vector_71
+
+UNDEFINED SYMBOLS
+_mic
