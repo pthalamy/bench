@@ -1,2 +1,6 @@
 # Ignore lst files
 *.lst
+
+# Compiled arch-dirs
+build/apps/sample-c/arch-*
+build/apps/sample-meld-*
