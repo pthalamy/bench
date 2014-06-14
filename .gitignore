@@ -2,5 +2,13 @@
 *.lst
 
 # Compiled arch-dirs
-build/apps/sample-c/arch-*
-build/apps/sample-meld-*
+build/apps/sample-c/arch-*/
+build/apps/sample-meld/arch-*/
+
+# Compiled compiler srcs
+*.sml
+*.desc
+*.sig
+
+# Unprocessed log files
+serial_capture.log
