@@ -10,5 +10,8 @@ build/apps/sample-meld/arch-*/
 *.desc
 *.sig
 
+# OSX System files
+**/.DS_STORE
+
 # Unprocessed log files
 serial_capture.log
